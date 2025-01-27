@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de Rescisão Trabalhista">
+    <title>Calculadora de Rescisão - Contabilidade Empresarial</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
+    <link rel="stylesheet" href="../ESTILOS/style.css">
+    <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
+    <script src="../JS/menu.js" defer></script>
+    <style>
+        .calculadora-rescisao {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--cor-fundo-1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group.required label::after {
+            content: "*";
+            color: red;
+            margin-left: 4px;
+        }
+
+        .error {
+            border-color: red !important;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .resultado {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .resultado table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .resultado th,
+        .resultado td {
+            padding: 0.8rem;
+            border: 1px solid #D46D13;
+            text-align: left;
+        }
+
+        .resultado th {
+            background-color: #0F172A;
+            ;
+        }
+
+        .total {
+            font-weight: bold;
+            background-color: #0F172A;
+            color: #D46D13;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Estilos adicionais */
+        .tooltip {
+            cursor: help;
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .helper-text {
+            display: block;
+            color: #666;
+            font-size: 0.8em;
+            margin-top: 4px;
+        }
+
+        .calculo-detalhes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--cor-fundo-2);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--cor-destaque);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .detalhe-linha {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .detalhe-linha:last-child {
+            border-bottom: none;
+            font-weight: bold;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        input.error {
+            border-color: #dc3545;
+        }
+
+        .tooltip-content {
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            max-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tooltip-content::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 10px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../IMAGENS/LOGO -P.png" alt="Logo">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li type="none"><a href="../INDEX.html" target="_self" title="Página inicial">Home</a></li>
+                <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">Sobre</a></li>
+                <li type="none"><a href="servicos.html"target="_self" title="Veja nossos serviços">Serviços</a></li>
+                <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">Contatos</a></li>
+                <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">Ferramentas</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
+            <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
+            <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="calculadora-rescisao">
+            <h1>Calculadora de Rescisão Trabalhista</h1>
+            <form id="formRescisao">
+                <div class="form-group required">
+                    <label for="tipoRescisao">Tipo de Rescisão</label>
+                    <select id="tipoRescisao" name="tipoRescisao" required>
+                        <option value="">Selecione o tipo de rescisão</option>
+                        <option value="pedido">Pedido de Demissão</option>
+                        <option value="sem_justa_causa">Demissão sem Justa Causa</option>
+                        <option value="justa_causa">Demissão por Justa Causa</option>
+                        <option value="prazo_determinado">Término de Contrato por Prazo Determinado</option>
+                    </select>
+                </div>
+
+                <div class="form-group required">
+                    <label for="salario">Último Salário</label>
+                    <input type="number" id="salario" name="salario" step="0.01" required>
+                </div>
+
+                <div class="form-group required">
+                    <label for="tempoServico">Tempo de Serviço Total (meses)</label>
+                    <input type="number" id="tempoServico" name="tempoServico" required>
+                </div>
+
+                <div class="form-group required">
+                    <label for="mesesAnoAtual">Meses Trabalhados no Ano Atual
+                        <span class="tooltip" title="Meses são arredondados para inteiro se houver 15 dias ou mais no mês da rescisão.">ⓘ</span>
+                    </label>
+                    <input type="number" id="mesesAnoAtual" name="mesesAnoAtual" min="1" max="12" required>
+                    <small class="helper-text">Informe quantos meses foram trabalhados no ano atual (1-12)</small>
+                </div>
+
+                <div id="diasTrabalhadosGroup" class="form-group required">
+                    <label for="diasTrabalhados">Dias Trabalhados no Mês da Rescisão</label>
+                    <input type="number" id="diasTrabalhados" name="diasTrabalhados" min="0" max="31" required>
+                    <small class="helper-text">Informe os dias trabalhados no mês da rescisão (1-31)</small>
+                </div>
+
+                <div id="avisoPrevioGroup" class="form-group hidden">
+                    <label>
+                        <input type="checkbox" id="avisoPrevio" name="avisoPrevio">
+                        Aviso Prévio Cumprido?
+                    </label>
+                </div>
+
+                <div id="motivoRescisaoGroup" class="form-group hidden">
+                    <label for="motivoRescisao">Motivo da Rescisão Antecipada</label>
+                    <textarea id="motivoRescisao" name="motivoRescisao" rows="3"></textarea>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                    <button type="reset" class="btn btn-danger">Limpar Campos</button>
+                    <a href="ferramentas.html" class="btn btn-secondary">Voltar</a>
+                </div>
+            </form>
+
+            <div id="resultado" class="resultado">
+                <h2>Resultado do Cálculo</h2>
+                <div class="calculo-detalhes">
+                    <div class="card ferias">
+                        <h3>FÉRIAS PROPORCIONAIS</h3>
+                        <div id="detalhesFerias"></div>
+                    </div>
+                    <div class="card decimo-terceiro">
+                        <h3>DÉCIMO TERCEIRO
+                            <span class="tooltip" title="Em caso de demissão por justa causa, o décimo terceiro é devido apenas se o tempo de serviço for igual ou superior a 3 meses.">ⓘ</span>
+                        </h3>
+                        <div id="detalhesDecimoTerceiro"></div>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultadoTabela">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fi fi-rr-phone-call"></i> (11) 916539680</p>
+                <p><i class="fi fi-rr-envelope"></i> coontabilidadeempresarial@gmail.com</p>
+                <p><i class="fi fi-rr-marker"></i> Escritório 100% Digital</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="contatos.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-footer">
+                    <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="https://wa.me/5511916539680" target="_blank"><i class="fi fi-brands-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"><i class="fi fi-brands-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Função para formatar valores monetários
+        function formatMoney(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        }
+
+        // Função para mostrar/ocultar campos baseado no tipo de rescisão
+        document.getElementById('tipoRescisao').addEventListener('change', function() {
+            const tipo = this.value;
+            const diasTrabalhadosGroup = document.getElementById('diasTrabalhadosGroup');
+            const avisoPrevioGroup = document.getElementById('avisoPrevioGroup');
+            const motivoRescisaoGroup = document.getElementById('motivoRescisaoGroup');
+
+            // Reset display
+            diasTrabalhadosGroup.classList.add('hidden');
+            avisoPrevioGroup.classList.add('hidden');
+            motivoRescisaoGroup.classList.add('hidden');
+
+            // Show relevant fields based on type
+            if (tipo === 'pedido' || tipo === 'justa_causa') {
+                diasTrabalhadosGroup.classList.remove('hidden');
+            }
+            if (tipo === 'pedido') {
+                avisoPrevioGroup.classList.remove('hidden');
+            }
+            if (tipo === 'prazo_determinado') {
+                motivoRescisaoGroup.classList.remove('hidden');
+            }
+        });
+
+        // Função para validar campos
+        function validarCampos() {
+            let isValid = true;
+            const mesesAnoAtual = parseInt(document.getElementById('mesesAnoAtual').value);
+            const diasTrabalhados = parseInt(document.getElementById('diasTrabalhados').value);
+            
+            // Validar meses no ano
+            if (mesesAnoAtual > 12) {
+                alert('O número de meses não pode ultrapassar 12.');
+                document.getElementById('mesesAnoAtual').classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('mesesAnoAtual').classList.remove('error');
+            }
+
+            // Validar dias trabalhados
+            if (diasTrabalhados < 0 || diasTrabalhados > 31) {
+                alert('O número de dias deve estar entre 0 e 31.');
+                document.getElementById('diasTrabalhados').classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('diasTrabalhados').classList.remove('error');
+            }
+
+            return isValid;
+        }
+
+        // Função para calcular férias proporcionais
+        function calcularFerias(salario, mesesAnoAtual, diasTrabalhados) {
+            const mesesAjustados = mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0);
+            const base = (salario / 12) * mesesAjustados;
+            const terco = base / 3;
+            const total = base + terco;
+
+            return {
+                base: base,
+                terco: terco,
+                total: total,
+                mesesAjustados: mesesAjustados
+            };
+        }
+
+        // Função para calcular décimo terceiro
+        function calcularDecimoTerceiro(salario, mesesAnoAtual, diasTrabalhados, tipoRescisao) {
+            const mesesAjustados = mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0);
+            
+            // Verificar regra especial para justa causa
+            if (tipoRescisao === 'justa_causa' && mesesAjustados < 3) {
+                return {
+                    valor: 0,
+                    mensagem: 'Não há direito ao 13º salário (menos de 3 meses trabalhados)'
+                };
+            }
+
+            return {
+                valor: (salario / 12) * mesesAjustados,
+                mensagem: null
+            };
+        }
+
+        // Função para atualizar detalhes do cálculo
+        function atualizarDetalhesCalculo(ferias, decimoTerceiro) {
+            const detalhesFerias = document.getElementById('detalhesFerias');
+            const detalhesDecimoTerceiro = document.getElementById('detalhesDecimoTerceiro');
+
+            // Atualizar detalhes das férias
+            detalhesFerias.innerHTML = `
+                <div class="detalhe-linha">
+                    <span>Base (${ferias.mesesAjustados} meses):</span>
+                    <span>${formatMoney(ferias.base)}</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span>1/3 Constitucional:</span>
+                    <span>${formatMoney(ferias.terco)}</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span>Total:</span>
+                    <span>${formatMoney(ferias.total)}</span>
+                </div>
+            `;
+
+            // Atualizar detalhes do décimo terceiro
+            detalhesDecimoTerceiro.innerHTML = decimoTerceiro.mensagem 
+                ? `<div class="detalhe-linha">${decimoTerceiro.mensagem}</div>`
+                : `<div class="detalhe-linha">
+                    <span>Valor Proporcional:</span>
+                    <span>${formatMoney(decimoTerceiro.valor)}</span>
+                   </div>`;
+        }
+
+        // Atualizar o evento submit do formulário
+        document.getElementById('formRescisao').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validarCampos()) {
+                return;
+            }
+
+            const tipo = document.getElementById('tipoRescisao').value;
+            const salario = parseFloat(document.getElementById('salario').value);
+            const mesesTotal = parseInt(document.getElementById('tempoServico').value);
+            const mesesAnoAtual = parseInt(document.getElementById('mesesAnoAtual').value);
+            const diasTrabalhados = parseInt(document.getElementById('diasTrabalhados').value);
+            
+            // Validação de tempo de serviço
+            if (mesesTotal > 120) {
+                alert('Atenção: O tempo de serviço informado é superior a 120 meses. Por favor, verifique se está correto.');
+            }
+
+            let resultados = {};
+
+            // Calcular férias e décimo terceiro
+            const ferias = calcularFerias(salario, mesesAnoAtual, diasTrabalhados);
+            const decimoTerceiro = calcularDecimoTerceiro(salario, mesesAnoAtual, diasTrabalhados, tipo);
+
+            // Atualizar detalhes do cálculo
+            atualizarDetalhesCalculo(ferias, decimoTerceiro);
+
+            // Adicionar resultados ao objeto de resultados
+            resultados['Saldo de Salário'] = (salario / 30) * diasTrabalhados;
+            resultados['Férias Proporcionais'] = ferias.base;
+            resultados['1/3 Férias Proporcionais'] = ferias.terco;
+            
+            if (decimoTerceiro.valor > 0) {
+                resultados['13º Proporcional'] = decimoTerceiro.valor;
+            }
+
+            // FGTS
+            const fgtsAcumulado = salario * 0.08 * mesesTotal;
+            resultados['FGTS Acumulado'] = fgtsAcumulado;
+
+            // Cálculos específicos por tipo
+            switch(tipo) {
+                case 'sem_justa_causa':
+                    resultados['Multa FGTS (40%)'] = fgtsAcumulado * 0.4;
+                    resultados['Aviso Prévio Indenizado'] = salario;
+                    break;
+                    
+                case 'pedido':
+                    const avisoPrevioCumprido = document.getElementById('avisoPrevio').checked;
+                    if (!avisoPrevioCumprido) {
+                        resultados['Desconto Aviso Prévio'] = -salario;
+                    }
+                    break;
+                    
+                case 'justa_causa':
+                    // Apenas direitos básicos
+                    break;
+                    
+                case 'prazo_determinado':
+                    // Sem multa FGTS ou aviso prévio
+                    break;
+            }
+
+            // Cálculo de descontos
+            let totalBruto = Object.values(resultados).reduce((a, b) => a + (b > 0 ? b : 0), 0);
+            
+            // INSS (exemplo simplificado - na prática, usar tabela progressiva)
+            const inss = totalBruto * 0.11;
+            resultados['Desconto INSS'] = -inss;
+
+            // IRRF (exemplo simplificado - na prática, usar tabela progressiva)
+            if (totalBruto > 1903.98) {
+                const irrf = totalBruto * 0.075;
+                resultados['Desconto IRRF'] = -irrf;
+            }
+
+            // Exibir resultados
+            const tbody = document.getElementById('resultadoTabela');
+            tbody.innerHTML = '';
+            let totalLiquido = 0;
+
+            for (let [descricao, valor] of Object.entries(resultados)) {
+                totalLiquido += valor;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${descricao}</td>
+                    <td>${formatMoney(valor)}</td>
+                `;
+                tbody.appendChild(tr);
+            }
+
+            // Adicionar total
+            const trTotal = document.createElement('tr');
+            trTotal.className = 'total';
+            trTotal.innerHTML = `
+                <td>Total Líquido</td>
+                <td>${formatMoney(totalLiquido)}</td>
+            `;
+            tbody.appendChild(trTotal);
+
+            document.getElementById('resultado').style.display = 'block';
+        });
+
+        // Limpar resultados ao resetar o formulário
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            document.getElementById('resultado').style.display = 'none';
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        });
+
+        // Inicializar tooltips
+        document.querySelectorAll('.tooltip').forEach(tooltip => {
+            tooltip.addEventListener('mouseover', function(e) {
+                const title = this.getAttribute('title');
+                this.setAttribute('data-title', title);
+                this.removeAttribute('title');
+                
+                const tooltipDiv = document.createElement('div');
+                tooltipDiv.className = 'tooltip-content';
+                tooltipDiv.textContent = title;
+                document.body.appendChild(tooltipDiv);
+                
+                const rect = this.getBoundingClientRect();
+                tooltipDiv.style.position = 'absolute';
+                tooltipDiv.style.top = rect.bottom + 5 + 'px';
+                tooltipDiv.style.left = rect.left + 'px';
+            });
+
+            tooltip.addEventListener('mouseout', function(e) {
+                const title = this.getAttribute('data-title');
+                this.setAttribute('title', title);
+                this.removeAttribute('data-title');
+                
+                document.querySelector('.tooltip-content')?.remove();
+            });
+        });
+    </script>
+
+    <!-- Cookie Script -->
+    <script type="text/javascript" src="../JS/cookies.js"></script>
+</body>
+</html>

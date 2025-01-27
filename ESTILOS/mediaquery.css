@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/*Todas as demas midias*/
+
+/*typical device breakpoints
+Pequenas telas: ate 600px
+Celulares: de 600ps ate 768px
+Tablets: de 768px ate 992px
+Desktops: de 992px ate 1200px
+Grandes telas : maior que 1200px*/
+
+@media print {/*empressora*/
+    *{
+        font-family: 'courier new';
+    }
+
+    img#phone{display: none}
+    img#tablet{display: none}
+    img#impressora{display: none}
+    img#tv{display: none}
+    img#pc{display: none}
+} 
+
+@media screen and (min-width: 768px) and (max-width: 992px) 
+{/*tablet*/
+
+
+    img#phone{display: none}
+    img#tablet{display: none}
+    img#impressora{display: none}
+    img#tv{display: none}
+    img#pc{display: none}
+} 
+
+@media screen and (min-width: 992px) and (max-width: 1200px) 
+{/*desktop*/
+
+    
+    img#phone{display: none}
+    img#tablet{display: blnoneock}
+    img#impressora{display: none}
+    img#tv{display: none}
+    img#pc{display: none}
+}
+@media screen and (min-width: 1200px) 
+ {/*grandes telas*/
+   
+
+    img#phone{display: none}
+    img#tablet{display: none}
+    img#impressora{display: none}
+    img#tv{display: none}
+    img#pc{display: none}
+}
+
+/* Dispositivos Extra Pequenos (até 600px) */
+@media screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        margin: 0;
+    }
+
+    header .logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    nav .menu {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .social-icons {
+        padding: 20px 0;
+    }
+
+    .home1 {
+        height: 60vh;
+        padding-top: 180px;
+    }
+
+    .home1 h1 {
+        font-size: 2em;
+    }
+
+    .home1 p {
+        font-size: 1.2em;
+    }
+
+    .home2 {
+        padding: 40px 20px;
+    }
+
+    .conteudo1 h2#segu {
+        font-size: 1.8em;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .numeros-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-footer {
+        justify-content: center;
+    }
+}
+
+/* Tablets (601px até 768px) */
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    header {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .menu {
+        gap: 10px;
+    }
+
+    ul > li > a {
+        font-size: 0.8rem;
+        padding: 6px 8px;
+    }
+
+    .home1 {
+        height: 70vh;
+    }
+
+    .home1 h1 {
+        font-size: 2.8em;
+    }
+
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets Grandes e Notebooks (769px até 992px) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .home1 h1 {
+        font-size: 3em;
+    }
+
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktops (993px até 1200px) */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* Telas Grandes (acima de 1200px) */
+@media screen and (min-width: 1201px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Menu Mobile */
+@media screen and (max-width: 768px) {
+    .menu-mobile {
+        display: block;
+    }
+
+    nav .menu {
+        display: none;
+    }
+
+    nav.active .menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--cor-fundo);
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    nav.active .menu li {
+        margin: 10px 0;
+    }
+}
+
+/* Ajustes de Impressão */
+@media print {
+    header, 
+    footer,
+    .social-icons,
+    .cta-button,
+    .contato-rapido,
+    .servicos-destaque {
+        display: none;
+    }
+
+    body {
+        background: none;
+        color: #000;
+    }
+
+    .home1,
+    .home2 {
+        padding: 20px;
+    }
+
+    .home1 h1 {
+        color: #000;
+        font-size: 24pt;
+    }
+
+    .conteudo2 p {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+}
