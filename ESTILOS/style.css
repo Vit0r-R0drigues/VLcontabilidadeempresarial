@@ -2050,84 +2050,103 @@ input:checked + .slider:before {
 
 /* Estilos base para o menu mobile */
 .menu-mobile {
-  display: none;
-}
-
-/* Media queries para responsividade */
-@media screen and (max-width: 768px) {
-  .menu-desktop {
     display: none;
-  }
-  
-  .menu-mobile {
-    display: block;
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     z-index: 1000;
-  }
+}
 
-  .menu-toggle {
-    width: 60px;
-    height: 60px;
-    background: #2196f3;
-    border-radius: 50%;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
+@media screen and (max-width: 768px) {
+    .menu-desktop {
+        display: none;
+    }
 
-  .menu-toggle:hover {
-    transform: scale(1.1);
-  }
+    .menu-mobile {
+        display: block;
+    }
 
-  .menu-items {
-    position: absolute;
-    bottom: 70px;
-    right: 0;
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    transform: scale(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s;
-  }
+    .menu-toggle {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+    }
 
-  .menu-items.active {
-    transform: scale(1);
-  }
+    .menu-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
 
-  .menu-items a {
-    display: block;
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    transition: background 0.3s;
-    border-radius: 5px;
-  }
+    .menu-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+        min-width: 180px;
+        margin-top: 10px;
+    }
 
-  .menu-items a:hover {
-    background: #f0f0f0;
-  }
+    .menu-items.active {
+        display: block;
+        animation: slideIn 0.3s ease-out;
+    }
 
-  /* Ajustes gerais de responsividade */
-  .container {
-    padding: 10px;
-    width: 100%;
-  }
+    .menu-items a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        color: var(--cor-texto-1);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
 
-  .content {
-    flex-direction: column;
-  }
+    .menu-items a i {
+        font-size: 1.1rem;
+        width: 20px;
+        text-align: center;
+    }
 
-  .card {
-    width: 100%;
-    margin: 10px 0;
-  }
+    .menu-items a:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(5px);
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .content {
+        margin-top: 60px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Estilos para a Calculadora de Férias */

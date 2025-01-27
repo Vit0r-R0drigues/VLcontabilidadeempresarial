@@ -12,6 +12,11 @@ class MobileMenu {
     const menuMobile = document.createElement('div');
     menuMobile.className = 'menu-mobile';
     
+    // Detecta se estamos em uma subpasta (HTML/) ou na raiz
+    const path = window.location.pathname;
+    const isSubfolder = path.includes('HTML') || path.includes('html');
+    const basePath = isSubfolder ? '../' : '';
+    
     menuMobile.innerHTML = `
       <div class="menu-toggle">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -19,11 +24,11 @@ class MobileMenu {
         </svg>
       </div>
       <div class="menu-items">
-        <a href="/">Início</a>
-        <a href="/HTML/ferramentas.html">Ferramentas</a>
-        <a href="/HTML/calculadora-ferias.html">Calculadora de Férias</a>
-        <a href="/HTML/calculadora-rescisao.html">Calculadora de Rescisão</a>
-        <a href="/HTML/contatos.html">Contatos</a>
+        <a href="${basePath}index.html"><i class="fi fi-rr-home"></i> Início</a>
+        <a href="${basePath}HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
+        <a href="${basePath}HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Serviços</a>
+        <a href="${basePath}HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
+        <a href="${basePath}HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
       </div>
     `;
 
@@ -34,64 +39,68 @@ class MobileMenu {
     const menuToggle = document.querySelector('.menu-toggle');
     const menuItems = document.querySelector('.menu-items');
 
-    menuToggle.addEventListener('click', () => {
-      menuItems.classList.toggle('active');
-      
-      // Adiciona animação ao botão
-      menuToggle.style.transform = menuItems.classList.contains('active') 
-        ? 'rotate(180deg)' 
-        : 'rotate(0deg)';
-    });
+    if (menuToggle && menuItems) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuItems.classList.toggle('active');
+        
+        // Adiciona animação ao botão
+        menuToggle.style.transform = menuItems.classList.contains('active') 
+          ? 'rotate(90deg)' 
+          : 'rotate(0deg)';
+      });
 
-    // Fecha o menu ao clicar fora
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.menu-mobile')) {
-        menuItems.classList.remove('active');
-        menuToggle.style.transform = 'rotate(0deg)';
-      }
-    });
+      // Fecha o menu ao clicar fora
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.menu-mobile')) {
+          menuItems.classList.remove('active');
+          menuToggle.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
   }
 }
 
-// Inicializa o menu mobile apenas em dispositivos móveis
-if (window.innerWidth <= 768) {
-  new MobileMenu();
-}
-
-window.addEventListener('resize', () => {
+// Inicializa o menu mobile imediatamente
+function initMobileMenu() {
   if (window.innerWidth <= 768 && !document.querySelector('.menu-mobile')) {
     new MobileMenu();
   }
-});
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar se estamos na página da calculadora
-    const isCalculadoraPage = document.querySelector('.calculadora-page') !== null;
-    
-    if (isCalculadoraPage) {
-        const header = document.querySelector('header');
-        const calculadora = document.querySelector('.calculadora-container');
-        
-        // Função para verificar sobreposição
-        function checkOverlap() {
-            const headerRect = header.getBoundingClientRect();
-            const calculadoraRect = calculadora.getBoundingClientRect();
-            
-            // Verificar se o header está sobrepondo a calculadora
-            if (headerRect.bottom > calculadoraRect.top) {
-                header.classList.add('transparent');
-            } else {
-                header.classList.remove('transparent');
-            }
-        }
-        
-        // Verificar ao rolar a página
-        window.addEventListener('scroll', checkOverlap);
-        
-        // Verificar no carregamento inicial
-        checkOverlap();
+// Inicializa quando o DOM estiver pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+  initMobileMenu();
+}
+
+// Reinicializa ao redimensionar a janela
+window.addEventListener('resize', initMobileMenu);
+
+// Verificar se estamos na página da calculadora
+if (document.querySelector('.calculadora-page')) {
+  const header = document.querySelector('header');
+  const calculadora = document.querySelector('.calculadora-container');
+  
+  if (header && calculadora) {
+    function checkOverlap() {
+      const headerRect = header.getBoundingClientRect();
+      const calculadoraRect = calculadora.getBoundingClientRect();
+      
+      if (headerRect.bottom > calculadoraRect.top) {
+        header.classList.add('transparent');
+      } else {
+        header.classList.remove('transparent');
+      }
     }
     
+    window.addEventListener('scroll', checkOverlap);
+    checkOverlap();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
     // Menu mobile
     const menuBtn = document.querySelector('.menu-mobile-btn');
     const nav = document.querySelector('nav');
