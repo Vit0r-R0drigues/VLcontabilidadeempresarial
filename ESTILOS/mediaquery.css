@@ -55,6 +55,12 @@ Grandes telas : maior que 1200px*/
 
 /* Dispositivos Extra Pequenos (até 600px) */
 @media screen and (max-width: 600px) {
+    body {
+        background-size: contain;
+        background-position: top center;
+        background-color: var(--cor-fundo);
+    }
+
     header {
         flex-direction: column;
         height: auto;
@@ -78,20 +84,24 @@ Grandes telas : maior que 1200px*/
     }
 
     .home1 {
-        height: 60vh;
-        padding-top: 180px;
+        height: auto;
+        padding: 120px 20px 60px;
+        text-align: center;
     }
 
     .home1 h1 {
         font-size: 2em;
+        margin-bottom: 15px;
     }
 
     .home1 p {
         font-size: 1.2em;
+        margin-bottom: 25px;
     }
 
     .home2 {
         padding: 40px 20px;
+        text-align: center;
     }
 
     .conteudo1 h2#segu {
@@ -100,15 +110,23 @@ Grandes telas : maior que 1200px*/
 
     .servicos-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .servico-card {
+        padding: 20px;
     }
 
     .numeros-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 30px;
     }
 
     .social-footer {
@@ -118,22 +136,29 @@ Grandes telas : maior que 1200px*/
 
 /* Tablets (601px até 768px) */
 @media screen and (min-width: 601px) and (max-width: 768px) {
+    body {
+        background-size: cover;
+        background-position: center 30%;
+    }
+
     header {
         padding: 10px;
         margin: 0;
+        background-color: rgba(15, 23, 42, 0.95);
     }
 
     .menu {
-        gap: 10px;
+        gap: 15px;
     }
 
     ul > li > a {
-        font-size: 0.8rem;
-        padding: 6px 8px;
+        font-size: 0.9rem;
+        padding: 8px 10px;
     }
 
     .home1 {
-        height: 70vh;
+        height: auto;
+        padding: 140px 30px 80px;
     }
 
     .home1 h1 {
@@ -142,10 +167,12 @@ Grandes telas : maior que 1200px*/
 
     .servicos-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 }
 
@@ -197,11 +224,6 @@ Grandes telas : maior que 1200px*/
         padding: 8px 0;
         min-width: 180px;
         margin-top: 10px;
-    }
-
-    .menu-items.active {
-        display: block;
-        animation: slideIn 0.3s ease-out;
     }
 
     header {
@@ -387,20 +409,17 @@ Grandes telas : maior que 1200px*/
 }
 
 /* Modo paisagem em dispositivos móveis */
-@media (max-width: 900px) and (orientation: landscape) {
-    .calculadora-page {
-        padding-top: 60px;
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .home1 {
+        height: auto;
+        padding: 100px 20px 40px;
     }
 
-    .calculadora-container {
-        width: 95%;
-        margin: 0 auto;
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
+    .home1 h1 {
+        font-size: 2.5em;
     }
 
-    .resultado-cards {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
