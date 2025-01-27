@@ -29,10 +29,10 @@ class MobileMenu {
       </div>
       <div class="menu-items">
         <a href="${basePath}index.html"><i class="fi fi-rr-home"></i> Início</a>
-        <a href="${basePath}/HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
-        <a href="${basePath}/HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Serviços</a>
-        <a href="${basePath}/HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
-        <a href="${basePath}/HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
+        <a href="${basePath}HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
+        <a href="${basePath}HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Serviços</a>
+        <a href="${basePath}HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
+        <a href="${basePath}HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
       </div>
     `;
 

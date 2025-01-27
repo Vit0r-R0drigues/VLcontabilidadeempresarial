@@ -1417,7 +1417,7 @@ footer a:hover {
         grid-template-columns: 1fr 1.5fr 1fr;
         gap: 2rem;
         padding: 2rem;
-    }
+}
 
     .resultado-cards {
         grid-template-columns: repeat(3, 1fr);
@@ -1509,27 +1509,27 @@ input[type="range"]::-webkit-slider-thumb:hover {
 @media (max-width: 768px) {
     .calculadora-page {
         padding: 1rem;
-    }
+}
 
     .calculadora-hero {
         padding: 1.5rem;
-    }
+}
 
     .calculadora-hero h1 {
         font-size: 2rem;
-    }
+}
 
     .calculadora-rescisao {
         padding: 1.5rem;
-    }
+}
 
     .buttons {
         flex-direction: column;
-    }
+}
 
     .btn {
         width: 100%;
-    }
+}
 
     table {
         display: block;
@@ -2081,4 +2081,159 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos Melhorados para Calculadoras */
+.calculadora-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.entrada-dados {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--cor-texto);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="number"]:focus {
+    border-color: var(--cor-texto-1);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(216, 130, 14, 0.2);
+}
+
+.form-group input[type="number"]:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Botões da Calculadora */
+.btn-calcular,
+.btn-exemplo {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-calcular {
+    background: var(--cor-texto-1);
+    color: var(--cor-texto);
+}
+
+.btn-exemplo {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--cor-texto);
+}
+
+.btn-calcular:hover {
+    background: var(--cor-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 109, 19, 0.2);
+}
+
+.btn-exemplo:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Cards de Resultado */
+.resultado-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card.destaque {
+    border: 2px solid var(--cor-texto-1);
+    background: rgba(216, 130, 14, 0.1);
+}
+
+/* Tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--cor-texto);
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.resultado-cards {
+    animation: fadeIn 0.5s ease forwards;
 }
