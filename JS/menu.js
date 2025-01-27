@@ -101,26 +101,42 @@ if (document.querySelector('.calculadora-page')) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu mobile
     const menuBtn = document.querySelector('.menu-mobile-btn');
-    const nav = document.querySelector('nav');
-    const overlay = document.querySelector('.menu-overlay');
-    
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('menu-open');
-            nav.classList.toggle('active');
-            if (overlay) {
-                overlay.classList.toggle('active');
-            }
-        });
-    }
-    
-    if (overlay) {
-        overlay.addEventListener('click', () => {
+    const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const header = document.querySelector('header');
+
+    menuBtn.addEventListener('click', function() {
+        this.classList.toggle('menu-open');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    menuOverlay.addEventListener('click', function() {
+        menuBtn.classList.remove('menu-open');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Fechar menu ao clicar em um link
+    const menuLinks = document.querySelectorAll('.nav-menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
             menuBtn.classList.remove('menu-open');
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
-    }
+    });
+
+    // Adicionar classe ao header quando rolar a página
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 }); 
