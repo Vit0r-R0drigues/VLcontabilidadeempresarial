@@ -1,10 +1,14 @@
 class MobileMenu {
   constructor() {
+    this.menuBtn = document.querySelector('.menu-toggle');
+    this.menuItems = document.querySelector('.menu-items');
     this.init();
   }
 
   init() {
-    this.createMenuStructure();
+    if (!document.querySelector('.menu-mobile')) {
+      this.createMenuStructure();
+    }
     this.addEventListeners();
   }
 
@@ -33,37 +37,45 @@ class MobileMenu {
     `;
 
     document.body.appendChild(menuMobile);
+    this.menuBtn = document.querySelector('.menu-toggle');
+    this.menuItems = document.querySelector('.menu-items');
   }
 
   addEventListeners() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menuItems = document.querySelector('.menu-items');
-
-    if (menuToggle && menuItems) {
-      menuToggle.addEventListener('click', (e) => {
+    if (this.menuBtn && this.menuItems) {
+      this.menuBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        menuItems.classList.toggle('active');
-        
-        // Adiciona animação ao botão
-        menuToggle.style.transform = menuItems.classList.contains('active') 
+        this.menuItems.classList.toggle('active');
+        this.menuBtn.style.transform = this.menuItems.classList.contains('active') 
           ? 'rotate(90deg)' 
           : 'rotate(0deg)';
+        document.body.style.overflow = this.menuItems.classList.contains('active') ? 'hidden' : '';
       });
 
-      // Fecha o menu ao clicar fora
       document.addEventListener('click', (e) => {
         if (!e.target.closest('.menu-mobile')) {
-          menuItems.classList.remove('active');
-          menuToggle.style.transform = 'rotate(0deg)';
+          this.menuItems.classList.remove('active');
+          this.menuBtn.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = '';
         }
+      });
+
+      // Fechar menu ao clicar em um link
+      const menuLinks = this.menuItems.querySelectorAll('a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          this.menuItems.classList.remove('active');
+          this.menuBtn.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = '';
+        });
       });
     }
   }
 }
 
-// Inicializa o menu mobile imediatamente
+// Inicializa o menu mobile
 function initMobileMenu() {
-  if (window.innerWidth <= 768 && !document.querySelector('.menu-mobile')) {
+  if (window.innerWidth <= 768) {
     new MobileMenu();
   }
 }
@@ -76,7 +88,11 @@ if (document.readyState === 'loading') {
 }
 
 // Reinicializa ao redimensionar a janela
-window.addEventListener('resize', initMobileMenu);
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(initMobileMenu, 250);
+});
 
 // Verificar se estamos na página da calculadora
 if (document.querySelector('.calculadora-page')) {
@@ -106,37 +122,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuOverlay = document.querySelector('.menu-overlay');
     const header = document.querySelector('header');
 
-    menuBtn.addEventListener('click', function() {
-        this.classList.toggle('menu-open');
+        menuBtn.addEventListener('click', function() {
+            this.classList.toggle('menu-open');
         navMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
         document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
+        });
 
-    menuOverlay.addEventListener('click', function() {
-        menuBtn.classList.remove('menu-open');
-        navMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Fechar menu ao clicar em um link
-    const menuLinks = document.querySelectorAll('.nav-menu a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        menuOverlay.addEventListener('click', function() {
             menuBtn.classList.remove('menu-open');
-            navMenu.classList.remove('active');
+        navMenu.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
         });
-    });
+
+        // Fechar menu ao clicar em um link
+    const menuLinks = document.querySelectorAll('.nav-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuBtn.classList.remove('menu-open');
+            navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
 
     // Adicionar classe ao header quando rolar a página
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 }); 
