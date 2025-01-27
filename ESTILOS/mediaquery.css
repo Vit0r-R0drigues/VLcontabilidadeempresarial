@@ -132,6 +132,32 @@ Grandes telas : maior que 1200px*/
     .social-footer {
         justify-content: center;
     }
+
+    /* Ajustes para o formulário de contato */
+    .contato-rapido {
+        padding: 40px 15px;
+    }
+
+    .contato-rapido h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    #form-contato {
+        padding: 0;
+    }
+
+    #form-contato input,
+    #form-contato textarea {
+        padding: 10px;
+        font-size: 16px; /* Evita zoom em iOS */
+    }
+
+    #form-contato button {
+        width: 100%;
+        max-width: none;
+        padding: 12px 20px;
+    }
 }
 
 /* Tablets (601px até 768px) */
