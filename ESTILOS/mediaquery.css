@@ -232,3 +232,121 @@ Grandes telas : maior que 1200px*/
         line-height: 1.5;
     }
 }
+
+/* Usar unidades relativas */
+:root {
+    --font-size-base: 16px;
+    --font-size-large: 1.25rem;
+    --font-size-xlarge: 1.5rem;
+}
+
+/* Adicionar breakpoints intermediários */
+@media screen and (max-width: 480px) {
+    /* Estilos para telas muito pequenas */
+}
+
+/* Media Queries para Calculadora de Férias */
+
+/* Tablets e dispositivos menores */
+@media (max-width: 1200px) {
+    .calculadora-container {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .entrada-dados,
+    .passo-a-passo,
+    .resultados {
+        padding: 1.5rem;
+    }
+}
+
+/* Dispositivos móveis */
+@media (max-width: 768px) {
+    .calculadora-container {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .entrada-dados,
+    .passo-a-passo,
+    .resultados {
+        padding: 1rem;
+    }
+
+    .form-group input[type="number"] {
+        padding: 0.6rem;
+    }
+
+    .btn-calcular,
+    .btn-exemplo,
+    .btn-detalhes {
+        padding: 0.8rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card p {
+        font-size: 1.2rem;
+    }
+
+    .step {
+        margin-bottom: 1rem;
+    }
+
+    .step-number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+    }
+
+    .step-content h4 {
+        font-size: 0.9rem;
+    }
+
+    .step-content p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 480px) {
+    .calculadora-container {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+    .grafico-container {
+        height: 150px;
+    }
+}
+
+/* Ajustes de altura para telas menores */
+@media (max-height: 800px) {
+    .calculadora-container {
+        margin: 0.5rem auto;
+    }
+
+    .grafico-container {
+        height: 180px;
+    }
+}
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-width: 900px) and (orientation: landscape) {
+    .calculadora-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .passo-a-passo {
+        grid-column: span 2;
+    }
+}

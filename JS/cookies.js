@@ -1,3 +1,11 @@
+// Usar constantes para valores reutilizados
+const COOKIE_EXPIRY_DAYS = 365;
+const COOKIE_NAMES = {
+    consent: 'cookieConsent',
+    analytics: 'analyticsCookies',
+    marketing: 'marketingCookies'
+};
+
 // Função para verificar se um cookie existe
 function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -7,10 +15,14 @@ function getCookie(name) {
 
 // Função para definir um cookie
 function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = `expires=${date.toUTCString()}`;
-    document.cookie = `${name}=${value};${expires};path=/`;
+    try {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value};${expires};path=/`;
+    } catch (error) {
+        console.error('Erro ao definir cookie:', error);
+    }
 }
 
 // Função para mostrar o banner de cookies

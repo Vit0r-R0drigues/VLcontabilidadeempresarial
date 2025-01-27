@@ -1,17 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Férias</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Calculadora de Férias - VL Contabilidade</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
+    <link rel="stylesheet" href="../ESTILOS/style.css">
+    <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../JS/menu.js" defer></script>
 </head>
 <body>
-    <!-- Cookie script addition -->
-    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.9/dist/cookieconsent.js"></script>
-    <script defer src="../assets/js/cookieconsent-init.js"></script>
-    <!-- Script de cookies -->
+    <div class="bg">
+        <header>
+            <div class="logo">
+                <img src="../IMAGENS/LOGO -P.png" alt="Logo da Contabilidade Empresarial">
+            </div>
+            <nav role="navigation" aria-label="Menu principal">
+                <ul class="menu">
+                    <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                        <i class="fi fi-rr-home"></i> Home</a>
+                    </li>
+                    <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                        <i class="fi fi-rr-info"></i> Sobre</a>
+                    </li>
+                    <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                        <i class="fi fi-rr-briefcase"></i> Serviços</a>
+                    </li>
+                    <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                        <i class="fi fi-rr-phone-call"></i> Contatos</a>
+                    </li>
+                    <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                        <i class="fi fi-rr-calculator"></i> Ferramentas</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
+                <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
+                <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
+                <a href="https://www.google.com/search?sca_esv=8ee07bb068160570&sxsrf=AHTn8zr0_BM6lVu8rv6ySbMa4pufPiyMzw%3A1737928997476&q=VL%20Contabilidade%20Empresarial&stick=H4sIAAAAAAAAAONgU1I1qLCwTE4zMDNLSjI1Skm1TDK2MqgwMTdJSUy1sDBJNTAyTjQ3WcQqE-aj4JyfV5KYlJmTmZKYkqrgmltQlFqcWJSZmAMALORsN0gAAAA&mat=CQwi07iXATQK&ved=2ahUKEwjP_KeEspSLAxV5rZUCHRm4FrIQrMcEegQIGxAC" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+            </div>
+        </header>
+    </div>
+
+    <main class="calculadora-page">
+        <div class="calculadora-hero">
+            <h1>Calculadora de Férias</h1>
+            <p>Calcule facilmente o valor das férias dos seus funcionários</p>
+        </div>
+
+        <main class="calculadora-container">
+            <!-- Seção de Entrada de Dados -->
+            <section class="entrada-dados">
+                <h2>Dados para Cálculo</h2>
+                <div class="form-group">
+                    <label for="salarioBase">
+                        Salário Base
+                        <i class="fas fa-question-circle" title="Informe seu salário mensal bruto"></i>
+                    </label>
+                    <input type="number" id="salarioBase" min="0" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="diasFerias">
+                        Dias de Férias
+                        <i class="fas fa-question-circle" title="Mínimo 10 dias, máximo 30 dias"></i>
+                    </label>
+                    <input type="number" id="diasFerias" min="10" max="30" value="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="horasExtras">
+                        Média de Horas Extras (R$)
+                        <i class="fas fa-question-circle" title="Média dos últimos 12 meses (opcional)"></i>
+                    </label>
+                    <input type="number" id="horasExtras" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="venderFerias">
+                        Vender 1/3 das Férias
+                        <i class="fas fa-question-circle" title="Você pode vender até 10 dias das suas férias"></i>
+                    </label>
+                    <div id="diasVendidosContainer" style="display: none;">
+                        <input type="range" id="diasVendidos" min="0" max="10" value="10" step="10">
+                        <div class="range-markers">
+                            <span>0 dias</span>
+                            <span>10 dias</span>
+                        </div>
+                        <span id="diasVendidosValue">10 dias</span>
+                    </div>
+                </div>
+
+                <button id="calcular" class="btn-calcular">Calcular Férias</button>
+                <button id="exemploValores" class="btn-exemplo">Simular com Valores de Exemplo</button>
+            </section>
+
+            <!-- Seção do Passo a Passo -->
+            <section class="passo-a-passo">
+                <h2>Como é Calculado</h2>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="steps-container" id="stepsContainer">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+            </section>
+
+            <!-- Seção de Resultados -->
+            <section class="resultados">
+                <h2>Resultado Final</h2>
+                <div class="resultado-cards">
+                    <div class="card">
+                        <h3>Valor Bruto</h3>
+                        <p id="valorBruto">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Descontos</h3>
+                        <p id="valorDescontos">R$ 0,00</p>
+                    </div>
+                    <div class="card destaque">
+                        <h3>Valor Líquido</h3>
+                        <p id="valorLiquido">R$ 0,00</p>
+                    </div>
+                </div>
+
+                <div class="grafico-container">
+                    <canvas id="graficoResultados"></canvas>
+                </div>
+
+                <button id="verDetalhes" class="btn-detalhes">
+                    Como foi Calculado?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div id="tabelaDetalhes" class="detalhes-calculo" style="display: none;">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+            </section>
+        </main>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fi fi-rr-phone-call"></i> (11) 916539680</p>
+                <p><i class="fi fi-rr-envelope"></i> coontabilidadeempresarial@gmail.com</p>
+                <p><i class="fi fi-rr-marker"></i> Escritório 100% Digital</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="contatos.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-footer">
+                    <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="https://wa.me/5511916539680" target="_blank"><i class="fi fi-brands-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"><i class="fi fi-brands-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../JS/calculadora-ferias.js"></script>
     <script src="../JS/cookies.js"></script>
 </body>
 </html>
