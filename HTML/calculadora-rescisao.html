@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Calculadora de Rescisão Trabalhista">
-    <title>Calculadora de Rescisão - VL Contabilidade</title>
+    <title>Calculadora de Rescisão 2025 - VL Contabilidade</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
     <link rel="stylesheet" href="../ESTILOS/style.css">
     <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../JS/menu.js" defer></script>
     <style>
         .calculadora-rescisao {
@@ -40,6 +41,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+            background-color: #0f172a75;
         }
 
         .form-group.required label::after {
@@ -193,54 +195,153 @@
             border-right: 5px solid transparent;
             border-bottom: 5px solid #333;
         }
+
+        .detalhes-calculo {
+            margin-top: 2rem;
+            background: var(--cor-fundo-2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            background: var(--cor-fundo);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table-container th,
+        .table-container td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .table-container th {
+            background-color: var(--cor-destaque);
+            color: var(--cor-texto);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .table-container tr:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .table-container td:last-child {
+            text-align: right;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .valor-positivo {
+            color: #4CAF50;
+        }
+
+        .valor-negativo {
+            color: #F44336;
+        }
+
+        .total-row {
+            font-weight: bold;
+            border-top: 2px solid var(--cor-destaque);
+            background-color: rgba(212, 109, 19, 0.1);
+        }
+
+        .total-row td {
+            padding: 1.2rem 1rem;
+            font-size: 1.2rem;
+            color: var(--cor-destaque);
+        }
+
+        .btn-detalhes {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: var(--cor-destaque);
+            border: none;
+            border-radius: 4px;
+            color: var(--cor-texto);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-detalhes:hover {
+            background: #c26311;
+        }
+
+        .btn-detalhes i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-detalhes.active i {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../IMAGENS/LOGO -P.png" alt="Logo da Contabilidade Empresarial">
-        </div>
-        <nav role="navigation" aria-label="Menu principal">
-            <ul class="menu">
-                <li type="none"><a href="../index.html" target="_self" title="Página inicial">
-                    <i class="fi fi-rr-home"></i> Home</a>
-                </li>
-                <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
-                    <i class="fi fi-rr-info"></i> Sobre</a>
-                </li>
-                <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
-                    <i class="fi fi-rr-briefcase"></i> Serviços</a>
-                </li>
-                <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
-                    <i class="fi fi-rr-phone-call"></i> Contatos</a>
-                </li>
-                <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
-                    <i class="fi fi-rr-calculator"></i> Ferramentas</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
-            <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
-            <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
-            <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
-        </div>
-    </header>
+    <div class="bg">
+        <header>
+            <div class="logo">
+                <img src="../IMAGENS/LOGO -P.png" alt="Logo da Contabilidade Empresarial">
+            </div>
+            <nav role="navigation" aria-label="Menu principal">
+                <ul class="menu">
+                    <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                        <i class="fi fi-rr-home"></i> Home</a>
+                    </li>
+                    <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                        <i class="fi fi-rr-info"></i> Sobre</a>
+                    </li>
+                    <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                        <i class="fi fi-rr-briefcase"></i> Serviços</a>
+                    </li>
+                    <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                        <i class="fi fi-rr-phone-call"></i> Contatos</a>
+                    </li>
+                    <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                        <i class="fi fi-rr-calculator"></i> Ferramentas</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
+                <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
+                <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
+                <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+            </div>
+        </header>
+    </div>
 
     <main class="calculadora-page">
         <div class="calculadora-hero">
-            <h1>Calculadora de Rescisão</h1>
+            <h1>Calculadora de Rescisão 2025</h1>
             <p>Calcule os valores da rescisão trabalhista de forma simples e precisa</p>
         </div>
 
-        <section class="calculadora-rescisao">
-            <form id="formRescisao">
-                <div class="form-group required">
+        <main class="calculadora-container">
+            <!-- Seção de Entrada de Dados -->
+            <section class="entrada-dados">
+                <h2>Dados para Cálculo</h2>
+                <div class="form-group">
                     <label for="tipoRescisao">
                         Tipo de Rescisão
                         <i class="fas fa-question-circle" title="Selecione o tipo de rescisão para calcular os valores devidos"></i>
                     </label>
-                    <select id="tipoRescisao" name="tipoRescisao" required>
+                    <select id="tipoRescisao">
                         <option value="">Selecione o tipo de rescisão</option>
                         <option value="pedido">Pedido de Demissão</option>
                         <option value="sem_justa_causa">Demissão sem Justa Causa</option>
@@ -249,93 +350,136 @@
                     </select>
                 </div>
 
-                <div class="form-group required">
-                    <label for="salario">
-                        Último Salário
+                <div class="form-group">
+                    <label for="salarioBruto">
+                        Salário Bruto
                         <i class="fas fa-question-circle" title="Informe o último salário bruto do funcionário"></i>
                     </label>
-                    <input type="number" id="salario" name="salario" step="0.01" required>
+                    <input type="number" id="salarioBruto" placeholder="R$ 0,00" step="0.01" min="0">
                 </div>
 
-                <div class="form-group required">
+                <div class="form-group">
                     <label for="tempoServico">
-                        Tempo de Serviço Total (meses)
+                        Tempo de Serviço (meses)
                         <i class="fas fa-question-circle" title="Total de meses trabalhados na empresa"></i>
                     </label>
-                    <input type="number" id="tempoServico" name="tempoServico" required>
+                    <input type="number" id="tempoServico" placeholder="0" min="0">
                 </div>
 
-                <div class="form-group required">
+                <div class="form-group">
                     <label for="mesesAnoAtual">
-                        Meses Trabalhados no Ano Atual
-                        <i class="fas fa-question-circle" title="Meses são arredondados para inteiro se houver 15 dias ou mais no mês da rescisão"></i>
+                        Meses no Ano Atual
+                        <i class="fas fa-question-circle" title="Meses trabalhados no ano atual"></i>
                     </label>
-                    <input type="number" id="mesesAnoAtual" name="mesesAnoAtual" min="1" max="12" required>
-                    <small class="helper-text">Informe quantos meses foram trabalhados no ano atual (1-12)</small>
+                    <input type="number" id="mesesAnoAtual" placeholder="0" min="1" max="12">
                 </div>
 
-                <div id="diasTrabalhadosGroup" class="form-group required">
+                <div class="form-group">
                     <label for="diasTrabalhados">
-                        Dias Trabalhados no Mês da Rescisão
-                        <i class="fas fa-question-circle" title="Dias trabalhados no mês em que ocorreu a rescisão"></i>
+                        Dias Trabalhados no Mês
+                        <i class="fas fa-question-circle" title="Dias trabalhados no mês da rescisão"></i>
                     </label>
-                    <input type="number" id="diasTrabalhados" name="diasTrabalhados" min="0" max="31" required>
-                    <small class="helper-text">Informe os dias trabalhados no mês da rescisão (1-31)</small>
+                    <input type="number" id="diasTrabalhados" placeholder="0" min="0" max="31">
                 </div>
 
-                <div id="avisoPrevioGroup" class="form-group hidden">
-                    <label>
-                        <input type="checkbox" id="avisoPrevio" name="avisoPrevio">
-                        Aviso Prévio Cumprido?
+                <div class="form-group" id="avisoPrevioGroup">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="avisoPrevio">
+                        Aviso Prévio Cumprido
                         <i class="fas fa-question-circle" title="Marque se o funcionário cumpriu o aviso prévio"></i>
                     </label>
                 </div>
 
-                <div id="motivoRescisaoGroup" class="form-group hidden">
-                    <label for="motivoRescisao">
-                        Motivo da Rescisão Antecipada
-                        <i class="fas fa-question-circle" title="Descreva o motivo da rescisão antecipada do contrato"></i>
-                    </label>
-                    <textarea id="motivoRescisao" name="motivoRescisao" rows="3"></textarea>
+                <button id="calcular" class="btn-calcular">Calcular Rescisão</button>
+                <button id="exemploValores" class="btn-exemplo">Simular com Valores de Exemplo</button>
+            </section>
+
+            <!-- Seção do Passo a Passo -->
+            <section class="passo-a-passo">
+                <h2>Como é Calculado</h2>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Saldo de Salário</h4>
+                            <p>Cálculo dos dias trabalhados no mês</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Férias e 13º</h4>
+                            <p>Cálculo das férias e 13º proporcionais</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>FGTS</h4>
+                            <p>Cálculo do FGTS e multa quando aplicável</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Descontos</h4>
+                            <p>Cálculo do INSS e IRRF sobre as verbas</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Resultados -->
+            <section id="resultado" class="resultados" style="display: none;">
+                <h2>Resultado Final</h2>
+                <div class="resultado-cards">
+                    <div class="card">
+                        <h3>Proventos</h3>
+                        <p id="valorProventos">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Descontos</h3>
+                        <p id="valorDescontos">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3>FGTS + Multa</h3>
+                        <p id="valorFGTS">R$ 0,00</p>
+                    </div>
+                    <div class="card destaque">
+                        <h3>Valor Líquido</h3>
+                        <p id="valorLiquido">R$ 0,00</p>
+                    </div>
                 </div>
 
-                <div class="buttons">
-                    <button type="submit" class="btn btn-primary">Calcular Rescisão</button>
-                    <button type="reset" class="btn btn-danger">Limpar Campos</button>
-                    <a href="ferramentas.html" class="btn btn-secondary">Voltar</a>
+                <div class="grafico-container">
+                    <canvas id="graficoResultados"></canvas>
                 </div>
-            </form>
 
-            <div id="resultado" class="resultado" style="display: none;">
-                <h2>Resultado do Cálculo</h2>
-                <div class="calculo-detalhes">
-                    <div class="card ferias">
-                        <h3>
-                            FÉRIAS PROPORCIONAIS
-                            <i class="fas fa-question-circle" title="Cálculo das férias proporcionais ao período trabalhado"></i>
-                        </h3>
-                        <div id="detalhesFerias"></div>
-                    </div>
-                    <div class="card decimo-terceiro">
-                        <h3>
-                            DÉCIMO TERCEIRO
-                            <i class="fas fa-question-circle" title="Em caso de demissão por justa causa, o décimo terceiro é devido apenas se o tempo de serviço for igual ou superior a 3 meses"></i>
-                        </h3>
-                        <div id="detalhesDecimoTerceiro"></div>
+                <button id="verDetalhes" class="btn-detalhes">
+                    Ver Detalhes do Cálculo
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div id="tabelaDetalhes" class="detalhes-calculo" style="display: none;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultadoTabela">
+                                <!-- Preenchido via JavaScript -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultadoTabela">
-                    </tbody>
-                </table>
-            </div>
-        </section>
+            </section>
+        </main>
     </main>
 
     <footer>
