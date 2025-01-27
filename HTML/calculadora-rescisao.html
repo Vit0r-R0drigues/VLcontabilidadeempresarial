@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Calculadora de Rescisão Trabalhista">
-    <title>Calculadora de Rescisão - Contabilidade Empresarial</title>
+    <title>Calculadora de Rescisão - VL Contabilidade</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
     <link rel="stylesheet" href="../ESTILOS/style.css">
     <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="../JS/menu.js" defer></script>
     <style>
         .calculadora-rescisao {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 2rem auto;
             padding: 2rem;
-            background: var(--cor-fundo-1);
+            background: var(--cor-fundo);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
@@ -197,15 +198,25 @@
 <body>
     <header>
         <div class="logo">
-            <img src="../IMAGENS/LOGO -P.png" alt="Logo">
+            <img src="../IMAGENS/LOGO -P.png" alt="Logo da Contabilidade Empresarial">
         </div>
-        <nav>
+        <nav role="navigation" aria-label="Menu principal">
             <ul class="menu">
-                <li type="none"><a href="../INDEX.html" target="_self" title="Página inicial">Home</a></li>
-                <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">Sobre</a></li>
-                <li type="none"><a href="servicos.html"target="_self" title="Veja nossos serviços">Serviços</a></li>
-                <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">Contatos</a></li>
-                <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">Ferramentas</a></li>
+                <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                    <i class="fi fi-rr-home"></i> Home</a>
+                </li>
+                <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                    <i class="fi fi-rr-info"></i> Sobre</a>
+                </li>
+                <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                    <i class="fi fi-rr-briefcase"></i> Serviços</a>
+                </li>
+                <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                    <i class="fi fi-rr-phone-call"></i> Contatos</a>
+                </li>
+                <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                    <i class="fi fi-rr-calculator"></i> Ferramentas</a>
+                </li>
             </ul>
         </nav>
         <div class="social-icons">
@@ -216,12 +227,19 @@
         </div>
     </header>
 
-    <main>
+    <main class="calculadora-page">
+        <div class="calculadora-hero">
+            <h1>Calculadora de Rescisão</h1>
+            <p>Calcule os valores da rescisão trabalhista de forma simples e precisa</p>
+        </div>
+
         <section class="calculadora-rescisao">
-            <h1>Calculadora de Rescisão Trabalhista</h1>
             <form id="formRescisao">
                 <div class="form-group required">
-                    <label for="tipoRescisao">Tipo de Rescisão</label>
+                    <label for="tipoRescisao">
+                        Tipo de Rescisão
+                        <i class="fas fa-question-circle" title="Selecione o tipo de rescisão para calcular os valores devidos"></i>
+                    </label>
                     <select id="tipoRescisao" name="tipoRescisao" required>
                         <option value="">Selecione o tipo de rescisão</option>
                         <option value="pedido">Pedido de Demissão</option>
@@ -232,25 +250,35 @@
                 </div>
 
                 <div class="form-group required">
-                    <label for="salario">Último Salário</label>
+                    <label for="salario">
+                        Último Salário
+                        <i class="fas fa-question-circle" title="Informe o último salário bruto do funcionário"></i>
+                    </label>
                     <input type="number" id="salario" name="salario" step="0.01" required>
                 </div>
 
                 <div class="form-group required">
-                    <label for="tempoServico">Tempo de Serviço Total (meses)</label>
+                    <label for="tempoServico">
+                        Tempo de Serviço Total (meses)
+                        <i class="fas fa-question-circle" title="Total de meses trabalhados na empresa"></i>
+                    </label>
                     <input type="number" id="tempoServico" name="tempoServico" required>
                 </div>
 
                 <div class="form-group required">
-                    <label for="mesesAnoAtual">Meses Trabalhados no Ano Atual
-                        <span class="tooltip" title="Meses são arredondados para inteiro se houver 15 dias ou mais no mês da rescisão.">ⓘ</span>
+                    <label for="mesesAnoAtual">
+                        Meses Trabalhados no Ano Atual
+                        <i class="fas fa-question-circle" title="Meses são arredondados para inteiro se houver 15 dias ou mais no mês da rescisão"></i>
                     </label>
                     <input type="number" id="mesesAnoAtual" name="mesesAnoAtual" min="1" max="12" required>
                     <small class="helper-text">Informe quantos meses foram trabalhados no ano atual (1-12)</small>
                 </div>
 
                 <div id="diasTrabalhadosGroup" class="form-group required">
-                    <label for="diasTrabalhados">Dias Trabalhados no Mês da Rescisão</label>
+                    <label for="diasTrabalhados">
+                        Dias Trabalhados no Mês da Rescisão
+                        <i class="fas fa-question-circle" title="Dias trabalhados no mês em que ocorreu a rescisão"></i>
+                    </label>
                     <input type="number" id="diasTrabalhados" name="diasTrabalhados" min="0" max="31" required>
                     <small class="helper-text">Informe os dias trabalhados no mês da rescisão (1-31)</small>
                 </div>
@@ -259,31 +287,39 @@
                     <label>
                         <input type="checkbox" id="avisoPrevio" name="avisoPrevio">
                         Aviso Prévio Cumprido?
+                        <i class="fas fa-question-circle" title="Marque se o funcionário cumpriu o aviso prévio"></i>
                     </label>
                 </div>
 
                 <div id="motivoRescisaoGroup" class="form-group hidden">
-                    <label for="motivoRescisao">Motivo da Rescisão Antecipada</label>
+                    <label for="motivoRescisao">
+                        Motivo da Rescisão Antecipada
+                        <i class="fas fa-question-circle" title="Descreva o motivo da rescisão antecipada do contrato"></i>
+                    </label>
                     <textarea id="motivoRescisao" name="motivoRescisao" rows="3"></textarea>
                 </div>
 
                 <div class="buttons">
-                    <button type="submit" class="btn btn-primary">Calcular</button>
+                    <button type="submit" class="btn btn-primary">Calcular Rescisão</button>
                     <button type="reset" class="btn btn-danger">Limpar Campos</button>
                     <a href="ferramentas.html" class="btn btn-secondary">Voltar</a>
                 </div>
             </form>
 
-            <div id="resultado" class="resultado">
+            <div id="resultado" class="resultado" style="display: none;">
                 <h2>Resultado do Cálculo</h2>
                 <div class="calculo-detalhes">
                     <div class="card ferias">
-                        <h3>FÉRIAS PROPORCIONAIS</h3>
+                        <h3>
+                            FÉRIAS PROPORCIONAIS
+                            <i class="fas fa-question-circle" title="Cálculo das férias proporcionais ao período trabalhado"></i>
+                        </h3>
                         <div id="detalhesFerias"></div>
                     </div>
                     <div class="card decimo-terceiro">
-                        <h3>DÉCIMO TERCEIRO
-                            <span class="tooltip" title="Em caso de demissão por justa causa, o décimo terceiro é devido apenas se o tempo de serviço for igual ou superior a 3 meses.">ⓘ</span>
+                        <h3>
+                            DÉCIMO TERCEIRO
+                            <i class="fas fa-question-circle" title="Em caso de demissão por justa causa, o décimo terceiro é devido apenas se o tempo de serviço for igual ou superior a 3 meses"></i>
                         </h3>
                         <div id="detalhesDecimoTerceiro"></div>
                     </div>
@@ -333,268 +369,8 @@
         </div>
     </footer>
 
-    <script>
-        // Função para formatar valores monetários
-        function formatMoney(value) {
-            return new Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-            }).format(value);
-        }
-
-        // Função para mostrar/ocultar campos baseado no tipo de rescisão
-        document.getElementById('tipoRescisao').addEventListener('change', function() {
-            const tipo = this.value;
-            const diasTrabalhadosGroup = document.getElementById('diasTrabalhadosGroup');
-            const avisoPrevioGroup = document.getElementById('avisoPrevioGroup');
-            const motivoRescisaoGroup = document.getElementById('motivoRescisaoGroup');
-
-            // Reset display
-            diasTrabalhadosGroup.classList.add('hidden');
-            avisoPrevioGroup.classList.add('hidden');
-            motivoRescisaoGroup.classList.add('hidden');
-
-            // Show relevant fields based on type
-            if (tipo === 'pedido' || tipo === 'justa_causa') {
-                diasTrabalhadosGroup.classList.remove('hidden');
-            }
-            if (tipo === 'pedido') {
-                avisoPrevioGroup.classList.remove('hidden');
-            }
-            if (tipo === 'prazo_determinado') {
-                motivoRescisaoGroup.classList.remove('hidden');
-            }
-        });
-
-        // Função para validar campos
-        function validarCampos() {
-            let isValid = true;
-            const mesesAnoAtual = parseInt(document.getElementById('mesesAnoAtual').value);
-            const diasTrabalhados = parseInt(document.getElementById('diasTrabalhados').value);
-            
-            // Validar meses no ano
-            if (mesesAnoAtual > 12) {
-                alert('O número de meses não pode ultrapassar 12.');
-                document.getElementById('mesesAnoAtual').classList.add('error');
-                isValid = false;
-            } else {
-                document.getElementById('mesesAnoAtual').classList.remove('error');
-            }
-
-            // Validar dias trabalhados
-            if (diasTrabalhados < 0 || diasTrabalhados > 31) {
-                alert('O número de dias deve estar entre 0 e 31.');
-                document.getElementById('diasTrabalhados').classList.add('error');
-                isValid = false;
-            } else {
-                document.getElementById('diasTrabalhados').classList.remove('error');
-            }
-
-            return isValid;
-        }
-
-        // Função para calcular férias proporcionais
-        function calcularFerias(salario, mesesAnoAtual, diasTrabalhados) {
-            const mesesAjustados = mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0);
-            const base = (salario / 12) * mesesAjustados;
-            const terco = base / 3;
-            const total = base + terco;
-
-            return {
-                base: base,
-                terco: terco,
-                total: total,
-                mesesAjustados: mesesAjustados
-            };
-        }
-
-        // Função para calcular décimo terceiro
-        function calcularDecimoTerceiro(salario, mesesAnoAtual, diasTrabalhados, tipoRescisao) {
-            const mesesAjustados = mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0);
-            
-            // Verificar regra especial para justa causa
-            if (tipoRescisao === 'justa_causa' && mesesAjustados < 3) {
-                return {
-                    valor: 0,
-                    mensagem: 'Não há direito ao 13º salário (menos de 3 meses trabalhados)'
-                };
-            }
-
-            return {
-                valor: (salario / 12) * mesesAjustados,
-                mensagem: null
-            };
-        }
-
-        // Função para atualizar detalhes do cálculo
-        function atualizarDetalhesCalculo(ferias, decimoTerceiro) {
-            const detalhesFerias = document.getElementById('detalhesFerias');
-            const detalhesDecimoTerceiro = document.getElementById('detalhesDecimoTerceiro');
-
-            // Atualizar detalhes das férias
-            detalhesFerias.innerHTML = `
-                <div class="detalhe-linha">
-                    <span>Base (${ferias.mesesAjustados} meses):</span>
-                    <span>${formatMoney(ferias.base)}</span>
-                </div>
-                <div class="detalhe-linha">
-                    <span>1/3 Constitucional:</span>
-                    <span>${formatMoney(ferias.terco)}</span>
-                </div>
-                <div class="detalhe-linha">
-                    <span>Total:</span>
-                    <span>${formatMoney(ferias.total)}</span>
-                </div>
-            `;
-
-            // Atualizar detalhes do décimo terceiro
-            detalhesDecimoTerceiro.innerHTML = decimoTerceiro.mensagem 
-                ? `<div class="detalhe-linha">${decimoTerceiro.mensagem}</div>`
-                : `<div class="detalhe-linha">
-                    <span>Valor Proporcional:</span>
-                    <span>${formatMoney(decimoTerceiro.valor)}</span>
-                   </div>`;
-        }
-
-        // Atualizar o evento submit do formulário
-        document.getElementById('formRescisao').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (!validarCampos()) {
-                return;
-            }
-
-            const tipo = document.getElementById('tipoRescisao').value;
-            const salario = parseFloat(document.getElementById('salario').value);
-            const mesesTotal = parseInt(document.getElementById('tempoServico').value);
-            const mesesAnoAtual = parseInt(document.getElementById('mesesAnoAtual').value);
-            const diasTrabalhados = parseInt(document.getElementById('diasTrabalhados').value);
-            
-            // Validação de tempo de serviço
-            if (mesesTotal > 120) {
-                alert('Atenção: O tempo de serviço informado é superior a 120 meses. Por favor, verifique se está correto.');
-            }
-
-            let resultados = {};
-
-            // Calcular férias e décimo terceiro
-            const ferias = calcularFerias(salario, mesesAnoAtual, diasTrabalhados);
-            const decimoTerceiro = calcularDecimoTerceiro(salario, mesesAnoAtual, diasTrabalhados, tipo);
-
-            // Atualizar detalhes do cálculo
-            atualizarDetalhesCalculo(ferias, decimoTerceiro);
-
-            // Adicionar resultados ao objeto de resultados
-            resultados['Saldo de Salário'] = (salario / 30) * diasTrabalhados;
-            resultados['Férias Proporcionais'] = ferias.base;
-            resultados['1/3 Férias Proporcionais'] = ferias.terco;
-            
-            if (decimoTerceiro.valor > 0) {
-                resultados['13º Proporcional'] = decimoTerceiro.valor;
-            }
-
-            // FGTS
-            const fgtsAcumulado = salario * 0.08 * mesesTotal;
-            resultados['FGTS Acumulado'] = fgtsAcumulado;
-
-            // Cálculos específicos por tipo
-            switch(tipo) {
-                case 'sem_justa_causa':
-                    resultados['Multa FGTS (40%)'] = fgtsAcumulado * 0.4;
-                    resultados['Aviso Prévio Indenizado'] = salario;
-                    break;
-                    
-                case 'pedido':
-                    const avisoPrevioCumprido = document.getElementById('avisoPrevio').checked;
-                    if (!avisoPrevioCumprido) {
-                        resultados['Desconto Aviso Prévio'] = -salario;
-                    }
-                    break;
-                    
-                case 'justa_causa':
-                    // Apenas direitos básicos
-                    break;
-                    
-                case 'prazo_determinado':
-                    // Sem multa FGTS ou aviso prévio
-                    break;
-            }
-
-            // Cálculo de descontos
-            let totalBruto = Object.values(resultados).reduce((a, b) => a + (b > 0 ? b : 0), 0);
-            
-            // INSS (exemplo simplificado - na prática, usar tabela progressiva)
-            const inss = totalBruto * 0.11;
-            resultados['Desconto INSS'] = -inss;
-
-            // IRRF (exemplo simplificado - na prática, usar tabela progressiva)
-            if (totalBruto > 1903.98) {
-                const irrf = totalBruto * 0.075;
-                resultados['Desconto IRRF'] = -irrf;
-            }
-
-            // Exibir resultados
-            const tbody = document.getElementById('resultadoTabela');
-            tbody.innerHTML = '';
-            let totalLiquido = 0;
-
-            for (let [descricao, valor] of Object.entries(resultados)) {
-                totalLiquido += valor;
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${descricao}</td>
-                    <td>${formatMoney(valor)}</td>
-                `;
-                tbody.appendChild(tr);
-            }
-
-            // Adicionar total
-            const trTotal = document.createElement('tr');
-            trTotal.className = 'total';
-            trTotal.innerHTML = `
-                <td>Total Líquido</td>
-                <td>${formatMoney(totalLiquido)}</td>
-            `;
-            tbody.appendChild(trTotal);
-
-            document.getElementById('resultado').style.display = 'block';
-        });
-
-        // Limpar resultados ao resetar o formulário
-        document.querySelector('button[type="reset"]').addEventListener('click', function() {
-            document.getElementById('resultado').style.display = 'none';
-            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-        });
-
-        // Inicializar tooltips
-        document.querySelectorAll('.tooltip').forEach(tooltip => {
-            tooltip.addEventListener('mouseover', function(e) {
-                const title = this.getAttribute('title');
-                this.setAttribute('data-title', title);
-                this.removeAttribute('title');
-                
-                const tooltipDiv = document.createElement('div');
-                tooltipDiv.className = 'tooltip-content';
-                tooltipDiv.textContent = title;
-                document.body.appendChild(tooltipDiv);
-                
-                const rect = this.getBoundingClientRect();
-                tooltipDiv.style.position = 'absolute';
-                tooltipDiv.style.top = rect.bottom + 5 + 'px';
-                tooltipDiv.style.left = rect.left + 'px';
-            });
-
-            tooltip.addEventListener('mouseout', function(e) {
-                const title = this.getAttribute('data-title');
-                this.setAttribute('title', title);
-                this.removeAttribute('data-title');
-                
-                document.querySelector('.tooltip-content')?.remove();
-            });
-        });
-    </script>
-
-    <!-- Cookie Script -->
-    <script type="text/javascript" src="../JS/cookies.js"></script>
+    <!-- Scripts -->
+    <script src="../JS/calculadora-rescisao.js"></script>
+    <script src="../JS/cookies.js"></script>
 </body>
 </html>

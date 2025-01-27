@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IRRF 2025 - VL Contabilidade</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
+    <link rel="stylesheet" href="../ESTILOS/style.css">
+    <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JS/menu.js" defer></script>
+</head>
+<body>
+    <div class="bg">
+        <header>
+            <div class="logo">
+                <img src="../IMAGENS/LOGO -P.png" alt="Logo da Contabilidade Empresarial">
+            </div>
+            <nav role="navigation" aria-label="Menu principal">
+                <ul class="menu">
+                    <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                        <i class="fi fi-rr-home"></i> Home</a>
+                    </li>
+                    <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                        <i class="fi fi-rr-info"></i> Sobre</a>
+                    </li>
+                    <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                        <i class="fi fi-rr-briefcase"></i> Serviços</a>
+                    </li>
+                    <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                        <i class="fi fi-rr-phone-call"></i> Contatos</a>
+                    </li>
+                    <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                        <i class="fi fi-rr-calculator"></i> Ferramentas</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
+                <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
+                <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
+                <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+            </div>
+        </header>
+    </div>
+
+    <main class="calculadora-page">
+        <div class="calculadora-hero">
+            <h1>Calculadora IRRF 2025</h1>
+            <p>Calcule o Imposto de Renda Retido na Fonte com todas as deduções</p>
+        </div>
+
+        <main class="calculadora-container">
+            <!-- Seção de Entrada de Dados -->
+            <section class="entrada-dados">
+                <h2>Dados para Cálculo</h2>
+                <div class="form-group">
+                    <label for="salarioBruto">
+                        Salário Bruto
+                        <i class="fas fa-question-circle" title="Informe seu salário mensal bruto"></i>
+                    </label>
+                    <input type="number" id="salarioBruto" placeholder="R$ 0,00" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="dependentes">
+                        Número de Dependentes
+                        <i class="fas fa-question-circle" title="Cada dependente dá direito a dedução de R$ 189,59"></i>
+                    </label>
+                    <input type="number" id="dependentes" placeholder="0" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="pensaoAlimenticia">
+                        Pensão Alimentícia
+                        <i class="fas fa-question-circle" title="Valor mensal da pensão alimentícia (se houver)"></i>
+                    </label>
+                    <input type="number" id="pensaoAlimenticia" placeholder="R$ 0,00" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="outrasDeducoes">
+                        Outras Deduções
+                        <i class="fas fa-question-circle" title="Outras deduções permitidas por lei"></i>
+                    </label>
+                    <input type="number" id="outrasDeducoes" placeholder="R$ 0,00" step="0.01" min="0">
+                </div>
+
+                <button id="calcular" class="btn-calcular">Calcular IRRF</button>
+                <button id="exemploValores" class="btn-exemplo">Simular com Valores de Exemplo</button>
+            </section>
+
+            <!-- Seção do Passo a Passo -->
+            <section class="passo-a-passo">
+                <h2>Como é Calculado</h2>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="steps-container" id="stepsContainer">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Cálculo do INSS</h4>
+                            <p>Primeiro é calculado o desconto do INSS de acordo com a tabela progressiva</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Deduções</h4>
+                            <p>São aplicadas as deduções de dependentes, pensão alimentícia e outras</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Base de Cálculo</h4>
+                            <p>É calculada a base após todas as deduções</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Alíquota IRRF</h4>
+                            <p>É aplicada a alíquota correspondente à faixa da base de cálculo</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Resultados -->
+            <section class="resultados">
+                <h2>Resultado Final</h2>
+                <div class="resultado-cards">
+                    <div class="card">
+                        <h3>Base de Cálculo</h3>
+                        <p id="baseCalculo">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Alíquota Efetiva</h3>
+                        <p id="aliquota">0%</p>
+                    </div>
+                    <div class="card destaque">
+                        <h3>IRRF a Recolher</h3>
+                        <p id="irrfFinal">R$ 0,00</p>
+                    </div>
+                </div>
+
+                <div class="grafico-container">
+                    <canvas id="graficoResultados"></canvas>
+                </div>
+
+                <button id="verDetalhes" class="btn-detalhes">
+                    Ver Tabela Progressiva
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div id="tabelaDetalhes" class="detalhes-calculo" style="display: none;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Base de Cálculo</th>
+                                    <th>Alíquota</th>
+                                    <th>Parcela a Deduzir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Até R$ 2.259,20</td>
+                                    <td>0%</td>
+                                    <td>R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td>De R$ 2.259,21 até R$ 2.826,65</td>
+                                    <td>7,5%</td>
+                                    <td>R$ 169,44</td>
+                                </tr>
+                                <tr>
+                                    <td>De R$ 2.826,66 até R$ 3.751,05</td>
+                                    <td>15%</td>
+                                    <td>R$ 381,44</td>
+                                </tr>
+                                <tr>
+                                    <td>De R$ 3.751,06 até R$ 4.664,68</td>
+                                    <td>22,5%</td>
+                                    <td>R$ 662,77</td>
+                                </tr>
+                                <tr>
+                                    <td>Acima de R$ 4.664,68</td>
+                                    <td>27,5%</td>
+                                    <td>R$ 896,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fi fi-rr-phone-call"></i> (11) 916539680</p>
+                <p><i class="fi fi-rr-envelope"></i> coontabilidadeempresarial@gmail.com</p>
+                <p><i class="fi fi-rr-marker"></i> Escritório 100% Digital</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="ferramentas.html">Ferramentas</a></li>
+                    <li><a href="contatos.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-footer">
+                    <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="https://wa.me/5511916539680" target="_blank"><i class="fi fi-brands-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"><i class="fi fi-brands-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../JS/calculadora-irrf.js"></script>
+    <script src="../JS/cookies.js"></script>
+</body>
+</html> 
