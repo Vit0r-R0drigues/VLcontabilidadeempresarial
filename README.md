@@ -1,91 +1,115 @@
-# Contabilidade Empresarial - Site Institucional
+# VL Contabilidade Empresarial - Website
 
-## 📊 Sobre o Projeto
-Site institucional desenvolvido para um escritório de contabilidade digital, focado em oferecer soluções empresariais completas e modernas. O projeto foi construído com HTML, CSS e JavaScript, priorizando uma experiência de usuário intuitiva e profissional.
+Este é o repositório oficial do website da VL Contabilidade Empresarial, um escritório de contabilidade digital especializado em soluções empresariais completas.
+
+## 📚 Estrutura do Projeto
+
+```
+VLcontabilidadeempresarial/
+├── ESTILOS/
+│   ├── style.css         # Estilos principais
+│   ├── mediaquery.css    # Estilos responsivos
+│   └── cookies.css       # Estilos do banner de cookies
+├── JS/
+│   ├── menu.js          # Funcionalidades do menu
+│   └── cookies.js       # Gerenciamento de cookies
+├── HTML/
+│   ├── sobre.html       # Página Sobre
+│   ├── servicos.html    # Página de Serviços
+│   ├── contatos.html    # Página de Contatos
+│   └── ferramentas.html # Página de Ferramentas
+├── IMAGENS/
+│   └── [arquivos de imagem]
+└── index.html           # Página principal
+```
 
 ## 🚀 Funcionalidades
 
-### 📱 Layout Responsivo
+### Sistema de Cookies
+- Banner de consentimento de cookies
+- Configurações personalizáveis
+- Opções para cookies analíticos e de marketing
+- Design responsivo e acessível
+
+### SEO
+- Meta tags otimizadas
+- Structured Data (Schema.org)
+- Open Graph tags para compartilhamento em redes sociais
+- Descrições e títulos otimizados para mecanismos de busca
+
+### Responsividade
 - Design adaptativo para todos os dispositivos
-- Menu mobile otimizado
-- Experiência de usuário consistente em todas as plataformas
+- Breakpoints otimizados
+- Imagens responsivas
+- Menu mobile-friendly
 
-### 🛠️ Ferramentas Integradas
-- Calculadora de Impostos
-- Simulador de Folha de Pagamento
-- Calculadora de Rescisão
-- Área de downloads de documentos úteis
-
-### 📑 Páginas Principais
-- **Home**: Apresentação da empresa e serviços principais
-- **Sobre**: História, missão, valores e equipe
-- **Serviços**: Detalhamento dos serviços oferecidos
-- **Contato**: Formulário de contato e localização
-- **Ferramentas**: Calculadoras e recursos úteis
-
-## 💻 Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 - HTML5
 - CSS3
-- JavaScript
-- Bibliotecas de ícones Flaticon
-- Google Fonts
+- JavaScript (Vanilla)
+- Flaticon UI Icons
+- Schema.org
 
-## 🎨 Paleta de Cores
+## 📱 Compatibilidade
 
-- Fundo Principal: `#0F172A`
-- Fundo Secundário: `#1A1D23`
-- Destaque: `#D46D13`
-- Texto Principal: `#E8820E`
-- Texto Secundário: `#FFFFFF`
+O site é compatível com os seguintes navegadores:
+- Google Chrome (última versão)
+- Mozilla Firefox (última versão)
+- Safari (última versão)
+- Microsoft Edge (última versão)
+- Opera (última versão)
 
-## 📱 Responsividade
+## 🔒 Política de Privacidade e Cookies
 
-O site é totalmente responsivo, adaptando-se aos seguintes breakpoints:
-- Smartphones: até 600px
-- Tablets: 601px a 768px
-- Desktops: 769px a 1200px
-- Telas grandes: acima de 1200px
+O site implementa as seguintes políticas:
+- Consentimento LGPD para cookies
+- Cookies essenciais para funcionamento
+- Cookies opcionais para análise e marketing
+- Política de privacidade transparente
 
-## 🔧 Instalação e Uso
+## 📊 Analytics e Monitoramento
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/contabilidade-site.git
-```
+O site utiliza:
+- Cookies de análise (opcional)
+- Monitoramento de performance
+- Rastreamento de conversão
+- Análise de comportamento do usuário
 
-2. Abra o arquivo `index.html` em seu navegador
+## 🔧 Manutenção
 
-3. Para desenvolvimento, recomenda-se o uso de um servidor local como Live Server
+Para manter o site:
+1. Atualize regularmente as dependências
+2. Verifique a compatibilidade cross-browser
+3. Monitore o desempenho
+4. Mantenha o conteúdo atualizado
 
-## 📝 Recursos Adicionais
+## 📝 SEO Checklist
 
-- Formulários de contato integrados
-- Mapas interativos
-- Links para redes sociais
-- Área de download de documentos
-- Calculadoras financeiras interativas
+- [x] Meta tags otimizadas
+- [x] Structured Data implementado
+- [x] URLs amigáveis
+- [x] Conteúdo otimizado
+- [x] Imagens otimizadas
+- [x] Site responsivo
+- [x] Performance otimizada
 
-## 🤝 Contribuições
+## 🤝 Contribuição
 
-Contribuições são sempre bem-vindas! Sinta-se à vontade para:
-
-1. Fazer um fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abrir um Pull Request
+Para contribuir com o projeto:
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
 
 ## 📫 Contato
 
-Para dúvidas, sugestões ou colaborações, entre em contato através:
-
-- Instagram: [Vitor Rodrigues](https://www.instagram.com/vitor_rodri_cont/)
+- Email: coontabilidadeempresarial@gmail.com
+- WhatsApp: (11) 91653-9680
+- Instagram: [@vl_contabilidade_empresarial](https://www.instagram.com/vl_contabilidade_empresarial/)
+- YouTube: [@contabilidadeempresarial](https://www.youtube.com/@contabilidadeempresarial)
 
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-Desenvolvido com ❤️ por [Vitor Rodrigues](https://github.com/Vit0r-R0drigues)
