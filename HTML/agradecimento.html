@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Enviada - VL Contabilidade</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
+    <link rel="stylesheet" href="../ESTILOS/style.css">
+    <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
+    <style>
+        .agradecimento-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+            background: var(--cor-fundo);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .agradecimento-icon {
+            font-size: 4rem;
+            color: var(--cor-texto-1);
+            margin-bottom: 1rem;
+        }
+
+        .agradecimento-titulo {
+            color: var(--cor-texto-1);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .agradecimento-texto {
+            color: var(--cor-texto);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .proximos-passos {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .proximos-passos h3 {
+            color: var(--cor-texto-1);
+            margin-bottom: 1rem;
+        }
+
+        .botoes-acao {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-acao {
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-voltar {
+            background: var(--cor-texto-1);
+            color: white;
+        }
+
+        .btn-acao:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header existente -->
+    
+    <main>
+        <div class="agradecimento-container">
+            <i class="fi fi-rr-check-circle agradecimento-icon"></i>
+            <h1 class="agradecimento-titulo">Mensagem Recebida com Sucesso!</h1>
+            <p class="agradecimento-texto">
+                Olá {{ nome }}, agradecemos seu contato! Nossa equipe já recebeu sua mensagem
+                e retornaremos em breve.
+            </p>
+
+            <div class="proximos-passos">
+                <h3>Próximos Passos</h3>
+                <p>
+                    Responderemos seu contato em até 24 horas úteis.
+                    Para agilizar seu atendimento, você também pode falar conosco pelo WhatsApp.
+                </p>
+            </div>
+
+            <div class="botoes-acao">
+                <a href="https://wa.me/5511916539680" class="btn-acao btn-whatsapp">
+                    <i class="fi fi-brands-whatsapp"></i> Falar no WhatsApp
+                </a>
+                <a href="../index.html" class="btn-acao btn-voltar">
+                    <i class="fi fi-rr-home"></i> Voltar para o Início
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer existente -->
+</body>
+</html> 

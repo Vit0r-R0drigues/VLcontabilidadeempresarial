@@ -1,0 +1,246 @@
+:root {
+    --background: #f8f8f8;
+    --text: #333333;
+    --link-bg: #ffffff;
+    --link-border: #e5e5e5;
+    --dots-color: #888888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Perfil */
+.profile {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1rem;
+}
+
+.profile-pic {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.profile h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.profile p {
+    font-size: 0.9rem;
+    color: #666;
+    padding: 0 1rem;
+    line-height: 1.4;
+}
+
+/* Links */
+.links {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.link-item {
+    background: var(--link-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    border: 1px solid var(--link-border);
+    position: relative;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-item:active {
+    transform: scale(0.98);
+    background: #f5f5f5;
+}
+
+.dots {
+    color: var(--dots-color);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* Barra Social */
+.social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.social-icon {
+    color: #666;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.social-icon:hover {
+    color: #333;
+}
+
+/* Cookie Notice */
+.cookie-notice {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#cookie-settings {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0.5rem;
+}
+
+/* Modo Escuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #000000;
+        --text: #ffffff;
+        --link-bg: #1a1a1a;
+        --link-border: #333333;
+        --dots-color: #666666;
+    }
+
+    .profile-pic {
+        border-color: #333;
+    }
+
+    .profile p {
+        color: #999;
+    }
+
+    .social-icon {
+        color: #999;
+    }
+
+    .social-icon:hover {
+        color: #fff;
+    }
+
+    #cookie-settings {
+        color: #999;
+    }
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile p {
+        font-size: 1rem;
+    }
+
+    .link-item {
+        padding: 1.25rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile, .link-item {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.link-item {
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+/* Melhorias de Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .profile, .link-item {
+        animation: none;
+    }
+}
+
+/* Suporte para Telas Muito Pequenas */
+@media (max-width: 320px) {
+    .container {
+        padding: 1rem 0.5rem;
+    }
+
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile h1 {
+        font-size: 1rem;
+    }
+
+    .profile p {
+        font-size: 0.8rem;
+    }
+
+    .link-item {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .social-bar {
+        gap: 1.5rem;
+    }
+} 

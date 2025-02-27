@@ -77,10 +77,22 @@ function preencherExemplo() {
     atualizarDiasVendidosValue();
 }
 
-// Funções de Cálculo
-function calcularINSS(valor) {
+// Implementar memoização para cálculos repetitivos
+const memoize = (fn) => {
+  const cache = new Map();
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) return cache.get(key);
+    const result = fn.apply(this, args);
+    cache.set(key, result);
+    return result;
+  };
+};
+
+// Aplicar memoização nos cálculos
+const calcularINSS = memoize((salario) => {
     let inss = 0;
-    let baseCalculo = valor;
+    let baseCalculo = salario;
     
     for (let faixa of INSS_FAIXAS) {
         if (baseCalculo > 0) {
@@ -91,7 +103,7 @@ function calcularINSS(valor) {
     }
     
     return Math.min(inss, 5400.00 * 0.14); // Teto do INSS
-}
+});
 
 function calcularIRRF(valor) {
     const faixa = IRRF_FAIXAS.find(f => valor <= f.limite);

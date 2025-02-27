@@ -162,8 +162,21 @@ if (document.querySelector('.calculadora-page')) {
 document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('header');
   if (header) {
-    window.addEventListener('scroll', () => {
+    // Implementar throttling para eventos de scroll
+    function throttle(fn, delay) {
+      let last = 0;
+      return (...args) => {
+        const now = Date.now();
+        if (now - last >= delay) {
+          fn.apply(this, args);
+          last = now;
+        }
+      };
+    }
+
+    // Aplicar throttling no evento de scroll
+    window.addEventListener('scroll', throttle(() => {
       header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    }, 100));
   }
 });

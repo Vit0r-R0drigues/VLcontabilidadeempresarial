@@ -1,0 +1,34 @@
+# Proteção básica
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Permitir acesso ao processar_contato.php apenas via POST
+<Files "processar_contato.php">
+    Order Allow,Deny
+    Allow from all
+    
+    <LimitExcept POST>
+        Deny from all
+    </LimitExcept>
+</Files>
+
+# Proteger arquivos sensíveis
+<FilesMatch "^(.env|composer.json|composer.lock)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Proteger diretório de logs
+<DirectoryMatch "logs">
+    Order Allow,Deny
+    Deny from all
+</DirectoryMatch>
+
+# Forçar HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
