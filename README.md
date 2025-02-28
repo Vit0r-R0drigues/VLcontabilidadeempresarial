@@ -105,10 +105,11 @@ Para contribuir com o projeto:
 
 ## 📫 Contato
 
-- Email: coontabilidadeempresarial@gmail.com
+- Email: contabilidadeempresarial@gmail.com
 - WhatsApp: (11) 91653-9680
 - Instagram: [@vl_contabilidade_empresarial](https://www.instagram.com/vl_contabilidade_empresarial/)
 - YouTube: [@contabilidadeempresarial](https://www.youtube.com/@contabilidadeempresarial)
+- LinkedIn: [VL Contabilidade Empresarial](https://www.linkedin.com/company/vl-contabilidade-empresarial)
 
 ## 📄 Licença
 

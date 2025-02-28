@@ -1,0 +1,306 @@
+.agradecimento-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--cor-fundo) 0%, var(--cor-fundo-secundaria) 100%);
+    padding: 20px;
+}
+
+.celebration-container {
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: containerFadeIn 1s ease forwards;
+}
+
+/* Animação de Sucesso */
+.success-animation {
+    margin: 0 auto 30px;
+}
+
+.checkmark-circle {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 0 auto;
+    animation: scaleIn 0.3s ease-in-out;
+    background: rgba(232, 130, 14, 0.1);
+    border-radius: 50%;
+}
+
+.checkmark {
+    width: 40px;
+    height: 80px;
+    border-right: 8px solid var(--cor-texto-1);
+    border-bottom: 8px solid var(--cor-texto-1);
+    position: absolute;
+    left: 30px;
+    top: 0;
+    transform-origin: left top;
+    animation: checkmark 0.8s ease-in-out forwards;
+}
+
+/* Texto e Elementos */
+.celebration-container h1 {
+    font-family: var(--fonte-destaque);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--cor-texto);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.5s;
+}
+
+.typing-text {
+    font-size: 1.2em;
+    color: var(--cor-texto-1);
+    margin-bottom: 40px;
+    min-height: 1.2em;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 1s;
+}
+
+/* Próximos Passos */
+.next-steps {
+    margin: 40px 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 1.5s;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.step {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+}
+
+.step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.step:hover::before {
+    left: 100%;
+}
+
+.step i {
+    font-size: 2em;
+    color: var(--cor-texto-1);
+    margin-bottom: 15px;
+}
+
+/* Botões Sociais */
+.social-connect {
+    margin: 40px 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 2s;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--cor-texto);
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.social-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.social-btn.whatsapp {
+    background: #25D366;
+}
+
+.social-btn.youtube {
+    background: #FF0000;
+}
+
+/* Botão de Retorno */
+.return-home {
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 2.5s;
+}
+
+.home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background: var(--cor-texto-1);
+    color: var(--cor-texto);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+    transform: translateY(-3px);
+    background: var(--cor-hover);
+}
+
+/* Animações */
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes checkmark {
+    0% { transform: rotate(45deg) scale(0); }
+    100% { transform: rotate(45deg) scale(1); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Partículas Flutuantes */
+.floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: var(--cor-texto-1);
+    border-radius: 50%;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-35px) translateX(-10px);
+    }
+    75% {
+        transform: translateY(-20px) translateX(20px);
+    }
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de transição na saída */
+body {
+    transition: opacity 0.5s ease;
+}
+
+/* Melhorias na responsividade */
+@media (max-width: 768px) {
+    .celebration-container {
+        padding: 30px 20px;
+    }
+
+    .celebration-container h1 {
+        font-size: 2em;
+    }
+
+    .steps-container {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    .particle {
+        display: none;
+    }
+    
+    .social-btn::after {
+        display: none;
+    }
+    
+    .step::before {
+        display: none;
+    }
+} 

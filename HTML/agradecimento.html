@@ -3,115 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagem Enviada - VL Contabilidade</title>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
+    <title>Obrigado pelo Contato! - VL Contabilidade</title>
     <link rel="stylesheet" href="../ESTILOS/style.css">
-    <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
-    <style>
-        .agradecimento-container {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem;
-            text-align: center;
-            background: var(--cor-fundo);
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .agradecimento-icon {
-            font-size: 4rem;
-            color: var(--cor-texto-1);
-            margin-bottom: 1rem;
-        }
-
-        .agradecimento-titulo {
-            color: var(--cor-texto-1);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .agradecimento-texto {
-            color: var(--cor-texto);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .proximos-passos {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .proximos-passos h3 {
-            color: var(--cor-texto-1);
-            margin-bottom: 1rem;
-        }
-
-        .botoes-acao {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-acao {
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .btn-voltar {
-            background: var(--cor-texto-1);
-            color: white;
-        }
-
-        .btn-acao:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="../ESTILOS/agradecimento.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
 </head>
-<body>
-    <!-- Header existente -->
-    
-    <main>
-        <div class="agradecimento-container">
-            <i class="fi fi-rr-check-circle agradecimento-icon"></i>
-            <h1 class="agradecimento-titulo">Mensagem Recebida com Sucesso!</h1>
-            <p class="agradecimento-texto">
-                Olá {{ nome }}, agradecemos seu contato! Nossa equipe já recebeu sua mensagem
-                e retornaremos em breve.
-            </p>
-
-            <div class="proximos-passos">
-                <h3>Próximos Passos</h3>
-                <p>
-                    Responderemos seu contato em até 24 horas úteis.
-                    Para agilizar seu atendimento, você também pode falar conosco pelo WhatsApp.
-                </p>
+<body class="agradecimento-page">
+    <div class="celebration-container">
+        <div class="success-animation">
+            <div class="checkmark-circle">
+                <div class="checkmark"></div>
             </div>
+        </div>
+        <h1>Mensagem Enviada com Sucesso!</h1>
+        <p class="typing-text">Estamos muito felizes em iniciar essa parceria com você!</p>
+        
+        <div class="next-steps">
+            <h2>Próximos Passos:</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <i class="fi fi-rr-envelope-open"></i>
+                    <p>Você receberá um e-mail de confirmação em breve</p>
+                </div>
+                <div class="step">
+                    <i class="fi fi-rr-phone-call"></i>
+                    <p>Nossa equipe entrará em contato em até 24 horas</p>
+                </div>
+                <div class="step">
+                    <i class="fi fi-rr-calendar"></i>
+                    <p>Agendaremos uma reunião para conhecer melhor suas necessidades</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="botoes-acao">
-                <a href="https://wa.me/5511916539680" class="btn-acao btn-whatsapp">
-                    <i class="fi fi-brands-whatsapp"></i> Falar no WhatsApp
+        <div class="social-connect">
+            <h3>Enquanto isso, que tal nos acompanhar?</h3>
+            <div class="social-links">
+                <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" class="social-btn">
+                    <i class="fi fi-brands-instagram"></i>
+                    <span>Instagram</span>
                 </a>
-                <a href="../index.html" class="btn-acao btn-voltar">
-                    <i class="fi fi-rr-home"></i> Voltar para o Início
+                <a href="https://wa.me/5511916539680" target="_blank" class="social-btn whatsapp">
+                    <i class="fi fi-brands-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" class="social-btn youtube">
+                    <i class="fi fi-brands-youtube"></i>
+                    <span>YouTube</span>
                 </a>
             </div>
         </div>
-    </main>
 
-    <!-- Footer existente -->
+        <div class="return-home">
+            <a href="../index.html" class="home-btn">
+                <i class="fi fi-rr-home"></i>
+                Voltar para a Página Inicial
+            </a>
+        </div>
+
+        <div class="floating-particles"></div>
+    </div>
+
+    <script src="../JS/agradecimento.js"></script>
 </body>
 </html> 

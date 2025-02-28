@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VL Contabilidade - Links</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../IMAGENS/FAVICON.ICO" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
@@ -18,25 +21,29 @@
         </div>
 
         <div class="links">
-            <a href="../HTML/ferramentas.html" class="link-item">
-                Calculadoras [último update]
-                <span class="dots">•••</span>
+            <a href="../HTML/ferramentas.html" class="link-item gold-shine">
+                <span>Calculadoras [último update]</span>
+                <i class="fi fi-rr-calculator"></i>
             </a>
 
             <a href="../HTML/servicos.html" class="link-item">
-                Ajustes de serviços
-                <span class="dots">•••</span>
+                <span>Nossos Serviços</span>
+                <i class="fi fi-rr-briefcase"></i>
             </a>
 
             <a href="../index.html" class="link-item">
-                Site Oficial
-                <span class="dots">•••</span>
+                <span>Site Oficial</span>
+                <i class="fi fi-rr-world"></i>
             </a>
 
             <a href="https://wa.me/5511916539680" class="link-item">
-                Fale Conosco
-                <span class="dots">•••</span>
+                <span>Fale Conosco</span>
+                <i class="fi fi-brands-whatsapp"></i>
             </a>
+        </div>
+
+        <div class="featured-badge gold-shine">
+            <span>✨ Destaque</span>
         </div>
 
         <div class="social-bar">
@@ -53,10 +60,19 @@
                 <i class="fi fi-brands-youtube"></i>
             </a>
         </div>
+    </div>
 
-        <div class="cookie-notice">
-            <button id="cookie-settings">Definições de cookies</button>
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>🍪 Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de privacidade.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn settings-btn" onclick="showCookieSettings()">Configurações</button>
+                <button class="cookie-btn accept-btn" onclick="acceptAllCookies()">Aceitar Todos</button>
+            </div>
         </div>
     </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cookies.js"></script>
 </body>
 </html> 

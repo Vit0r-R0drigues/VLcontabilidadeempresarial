@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="../ESTILOS/style.css">
     <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
     <link rel="stylesheet" href="../ESTILOS/cookies.css">
+    <link rel="stylesheet" href="../ESTILOS/ferramentas.css">
 </head>
-<body>
+<body class="bg-ferramentas">
     <header>
         <div class="logo">
             <img src="../IMAGENS/LOGO -P.png" alt="Logo">
@@ -44,79 +45,172 @@
         </div>
     </header>
 
-    <main class="ferramentas-page">
+    <main class="ferramentas-container">
+        <!-- Seção Hero -->
         <section class="ferramentas-hero">
-            <h1>Ferramentas</h1>
-            <p>Calculadoras e recursos para facilitar sua gestão</p>
+            <div class="hero-content">
+                <h1>Ferramentas Essenciais</h1>
+                <p>Simplifique sua gestão com nossas calculadoras e recursos exclusivos</p>
+            </div>
         </section>
 
-        <section class="calculadoras">
-            <h2>Calculadoras</h2>
-            <div class="calculadoras-grid">
-                <div class="calculadora-item">
-                    <i class="fi fi-rr-calculator"></i>
-                    <h3>Calculadora de Imposto de Renda</h3>
-                    <p>Calcule o IRRF 2025 com todas as deduções</p>
-                    <a href="calculadora-irrf.html" class="btn-calculadora">Acessar Calculadora</a>
+        <!-- Barra de Pesquisa e Filtros -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fi fi-rr-search"></i>
+                    <input type="text" class="search-input" placeholder="Buscar ferramentas...">
                 </div>
-
-                <div class="calculadora-item">
-                    <i class="fi fi-rr-user"></i>
-                    <h3>Calculadora de Férias</h3>
-                    <p>Calcule o valor das férias dos funcionários</p>
-                    <a href="calculadora-ferias.html" class="btn-calculadora">Acessar Calculadora Completa</a>
-                </div>
-
-                <div class="calculadora-item">
-                    <i class="fi fi-rr-briefcase"></i>
-                    <h3>Calculadora de Rescisão</h3>
-                    <p>Calcule valores de rescisão trabalhista</p>
-                    <a href="calculadora-rescisao.html" class="btn-calculadora">Acessar Calculadora Completa</a>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-categoria="todas">
+                        <i class="fi fi-rr-apps"></i>Todas
+                    </button>
+                    <button class="filter-btn" data-categoria="calculadora">
+                        <i class="fi fi-rr-calculator"></i>Calculadoras
+                    </button>
+                    <button class="filter-btn" data-categoria="link">
+                        <i class="fi fi-rr-link"></i>Links Úteis
+                    </button>
+                    <button class="filter-btn" data-categoria="documento">
+                        <i class="fi fi-rr-file"></i>Documentos
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section class="links-uteis">
+        <!-- Grade de Ferramentas -->
+        <section class="tools-grid">
+            <!-- Calculadoras -->
+            <div class="tool-card" data-categoria="calculadora">
+                <div class="tool-icon">
+                    <i class="fi fi-rr-calculator"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Calculadora de IRRF</h3>
+                    <p>Calcule o Imposto de Renda Retido na Fonte com todas as deduções</p>
+                    <a href="calculadora-irrf.html" class="tool-button">
+                        Acessar Calculadora
+                        <i class="fi fi-rr-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tool-card" data-categoria="calculadora">
+                <div class="tool-icon">
+                    <i class="fi fi-rr-calculator"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Calculadora de Férias</h3>
+                    <p>Calcule valores de férias, incluindo 1/3 e demais verbas</p>
+                    <a href="calculadora-ferias.html" class="tool-button">
+                        Acessar Calculadora
+                        <i class="fi fi-rr-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tool-card" data-categoria="calculadora">
+                <div class="tool-icon">
+                    <i class="fi fi-rr-calculator"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Calculadora de Rescisão</h3>
+                    <p>Simule valores de rescisão trabalhista</p>
+                    <a href="calculadora-rescisao.html" class="tool-button">
+                        Acessar Calculadora
+                        <i class="fi fi-rr-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links Úteis -->
+        <section class="useful-links">
             <h2>Links Úteis</h2>
             <div class="links-grid">
-                <a href="http://www.receita.fazenda.gov.br/" target="_blank" class="link-item">
-                    <i class="fi fi-rr-building"></i>
-                    <h3>Receita Federal</h3>
-                    <p>Acesse o portal da Receita Federal</p>
+                <a href="http://www.receita.fazenda.gov.br/" class="link-card" data-categoria="link" target="_blank">
+                    <div class="link-icon">
+                        <i class="fi fi-rr-building"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>Receita Federal</h3>
+                        <p>Portal oficial da Receita Federal do Brasil</p>
+                    </div>
+                    <span class="link-arrow">
+                        <i class="fi fi-rr-arrow-right"></i>
+                    </span>
                 </a>
-                <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" class="link-item">
-                    <i class="fi fi-rr-document"></i>
-                    <h3>Portal do Empreendedor</h3>
-                    <p>Informações para MEI e empresários</p>
+                
+                <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" class="link-card" data-categoria="link" target="_blank">
+                    <div class="link-icon">
+                        <i class="fi fi-rr-document"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>Portal do Empreendedor</h3>
+                        <p>Informações para MEI e empresários</p>
+                    </div>
+                    <span class="link-arrow">
+                        <i class="fi fi-rr-arrow-right"></i>
+                    </span>
                 </a>
-                <a href="https://www.gov.br/esocial/pt-br" target="_blank" class="link-item">
-                    <i class="fi fi-rr-users"></i>
-                    <h3>e-Social</h3>
-                    <p>Sistema de escrituração digital</p>
+                
+                <a href="https://www.gov.br/esocial/pt-br" class="link-card" data-categoria="link" target="_blank">
+                    <div class="link-icon">
+                        <i class="fi fi-rr-users"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>e-Social</h3>
+                        <p>Sistema de escrituração digital</p>
+                    </div>
+                    <span class="link-arrow">
+                        <i class="fi fi-rr-arrow-right"></i>
+                    </span>
                 </a>
             </div>
         </section>
 
-        <section class="documentos">
+        <!-- Documentos -->
+        <section class="documents">
             <h2>Documentos e Modelos</h2>
-            <div class="documentos-grid">
-                <div class="documento-item">
-                    <i class="fi fi-rr-file-pdf"></i>
-                    <h3>Contrato Social</h3>
-                    <p>Modelo básico de contrato social</p>
-                    <a href="#" class="download-btn">Download</a>
+            <div class="documents-grid">
+                <div class="document-card" data-categoria="documento">
+                    <div class="document-icon">
+                        <i class="fi fi-rr-file-pdf"></i>
+                    </div>
+                    <div class="document-content">
+                        <h3>Contrato Social</h3>
+                        <p>Modelo básico de contrato social</p>
+                        <a href="#" class="download-button">
+                            <i class="fi fi-rr-download"></i>
+                            Download
+                        </a>
+                    </div>
                 </div>
-                <div class="documento-item">
-                    <i class="fi fi-rr-file-pdf"></i>
-                    <h3>Recibo de Pagamento</h3>
-                    <p>Modelo de recibo de pagamento</p>
-                    <a href="#" class="download-btn">Download</a>
+                <div class="document-card" data-categoria="documento">
+                    <div class="document-icon">
+                        <i class="fi fi-rr-file-pdf"></i>
+                    </div>
+                    <div class="document-content">
+                        <h3>Recibo de Pagamento</h3>
+                        <p>Modelo de recibo de pagamento</p>
+                        <a href="#" class="download-button">
+                            <i class="fi fi-rr-download"></i>
+                            Download
+                        </a>
+                    </div>
                 </div>
-                <div class="documento-item">
-                    <i class="fi fi-rr-file-pdf"></i>
-                    <h3>Termo de Rescisão</h3>
-                    <p>Modelo de termo de rescisão</p>
-                    <a href="#" class="download-btn">Download</a>
+                <div class="document-card" data-categoria="documento">
+                    <div class="document-icon">
+                        <i class="fi fi-rr-file-pdf"></i>
+                    </div>
+                    <div class="document-content">
+                        <h3>Termo de Rescisão</h3>
+                        <p>Modelo de termo de rescisão</p>
+                        <a href="#" class="download-button">
+                            <i class="fi fi-rr-download"></i>
+                            Download
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -163,5 +257,6 @@
     <!-- Script de cookies -->
     <script src="../JS/cookies.js" defer></script>
     <script src="../JS/menu.js" defer></script>
+    <script src="../JS/ferramentas.js"></script>
 </body>
 </html>

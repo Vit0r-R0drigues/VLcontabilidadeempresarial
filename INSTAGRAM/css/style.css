@@ -1,0 +1,442 @@
+:root {
+  --primary: #D46D13;
+  --secondary: #1E293B;
+  --text: #ffffff;
+  --background: #0F172A;
+  --gold: #FFD700;
+  --gold-gradient: linear-gradient(135deg, #FFD700, #FFA500);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  background-image: 
+    linear-gradient(to bottom, 
+      rgba(15, 23, 42, 0.9),
+      rgba(15, 23, 42, 0.7)
+    ),
+    url('../images/bg-pattern.svg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Profile Section */
+.profile {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  padding: 4px;
+  margin-bottom: 1rem;
+  animation: profilePicAnimation 2s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.profile h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+/* Links Section */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.link-item {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--text);
+  text-decoration: none;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeInUp 0.5s ease backwards;
+  animation-delay: calc(var(--i) * 0.1s);
+  position: relative;
+  overflow: hidden;
+}
+
+.link-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: var(--gold);
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+}
+
+.link-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--primary), transparent);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.link-item:hover::before {
+  opacity: 1;
+}
+
+.link-item i {
+  font-size: 1.2rem;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.link-item:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Social Bar */
+.social-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  animation: fadeInUp 0.5s ease backwards;
+  animation-delay: 0.8s;
+}
+
+.social-icon {
+  color: var(--text);
+  font-size: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.social-icon:hover {
+  color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.social-icon::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--primary);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.social-icon:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.15;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes profilePicAnimation {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 109, 19, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(212, 109, 19, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .link-item {
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+/* Adicionar efeito de brilho dourado */
+.gold-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 215, 0, 0.1) 50%,
+    transparent 55%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+/* Adicionar contador de visitas estilizado */
+.visit-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 215, 0, 0.1);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--gold);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+/* Animação de brilho dourado */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Toast notification estilizado */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold-gradient);
+  color: var(--background);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  animation: toastIn 0.3s ease forwards;
+}
+
+@keyframes toastIn {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* Efeito de partículas douradas */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 2px solid var(--gold);
+    padding: 1.5rem;
+    transition: bottom 0.3s ease;
+    z-index: 1000;
+}
+
+.cookie-banner.show {
+    bottom: 0;
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cookie-content p {
+    color: var(--text);
+    margin: 0;
+    flex: 1;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.cookie-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.settings-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.accept-btn {
+    background: var(--gold-gradient);
+    color: var(--background);
+}
+
+.cookie-settings-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+}
+
+.cookie-settings-content {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    border: 1px solid var(--gold);
+}
+
+.cookie-option {
+    margin: 1.5rem 0;
+}
+
+.cookie-option label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.cookie-option p {
+    margin: 0.5rem 0 0 1.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.cookie-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background: var(--gold-gradient);
+    color: var(--background);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.cookie-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cookie-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+} 
