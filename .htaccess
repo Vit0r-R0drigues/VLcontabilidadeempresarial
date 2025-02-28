@@ -28,18 +28,6 @@
     Deny from all
 </DirectoryMatch>
 
-# Proteger diretório de logs
-<Files "*.log">
-    Order Allow,Deny
-    Deny from all
-</Files>
-
-# Proteger arquivos PHP exceto os necessários
-<FilesMatch "^(?!processar_contato\.php$).*\.php$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
 # Forçar HTTPS
 RewriteEngine On
 RewriteCond %{HTTPS} off

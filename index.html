@@ -88,7 +88,7 @@
         <div class="home1">
             <h1>Contabilidade Empresarial</h1>
             <p>O parceiro certo que a sua empresa precisa</p>
-            <a href="HTML/contatos.html#form-container" class="cta-button">Fale Conosco</a>
+            <a href="HTML/contatos.html" class="cta-button">Fale Conosco</a>
         </div>
 
         <div class="home2">
@@ -144,30 +144,16 @@
             </div>
         </section>
 
-        <section class="cta-dinamico">
-            <div class="cta-content">
-                <h2>Vamos Conversar?</h2>
-                <div class="cta-cards">
-                    <div class="cta-card" onclick="window.location.href='HTML/contatos.html#form-container'">
-                        <i class="fi fi-rr-form"></i>
-                        <h3>Formulário Online</h3>
-                        <p>Preencha nosso formulário para um atendimento personalizado</p>
-                    </div>
-                    <div class="cta-card" onclick="window.location.href='https://wa.me/5511916539680'">
-                        <i class="fi fi-brands-whatsapp"></i>
-                        <h3>WhatsApp Direto</h3>
-                        <p>Fale conosco instantaneamente via WhatsApp</p>
-                    </div>
-                    <div class="cta-card" onclick="window.location.href='mailto:coontabilidadeempresarial@gmail.com'">
-                        <i class="fi fi-rr-envelope"></i>
-                        <h3>E-mail</h3>
-                        <p>Envie-nos um e-mail com sua solicitação</p>
-                    </div>
+        <section class="contato-rapido">
+            <h2>Entre em Contato</h2>
+            <form id="form-contato" action="#" method="POST">
+                <div class="form-grupo">
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
                 </div>
-                <div class="cta-animation">
-                    <p class="typing-text">Estamos prontos para ajudar sua empresa a crescer!</p>
-                </div>
-            </div>
+                <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
         </section>
     </main>
 
