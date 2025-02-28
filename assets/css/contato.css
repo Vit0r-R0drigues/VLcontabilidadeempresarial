@@ -1,0 +1,154 @@
+/* Estilos específicos para a página de contatos */
+:root {
+    /* Fontes para o site */
+    --fonte-destaque: 'Syne';
+    --fonte-padrao: 'Inter';
+    --fonte-legendas: 'Playfair Display';
+    --fonte-botoes: 'Poppins';
+
+    /* Paleta de cores para o site */
+    --cor-fundo: #0F172A;
+    --cor-fundo-secundaria: #1A1D23;
+    --cor-hover: #D46D13;
+    --cor-texto-1: #E8820E;
+    --cor-texto: white;
+    --cor-detalhes: #174782;
+    --cor-detalhes-1: #2D351F;
+}
+
+.contato-page {
+    padding-top: 100px;
+}
+
+.contato-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--cor-fundo-secundaria);
+}
+
+.contato-hero h1 {
+    font-family: var(--fonte-destaque);
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.contato-hero p {
+    font-size: 1.2em;
+    color: var(--cor-texto-1);
+    animation: fadeInUp 1s ease;
+}
+
+.contato-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.contato-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.info-item {
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+}
+
+.info-item i {
+    font-size: 2.5em;
+    color: var(--cor-texto-1);
+    margin-bottom: 20px;
+}
+
+.info-item h3 {
+    font-family: var(--fonte-destaque);
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.info-item p {
+    margin-bottom: 5px;
+}
+
+/* Estilos para o iframe do formulário */
+.contato-form {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contato-form h2 {
+    font-family: var(--fonte-destaque);
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-container {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.form-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Loader enquanto o iframe carrega */
+.form-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(26, 29, 35, 0.8);
+    z-index: 1;
+}
+
+.loader {
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top: 5px solid var(--cor-texto-1);
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contato-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        height: 800px;
+    }
+} 

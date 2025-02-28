@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../ESTILOS/style.css">
     <link rel="stylesheet" href="../ESTILOS/mediaquery.css">
     <link rel="stylesheet" href="../ESTILOS/cookies.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/contato.css">
 </head>
 <body>
     <header>
@@ -81,39 +83,16 @@
 
             <div class="contato-form">
                 <h2>Envie sua Mensagem</h2>
-                <form id="form-contato" action="../php/processar_contato.php" method="POST">
-                    <div class="form-group">
-                        <input type="text" id="nome" name="nome" 
-                               placeholder="Seu nome" required 
-                               pattern="[A-Za-zÀ-ÿ\s]{2,50}"
-                               title="Nome deve conter apenas letras e espaços">
-                        
-                        <input type="email" id="email" name="email" 
-                               placeholder="Seu e-mail" required>
+                <div class="form-container">
+                    <div class="form-loader" id="formLoader">
+                        <div class="loader"></div>
                     </div>
-                    
-                    <div class="form-group">
-                        <input type="tel" id="telefone" name="telefone" 
-                               placeholder="Seu telefone" required
-                               pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9[0-9])[0-9]{3}\-?[0-9]{4}$"
-                               title="Digite um telefone válido: (11) 98765-4321">
-                               
-                        <select id="assunto" name="assunto" required>
-                            <option value="">Selecione o assunto</option>
-                            <option value="Contabilidade Fiscal">Contabilidade Fiscal</option>
-                            <option value="Departamento Pessoal">Departamento Pessoal</option>
-                            <option value="Consultoria">Consultoria Empresarial</option>
-                            <option value="Abertura de Empresa">Abertura de Empresa</option>
-                            <option value="Outros">Outros</option>
-                        </select>
-                    </div>
-                    
-                    <textarea id="mensagem" name="mensagem" 
-                              placeholder="Sua mensagem" required
-                              minlength="10" maxlength="1000"></textarea>
-                    
-                    <button type="submit" id="enviar-btn">Enviar Mensagem</button>
-                </form>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf0V50CzLVl9I-RvtpSg0PvOp7Mqe7PBimoFaGG1fHslvkJ4w/viewform?embedded=true" 
+                            onload="document.getElementById('formLoader').style.display='none'"
+                            title="Formulário de Contato VL Contabilidade">
+                        Carregando...
+                    </iframe>
+                </div>
             </div>
         </section>
 
@@ -196,6 +175,7 @@
     <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.js"></script>
     <script src="../JS/cookies.js" defer></script>
     <script src="../JS/menu.js" defer></script>
+    <script src="../JS/contato.js" defer></script>
     <script>
     // Máscara para o telefone
     document.getElementById('telefone').addEventListener('input', function(e) {
