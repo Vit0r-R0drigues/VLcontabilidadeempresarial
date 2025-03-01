@@ -666,7 +666,7 @@ footer a:hover {
 .servicos-hero {
     text-align: center;
     padding: 60px 20px;
-    background-color: var(--cor-fundo-secundaria);
+    background-color: #1a1d23b0;
 }
 
 .servicos-hero h1 {
@@ -771,7 +771,7 @@ footer a:hover {
 .contato-hero {
     text-align: center;
     padding: 60px 20px;
-    background-color: var(--cor-fundo-secundaria);
+    background-color: #1a1d23b0;
 }
 
 .contato-hero h1 {
@@ -1041,7 +1041,7 @@ footer a:hover {
 .sobre-hero {
     text-align: center;
     padding: 60px 20px;
-    background-color: var(--cor-fundo-secundaria);
+    background-color: #1a1d23b0;
 }
 
 .sobre-hero h1 {
@@ -1242,7 +1242,7 @@ footer a:hover {
 .ferramentas-hero {
     text-align: center;
     padding: 60px 20px;
-    background-color: var(--cor-fundo-secundaria);
+    background-color: #1a1d23b0;
 }
 
 .ferramentas-hero h1 {
