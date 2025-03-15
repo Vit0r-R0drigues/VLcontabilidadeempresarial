@@ -50,7 +50,7 @@
 
 .contato-info {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: auto; 
     gap: 30px;
 }
 
