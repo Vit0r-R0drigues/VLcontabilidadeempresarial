@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <meta property="og:title" content="Imposto de Renda 2025 | VL Contabilidade Empresarial">
+    <meta property="og:description" content="Declaração do IR 2025 sem complicações! Especialistas em contabilidade empresarial e pessoal. Agilidade garantida e segurança fiscal">
+    <meta property="og:image" content="./assets/og-image.jpg">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <title>Imposto de Renda 2025 | VL Contabilidade Empresarial</title>
+    <meta name="description" content="Declaração do IR 2025 sem complicações! Especialistas em contabilidade empresarial e pessoal. Agilidade garantida e segurança fiscal">
+    <meta name="keywords" content="
+    declaração IRPF 2025, 
+    declaração IRPJ 2025, 
+    contabilidade empresarial São Paulo, 
+    como declarar imposto de renda 2025, 
+    consultoria tributária especializada, 
+    imposto de renda pessoa física 2025, 
+    contador online imposto de renda, 
+    regularizar situação fiscal, 
+    restituição IR 2025, 
+    contabilidade para MEI e ME, 
+    calcular imposto de renda 2025, 
+    multa imposto de renda, 
+    planejamento tributário empresarial, 
+    escritório contábil zona sul SP, 
+    documentos para declaração IR 2025
+    ">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+    <style>
+        :root {
+            --primary: #0F172A;
+            --secondary: #1E293B;
+            --accent: #FFA500;
+            --text: #F8FAFC;
+            --gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: var(--gradient);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./assets/background-office.jpg') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            z-index: 2;
+        }
+
+        .achievements-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dynamic-alert {
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 4px solid var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .form-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            color: var(--text);
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border: none;
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #FF8C00;
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 1.5rem;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            
+            .btn-lg {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .testimonial-card {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(232, 130, 14, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+        }
+
+        .text-warning {
+            color: var(--secondary-color) !important;
+        }
+
+        .display-4 {
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .card {
+            border: none;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .sticky-cta {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+
+        .social-icons a {
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Estilos para o header */
+        header.bg-dark {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Estilos para os ícones sociais */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Estilos para os ícones dos cards */
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .icon-box {
+            transform: scale(1.1);
+        }
+
+        /* Melhorias na responsividade */
+        @media (max-width: 768px) {
+            header .container {
+                padding: 10px 15px;
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .social-icons a {
+                font-size: 1rem;
+            }
+
+            .hero-section {
+                padding-top: 80px;
+            }
+
+            .feature-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header a {
+                font-size: 0.9rem;
+            }
+
+            .social-icons {
+                gap: 8px;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header com navegação -->
+    <header class="bg-dark py-2">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="../index.html" class="text-light text-decoration-none">
+                <i class="fas fa-home me-2"></i>Voltar para Home
+            </a>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
+                <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
+                <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
+                <a href="https://www.google.com/search?sca_esv=8ee07bb068160570&sxsrf=AHTn8zr0_BM6lVu8rv6ySbMa4pufPiyMzw%3A1737928997476&q=VL%20Contabilidade%20Empresarial" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="overlay"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2">IR 2025</span>
+                    <h1 class="display-4 fw-bold mb-4">
+                        Declaração de IR 2025?<br>
+                        <span class="text-warning">Deixe que Nós Cuidamos!</span>
+                    </h1>
+                    <p class="lead mb-4">Evite Multas e Aproveite ao Máximo sua Restituição com Nossa Expertise</p>
+                    
+                    <div class="achievements-box p-4 mb-4">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <h4 class="fw-bold text-warning">+5.000</h4>
+                                <p class="small mb-0">Declarações em 2024</p>
+                            </div>
+                            <div class="col-6">
+                                <h4 class="fw-bold text-warning">98%</h4>
+                                <p class="small mb-0">Aprovação Primeira Tentativa</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dynamic-alert p-3 rounded-3 mb-4">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-clock text-warning me-3 fs-4"></i>
+                            <div>
+                                <strong class="d-block mb-1">Prazo Final: 30 de maio de 2025</strong>
+                                <span class="small">Evite multas de até 20% e bloqueio do CPF!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#contato" class="btn btn-primary btn-lg">
+                            <i class="fas fa-file-alt me-2"></i>Quero Declarar Agora
+                        </a>
+                        <a href="https://wa.me/5511916539680" class="btn btn-success btn-lg">
+                            <i class="fab fa-whatsapp me-2"></i>Falar com Especialista
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card form-card">
+                        <div class="card-body p-4">
+                            <img src="/../IMAGENS/freepik__um-empresrio-ou-consultor-revisando-grficos-financ__78575.jpeg" 
+                                 alt="Consultor revisando gráficos financeiros" 
+                                 class="img-fluid rounded shadow"
+                                 style="width: 100%; height: auto;">
+                            <div class="text-center mt-4">
+                                <button formsappId="67da0a923aaa500002d8ed35" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Solicitar Análise Gratuita
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="container py-5">
+        <h2 class="text-center mb-5">Por que Escolher a VL Contabilidade?</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <div class="mb-3">
+                        <div class="icon-box d-flex align-items-center justify-content-center">
+                            <i class="fas fa-shield-alt text-white"></i>
+                        </div>
+                    </div>
+                    <h3>Segurança e Agilidade</h3>
+                    <p>Declarações precisas e rápidas, com análise automatizada e revisão humana especializada.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <div class="mb-3">
+                        <div class="icon-box d-flex align-items-center justify-content-center">
+                            <i class="fas fa-comments text-white"></i>
+                        </div>
+                    </div>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Suporte via WhatsApp, e-mail e presencial para todas as suas dúvidas e necessidades.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <div class="mb-3">
+                        <div class="icon-box d-flex align-items-center justify-content-center">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                    </div>
+                    <h3>Maximização da Restituição</h3>
+                    <p>Análise detalhada para garantir o maior retorno possível dentro da legalidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destaques Dinâmicos -->
+    <section class="container py-5">
+        <h2 class="text-center mb-5">Nossos Serviços Especializados</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <div class="mb-3">
+                        <div class="icon-box d-flex align-items-center justify-content-center" style="background: #1F3B73;">
+                            <i class="fas fa-landmark text-white"></i>
+                        </div>
+                    </div>
+                    <h3>Para Empresas</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-success me-2"></i>IRPJ e Lucro Real</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Simples Nacional</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Compensação de Tributos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <div class="mb-3">
+                        <div class="icon-box d-flex align-items-center justify-content-center" style="background: #3AB795;">
+                            <i class="fas fa-users text-white"></i>
+                        </div>
+                    </div>
+                    <h3>Para Pessoas Físicas</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Declaração Completa</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Rendimentos no Exterior</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Investimentos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <div class="mb-3">
+                        <div class="icon-box d-flex align-items-center justify-content-center" style="background: #1F3B73;">
+                            <i class="fas fa-lightbulb text-white"></i>
+                        </div>
+                    </div>
+                    <h3>Consultoria Fiscal</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Planejamento Tributário</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Regularização Fiscal</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Análise de Benefícios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="bg-dark py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">O Que Nossos Clientes Dizem</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <img src="/IMAGENS/testimonial-skip-06.jpg" alt="João Silva" class="testimonial-img">
+                        <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="card-text">"A VL Contabilidade foi incrível! Minha declaração foi aprovada em 48h."</p>
+                        <footer class="blockquote-footer mt-3">
+                            João S., Empresário
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <img src="/IMAGENS/testimonial-skip-13.jpg" alt="Maria Santos" class="testimonial-img">
+                        <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="card-text">"Profissionais extremamente competentes. Resolveram todas as minhas pendências."</p>
+                        <footer class="blockquote-footer mt-3">
+                            Maria S., Investidora
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <img src="/IMAGENS/testimonial-skip-01.jpg" alt="Pedro Oliveira" class="testimonial-img">
+                        <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="card-text">"Atendimento personalizado e ágil. Recomendo fortemente!"</p>
+                        <footer class="blockquote-footer mt-3">
+                            Pedro O., Autônomo
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Atualizado -->
+    <section class="container py-5">
+        <h2 class="text-center mb-5" >Dúvidas Frequentes</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Qual o prazo para declarar o IR 2025?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                O prazo para declarar o Imposto de Renda 2025 vai de 15 de março a 30 de maio de 2025.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Quais documentos preciso ter em mãos?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Informe de rendimentos, comprovantes de despesas médicas e educacionais, documentos de bens e direitos, entre outros. Nossa equipe fornecerá uma lista completa personalizada para seu caso.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Como funciona o processo de declaração?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                1. Entre em contato conosco
+                                2. Envie seus documentos
+                                3. Nossa equipe analisa e prepara sua declaração
+                                4. Revisão final com você
+                                5. Envio para a Receita Federal
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>VL Contabilidade Empresarial</h5>
+                    <p>Sua parceira em contabilidade e consultoria fiscal.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contato</h5>
+                    <p>
+                        📱 WhatsApp: (11) 91653-9680<br>
+                        📧 Email: contato@vlcontabilidadeempresarial.com.br
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Redes Sociais</h5>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.instagram.com/vl_contabilidade_empresarial/" class="text-light" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5511916539680" class="text-light" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@contabilidadeempresarial" class="text-light" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.google.com/search?sca_esv=8ee07bb068160570&sxsrf=AHTn8zr0_BM6lVu8rv6ySbMa4pufPiyMzw%3A1737928997476&q=VL%20Contabilidade%20Empresarial&stick=H4sIAAAAAAAAAONgU1I1qLCwTE4zMDNLSjI1Skm1TDK2MqgwMTdJSUy1sDBJNTAyTjQ3WcQqE-aj4JyfV5KYlJmTmZKYkqrgmltQlFqcWJSZmAMALORsN0gAAAA&mat=CQwi07iXATQK&ved=2ahUKEwjP_KeEspSLAxV5rZUCHRm4FrIQrMcEegQIGxAC" class="text-light" target="_blank"><i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <small>&copy; 2024 VL Contabilidade Empresarial. Todos os direitos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('67da0a923aaa500002d8ed35', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#ff9e24','text':'Clique aqui'},'width':'600px','height':'600px','autoOpen':{'action':'onpageload'},'openingAnimation':{'entrance':'animate__bounceIn','exit':'animate__bounceOut'}}, 'https://ijl1eh1l.forms.app');"></script>
+    <script>
+        // Inicializa AOS (Animate on Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Validação do formulário
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!this.checkValidity()) {
+                e.stopPropagation();
+            } else {
+                // Aqui você pode adicionar o código para enviar o formulário
+                alert('Formulário enviado com sucesso! Em breve entraremos em contato.');
+                this.reset();
+            }
+            this.classList.add('was-validated');
+        });
+
+        // Contador regressivo para o prazo final
+        function updateCountdown() {
+            const deadline = new Date('2025-05-30T23:59:59').getTime();
+            const now = new Date().getTime();
+            const distance = deadline - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            if (document.getElementById('countdown')) {
+                document.getElementById('countdown').innerHTML = 
+                    `${days} dias e ${hours} horas restantes`;
+            }
+        }
+
+        // Atualiza o contador a cada hora
+        updateCountdown();
+        setInterval(updateCountdown, 3600000);
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
