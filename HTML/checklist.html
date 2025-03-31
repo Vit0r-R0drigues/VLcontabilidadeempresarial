@@ -5,6 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checklist Documentos - Declaração de Imposto de Renda</title>
   <style>
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+
+    @media print {
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .container {
+        width: 100%;
+        box-shadow: none;
+        margin: 0;
+        padding: 20mm;
+      }
+
+      section {
+        break-inside: avoid;
+      }
+
+      h2 {
+        break-after: avoid;
+      }
+
+      ul {
+        break-before: avoid;
+        break-after: avoid;
+      }
+
+      li {
+        break-inside: avoid;
+      }
+
+      .question {
+        break-inside: avoid;
+      }
+
+      hr {
+        display: none;
+      }
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f9f9f9;
@@ -13,34 +59,68 @@
       color: #333;
       line-height: 1.6;
     }
+    
     .container {
-      max-width: 800px;
+      max-width: 210mm;
       margin: auto;
       background: #fff;
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    h1, h2, h3 {
+    
+    h1 {
       color: #005691;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      break-after: avoid;
     }
+    
+    h2 {
+      color: #005691;
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #005691;
+      padding-bottom: 5px;
+    }
+    
     ul {
-      margin-left: 20px;
+      margin: 10px 0;
+      padding-left: 20px;
     }
+    
+    li {
+      margin-bottom: 6px;
+      padding-left: 5px;
+    }
+    
     .question {
       font-style: italic;
       color: #555;
-      margin-top: 10px;
+      margin: 10px 0;
+      padding: 8px;
+      background: #f5f5f5;
+      border-left: 3px solid #005691;
     }
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 20px 0;
+    
+    section {
+      margin-bottom: 20px;
+      padding: 10px 0;
     }
+    
     footer {
       text-align: center;
       font-size: 0.9em;
       color: #777;
       margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      break-inside: avoid;
+    }
+
+    p {
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -48,70 +128,79 @@
   <div class="container">
     <h1>Checklist Completo - Declaração de Imposto de Renda</h1>
     <p>Organize todos os documentos necessários para a declaração do Imposto de Renda com este checklist. Confira cada item e responda às perguntas para garantir que nada será esquecido.</p>
-    <hr>
 
-    <h2>1. Dados Pessoais e Identificação</h2>
-    <ul>
-      <li>Documento oficial (RG, CNH ou outro documento com foto e CPF).</li>
-      <li>Comprovante de endereço atualizado.</li>
-      <li>Título de eleitor (se solicitado).</li>
-      <li>Cópia da última declaração de IR (se houver).</li>
-      <li>Dados dos dependentes: Nome, CPF, data de nascimento e grau de parentesco.</li>
-    </ul>
-    <p class="question"> Você teve alguma alteração na composição familiar (novos dependentes ou mudanças nos dados)?</p>
-    <hr>
+    <section>
+      <h2>1. Dados Pessoais e Identificação</h2>
+      <ul>
+        <li>Documento oficial (RG, CNH ou outro documento com foto e CPF).</li>
+        <li>Comprovante de endereço atualizado.</li>
+        <li>Título de eleitor (se solicitado).</li>
+        <li>Cópia da última declaração de IR (se houver).</li>
+        <li>Dados dos dependentes: Nome, CPF, data de nascimento e grau de parentesco.</li>
+      </ul>
+      <p class="question">Você teve alguma alteração na composição familiar (novos dependentes ou mudanças nos dados)?</p>
+    </section>
 
-    <h2>2. Comprovantes de Renda</h2>
-    <ul>
-      <li>Informe de rendimentos do empregador, autônomo, pró-labore ou de distribuição de lucros.</li>
-      <li>Informes de instituições financeiras (bancos, corretoras, etc.).</li>
-      <li>Recibos de aluguéis (para imóveis alugados).</li>
-      <li>Rendimentos de fontes internacionais (se aplicável).</li>
-    </ul>
-    <p class="question"> Houve alguma fonte de renda que não consta nos informes oficiais ou rendimentos atípicos (ex.: doações, heranças)?</p>
-    <hr>
+    <section>
+      <h2>2. Comprovantes de Renda</h2>
+      <ul>
+        <li>Informe de rendimentos do empregador, autônomo, pró-labore ou de distribuição de lucros.</li>
+        <li>Informes de instituições financeiras (bancos, corretoras, etc.).</li>
+        <li>Recibos de aluguéis (para imóveis alugados).</li>
+        <li>Rendimentos de fontes internacionais (se aplicável).</li>
+      </ul>
+      <p class="question">Houve alguma fonte de renda que não consta nos informes oficiais ou rendimentos atípicos (ex.: doações, heranças)?</p>
+    </section>
 
-    <h2>3. Comprovantes de Despesas Deducíveis</h2>
-    <ul>
-      <li>Despesas médicas, odontológicas e hospitalares: recibos e notas fiscais com CPF/CNPJ do prestador.</li>
-      <li>Despesas com educação: mensalidades escolares, cursos, faculdades (observar limites por pessoa).</li>
-      <li>Contribuições à previdência oficial e privada (PGBL).</li>
-      <li>Pensão alimentícia: comprovantes de pagamentos (se houver acordo judicial).</li>
-      <li>Doações realizadas a instituições autorizadas.</li>
-    </ul>
-    <p class="question"> Você possui despesas com saúde ou educação que não foram informadas e podem aumentar suas deduções?</p>
-    <hr>
+    <section>
+      <h2>3. Comprovantes de Despesas Deducíveis</h2>
+      <ul>
+        <li>Despesas médicas, odontológicas e hospitalares: recibos e notas fiscais com CPF/CNPJ do prestador.</li>
+        <li>Despesas com educação: mensalidades escolares, cursos, faculdades (observar limites por pessoa).</li>
+        <li>Contribuições à previdência oficial e privada (PGBL).</li>
+        <li>Pensão alimentícia: comprovantes de pagamentos (se houver acordo judicial).</li>
+        <li>Doações realizadas a instituições autorizadas.</li>
+      </ul>
+      <p class="question">Você possui despesas com saúde ou educação que não foram informadas e podem aumentar suas deduções?</p>
+    </section>
 
-    <h2>4. Documentos de Bens e Direitos</h2>
-    <ul>
-      <li>Imóveis: escrituras, contratos de compra e venda, IPTU e informações de financiamento (se houver).</li>
-      <li>Veículos: documentos como CRLV, número do Renavam e contratos de financiamento.</li>
-      <li>Investimentos: extratos de contas, corretoras, saldos de ações, fundos imobiliários, criptomoedas etc.</li>
-      <li>Bens de alto valor: recibos de compra de joias, obras de arte, consórcios, etc.</li>
-    </ul>
-    <p class="question"> Houve compra, venda ou transferência de bens durante o ano?</p>
-    <hr>
+    <section>
+      <h2>4. Documentos de Bens e Direitos</h2>
+      <ul>
+        <li>Imóveis: escrituras, contratos de compra e venda, IPTU e informações de financiamento (se houver).</li>
+        <li>Veículos: documentos como CRLV, número do Renavam e contratos de financiamento.</li>
+        <li>Investimentos: extratos de contas, corretoras, saldos de ações, fundos imobiliários, criptomoedas etc.</li>
+        <li>Bens de alto valor: recibos de compra de joias, obras de arte, consórcios, etc.</li>
+      </ul>
+      <p class="question">Houve compra, venda ou transferência de bens durante o ano?</p>
+    </section>
 
-    <h2>5. Informações Bancárias e de Investimentos</h2>
-    <ul>
-      <li>Dados bancários para restituição ou débito automático (agência, conta e chave PIX – CPF).</li>
-      <li>Extratos de investimentos e informes de corretoras, inclusive de renda variável.</li>
-    </ul>
-    <p class="question"> Você realizou operações em bolsa ou teve movimentação financeira que precisa ser detalhada na declaração?</p>
-    <hr>
+    <section>
+      <h2>5. Informações Bancárias e de Investimentos</h2>
+      <ul>
+        <li>Dados bancários para restituição ou débito automático (agência, conta e chave PIX – CPF).</li>
+        <li>Extratos de investimentos e informes de corretoras, inclusive de renda variável.</li>
+      </ul>
+      <p class="question">Você realizou operações em bolsa ou teve movimentação financeira que precisa ser detalhada na declaração?</p>
+    </section>
 
-    <h2>6. Outras Informações Relevantes</h2>
-    <ul>
-      <li>Recibos e comprovantes do Carnê-Leão (para autônomos).</li>
-      <li>Informações sobre rendimentos isentos (indenizações, doações, heranças).</li>
-      <li>Documentos referentes a dívidas e ônus (para valores superiores a R$ 5 mil).</li>
-    </ul>
-    <p class="question"> Você contraiu dívidas ou financiamentos que podem ser utilizados para compensar ganhos ou deduções na declaração?</p>
-    <hr>
+    <section>
+      <h2>6. Outras Informações Relevantes</h2>
+      <ul>
+        <li>Recibos e comprovantes do Carnê-Leão (para autônomos).</li>
+        <li>Informações sobre rendimentos isentos (indenizações, doações, heranças).</li>
+        <li>Documentos referentes a dívidas e ônus (para valores superiores a R$ 5 mil).</li>
+      </ul>
+      <p class="question">Você contraiu dívidas ou financiamentos que podem ser utilizados para compensar ganhos ou deduções na declaração?</p>
+    </section>
+
+    <footer>
+      <p>Este checklist foi criado para auxiliar no processo de declaração do Imposto de Renda. Certifique-se de consultar um profissional de contabilidade se necessário.</p>
+    </footer>
 
     <footer>
       &copy; 2025 VL Contabilidade Empresarial - Todos os direitos reservados.
-    </footer>
+    </footer
   </div>
 </body>
-</html>
+</html> 
