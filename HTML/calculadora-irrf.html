@@ -32,19 +32,19 @@
             </div>
             <nav role="navigation" aria-label="Menu principal">
                 <ul class="menu">
-                    <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                    <li><a href="../index.html" target="_self" title="Página inicial">
                         <i class="fi fi-rr-home"></i> Home</a>
                     </li>
-                    <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                    <li><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
                         <i class="fi fi-rr-info"></i> Sobre</a>
                     </li>
-                    <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                    <li><a href="servicos.html" target="_self" title="Veja nossos serviços">
                         <i class="fi fi-rr-briefcase"></i> Serviços</a>
                     </li>
-                    <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                    <li><a href="contatos.html" target="_self" title="Entre em contato conosco">
                         <i class="fi fi-rr-phone-call"></i> Contatos</a>
                     </li>
-                    <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                    <li><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
                         <i class="fi fi-rr-calculator"></i> Ferramentas</a>
                     </li>
                 </ul>
@@ -64,7 +64,7 @@
             <p>Calcule o Imposto de Renda Retido na Fonte com todas as deduções</p>
         </div>
 
-        <main class="calculadora-container">
+        <div class="calculadora-container">
             <!-- Seção de Entrada de Dados -->
             <section class="entrada-dados">
                 <h2>Dados para Cálculo</h2>
@@ -210,7 +210,7 @@
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     </main>
 
     <footer>
@@ -240,12 +240,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+            <p>&copy; <span id="current-year">2024</span> Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="../JS/calculadora-irrf.js"></script>
-    <script src="../JS/cookies.js"></script>
+    <script src="../JS/calculadora-irrf.js" defer></script>
+    <script src="../JS/cookies.js" defer></script>
+    <script src="../JS/footer.js" defer></script>
 </body>
 </html> 

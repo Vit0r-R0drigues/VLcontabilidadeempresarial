@@ -36,43 +36,25 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "AccountingService",
+        "@type": "LocalBusiness",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "BR",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP"
+        },
         "name": "VL Contabilidade Empresarial",
         "image": "IMAGENS/LOGO-P.png",
         "description": "Escritório de contabilidade digital especializado em soluções empresariais completas",
         "url": "https://vlcontabilidadeempresarial.com.br",
         "telephone": "+55-11-91653-9680",
-        "email": "coontabilidadeempresarial@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "BR",
-            "addressLocality": "São Paulo"
-        },
+        "email": "contato@vlcontabilidadeempresarial.com.br",
         "sameAs": [
             "https://www.instagram.com/vl_contabilidade_empresarial/",
             "https://www.youtube.com/@contabilidadeempresarial"
         ],
         "priceRange": "$$",
         "openingHours": "Mo-Fr 09:00-18:00"
-    }
-    </script>
-
-    <!-- Exemplo de dados estruturados -->
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "LocalBusiness",
-        "name": "VL Contabilidade Empresarial",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Endereço da empresa",
-            "addressLocality": "Cidade",
-            "addressRegion": "Estado",
-            "postalCode": "CEP",
-            "addressCountry": "Brasil"
-        },
-        "telephone": "(11) 91653-9680",
-        "url": "https://vlcontabilidadeempresarial.com.br"
     }
     </script>
 </head>
@@ -84,22 +66,22 @@
             </div>
             <nav role="navigation" aria-label="Menu principal">
                 <ul class="menu">
-                    <li type="none"><a href="index.html" target="_self" title="Página inicial">
+                    <li><a href="index.html" target="_self" title="Página inicial">
                         <i class="fi fi-rr-home"></i> Home</a>
                     </li>
-                    <li type="none"><a href="BLOG/blogemconstrução.html" target="_self" title="Acesse nosso blog">
+                    <li><a href="BLOG/blogemconstrução.html" target="_self" title="Acesse nosso blog">
                         <i class="fi fi-rr-book-alt"></i> Blog</a>
                     </li>
-                    <li type="none"><a href="HTML/sobre.html" target="_self" title="Saiba mais sobre nós">
+                    <li><a href="HTML/sobre.html" target="_self" title="Saiba mais sobre nós">
                         <i class="fi fi-rr-info"></i> Sobre</a>
                     </li>
-                    <li type="none"><a href="HTML/servicos.html"target="_self" title="Veja nossos serviços">
+                    <li><a href="HTML/servicos.html"target="_self" title="Veja nossos serviços">
                         <i class="fi fi-rr-briefcase"></i> Serviços</a>
                     </li>
-                    <li type="none"><a href="HTML/contatos.html" target="_self" title="Entre em contato conosco">
+                    <li><a href="HTML/contatos.html" target="_self" title="Entre em contato conosco">
                         <i class="fi fi-rr-phone-call"></i> Contatos</a>
                     </li>
-                    <li type="none"><a href="HTML/ferramentas.html" target="_self" title="Ferramentas úteis">
+                    <li><a href="HTML/ferramentas.html" target="_self" title="Ferramentas úteis">
                         <i class="fi fi-rr-calculator"></i> Ferramentas</a>
                     </li>
                 </ul>
@@ -229,12 +211,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2022 - 2025 VL Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+            <p>&copy; <span id="current-year">2024</span> VL Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
         </div>
     </footer>
 
     <!-- Script de cookies -->
-    <script src="JS/cookies.js"></script>
+    <script src="JS/cookies.js" defer></script>
+    <script src="JS/footer.js" defer></script>
 </body>
 </html>
-

@@ -2,8 +2,8 @@
 const INSS_FAIXAS = [
     { limite: 1412.00, aliquota: 0.075 },
     { limite: 2666.68, aliquota: 0.09 },
-    { limite: 5400.00, aliquota: 0.12 },
-    { limite: Infinity, aliquota: 0.14 }
+    { limite: 4000.03, aliquota: 0.12 },
+    { limite: 7786.02, aliquota: 0.14 }
 ];
 
 const IRRF_FAIXAS = [
@@ -92,17 +92,19 @@ const memoize = (fn) => {
 // Aplicar memoização nos cálculos
 const calcularINSS = memoize((salario) => {
     let inss = 0;
-    let baseCalculo = salario;
+    let salarioRestante = salario;
+    let faixaAnterior = 0;
     
     for (let faixa of INSS_FAIXAS) {
-        if (baseCalculo > 0) {
-            const baseParaFaixa = Math.min(baseCalculo, faixa.limite);
-            inss += baseParaFaixa * faixa.aliquota;
-            baseCalculo -= baseParaFaixa;
+        if (salarioRestante > 0) {
+            const baseFaixa = Math.min(salarioRestante, faixa.limite - faixaAnterior);
+            inss += baseFaixa * faixa.aliquota;
+            salarioRestante -= baseFaixa;
+            faixaAnterior = faixa.limite;
         }
     }
-    
-    return Math.min(inss, 5400.00 * 0.14); // Teto do INSS
+    // O teto do INSS para 2024 é 908.85, mas é melhor calcular dinamicamente ou usar uma constante.
+    return Math.min(inss, 908.85);
 });
 
 function calcularIRRF(valor) {

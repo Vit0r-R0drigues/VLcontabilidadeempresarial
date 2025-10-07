@@ -30,10 +30,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #0F172A;
@@ -385,7 +382,7 @@
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="card form-card">
                         <div class="card-body p-4">
-                            <img src="/../IMAGENS/freepik__um-empresrio-ou-consultor-revisando-grficos-financ__78575.jpeg" 
+                            <img src="../IMAGENS/freepik__um-empresrio-ou-consultor-revisando-grficos-financ__78575.jpeg" 
                                  alt="Consultor revisando gráficos financeiros" 
                                  class="img-fluid rounded shadow"
                                  style="width: 100%; height: auto;">
@@ -497,8 +494,8 @@
             <h2 class="text-center mb-5">O Que Nossos Clientes Dizem</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="testimonial-card text-center">
-                        <img src="/IMAGENS/testimonial-skip-06.jpg" alt="João Silva" class="testimonial-img">
+                    <div class="testimonial-card text-center" data-aos="fade-up">
+                        <img src="../IMAGENS/testimonial-skip-06.jpg" alt="João Silva" class="testimonial-img">
                         <div class="mb-3">⭐⭐⭐⭐⭐</div>
                         <p class="card-text">"A VL Contabilidade foi incrível! Minha declaração foi aprovada em 48h."</p>
                         <footer class="blockquote-footer mt-3">
@@ -507,8 +504,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="testimonial-card text-center">
-                        <img src="/IMAGENS/testimonial-skip-13.jpg" alt="Maria Santos" class="testimonial-img">
+                    <div class="testimonial-card text-center" data-aos="fade-up" data-aos-delay="200">
+                        <img src="../IMAGENS/testimonial-skip-13.jpg" alt="Maria Santos" class="testimonial-img">
                         <div class="mb-3">⭐⭐⭐⭐⭐</div>
                         <p class="card-text">"Profissionais extremamente competentes. Resolveram todas as minhas pendências."</p>
                         <footer class="blockquote-footer mt-3">
@@ -517,8 +514,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="testimonial-card text-center">
-                        <img src="/IMAGENS/testimonial-skip-01.jpg" alt="Pedro Oliveira" class="testimonial-img">
+                    <div class="testimonial-card text-center" data-aos="fade-up" data-aos-delay="400">
+                        <img src="../IMAGENS/testimonial-skip-01.jpg" alt="Pedro Oliveira" class="testimonial-img">
                         <div class="mb-3">⭐⭐⭐⭐⭐</div>
                         <p class="card-text">"Atendimento personalizado e ágil. Recomendo fortemente!"</p>
                         <footer class="blockquote-footer mt-3">
@@ -608,7 +605,7 @@
             </div>
             <hr class="mt-4">
             <div class="text-center">
-                <small>&copy; 2024 VL Contabilidade Empresarial. Todos os direitos reservados.</small>
+                <small>&copy; <span id="current-year">2024</span> VL Contabilidade Empresarial. Todos os direitos reservados.</small>
             </div>
         </div>
     </footer>
@@ -617,44 +614,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('67da0a923aaa500002d8ed35', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#ff9e24','text':'Clique aqui'},'width':'600px','height':'600px','autoOpen':{'action':'onpageload'},'openingAnimation':{'entrance':'animate__bounceIn','exit':'animate__bounceOut'}}, 'https://ijl1eh1l.forms.app');"></script>
+    <script src="../JS/footer.js" defer></script>
     <script>
         // Inicializa AOS (Animate on Scroll)
         AOS.init({
             duration: 1000,
             once: true
         });
-
-        // Validação do formulário
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (!this.checkValidity()) {
-                e.stopPropagation();
-            } else {
-                // Aqui você pode adicionar o código para enviar o formulário
-                alert('Formulário enviado com sucesso! Em breve entraremos em contato.');
-                this.reset();
-            }
-            this.classList.add('was-validated');
-        });
-
-        // Contador regressivo para o prazo final
-        function updateCountdown() {
-            const deadline = new Date('2025-05-30T23:59:59').getTime();
-            const now = new Date().getTime();
-            const distance = deadline - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-            if (document.getElementById('countdown')) {
-                document.getElementById('countdown').innerHTML = 
-                    `${days} dias e ${hours} horas restantes`;
-            }
-        }
-
-        // Atualiza o contador a cada hora
-        updateCountdown();
-        setInterval(updateCountdown, 3600000);
 
         // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
