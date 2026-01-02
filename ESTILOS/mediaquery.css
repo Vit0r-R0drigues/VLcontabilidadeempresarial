@@ -167,42 +167,81 @@ Grandes telas : maior que 1200px*/
 
     .home1 {
         height: auto;
-        padding: 120px 20px 60px;
+        padding: 130px 20px 60px;
         text-align: center;
+        min-height: auto;
+    }
+
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 6px 16px;
     }
 
     .home1 h1 {
-        font-size: 2em;
-        margin-bottom: 15px;
+        font-size: 1.8em;
+        margin-bottom: 12px;
+        line-height: 1.2;
     }
 
     .home1 p {
-        font-size: 1.2em;
+        font-size: 1rem;
         margin-bottom: 25px;
+        padding: 0 10px;
+    }
+
+    .cta-button.cta-primary {
+        width: 100%;
+        max-width: 280px;
+        font-size: 1rem;
+        padding: 14px 24px;
     }
 
     .home2 {
-        padding: 40px 20px;
+        padding: 40px 15px;
         text-align: center;
     }
 
-    .conteudo1 h2#segu {
-        font-size: 1.8em;
+    .beneficios-grid {
+        padding: 0 10px;
+        gap: 15px;
+    }
+
+    .beneficio-item {
+        padding: 15px;
+    }
+
+    .beneficio-item h3 {
+        font-size: 1rem;
+    }
+
+    .beneficio-item p {
+        font-size: 0.85rem;
+    }
+
+    .conteudo1 h2#segu,
+    .conteudo1 p#segu {
+        font-size: 1rem;
+        padding: 0 10px;
     }
 
     .servicos-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
         padding: 0 15px;
     }
 
     .servico-card {
-        padding: 20px;
+        padding: 25px 20px;
+        min-height: 48px;
     }
 
     .numeros-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
+    }
+
+    .numero-item {
+        padding: 20px;
     }
 
     .footer-content {
@@ -213,6 +252,18 @@ Grandes telas : maior que 1200px*/
 
     .social-footer {
         justify-content: center;
+    }
+
+    /* WhatsApp mobile */
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .whatsapp-tooltip {
+        display: none;
     }
 
     /* Ajustes para o formulário de contato */
