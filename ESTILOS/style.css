@@ -2757,12 +2757,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
     header {
         flex-direction: row !important;
         height: auto !important;
-        min-height: 60px;
-        padding: 10px 15px !important;
-        margin: 10px !important;
-        width: calc(100% - 20px) !important;
-        border-radius: 10px !important;
-        gap: 10px;
+        min-height: 50px;
+        padding: 8px 12px !important;
+        margin: 8px !important;
+        width: calc(100% - 16px) !important;
+        border-radius: 8px !important;
+        gap: 8px;
     }
 
     header .logo img {
@@ -2773,77 +2773,166 @@ input[type="range"]::-webkit-slider-thumb:hover {
         display: none !important;
     }
 
-    /* Hero Mobile */
+    /* Hero Mobile - Mais compacto */
     .home1 {
         min-height: auto !important;
-        padding: 120px 20px 50px !important;
+        padding: 90px 20px 40px !important;
+        gap: 12px;
     }
 
     .hero-badge {
-        font-size: 0.75rem !important;
-        padding: 6px 14px !important;
+        font-size: 0.7rem !important;
+        padding: 6px 16px !important;
+        margin-bottom: 8px !important;
+        background: rgba(232, 130, 14, 0.2) !important;
+        border: 1px solid rgba(232, 130, 14, 0.5) !important;
     }
 
     .home1 h1 {
-        font-size: 1.6rem !important;
-        line-height: 1.3 !important;
+        font-size: 1.5rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 8px !important;
     }
 
     .home1 p {
-        font-size: 0.95rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 20px !important;
+        opacity: 0.9;
     }
 
     .cta-button.cta-primary {
         width: 100% !important;
-        max-width: 280px !important;
-        font-size: 1rem !important;
+        max-width: 260px !important;
+        font-size: 0.95rem !important;
+        padding: 14px 24px !important;
+        border-radius: 8px !important;
+    }
+
+    /* Seção Digital - Mais compacta */
+    .home2 {
+        padding: 30px 15px !important;
+    }
+
+    .home2 .conteudo1 h2#pri {
+        font-size: 1.3rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    .home2 .conteudo1 p#segu {
+        font-size: 0.85rem !important;
+        margin-bottom: 20px !important;
+        opacity: 0.85;
     }
 
     /* Benefícios Mobile */
     .beneficios-grid {
-        padding: 0 15px !important;
-        gap: 12px !important;
+        padding: 0 10px !important;
+        gap: 10px !important;
+        margin-top: 15px !important;
     }
 
     .beneficio-item {
-        padding: 15px !important;
+        padding: 12px !important;
+        border-radius: 10px !important;
+    }
+
+    .beneficio-item i {
+        font-size: 1.2rem !important;
     }
 
     .beneficio-item h3 {
-        font-size: 0.95rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 2px !important;
     }
 
     .beneficio-item p {
-        font-size: 0.85rem !important;
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
     }
 
     /* Serviços Mobile */
+    .servicos-destaque {
+        padding: 30px 15px !important;
+    }
+
+    .servicos-destaque h2 {
+        font-size: 1.3rem !important;
+        margin-bottom: 20px !important;
+    }
+
     .servicos-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .servico-card {
+        padding: 20px 15px !important;
+    }
+
+    .servico-card i {
+        font-size: 1.8rem !important;
+    }
+
+    .servico-card h3 {
+        font-size: 1rem !important;
+    }
+
+    .servico-card p {
+        font-size: 0.85rem !important;
+    }
+
+    /* Números Mobile */
+    .numeros {
+        padding: 30px 15px !important;
+    }
+
+    .numeros h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .numeros-grid {
         grid-template-columns: 1fr !important;
         gap: 15px !important;
     }
 
-    /* Números Mobile */
-    .numeros-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
+    .numero-item {
+        padding: 15px !important;
+    }
+
+    .numero {
+        font-size: 2rem !important;
     }
 
     /* WhatsApp Mobile */
     .whatsapp-float {
-        bottom: 20px !important;
-        right: 20px !important;
-        width: 55px !important;
-        height: 55px !important;
+        bottom: 18px !important;
+        right: 18px !important;
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    .whatsapp-float i {
+        font-size: 1.5rem !important;
     }
 
     .whatsapp-tooltip {
         display: none !important;
     }
 
+    /* CTA Cards */
+    .cta-cards {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .cta-card {
+        padding: 20px 15px !important;
+    }
+
     /* Footer Mobile */
     .footer-content {
         grid-template-columns: 1fr !important;
         text-align: center !important;
+        gap: 25px !important;
     }
 }
