@@ -9,48 +9,107 @@ Tablets: de 768px ate 992px
 Desktops: de 992px ate 1200px
 Grandes telas : maior que 1200px*/
 
-@media print {/*empressora*/
-    *{
+@media print {
+
+    /*empressora*/
+    * {
         font-family: 'courier new';
     }
 
-    img#phone{display: none}
-    img#tablet{display: none}
-    img#impressora{display: none}
-    img#tv{display: none}
-    img#pc{display: none}
-} 
+    img#phone {
+        display: none
+    }
 
-@media screen and (min-width: 768px) and (max-width: 992px) 
-{/*tablet*/
+    img#tablet {
+        display: none
+    }
 
+    img#impressora {
+        display: none
+    }
 
-    img#phone{display: none}
-    img#tablet{display: none}
-    img#impressora{display: none}
-    img#tv{display: none}
-    img#pc{display: none}
-} 
+    img#tv {
+        display: none
+    }
 
-@media screen and (min-width: 992px) and (max-width: 1200px) 
-{/*desktop*/
-
-    
-    img#phone{display: none}
-    img#tablet{display: blnoneock}
-    img#impressora{display: none}
-    img#tv{display: none}
-    img#pc{display: none}
+    img#pc {
+        display: none
+    }
 }
-@media screen and (min-width: 1200px) 
- {/*grandes telas*/
-   
 
-    img#phone{display: none}
-    img#tablet{display: none}
-    img#impressora{display: none}
-    img#tv{display: none}
-    img#pc{display: none}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    /*tablet*/
+
+
+    img#phone {
+        display: none
+    }
+
+    img#tablet {
+        display: none
+    }
+
+    img#impressora {
+        display: none
+    }
+
+    img#tv {
+        display: none
+    }
+
+    img#pc {
+        display: none
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    /*desktop*/
+
+
+    img#phone {
+        display: none
+    }
+
+    img#tablet {
+        display: none
+    }
+
+    img#impressora {
+        display: none
+    }
+
+    img#tv {
+        display: none
+    }
+
+    img#pc {
+        display: none
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    /*grandes telas*/
+
+
+    img#phone {
+        display: none
+    }
+
+    img#tablet {
+        display: none
+    }
+
+    img#impressora {
+        display: none
+    }
+
+    img#tv {
+        display: none
+    }
+
+    img#pc {
+        display: none
+    }
 }
 
 /* Dispositivos Extra Pequenos (até 600px) */
@@ -61,26 +120,49 @@ Grandes telas : maior que 1200px*/
         background-color: var(--cor-fundo);
     }
 
+    /* Header Mobile - Compacto e Horizontal */
     header {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-        margin: 0;
+        flex-direction: row;
+        height: 70px;
+        padding: 10px 15px;
+        margin: 10px;
+        width: calc(100% - 20px);
+        border-radius: 10px;
+        gap: 10px;
+    }
+
+    header.scrolled {
+        height: 60px;
+        margin: 5px 10px;
+        padding: 8px 12px;
     }
 
     header .logo img {
-        width: 100px;
-        height: 100px;
+        display: none;
     }
 
-    nav .menu {
-        flex-direction: column;
-        width: 100%;
-        padding: 20px 0;
+    header.scrolled .logo img {
+        display: none;
     }
 
-    .social-icons {
-        padding: 20px 0;
+    /* Esconde o menu desktop no mobile */
+    header nav {
+        display: none;
+    }
+
+    /* Social icons no mobile */
+    header .social-icons {
+        gap: 8px;
+        margin-left: auto;
+    }
+
+    header .social-icons a {
+        width: 32px;
+        height: 32px;
+    }
+
+    header .social-icons a i {
+        font-size: 0.9rem;
     }
 
     .home1 {
@@ -150,7 +232,8 @@ Grandes telas : maior que 1200px*/
     #form-contato input,
     #form-contato textarea {
         padding: 10px;
-        font-size: 16px; /* Evita zoom em iOS */
+        font-size: 16px;
+        /* Evita zoom em iOS */
     }
 
     #form-contato button {
@@ -177,7 +260,7 @@ Grandes telas : maior que 1200px*/
         gap: 15px;
     }
 
-    ul > li > a {
+    ul>li>a {
         font-size: 0.9rem;
         padding: 8px 10px;
     }
@@ -272,7 +355,8 @@ Grandes telas : maior que 1200px*/
 
 /* Ajustes de Impressão */
 @media print {
-    header, 
+
+    header,
     footer,
     .social-icons,
     .cta-button,
@@ -426,7 +510,7 @@ Grandes telas : maior que 1200px*/
         width: 95%;
         margin: 0.3rem auto;
         padding: 0.8rem;
-}
+    }
 
     .calculadora-container {
         width: 95%;

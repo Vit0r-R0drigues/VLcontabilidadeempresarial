@@ -192,4 +192,21 @@ document.addEventListener('DOMContentLoaded', function () {
       header.classList.toggle('scrolled', window.scrollY > 50);
     }, 100));
   }
+
+  // Marcar link ativo no menu
+  const currentPath = window.location.pathname.toLowerCase();
+  const menuLinks = document.querySelectorAll('.menu a, .menu-items a');
+
+  menuLinks.forEach(link => {
+    const href = link.getAttribute('href').toLowerCase();
+    const linkPage = href.split('/').pop().replace('.html', '');
+    const currentPage = currentPath.split('/').pop().replace('.html', '');
+
+    // Verificar se é a página atual
+    if (linkPage === currentPage ||
+      (currentPage === '' && linkPage === 'index') ||
+      (currentPage === 'index' && linkPage === 'index')) {
+      link.classList.add('active');
+    }
+  });
 });

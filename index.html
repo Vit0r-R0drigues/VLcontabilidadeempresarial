@@ -27,6 +27,15 @@
     <meta property="og:url" content="https://vlcontabilidadeempresarial.com.br">
     <meta name="twitter:card" content="summary_large_image">
     <title>VL Contabilidade Empresarial - Soluções Contábeis Digitais</title>
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn-uicons.flaticon.com">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet'
         href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -107,27 +116,41 @@
 
     <main>
         <div class="home1">
-            <h1>Contabilidade Empresarial</h1>
-            <p>O parceiro certo que a sua empresa precisa</p>
-            <a href="HTML/contatos.html" class="cta-button">Fale Conosco</a>
+            <span class="hero-badge">⚡ Atendimento em até 24h</span>
+            <h1>Sua Contabilidade 100% Digital</h1>
+            <p>Gestão contábil sem burocracia. Foque no seu negócio.</p>
+            <a href="https://wa.me/5511916539680" class="cta-button cta-primary">Falar com Especialista</a>
         </div>
 
-        <div class="home2">
+        <section class="home2">
             <div class="conteudo1">
                 <h2 id="pri">Escritório 100% Digital</h2>
-                <h2 id="segu">Somos uma solução completa e integrada que o seu backoffice precisa.</h2>
+                <p id="segu">Tudo que sua empresa precisa, sem sair de casa.</p>
             </div>
-            <div class="conteudo2">
-                <p>Nós entregamos mais do que números, prezamos por soluções estratégicas que transformam a
-                    contabilidade em um aliado do crescimento. Cada cliente é tratado com atenção única, garantindo um
-                    serviço personalizado e focado nos resultados que sua empresa realmente precisa.</p>
-                <p>Combinamos expertise técnica e tecnologia de ponta para otimizar processos e trazer mais agilidade à
-                    sua gestão financeira. Nosso compromisso vai além da conformidade legal ajudamos você a identificar
-                    oportunidades de crescimento e a superar desafios com confiança e segurança.</p>
-                <p>Somos parceiros na sua jornada de sucesso. Mais do que falamos de serviço, nos posicionamos como
-                    consultores estratégicos, sempre ao seu lado para oferecer suporte, claro e resultados.</p>
+            <div class="beneficios-grid">
+                <div class="beneficio-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <div>
+                        <h3>Menos burocracia</h3>
+                        <p>Gestão contábil simplificada com tecnologia</p>
+                    </div>
+                </div>
+                <div class="beneficio-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <div>
+                        <h3>Você foca no crescimento</h3>
+                        <p>Nós cuidamos das obrigações fiscais e trabalhistas</p>
+                    </div>
+                </div>
+                <div class="beneficio-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <div>
+                        <h3>Atendimento humanizado</h3>
+                        <p>Suporte personalizado quando você precisar</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
         <section class="servicos-destaque">
             <h2>Nossos Serviços</h2>
@@ -135,38 +158,37 @@
                 <div class="servico-card">
                     <i class="fi fi-rr-file-invoice"></i>
                     <h3>Contabilidade Fiscal</h3>
-                    <p>Gestão completa das obrigações fiscais da sua empresa</p>
+                    <p>Impostos em dia, sem dor de cabeça</p>
                 </div>
                 <div class="servico-card">
                     <i class="fi fi-rr-users"></i>
                     <h3>Departamento Pessoal</h3>
-                    <p>Administração de folha de pagamento e benefícios</p>
+                    <p>Folha de pagamento simplificada</p>
                 </div>
                 <div class="servico-card">
                     <i class="fi fi-rr-chart-pie"></i>
                     <h3>Consultoria Empresarial</h3>
-                    <p>Análise e planejamento estratégico para seu negócio</p>
+                    <p>Decisões certas para crescer mais</p>
                 </div>
             </div>
             <a href="HTML/servicos.html" class="ver-mais">Ver todos os serviços</a>
         </section>
 
         <section class="numeros">
-            <h2>Nossos Números</h2>
+            <h2>Por que confiar em nós?</h2>
             <div class="numeros-grid">
                 <div class="numero-item">
-                    <span class="numero">+400</span>
-                    <p>Clientes Atendidos</p>
+                    <span class="numero" data-target="400">+400</span>
+                    <p>Empresas Confiam em Nós</p>
                 </div>
                 <div class="numero-item">
-                    <span class="numero">3</span>
-                    <p>Anos de Experiência</p>
+                    <span class="numero" data-target="3">3</span>
+                    <p>Anos de Confiança</p>
                 </div>
                 <div class="numero-item">
-                    <span class="numero">98%</span>
-                    <p>Clientes Satisfeitos</p>
+                    <span class="numero" data-target="98">98%</span>
+                    <p>de Satisfação</p>
                 </div>
-
             </div>
         </section>
 
@@ -235,9 +257,17 @@
         </div>
     </footer>
 
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5511916539680" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp"
+        aria-label="Contato via WhatsApp">
+        <i class="fi fi-brands-whatsapp"></i>
+        <span class="whatsapp-tooltip">Atendimento rápido</span>
+    </a>
+
     <!-- Script de cookies -->
     <script src="JS/cookies.js" defer></script>
     <script src="JS/footer.js" defer></script>
+    <script src="JS/menu.js" defer></script>
 </body>
 
 </html>
