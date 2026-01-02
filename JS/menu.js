@@ -55,7 +55,7 @@ class MobileMenu {
     if (this.menuBtn && this.menuItems) {
       this.menuBtn.addEventListener('click', this.toggleMenu);
       document.addEventListener('click', this.handleDocumentClick);
-      
+
       const menuLinks = this.menuItems.querySelectorAll('a');
       menuLinks.forEach(link => {
         link.addEventListener('click', this.handleLinkClick);
@@ -66,7 +66,7 @@ class MobileMenu {
   toggleMenu(e) {
     e.stopPropagation();
     const isActive = this.menuItems.classList.toggle('active');
-    
+
     this.menuBtn.style.transform = isActive ? 'rotate(90deg)' : 'rotate(0deg)';
     this.menuBtn.setAttribute('aria-expanded', isActive.toString());
     document.body.style.overflow = isActive ? 'hidden' : '';
@@ -93,12 +93,12 @@ class MobileMenu {
       this.menuBtn.removeEventListener('click', this.toggleMenu);
     }
     document.removeEventListener('click', this.handleDocumentClick);
-    
+
     const menuLinks = this.menuItems.querySelectorAll('a');
     menuLinks.forEach(link => {
       link.removeEventListener('click', this.handleLinkClick);
     });
-    
+
     const menuMobile = document.querySelector('.menu-mobile');
     if (menuMobile) menuMobile.remove();
   }
@@ -107,7 +107,7 @@ class MobileMenu {
 // Gerenciamento de redimensionamento
 function initMobileMenu() {
   const existingMenu = document.querySelector('.menu-mobile');
-  
+
   if (window.innerWidth <= 768) {
     if (!existingMenu) {
       new MobileMenu();
@@ -143,23 +143,36 @@ if (document.readyState === 'loading') {
 if (document.querySelector('.calculadora-page')) {
   const header = document.querySelector('header');
   const calculadora = document.querySelector('.calculadora-container');
-  
+
   if (header && calculadora) {
     const checkOverlap = () => {
       const headerRect = header.getBoundingClientRect();
       const calculadoraRect = calculadora.getBoundingClientRect();
-      
+
       header.classList.toggle('transparent', headerRect.bottom > calculadoraRect.top);
     };
 
-    const throttledCheck = _.throttle(checkOverlap, 100);
+    const throttle = (func, limit) => {
+      let inThrottle;
+      return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    }
+
+    const throttledCheck = throttle(checkOverlap, 100);
     window.addEventListener('scroll', throttledCheck);
     checkOverlap();
   }
 }
 
 // Controle de scroll do header principal
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const header = document.querySelector('header');
   if (header) {
     // Implementar throttling para eventos de scroll

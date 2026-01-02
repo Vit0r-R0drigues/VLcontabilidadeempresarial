@@ -1,23 +1,17 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: 'Inter';
-  font-display: swap;
-  src: url('../fonts/Inter-var.woff2') format('woff2');
+    font-family: 'Inter';
+    font-display: swap;
+    src: url('../fonts/Inter-var.woff2') format('woff2');
 }
 
-<link 
-  rel="preload" 
-  href="../fonts/Inter-var.woff2" 
-  as="font" 
-  type="font/woff2" 
-  crossorigin
->
 
-*{
+
+* {
     margin: 0;
     padding: 0;
-    border-radius: border-box;
+    box-sizing: border-box;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne:wght@400..800&display=swap');
@@ -46,7 +40,8 @@
     --border-radius: 5px;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     overflow-x: hidden;
     font-family: var(--fonte-padrao);
@@ -80,14 +75,14 @@ header {
     z-index: 1000;
 }
 
-header > div.logo img {
+header>div.logo img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
 
-header > div.logo img:hover {
+header>div.logo img:hover {
     transform: scale(1.05);
 }
 
@@ -100,7 +95,7 @@ header ul {
     gap: 20px;
 }
 
-ul > li > a {
+ul>li>a {
     font-family: var(--fonte-destaque);
     font-size: 0.9rem;
     font-weight: 550;
@@ -191,7 +186,7 @@ main {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
     transform: rotate(45deg);
     transition: 0.5s;
     opacity: 0;
@@ -225,14 +220,14 @@ main {
     background: rgba(26, 29, 35, 0.671);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
 .cta-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .cta-card i {
@@ -264,8 +259,13 @@ main {
 }
 
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
 }
 
 
@@ -283,12 +283,12 @@ div.social-icons {
     font-size: 1.2rem;
 }
 
-div.social-icons > a > i {
+div.social-icons>a>i {
     color: white;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.social-icons > a > i:hover {
+.social-icons>a>i:hover {
     color: var(--cor-hover);
     transform: scale(1.2);
 }
@@ -638,6 +638,7 @@ footer a:hover {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -649,6 +650,7 @@ footer a:hover {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -935,7 +937,7 @@ footer a:hover {
     color: var(--cor-texto);
 }
 
-.digital-content > p {
+.digital-content>p {
     font-size: 1.2em;
     color: var(--cor-texto-1);
     margin-bottom: 40px;
@@ -1015,19 +1017,26 @@ footer a:hover {
 }
 
 @keyframes flutuar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 @media (max-width: 768px) {
     .cta-botoes {
         flex-direction: column;
     }
-    
+
     .escritorio-digital {
         padding: 20px;
     }
-    
+
     .beneficios-digital {
         grid-template-columns: 1fr;
     }
@@ -1602,7 +1611,7 @@ footer a:hover {
         grid-template-columns: 1fr 1.5fr 1fr;
         gap: 2rem;
         padding: 2rem;
-}
+    }
 
     .resultado-cards {
         grid-template-columns: repeat(3, 1fr);
@@ -1694,27 +1703,27 @@ input[type="range"]::-webkit-slider-thumb:hover {
 @media (max-width: 768px) {
     .calculadora-page {
         padding: 1rem;
-}
+    }
 
     .calculadora-hero {
         padding: 1.5rem;
-}
+    }
 
     .calculadora-hero h1 {
         font-size: 2rem;
-}
+    }
 
     .calculadora-rescisao {
         padding: 1.5rem;
-}
+    }
 
     .buttons {
         flex-direction: column;
-}
+    }
 
     .btn {
         width: 100%;
-}
+    }
 
     table {
         display: block;
@@ -1818,6 +1827,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1905,7 +1915,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
     border-radius: 8px;
 }
 
-.btn-calcular, .btn-exemplo {
+.btn-calcular,
+.btn-exemplo {
     width: 100%;
     padding: 1rem;
     margin: 0.8rem 0;
@@ -2413,6 +2424,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -2421,4 +2433,145 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .resultado-cards {
     animation: fadeIn 0.5s ease forwards;
+}
+
+/* ===== Página de Erro 404 ===== */
+.erro-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 60px 20px;
+    text-align: center;
+    background-color: var(--cor-fundo);
+}
+
+.container-404 {
+    max-width: 600px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.container-404 h1 {
+    font-family: var(--fonte-destaque);
+    font-size: clamp(6rem, 15vw, 10rem);
+    font-weight: 800;
+    color: var(--cor-texto-1);
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container-404 .zero-animado {
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.container-404 h2 {
+    font-family: var(--fonte-destaque);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--cor-texto);
+    margin-bottom: 15px;
+}
+
+.container-404>p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.mensagem-divertida {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--cor-texto-1);
+}
+
+.mensagem-divertida p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.mensagem-divertida p:last-child {
+    margin-bottom: 0;
+}
+
+.botoes-404 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-voltar,
+.btn-contato {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--fonte-botoes);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar {
+    background: linear-gradient(45deg, var(--cor-texto-1), var(--cor-hover));
+    color: var(--cor-texto);
+}
+
+.btn-voltar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(232, 130, 14, 0.3);
+}
+
+.btn-contato {
+    background: transparent;
+    border: 2px solid var(--cor-texto-1);
+    color: var(--cor-texto);
+}
+
+.btn-contato:hover {
+    background: var(--cor-texto-1);
+    transform: translateY(-3px);
+}
+
+.calculadora-404 {
+    margin-top: 40px;
+}
+
+.calc-img {
+    max-width: 150px;
+    opacity: 0.6;
+    filter: grayscale(30%);
+    transition: all 0.3s ease;
+}
+
+.calc-img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
