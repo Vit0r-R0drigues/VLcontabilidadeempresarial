@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TQ0YTWHK9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -13,8 +12,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculadora de férias com regras CLT e descontos estimados de INSS/IRRF.">
-    <title>Calculadora de Férias 2026 - VL Contabilidade</title>
+    <meta name="description" content="Suite de calculadoras empresariais mobile-first para simulacoes tributarias, trabalhistas e financeiras.">
+    <title>Suite de Calculadoras Empresariais - VL Contabilidade</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet'
         href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -36,19 +35,19 @@
             </div>
             <nav role="navigation" aria-label="Menu principal">
                 <ul class="menu">
-                    <li><a href="../index.html" target="_self" title="Página inicial">
+                    <li><a href="../index.html" target="_self" title="Pagina inicial">
                             <i class="fi fi-rr-home"></i> Home</a>
                     </li>
-                    <li><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                    <li><a href="sobre.html" target="_self" title="Saiba mais sobre nos">
                             <i class="fi fi-rr-info"></i> Sobre</a>
                     </li>
-                    <li><a href="servicos.html" target="_self" title="Veja nossos serviços">
-                            <i class="fi fi-rr-briefcase"></i> Serviços</a>
+                    <li><a href="servicos.html" target="_self" title="Veja nossos servicos">
+                            <i class="fi fi-rr-briefcase"></i> Servicos</a>
                     </li>
                     <li><a href="contatos.html" target="_self" title="Entre em contato conosco">
                             <i class="fi fi-rr-phone-call"></i> Contatos</a>
                     </li>
-                    <li><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                    <li><a href="ferramentas.html" target="_self" title="Ferramentas uteis">
                             <i class="fi fi-rr-calculator"></i> Ferramentas</a>
                     </li>
                 </ul>
@@ -68,64 +67,23 @@
 
     <main class="calculadora-page">
         <section class="calculadora-hero">
-            <h1>Calculadora de Férias CLT 2026</h1>
-            <p>Simule férias, adicional de 1/3, abono pecuniário e descontos estimados.</p>
-            <div class="calc-info-badges">
-                <span class="calc-info-badge">Férias de 10 a 30 dias</span>
-                <span class="calc-info-badge">Abono de até 1/3 do período</span>
-                <span class="calc-info-badge">Simulação para folha</span>
+            <h1 id="calcTitle">Suite de Calculadoras Empresariais</h1>
+            <p id="calcDescription">
+                Selecione uma calculadora no hub e simule tributos, folha e indicadores em layout mobile-first.
+            </p>
+            <div class="calc-info-badges" id="calcBadges">
+                <span class="calc-info-badge">Mobile-first</span>
+                <span class="calc-info-badge">Resultados claros</span>
+                <span class="calc-info-badge">Foco em decisao</span>
             </div>
         </section>
 
         <div class="calculadora-container">
             <section class="entrada-dados">
-                <h2>Dados para Simulação</h2>
-                <div class="form-group">
-                    <label for="salarioBase">
-                        Salário Base Mensal
-                        <i class="fas fa-question-circle" title="Salário contratual mensal"></i>
-                    </label>
-                    <input type="number" id="salarioBase" min="0" step="0.01" placeholder="R$ 0,00">
-                </div>
-
-                <div class="form-group">
-                    <label for="diasFerias">
-                        Dias de Férias
-                        <i class="fas fa-question-circle"
-                            title="Período de gozo de férias para esta simulação (entre 10 e 30 dias)"></i>
-                    </label>
-                    <input type="number" id="diasFerias" min="10" max="30" value="30">
-                </div>
-
-                <div class="form-group">
-                    <label for="horasExtras">
-                        Média Variável Mensal (R$)
-                        <i class="fas fa-question-circle"
-                            title="Informe média de adicionais (horas extras, comissões etc.) se aplicável"></i>
-                    </label>
-                    <input type="number" id="horasExtras" min="0" step="0.01" placeholder="R$ 0,00">
-                </div>
-
-                <div class="form-group">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="venderFerias">
-                        Incluir abono pecuniário (venda de férias)
-                        <i class="fas fa-question-circle"
-                            title="Pode ser convertido em abono até 1/3 dos dias de férias"></i>
-                    </label>
-                    <div id="diasVendidosContainer" style="display: none;">
-                        <label for="diasVendidos">Dias vendidos</label>
-                        <input type="range" id="diasVendidos" min="0" max="10" value="10" step="1">
-                        <div class="range-markers">
-                            <span>0</span>
-                            <span id="maxDiasVendidos">10</span>
-                        </div>
-                        <span id="diasVendidosValue">10 dias</span>
-                    </div>
-                </div>
-
-                <button id="calcular" class="btn-calcular">Calcular Férias</button>
-                <button id="exemploValores" class="btn-exemplo">Simular com Exemplo</button>
+                <h2>Dados para Simulacao</h2>
+                <div id="dynamicFields"></div>
+                <button id="calcular" class="btn-calcular" type="button">Calcular</button>
+                <button id="exemploValores" class="btn-exemplo" type="button">Simular com Exemplo</button>
             </section>
 
             <section class="passo-a-passo">
@@ -133,51 +91,80 @@
                 <div class="progress-bar">
                     <div class="progress" id="progressBar"></div>
                 </div>
-                <div class="steps-container" id="stepsContainer"></div>
+                <div class="steps-container" id="stepsContainer">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Preencha os campos</h4>
+                            <p>Informe os dados principais para gerar a simulacao.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Calculo instantaneo</h4>
+                            <p>Aplicamos as regras e indicadores do modelo selecionado.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Leitura do resultado</h4>
+                            <p>Veja o valor final em destaque e os detalhes da decisao.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section class="resultados">
+            <section class="resultados suite-hidden" id="resultSection">
                 <h2>Resultado</h2>
                 <div class="resultado-cards">
-                    <div class="card">
-                        <h3>Total Bruto</h3>
-                        <p id="valorBruto">R$ 0,00</p>
-                    </div>
-                    <div class="card">
-                        <h3>Descontos</h3>
-                        <p id="valorDescontos">R$ 0,00</p>
-                    </div>
                     <div class="card destaque">
-                        <h3>Total Líquido</h3>
-                        <p id="valorLiquido">R$ 0,00</p>
+                        <h3 id="highlightLabel">Resultado principal</h3>
+                        <p id="highlightValue">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3 id="secondaryLabelA">Indicador A</h3>
+                        <p id="secondaryValueA">-</p>
+                    </div>
+                    <div class="card">
+                        <h3 id="secondaryLabelB">Indicador B</h3>
+                        <p id="secondaryValueB">-</p>
                     </div>
                 </div>
 
-                <div class="result-note-list">
-                    <div class="result-note-item"><strong>INSS estimado:</strong> <span id="inssResultado">R$ 0,00</span>
-                    </div>
-                    <div class="result-note-item"><strong>IRRF estimado:</strong> <span id="irrfResultado">R$ 0,00</span>
-                    </div>
-                    <div class="result-note-item"><strong>Abono pecuniário:</strong> <span id="abonoResultado">R$ 0,00</span>
-                    </div>
-                </div>
+                <div class="result-note-list" id="notesList"></div>
 
-                <div class="grafico-container">
+                <div class="grafico-container" id="chartWrap">
                     <canvas id="graficoResultados"></canvas>
                 </div>
 
-                <button id="verDetalhes" class="btn-detalhes">
-                    Como foi calculado
+                <div class="calc-cta-wrap">
+                    <a id="ctaEspecialista" class="calc-cta-button" href="contatos.html">
+                        Fale com um especialista e analise seu caso
+                    </a>
+                </div>
+
+                <button id="verDetalhes" class="btn-detalhes" type="button">
+                    Ver detalhes do calculo
                     <i class="fas fa-chevron-down"></i>
                 </button>
 
                 <div id="tabelaDetalhes" class="detalhes-calculo" style="display: none;">
-                    <div id="detalhesContainer"></div>
+                    <div id="detailBlocks" class="suite-detail-grid"></div>
                     <p class="calc-warning">
-                        Resultado para simulação operacional. A apuração oficial pode variar por convenção coletiva,
-                        rubricas e parâmetros do seu sistema de folha.
+                        Simulacao gerencial para apoio rapido. A apuracao oficial pode variar conforme enquadramento,
+                        obrigacoes acessorias e regras especificas do seu caso.
                     </p>
                 </div>
+            </section>
+
+            <section class="resultados suite-empty" id="emptyState">
+                <h2>Calculadora nao encontrada</h2>
+                <p class="suite-empty-message">
+                    Volte ao hub de ferramentas e escolha uma calculadora valida para iniciar a simulacao.
+                </p>
+                <a class="btn-calcular suite-empty-link" href="ferramentas.html">Ir para o Hub de Ferramentas</a>
             </section>
         </div>
     </main>
@@ -188,13 +175,13 @@
                 <h3>Contato</h3>
                 <p><i class="fi fi-rr-phone-call"></i> (11) 916539680</p>
                 <p><i class="fi fi-rr-envelope"></i> contato@vlcontabilidadeempresarial.com.br</p>
-                <p><i class="fi fi-rr-marker"></i> Escritório 100% Digital</p>
+                <p><i class="fi fi-rr-marker"></i> Escritorio 100% Digital</p>
             </div>
             <div class="footer-section">
-                <h3>Links Rápidos</h3>
+                <h3>Links Rapidos</h3>
                 <ul>
-                    <li><a href="sobre.html">Sobre Nós</a></li>
-                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="sobre.html">Sobre Nos</a></li>
+                    <li><a href="servicos.html">Servicos</a></li>
                     <li><a href="ferramentas.html">Ferramentas</a></li>
                     <li><a href="contatos.html">Contato</a></li>
                 </ul>
@@ -218,7 +205,12 @@
     </footer>
 
     <script src="../assets/js/calculadoras-ui.js" defer></script>
-    <script src="../assets/js/calculadora-ferias.js" defer></script>
+    <script src="../assets/js/calculadora-suite-formulas.js" defer></script>
+    <script src="../assets/js/calculadora-suite-defs-tributarias.js" defer></script>
+    <script src="../assets/js/calculadora-suite-defs-trabalhistas.js" defer></script>
+    <script src="../assets/js/calculadora-suite-defs-financeiras.js" defer></script>
+    <script src="../assets/js/calculadora-suite-defs-estrategicas.js" defer></script>
+    <script src="../assets/js/calculadora-suite-core.js" defer></script>
     <script src="../assets/js/cookies.js" defer></script>
     <script src="../assets/js/footer.js" defer></script>
 </body>

@@ -57,8 +57,26 @@
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/BLOG/blogemconstru%C3%A7%C3%A3o.html</loc>
         <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/irpf-2026-atualizacoes.html</loc>
+        <lastmod>2026-02-19</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/mei-2026-guia-completo.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/simples-nacional-2026-guia-pratico.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/landingpages/irrf2025.html</loc>

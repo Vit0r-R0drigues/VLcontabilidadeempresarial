@@ -403,6 +403,99 @@ body.calc-modern .result-note-item span {
     font-weight: 700;
 }
 
+body.calc-modern .suite-hidden {
+    display: none !important;
+}
+
+body.calc-modern .suite-field-help {
+    margin-top: 0.35rem;
+    display: block;
+    color: #4a6783;
+    font-size: 0.83rem;
+    line-height: 1.25;
+}
+
+body.calc-modern .suite-range-output {
+    margin-top: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    padding: 0.28rem 0.52rem;
+    border-radius: 999px;
+    border: 1px solid #b9d1e8;
+    background: #f1f8ff;
+    color: #123d61;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+body.calc-modern .calc-cta-wrap {
+    margin-top: 0.95rem;
+}
+
+body.calc-modern .calc-cta-button {
+    width: 100%;
+    min-height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #ffffff;
+    background: linear-gradient(120deg, #005691, #0a7dd1);
+    padding: 0.74rem 0.9rem;
+    box-shadow: 0 12px 20px rgba(13, 39, 63, 0.12);
+}
+
+body.calc-modern .calc-cta-button:hover {
+    filter: brightness(1.04);
+}
+
+body.calc-modern .suite-detail-grid {
+    display: grid;
+    gap: 0.56rem;
+}
+
+body.calc-modern .suite-detail-item {
+    border: 1px solid #d0e1f1;
+    border-radius: 12px;
+    padding: 0.62rem 0.68rem;
+    background: #fbfdff;
+}
+
+body.calc-modern .suite-detail-item h4 {
+    margin: 0;
+    font-size: 0.84rem;
+    color: #23527a;
+}
+
+body.calc-modern .suite-detail-item p {
+    margin: 0.32rem 0 0;
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: #123d61;
+}
+
+body.calc-modern .suite-empty {
+    text-align: center;
+}
+
+body.calc-modern .suite-empty-message {
+    margin: 0.25rem 0 0.9rem;
+    color: #3b5975;
+}
+
+body.calc-modern .suite-empty-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body.calc-modern .grafico-container {
     background: #f8fcff;
     border: 1px solid #d7e6f5;

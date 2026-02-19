@@ -1,301 +1,222 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog VL Contabilidade - Em Construção</title>
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/mediaquery.css">
-  <style>
-    /* Global Styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blog da VL Contabilidade com guias completos e atualizados sobre IRPF, MEI e Simples Nacional para empresarios e profissionais liberais.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://vlcontabilidadeempresarial.com.br/BLOG/blogemconstru%C3%A7%C3%A3o.html">
 
-    /* Canvas para animação de partículas */
-    #particleCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog VL Contabilidade | IRPF, MEI e Simples Nacional">
+    <meta property="og:description"
+        content="Conteudo pratico, linguagem clara e base legal oficial para manter sua empresa em dia com o Fisco.">
+    <meta property="og:url" content="https://vlcontabilidadeempresarial.com.br/BLOG/blogemconstru%C3%A7%C3%A3o.html">
+    <meta property="og:image" content="https://vlcontabilidadeempresarial.com.br/assets/img/LOGO.png">
 
-    /* Header e navegação */
-    header {
-      position: relative;
-      z-index: 1100;
-      background: rgba(255, 255, 255, 0);
-      padding: 10px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog VL Contabilidade | IRPF, MEI e Simples Nacional">
+    <meta name="twitter:description"
+        content="Guia atualizado para declaracao de IR, regras do MEI e rotina do Simples Nacional.">
+    <meta name="twitter:image" content="https://vlcontabilidadeempresarial.com.br/assets/img/LOGO.png">
 
-    .logo img {
-      height: 40px;
-    }
+    <title>Blog VL Contabilidade | IRPF, MEI e Simples Nacional</title>
 
-    nav ul.menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
+    <link rel="shortcut icon" href="../assets/img/FAVICON.ICO" type="image/x-icon">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="blog-mobile-first.css?v=1.0">
 
-    nav ul.menu li {
-      margin: 0 10px;
-    }
-
-    nav ul.menu li a {
-      text-decoration: none;
-      color: #D46D13;
-      font-weight: bold;
-    }
-
-    .social-icons a {
-      margin: 0 5px;
-      color: #005691;
-      font-size: 1.2rem;
-      text-decoration: none;
-    }
-
-    /* Container central da mensagem */
-    .container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background: #005691;
-      padding: 40px;
-      border-radius: 10px;
-      color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      width: 90%;
-      max-width: 600px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    .loading {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .dot {
-      animation: blink 1.5s infinite;
-    }
-
-    .dot:nth-child(2) {
-      animation-delay: 0.5s;
-    }
-
-    .dot:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    /* Formulário de inscrição */
-    .subscribe {
-      margin-top: 20px;
-    }
-
-    .subscribe input[type=email] {
-      padding: 10px;
-      width: 70%;
-      border: none;
-      border-radius: 5px;
-      margin-right: 10px;
-    }
-
-    .subscribe button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      background-color: #ffcc00;
-      color: #005691;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* Responsividade */
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Canvas para animação de partículas -->
-  <canvas id="particleCanvas"></canvas>
-
-  <!-- Header com logo, menu e redes sociais -->
-  <header>
-    <div class="logo">
-      <a href="../index.html"><img src="../assets/img/LOGO -P.png" alt="Logo VL Contabilidade"></a>
-    </div>
-    <nav role="navigation" aria-label="Menu principal">
-      <ul class="menu">
-        <li><a href="../index.html" title="Página inicial"><i class="fi fi-rr-home"></i> Home</a></li>
-        <li><a href="#" title="Acesse nosso blog"><i class="fi fi-rr-book-alt"></i> Blog</a></li>
-        <li><a href="../HTML/sobre.html" title="Saiba mais sobre nós"><i class="fi fi-rr-info"></i> Sobre</a></li>
-        <li><a href="../HTML/servicos.html" title="Veja nossos serviços"><i class="fi fi-rr-briefcase"></i> Serviços</a>
-        </li>
-        <li><a href="../HTML/contatos.html" title="Entre em contato conosco"><i class="fi fi-rr-phone-call"></i>
-            Contatos</a></li>
-        <li><a href="../HTML/ferramentas.html" title="Ferramentas úteis"><i class="fi fi-rr-calculator"></i>
-            Ferramentas</a></li>
-      </ul>
-    </nav>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i
-          class="fi fi-brands-instagram"></i></a>
-      <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i
-          class="fi fi-brands-whatsapp"></i></a>
-      <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i
-          class="fi fi-brands-youtube"></i></a>
-      <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank"
-        title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
-    </div>
-  </header>
-
-  <!-- Container principal -->
-  <div class="container">
-    <h1 id="typingHeader">Blog em Construção</h1>
-    <p id="typingMessage"></p>
-    <p class="loading">Carregando<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
-    <div class="subscribe">
-      <p>Receba uma notificação quando estivermos online:</p>
-      <input type="email" placeholder="Digite seu e-mail" id="emailInput">
-      <button onclick="subscribe()">Inscrever</button>
-    </div>
-  </div>
-
-  <!-- JavaScript para animações e interatividade -->
-  <script>
-    // Animação de partículas no fundo
-    const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const numParticles = 100;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 2 + 1;
-        this.alpha = Math.random();
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-          this.reset();
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog VL Contabilidade Empresarial",
+      "url": "https://vlcontabilidadeempresarial.com.br/BLOG/blogemconstru%C3%A7%C3%A3o.html",
+      "description": "Guias praticos para empresarios sobre IRPF, MEI e Simples Nacional.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "VL Contabilidade Empresarial",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vlcontabilidadeempresarial.com.br/assets/img/LOGO.png"
         }
       }
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.fillStyle = '#005691';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
     }
+    </script>
 
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < numParticles; i++) {
-        particles.push(new Particle());
-      }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://vlcontabilidadeempresarial.com.br/BLOG/posts/irpf-2026-atualizacoes.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://vlcontabilidadeempresarial.com.br/BLOG/posts/mei-2026-guia-completo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://vlcontabilidadeempresarial.com.br/BLOG/posts/simples-nacional-2026-guia-pratico.html"
+        }
+      ]
     }
+    </script>
+</head>
 
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animateParticles);
-    }
+<body class="blog-modern">
+    <a class="skip-link" href="#conteudo">Pular para o conteudo principal</a>
 
-    initParticles();
-    animateParticles();
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="../index.html" aria-label="Ir para a pagina inicial">
+                <img src="../assets/img/LOGO -P.png" alt="VL Contabilidade">
+                <span>VL Contabilidade<br>Blog</span>
+            </a>
+            <nav class="header-nav" aria-label="Navegacao principal do blog">
+                <a href="../index.html">Inicio</a>
+                <a href="blogemconstrução.html" aria-current="page">Blog</a>
+                <a href="../HTML/ferramentas.html">Ferramentas</a>
+                <a href="../HTML/contatos.html">Contato</a>
+            </nav>
+        </div>
+    </header>
 
-    // Efeito de digitação para a mensagem
-    const message = "Estamos preparando conteúdos incríveis para você. Aguarde!";
-    let index = 0;
-    function typeMessage() {
-      if (index < message.length) {
-        document.getElementById('typingMessage').innerHTML += message.charAt(index);
-        index++;
-        setTimeout(typeMessage, 50);
-      }
-    }
-    typeMessage();
+    <main id="conteudo" class="site-main">
+        <section class="hero" aria-labelledby="hero-title">
+            <p class="hero-kicker">Conteudo tecnico com linguagem simples</p>
+            <h1 id="hero-title">Atualizacoes que impactam caixa, imposto e tomada de decisao</h1>
+            <p>
+                Publicacoes pensadas para o empresario entender rapido o que mudou, o que fazer agora e como evitar
+                erros que geram multa.
+            </p>
+            <div class="hero-meta">
+                <span class="hero-chip"><i class="fi fi-rr-calendar"></i> Atualizado em 19/02/2026</span>
+                <span class="hero-chip"><i class="fi fi-rr-shield-check"></i> Base oficial gov.br e Receita</span>
+                <span class="hero-chip"><i class="fi fi-rr-mobile-notch"></i> Leitura mobile-first</span>
+            </div>
+        </section>
 
-    // Função de inscrição para notificações
-    function subscribe() {
-      const email = document.getElementById('emailInput').value;
-      if (email) {
-        alert('Obrigado! Notificaremos você assim que o blog estiver disponível.');
-        document.getElementById('emailInput').value = '';
-      } else {
-        alert('Por favor, digite um e-mail válido.');
-      }
-    }
-  </script>
+        <section class="toolbar" aria-label="Busca e filtros de posts">
+            <div class="search-wrap">
+                <i class="fi fi-rr-search"></i>
+                <input id="postSearch" class="search-input" type="search"
+                    placeholder="Buscar por IRPF, MEI, Simples, DAS, declaracao..." autocomplete="off">
+            </div>
+            <div class="filters" role="tablist" aria-label="Categorias de conteudo">
+                <button type="button" class="filter-btn active" data-filter="todos">Todos</button>
+                <button type="button" class="filter-btn" data-filter="irpf">IRPF</button>
+                <button type="button" class="filter-btn" data-filter="mei">MEI</button>
+                <button type="button" class="filter-btn" data-filter="simples">Simples Nacional</button>
+            </div>
+            <p id="resultsNote" class="results-note">Mostrando todos os posts.</p>
+        </section>
+
+        <section class="posts-grid" aria-label="Lista de posts relevantes">
+            <article class="post-card" data-category="irpf"
+                data-search="irpf 2026 declaracao tabela progressiva reducao lei 15270 imposto de renda prazo receita federal">
+                <div class="post-card__top">
+                    <span class="post-card__category">IRPF</span>
+                    <span class="post-card__time">Leitura rapida</span>
+                </div>
+                <h2>Imposto de Renda 2026: o que ja esta valendo e o que ainda depende de publicacao</h2>
+                <p>
+                    Entenda tabela mensal, reducao para renda de ate R$ 5 mil, status do prazo da declaracao 2026 e o
+                    plano pratico para nao correr no fim.
+                </p>
+                <a class="post-card__link" href="posts/irpf-2026-atualizacoes.html">Ler post completo <i
+                        class="fi fi-rr-arrow-right"></i></a>
+            </article>
+
+            <article class="post-card" data-category="mei"
+                data-search="mei 2026 dasn simei das mensal limite 81000 desenquadramento icms iss inss declaracao anual">
+                <div class="post-card__top">
+                    <span class="post-card__category">MEI</span>
+                    <span class="post-card__time">Checklist pratico</span>
+                </div>
+                <h2>MEI 2026 sem erro: DAS, limite de faturamento, declaracao anual e pontos de atencao</h2>
+                <p>
+                    Guia direto ao ponto com valores, prazos e rotina mensal para manter CNPJ ativo e evitar multas por
+                    atraso ou desenquadramento.
+                </p>
+                <a class="post-card__link" href="posts/mei-2026-guia-completo.html">Ler post completo <i
+                        class="fi fi-rr-arrow-right"></i></a>
+            </article>
+
+            <article class="post-card" data-category="simples"
+                data-search="simples nacional 2026 opcao pgdas das dia 20 lc 123 cgsn 140 sublimite faturamento">
+                <div class="post-card__top">
+                    <span class="post-card__category">Simples Nacional</span>
+                    <span class="post-card__time">Guia estrategico</span>
+                </div>
+                <h2>Simples Nacional 2026: regras de enquadramento, rotina de pagamento e controle de pendencias</h2>
+                <p>
+                    Veja quem pode entrar no regime, como evitar indeferimento por debitos e qual rotina operacional
+                    reduz risco fiscal no dia a dia.
+                </p>
+                <a class="post-card__link" href="posts/simples-nacional-2026-guia-pratico.html">Ler post completo <i
+                        class="fi fi-rr-arrow-right"></i></a>
+            </article>
+        </section>
+
+        <section class="section-card" aria-labelledby="fontes-title">
+            <h2 id="fontes-title">Fontes oficiais utilizadas nos posts</h2>
+            <p>
+                Todo conteudo foi escrito com base em paginas oficiais da Receita Federal, Portal do Simples Nacional e
+                gov.br, com linguagem adaptada para facilitar a leitura do publico empresarial.
+            </p>
+            <ul class="sources-list">
+                <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026"
+                        target="_blank" rel="noopener noreferrer">Receita Federal - Tabelas IRPF 2026</a></li>
+                <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/prazo-de-entrega-da-declaracao"
+                        target="_blank" rel="noopener noreferrer">Receita Federal - Prazo de entrega da declaracao</a></li>
+                <li><a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/perguntas-frequentes"
+                        target="_blank" rel="noopener noreferrer">Portal do Empreendedor - Perguntas frequentes MEI</a></li>
+                <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2025/fevereiro/receita-federal-alerta-para-noticias-falsas-sobre-mudancas-no-mei"
+                        target="_blank" rel="noopener noreferrer">Receita Federal - Alerta sobre noticias falsas no MEI</a></li>
+                <li><a href="https://www.gov.br/pt-br/servicos/optar-pelo-simples-nacional" target="_blank"
+                        rel="noopener noreferrer">gov.br - Servico: optar pelo Simples Nacional</a></li>
+                <li><a href="https://www8.receita.fazenda.gov.br/SimplesNacional/Noticias/NoticiaCompleta.aspx?id=ca63fef8-55cc-4f13-95d9-4ca7699984d6"
+                        target="_blank" rel="noopener noreferrer">Portal Simples - Opcoes de Janeiro/2026</a></li>
+            </ul>
+        </section>
+
+        <section class="cta-box" aria-labelledby="cta-title">
+            <h2 id="cta-title">Quer aplicar isso na sua empresa sem risco fiscal?</h2>
+            <p>
+                Fale com nosso contador responsavel para revisar seu enquadramento, organizar seu calendario tributario e
+                reduzir retrabalho com conformidade.
+            </p>
+            <a class="btn-main" href="../HTML/contatos.html">Falar com especialista agora</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <p class="footer-brand">VL Contabilidade Empresarial</p>
+                <p>Conteudo tecnico para decisao empresarial com clareza, base legal e foco em resultado.</p>
+            </div>
+            <div class="footer-links">
+                <a href="../HTML/sobre.html">Sobre</a>
+                <a href="../HTML/servicos.html">Servicos</a>
+                <a href="../HTML/contatos.html">Contato</a>
+                <a href="https://wa.me/5511916539680" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+            <p>&copy; <span id="currentYear">2026</span> VL Contabilidade Empresarial.</p>
+        </div>
+    </footer>
+
+    <script src="blog-mobile.js" defer></script>
 </body>
 
 </html>
