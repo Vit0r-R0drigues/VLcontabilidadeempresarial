@@ -125,6 +125,16 @@ function atualizarProgresso(percentual) {
     }
 }
 
+function focarResultadoComDestaque() {
+    const secao = document.querySelector('.resultados');
+    if (!secao) return;
+    if (calcUI && typeof calcUI.focusResults === 'function') {
+        calcUI.focusResults(secao);
+        return;
+    }
+    secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function salvarUltimosDados() {
     const dados = {
         salarioBase: elementos.salarioBase?.value || '',
@@ -226,6 +236,21 @@ function atualizarDetalhes(dados) {
             </table>
         </div>
     `;
+    aplicarDataLabelsTabela(elementos.detalhesContainer.querySelector('table'));
+}
+
+function aplicarDataLabelsTabela(tabela) {
+    if (!tabela) return;
+    const headers = Array.from(tabela.querySelectorAll('thead th')).map((th) => th.textContent.trim());
+    if (headers.length === 0) return;
+
+    tabela.querySelectorAll('tbody tr').forEach((linha) => {
+        Array.from(linha.children).forEach((celula, indice) => {
+            if (!celula.hasAttribute('data-label')) {
+                celula.setAttribute('data-label', headers[indice] || `Campo ${indice + 1}`);
+            }
+        });
+    });
 }
 
 function validarDados(exibirAlerta = false) {
@@ -248,7 +273,7 @@ function validarDados(exibirAlerta = false) {
 }
 
 function calcularFerias(exibirAlerta = false) {
-    if (!validarDados(exibirAlerta)) return;
+    if (!validarDados(exibirAlerta)) return false;
 
     atualizarProgresso(20);
 
@@ -314,6 +339,7 @@ function calcularFerias(exibirAlerta = false) {
 
     salvarUltimosDados();
     atualizarProgresso(100);
+    return true;
 }
 
 function preencherExemplo() {
@@ -353,8 +379,15 @@ function registrarEventos() {
     });
     elementos.salarioBase?.addEventListener('input', () => calcularFerias(false));
     elementos.horasExtras?.addEventListener('input', () => calcularFerias(false));
-    elementos.calcular?.addEventListener('click', () => calcularFerias(true));
-    elementos.exemploValores?.addEventListener('click', preencherExemplo);
+    elementos.calcular?.addEventListener('click', () => {
+        if (calcularFerias(true)) {
+            focarResultadoComDestaque();
+        }
+    });
+    elementos.exemploValores?.addEventListener('click', () => {
+        preencherExemplo();
+        focarResultadoComDestaque();
+    });
     elementos.verDetalhes?.addEventListener('click', toggleDetalhes);
 }
 

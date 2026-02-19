@@ -115,9 +115,9 @@ function preencherTabelaReferencia() {
 
         const linha = document.createElement('tr');
         linha.innerHTML = `
-            <td>${limiteTexto.trim()}</td>
-            <td>${(faixa.aliquota * 100).toFixed(1).replace('.', ',')}%</td>
-            <td>${formatarMoeda(faixa.deducao)}</td>
+            <td data-label="Faixa de Base Mensal">${limiteTexto.trim()}</td>
+            <td data-label="Alíquota">${(faixa.aliquota * 100).toFixed(1).replace('.', ',')}%</td>
+            <td data-label="Parcela a Deduzir">${formatarMoeda(faixa.deducao)}</td>
         `;
         tbody.appendChild(linha);
     });
@@ -190,6 +190,16 @@ function atualizarProgresso(percentual) {
         }
         barra.style.width = `${percentual}%`;
     }
+}
+
+function focarResultadoComDestaque() {
+    const secao = document.querySelector('.resultados');
+    if (!secao) return;
+    if (calcUI && typeof calcUI.focusResults === 'function') {
+        calcUI.focusResults(secao);
+        return;
+    }
+    secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function calcular() {
@@ -281,8 +291,14 @@ function registrarEventos() {
         }
     });
 
-    document.getElementById('calcular')?.addEventListener('click', calcular);
-    document.getElementById('exemploValores')?.addEventListener('click', preencherExemplo);
+    document.getElementById('calcular')?.addEventListener('click', () => {
+        calcular();
+        focarResultadoComDestaque();
+    });
+    document.getElementById('exemploValores')?.addEventListener('click', () => {
+        preencherExemplo();
+        focarResultadoComDestaque();
+    });
     document.getElementById('verDetalhes')?.addEventListener('click', toggleDetalhes);
 }
 

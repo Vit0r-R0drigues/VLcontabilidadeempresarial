@@ -32,6 +32,16 @@ function marcarAtualizacao(elemento) {
     calcUI.pulseElement(elemento);
 }
 
+function focarResultadoComDestaque() {
+    const secao = refs.resultado || document.querySelector('.resultados');
+    if (!secao) return;
+    if (calcUI && typeof calcUI.focusResults === 'function') {
+        calcUI.focusResults(secao);
+        return;
+    }
+    secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function round2(valor) {
     return Math.round((Number(valor) + Number.EPSILON) * 100) / 100;
 }
@@ -220,8 +230,8 @@ function montarLinhasResultado(partes) {
         const tr = document.createElement('tr');
         const classeValor = parte.valor < 0 ? 'valor-negativo' : 'valor-positivo';
         tr.innerHTML = `
-            <td>${parte.label}</td>
-            <td class="${classeValor}">${formatarMoeda(parte.valor)}</td>
+            <td data-label="Descrição">${parte.label}</td>
+            <td data-label="Valor" class="${classeValor}">${formatarMoeda(parte.valor)}</td>
         `;
         refs.resultadoTabela.appendChild(tr);
     });
@@ -327,6 +337,7 @@ function calcularRescisao() {
     atualizarGrafico(round2(proventos), round2(descontos), round2(fgtsTotal));
     salvarDados();
     atualizarProgresso(100);
+    focarResultadoComDestaque();
 }
 
 function preencherExemplo() {

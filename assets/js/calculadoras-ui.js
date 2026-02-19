@@ -78,6 +78,36 @@
         pulseElement(barElement);
     }
 
+    function getStickyHeaderOffset() {
+        const header = document.querySelector('body.calc-modern header');
+        if (!header) return 16;
+        return Math.min(Math.max(Math.ceil(header.getBoundingClientRect().height) + 12, 12), 120);
+    }
+
+    function spotlightResults(section) {
+        if (!section) return;
+        section.classList.remove('resultado-em-foco');
+        void section.offsetWidth;
+        section.classList.add('resultado-em-foco');
+
+        if (section.__calcSpotlightTimer) {
+            clearTimeout(section.__calcSpotlightTimer);
+        }
+        section.__calcSpotlightTimer = setTimeout(() => {
+            section.classList.remove('resultado-em-foco');
+        }, 1600);
+    }
+
+    function focusResults(section) {
+        if (!section) return;
+        const top = Math.max(section.getBoundingClientRect().top + window.scrollY - getStickyHeaderOffset(), 0);
+        window.scrollTo({
+            top,
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        });
+        spotlightResults(section);
+    }
+
     function revealOnScroll() {
         const blocks = document.querySelectorAll('.calculadora-hero, .entrada-dados, .passo-a-passo, .resultados');
         blocks.forEach((block) => block.classList.add('calc-reveal'));
@@ -115,6 +145,8 @@
         animateCurrency,
         animatePercent,
         pulseElement,
-        updateProgress
+        updateProgress,
+        focusResults,
+        spotlightResults
     };
 })();
