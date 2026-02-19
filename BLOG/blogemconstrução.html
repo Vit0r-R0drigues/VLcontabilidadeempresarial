@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog VL Contabilidade - Em Construção</title>
-  <link rel="stylesheet" href="/ESTILOS/style.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/mediaquery.css">
   <style>
     /* Global Styles */
     body {
@@ -14,6 +16,7 @@
       padding: 0;
       overflow: hidden;
     }
+
     /* Canvas para animação de partículas */
     #particleCanvas {
       position: fixed;
@@ -23,6 +26,7 @@
       height: 100%;
       z-index: 0;
     }
+
     /* Header e navegação */
     header {
       position: relative;
@@ -34,29 +38,35 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .logo img {
       height: 40px;
     }
+
     nav ul.menu {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
     }
+
     nav ul.menu li {
       margin: 0 10px;
     }
+
     nav ul.menu li a {
       text-decoration: none;
       color: #D46D13;
       font-weight: bold;
     }
+
     .social-icons a {
       margin: 0 5px;
       color: #005691;
       font-size: 1.2rem;
       text-decoration: none;
     }
+
     /* Container central da mensagem */
     .container {
       position: absolute;
@@ -73,31 +83,51 @@
       width: 90%;
       max-width: 600px;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
     }
+
     p {
       font-size: 1.2rem;
       margin-bottom: 20px;
     }
+
     .loading {
       font-size: 1.5rem;
       font-weight: bold;
     }
+
     .dot {
       animation: blink 1.5s infinite;
     }
-    .dot:nth-child(2) { animation-delay: 0.5s; }
-    .dot:nth-child(3) { animation-delay: 1s; }
-    @keyframes blink {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.5s;
     }
+
+    .dot:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
     /* Formulário de inscrição */
     .subscribe {
       margin-top: 20px;
     }
+
     .subscribe input[type=email] {
       padding: 10px;
       width: 70%;
@@ -105,6 +135,7 @@
       border-radius: 5px;
       margin-right: 10px;
     }
+
     .subscribe button {
       padding: 10px 15px;
       border: none;
@@ -114,47 +145,58 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     /* Responsividade */
     @media (max-width: 600px) {
       .container {
         padding: 20px;
       }
+
       h1 {
         font-size: 1.8rem;
       }
+
       p {
         font-size: 1rem;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- Canvas para animação de partículas -->
   <canvas id="particleCanvas"></canvas>
-  
+
   <!-- Header com logo, menu e redes sociais -->
   <header>
     <div class="logo">
-      <a href="index.html"><img src="/IMAGENS/LOGO -P.png" alt="Logo VL Contabilidade"></a>
+      <a href="index.html"><img src="/assets/img/LOGO -P.png" alt="Logo VL Contabilidade"></a>
     </div>
     <nav role="navigation" aria-label="Menu principal">
       <ul class="menu">
         <li><a href="../index.html" title="Página inicial"><i class="fi fi-rr-home"></i> Home</a></li>
         <li><a href="#" title="Acesse nosso blog"><i class="fi fi-rr-book-alt"></i> Blog</a></li>
         <li><a href="../HTML/sobre.html" title="Saiba mais sobre nós"><i class="fi fi-rr-info"></i> Sobre</a></li>
-        <li><a href="../HTML/servicos.html" title="Veja nossos serviços"><i class="fi fi-rr-briefcase"></i> Serviços</a></li>
-        <li><a href="../HTML/contatos.html" title="Entre em contato conosco"><i class="fi fi-rr-phone-call"></i> Contatos</a></li>
-        <li><a href="../HTML/ferramentas.html" title="Ferramentas úteis"><i class="fi fi-rr-calculator"></i> Ferramentas</a></li>
+        <li><a href="../HTML/servicos.html" title="Veja nossos serviços"><i class="fi fi-rr-briefcase"></i> Serviços</a>
+        </li>
+        <li><a href="../HTML/contatos.html" title="Entre em contato conosco"><i class="fi fi-rr-phone-call"></i>
+            Contatos</a></li>
+        <li><a href="../HTML/ferramentas.html" title="Ferramentas úteis"><i class="fi fi-rr-calculator"></i>
+            Ferramentas</a></li>
       </ul>
     </nav>
     <div class="social-icons">
-      <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
-      <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i class="fi fi-brands-whatsapp"></i></a>
-      <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
-      <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+      <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" title="Siga-nos no Instagram"><i
+          class="fi fi-brands-instagram"></i></a>
+      <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i
+          class="fi fi-brands-whatsapp"></i></a>
+      <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" title="Inscreva-se em nosso canal"><i
+          class="fi fi-brands-youtube"></i></a>
+      <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank"
+        title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
     </div>
   </header>
-  
+
   <!-- Container principal -->
   <div class="container">
     <h1 id="typingHeader">Blog em Construção</h1>
@@ -166,7 +208,7 @@
       <button onclick="subscribe()">Inscrever</button>
     </div>
   </div>
-  
+
   <!-- JavaScript para animações e interatividade -->
   <script>
     // Animação de partículas no fundo
@@ -174,14 +216,14 @@
     const ctx = canvas.getContext('2d');
     let particles = [];
     const numParticles = 100;
-    
+
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    
+
     class Particle {
       constructor() {
         this.reset();
@@ -211,14 +253,14 @@
         ctx.restore();
       }
     }
-    
+
     function initParticles() {
       particles = [];
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
       }
     }
-    
+
     function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => {
@@ -227,10 +269,10 @@
       });
       requestAnimationFrame(animateParticles);
     }
-    
+
     initParticles();
     animateParticles();
-    
+
     // Efeito de digitação para a mensagem
     const message = "Estamos preparando conteúdos incríveis para você. Aguarde!";
     let index = 0;
@@ -242,7 +284,7 @@
       }
     }
     typeMessage();
-    
+
     // Função de inscrição para notificações
     function subscribe() {
       const email = document.getElementById('emailInput').value;
@@ -255,4 +297,5 @@
     }
   </script>
 </body>
+
 </html>

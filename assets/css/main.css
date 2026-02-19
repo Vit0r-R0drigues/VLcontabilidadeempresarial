@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 /* Fontes carregadas via Google Fonts no HTML */
 
@@ -43,7 +43,7 @@ body {
 
 body {
     color: var(--cor-texto);
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), var(--cor-fundo)), url(../IMAGENS/FT-HOME.png);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), var(--cor-fundo)), url(../img/FT-HOME.png);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;

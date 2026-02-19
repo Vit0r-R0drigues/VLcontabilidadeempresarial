@@ -28,7 +28,8 @@ class MobileMenu {
     menuMobile.className = 'menu-mobile';
 
     const path = window.location.pathname;
-    const isSubfolder = /(\/html|\/HTML)(\/|$)/i.test(path);
+    // Fix: Include BLOG and other potential subfolders in the check
+    const isSubfolder = /(\/html|\/HTML|\/BLOG|\/blog)(\/|$)/i.test(path);
     const basePath = isSubfolder ? '../' : '';
 
     menuMobile.innerHTML = `
