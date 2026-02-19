@@ -1,4 +1,4 @@
-﻿class MobileMenu {
+class MobileMenu {
   static instance = null;
 
   constructor() {
