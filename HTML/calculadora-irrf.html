@@ -8,26 +8,27 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-5TQ0YTWHK9');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora IRRF 2025 - VL Contabilidade</title>
+    <meta name="description" content="Calculadora IRRF mensal atualizada com regras vigentes em 2026.">
+    <title>Calculadora IRRF 2026 - VL Contabilidade</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet'
         href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../assets/img/FAVICON.ICO" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/mediaquery.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/cookies.css">
+    <link rel="stylesheet" href="../assets/css/calculadoras-mobile-first.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/menu.js" defer></script>
 </head>
 
-<body>
+<body class="calc-modern">
     <div class="bg">
         <header>
             <div class="logo">
@@ -66,54 +67,60 @@
     </div>
 
     <main class="calculadora-page">
-        <div class="calculadora-hero">
-            <h1>Calculadora IRRF 2025</h1>
-            <p>Calcule o Imposto de Renda Retido na Fonte com todas as deduções</p>
-        </div>
+        <section class="calculadora-hero">
+            <h1>Calculadora IRRF Mensal 2026</h1>
+            <p>Simule retenção em folha com INSS progressivo e regra de redução da Lei 15.270/2025.</p>
+            <div class="calc-info-badges">
+                <span class="calc-info-badge">Tabela vigente jan/2026</span>
+                <span class="calc-info-badge">Desconto simplificado: R$ 607,20</span>
+                <span class="calc-info-badge">Dedução por dependente: R$ 189,59</span>
+            </div>
+        </section>
 
         <div class="calculadora-container">
-            <!-- Seção de Entrada de Dados -->
             <section class="entrada-dados">
-                <h2>Dados para Cálculo</h2>
+                <h2>Dados para Simulação</h2>
                 <div class="form-group">
                     <label for="salarioBruto">
-                        Salário Bruto
-                        <i class="fas fa-question-circle" title="Informe seu salário mensal bruto"></i>
+                        Rendimento Bruto Mensal
+                        <i class="fas fa-question-circle"
+                            title="Valor mensal sujeito à retenção de IRRF (antes dos descontos)"></i>
                     </label>
                     <input type="number" id="salarioBruto" placeholder="R$ 0,00" step="0.01" min="0">
                 </div>
 
                 <div class="form-group">
                     <label for="dependentes">
-                        Número de Dependentes
-                        <i class="fas fa-question-circle" title="Cada dependente dá direito a dedução de R$ 189,59"></i>
+                        Dependentes para IRRF
+                        <i class="fas fa-question-circle"
+                            title="Cada dependente gera dedução mensal de R$ 189,59"></i>
                     </label>
                     <input type="number" id="dependentes" placeholder="0" min="0">
                 </div>
 
                 <div class="form-group">
                     <label for="pensaoAlimenticia">
-                        Pensão Alimentícia
-                        <i class="fas fa-question-circle" title="Valor mensal da pensão alimentícia (se houver)"></i>
+                        Pensão Alimentícia (dedutível)
+                        <i class="fas fa-question-circle" title="Informe valor dedutível por decisão judicial"></i>
                     </label>
                     <input type="number" id="pensaoAlimenticia" placeholder="R$ 0,00" step="0.01" min="0">
                 </div>
 
                 <div class="form-group">
                     <label for="outrasDeducoes">
-                        Outras Deduções
-                        <i class="fas fa-question-circle" title="Outras deduções permitidas por lei"></i>
+                        Outras Deduções Legais
+                        <i class="fas fa-question-circle"
+                            title="Previdência oficial/privada e outras deduções admitidas"></i>
                     </label>
                     <input type="number" id="outrasDeducoes" placeholder="R$ 0,00" step="0.01" min="0">
                 </div>
 
                 <button id="calcular" class="btn-calcular">Calcular IRRF</button>
-                <button id="exemploValores" class="btn-exemplo">Simular com Valores de Exemplo</button>
+                <button id="exemploValores" class="btn-exemplo">Simular com Exemplo</button>
             </section>
 
-            <!-- Seção do Passo a Passo -->
             <section class="passo-a-passo">
-                <h2>Como é Calculado</h2>
+                <h2>Etapas do Cálculo</h2>
                 <div class="progress-bar">
                     <div class="progress" id="progressBar"></div>
                 </div>
@@ -121,37 +128,36 @@
                     <div class="step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h4>Cálculo do INSS</h4>
-                            <p>Primeiro é calculado o desconto do INSS de acordo com a tabela progressiva</p>
+                            <h4>INSS Progressivo</h4>
+                            <p>Aplicação da tabela previdenciária por faixas.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h4>Deduções</h4>
-                            <p>São aplicadas as deduções de dependentes, pensão alimentícia e outras</p>
+                            <h4>Dedução mais vantajosa</h4>
+                            <p>Comparação entre deduções legais e desconto simplificado mensal.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h4>Base de Cálculo</h4>
-                            <p>É calculada a base após todas as deduções</p>
+                            <h4>IRRF bruto por faixa</h4>
+                            <p>Aplicação da tabela progressiva de IRRF vigente.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h4>Alíquota IRRF</h4>
-                            <p>É aplicada a alíquota correspondente à faixa da base de cálculo</p>
+                            <h4>Redução legal</h4>
+                            <p>Aplicação da redução prevista na Lei 15.270/2025, quando cabível.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Seção de Resultados -->
             <section class="resultados">
-                <h2>Resultado Final</h2>
+                <h2>Resultado</h2>
                 <div class="resultado-cards">
                     <div class="card">
                         <h3>Base de Cálculo</h3>
@@ -159,12 +165,21 @@
                     </div>
                     <div class="card">
                         <h3>Alíquota Efetiva</h3>
-                        <p id="aliquota">0%</p>
+                        <p id="aliquota">0,00%</p>
                     </div>
                     <div class="card destaque">
-                        <h3>IRRF a Recolher</h3>
+                        <h3>IRRF Estimado</h3>
                         <p id="irrfFinal">R$ 0,00</p>
                     </div>
+                </div>
+
+                <div class="result-note-list">
+                    <div class="result-note-item"><strong>INSS calculado:</strong> <span id="inssCalculado">R$ 0,00</span>
+                    </div>
+                    <div class="result-note-item"><strong>Dedução aplicada:</strong> <span id="deducaoAplicada">-</span>
+                    </div>
+                    <div class="result-note-item"><strong>Redução Lei 15.270/2025:</strong> <span
+                            id="reducaoAplicada">R$ 0,00</span></div>
                 </div>
 
                 <div class="grafico-container">
@@ -172,7 +187,7 @@
                 </div>
 
                 <button id="verDetalhes" class="btn-detalhes">
-                    Ver Tabela Progressiva
+                    Ver tabela de referência
                     <i class="fas fa-chevron-down"></i>
                 </button>
 
@@ -181,40 +196,18 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Base de Cálculo</th>
+                                    <th>Faixa de Base Mensal</th>
                                     <th>Alíquota</th>
                                     <th>Parcela a Deduzir</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Até R$ 2.259,20</td>
-                                    <td>0%</td>
-                                    <td>R$ 0,00</td>
-                                </tr>
-                                <tr>
-                                    <td>De R$ 2.259,21 até R$ 2.826,65</td>
-                                    <td>7,5%</td>
-                                    <td>R$ 169,44</td>
-                                </tr>
-                                <tr>
-                                    <td>De R$ 2.826,66 até R$ 3.751,05</td>
-                                    <td>15%</td>
-                                    <td>R$ 381,44</td>
-                                </tr>
-                                <tr>
-                                    <td>De R$ 3.751,06 até R$ 4.664,68</td>
-                                    <td>22,5%</td>
-                                    <td>R$ 662,77</td>
-                                </tr>
-                                <tr>
-                                    <td>Acima de R$ 4.664,68</td>
-                                    <td>27,5%</td>
-                                    <td>R$ 896,00</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tabelaIRRFTbody"></tbody>
                         </table>
                     </div>
+                    <p class="calc-warning">
+                        Simulação com base na tabela divulgada para 2026 e parâmetros públicos vigentes.
+                        A retenção final pode variar conforme regras específicas da folha e eventos do mês.
+                    </p>
                 </div>
             </section>
         </div>
@@ -255,7 +248,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="../assets/js/calculadora-irrf.js" defer></script>
     <script src="../assets/js/cookies.js" defer></script>
     <script src="../assets/js/footer.js" defer></script>

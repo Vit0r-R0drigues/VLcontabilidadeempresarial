@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -8,14 +8,14 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-5TQ0YTWHK9');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ferramentas e calculadoras para auxiliar na gestão do seu negócio">
-    <title>Ferramentas - VL Contabilidade Empresarial</title>
+    <meta name="description"
+        content="Hub de ferramentas da VL Contabilidade: calculadoras por grupo, links úteis oficiais e modelos de apoio para rotina fiscal e trabalhista.">
+    <title>Hub de Ferramentas 2026 - VL Contabilidade Empresarial</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet'
         href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/mediaquery.css">
     <link rel="stylesheet" href="../assets/css/cookies.css">
+    <link rel="stylesheet" href="../assets/css/ferramentas-hub.css?v=3.0">
 </head>
 
 <body>
@@ -32,19 +33,19 @@
         </div>
         <nav>
             <ul class="menu">
-                <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                <li><a href="../index.html" target="_self" title="Página inicial">
                         <i class="fi fi-rr-home"></i> Home</a>
                 </li>
-                <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                <li><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
                         <i class="fi fi-rr-info"></i> Sobre</a>
                 </li>
-                <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                <li><a href="servicos.html" target="_self" title="Veja nossos serviços">
                         <i class="fi fi-rr-briefcase"></i> Serviços</a>
                 </li>
-                <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                <li><a href="contatos.html" target="_self" title="Entre em contato conosco">
                         <i class="fi fi-rr-phone-call"></i> Contatos</a>
                 </li>
-                <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                <li><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
                         <i class="fi fi-rr-calculator"></i> Ferramentas</a>
                 </li>
             </ul>
@@ -56,85 +57,222 @@
                     class="fi fi-brands-whatsapp"></i></a>
             <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"
                 title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
-            <a href="https://www.google.com/search?sca_esv=8ee07bb068160570&sxsrf=AHTn8zr0_BM6lVu8rv6ySbMa4pufPiyMzw%3A1737928997476&q=VL%20Contabilidade%20Empresarial&stick=H4sIAAAAAAAAAONgU1I1qLCwTE4zMDNLSjI1Skm1TDK2MqgwMTdJSUy1sDBJNTAyTjQ3WcQqE-aj4JyfV5KYlJmTmZKYkqrgmltQlFqcWJSZmAMALORsN0gAAAA&mat=CQwi07iXATQK&ved=2ahUKEwjP_KeEspSLAxV5rZUCHRm4FrIQrMcEegQIGxAC"
-                target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+            <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank"
+                title="Acesse nosso perfil no Google"><i class="fi fi-brands-google"></i></a>
         </div>
     </header>
 
-    <main class="ferramentas-page">
-        <section class="ferramentas-hero">
-            <h1>Ferramentas</h1>
-            <p>Calculadoras e recursos para facilitar sua gestão</p>
+    <main class="ferramentas-page hub-page">
+        <section class="hub-hero">
+            <span class="hub-kicker"><i class="fi fi-rr-bolt"></i> Hub de Ferramentas 2026</span>
+            <h1>Calculadoras, links e modelos organizados por rotina real</h1>
+            <p>
+                Página reformulada em estrutura mobile-first para acelerar buscas no dia a dia.
+                Os cálculos estão alinhados com parâmetros atuais de IRRF/INSS e as rotinas foram separadas por grupo.
+            </p>
+            <div class="hub-hero-actions">
+                <a class="hub-btn hub-btn-primary" href="#calc-section">Explorar Calculadoras</a>
+                <a class="hub-btn hub-btn-ghost" href="#docs-section">Ir para Modelos</a>
+            </div>
         </section>
 
-        <section class="calculadoras">
-            <h2>Calculadoras</h2>
-            <div class="calculadoras-grid">
-                <div class="calculadora-item">
-                    <i class="fi fi-rr-calculator"></i>
-                    <h3>Calculadora de Imposto de Renda</h3>
-                    <p>Calcule o IRRF 2025 com todas as deduções</p>
-                    <a href="calculadora-irrf.html" class="btn-calculadora">Acessar Calculadora</a>
-                </div>
+        <section class="hub-toolbar" aria-label="Busca de ferramentas">
+            <div class="hub-search-wrap">
+                <i class="fi fi-rr-search"></i>
+                <input id="toolSearch" class="hub-search-input" type="search"
+                    placeholder="Buscar por IRRF, férias, FGTS, eSocial, CNPJ..." autocomplete="off">
+            </div>
+            <div class="hub-filters" role="tablist" aria-label="Filtro de recursos">
+                <button type="button" class="hub-filter-btn active" data-filter="todos">Todos</button>
+                <button type="button" class="hub-filter-btn" data-filter="calculadora">Calculadoras</button>
+                <button type="button" class="hub-filter-btn" data-filter="tributos">Tributos</button>
+                <button type="button" class="hub-filter-btn" data-filter="trabalhista">Trabalhista</button>
+                <button type="button" class="hub-filter-btn" data-filter="link">Links úteis</button>
+                <button type="button" class="hub-filter-btn" data-filter="documento">Modelos</button>
+            </div>
+            <p id="resultsInfo" class="hub-results-info">Mostrando todos os recursos.</p>
+        </section>
 
-                <div class="calculadora-item">
-                    <i class="fi fi-rr-user"></i>
+        <section id="calc-section" class="hub-section">
+            <div class="hub-section-header">
+                <h2>Calculadoras por Grupo</h2>
+                <p>Tributário, folha e desligamento</p>
+            </div>
+
+            <div class="hub-grid">
+                <article class="hub-card" data-kind="calculadora" data-groups="tributos folha irrf"
+                    data-search="calculadora irrf imposto renda retido fonte 2026 lei 15270 inss"
+                    data-fav-id="calc-irrf">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-calculator"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Tributário</span>
+                            <span class="hub-badge hub-badge--law">IRRF 2026</span>
+                        </div>
+                    </div>
+                    <h3>Calculadora IRRF Mensal</h3>
+                    <p>Com tabela IRRF 2026, INSS progressivo atualizado e regra de redução da Lei 15.270/2025.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-irrf.html">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false">
+                            <i class="fi fi-rr-star"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="hub-card" data-kind="calculadora" data-groups="trabalhista folha ferias"
+                    data-search="calculadora ferias clt abono pecuniario adicional um terco inss irrf folha"
+                    data-fav-id="calc-ferias">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-time-check"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Folha</span>
+                            <span class="hub-badge hub-badge--law">CLT</span>
+                        </div>
+                    </div>
                     <h3>Calculadora de Férias</h3>
-                    <p>Calcule o valor das férias dos funcionários</p>
-                    <a href="calculadora-ferias.html" class="btn-calculadora">Acessar Calculadora Completa</a>
-                </div>
+                    <p>Simula férias com adicional constitucional, abono pecuniário e descontos estimados.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-ferias.html">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false">
+                            <i class="fi fi-rr-star"></i>
+                        </button>
+                    </div>
+                </article>
 
-                <div class="calculadora-item">
-                    <i class="fi fi-rr-briefcase"></i>
+                <article class="hub-card" data-kind="calculadora" data-groups="trabalhista rescisao fgts"
+                    data-search="calculadora rescisao trabalhista fgts multa 40 aviso previo decimo terceiro"
+                    data-fav-id="calc-rescisao">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-briefcase"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Desligamento</span>
+                            <span class="hub-badge hub-badge--law">FGTS</span>
+                        </div>
+                    </div>
                     <h3>Calculadora de Rescisão</h3>
-                    <p>Calcule valores de rescisão trabalhista</p>
-                    <a href="calculadora-rescisao.html" class="btn-calculadora">Acessar Calculadora Completa</a>
-                </div>
+                    <p>Simulação por tipo de desligamento, com férias/13º proporcionais e FGTS + multa quando cabível.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-rescisao.html">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false">
+                            <i class="fi fi-rr-star"></i>
+                        </button>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section class="links-uteis">
-            <h2>Links Úteis</h2>
-            <div class="links-grid">
-                <a href="http://www.receita.fazenda.gov.br/" target="_blank" class="link-item">
-                    <i class="fi fi-rr-building"></i>
+        <section class="hub-section">
+            <div class="hub-section-header">
+                <h2>Links Úteis por Tema</h2>
+                <p>Fontes oficiais para consulta diária</p>
+            </div>
+
+            <div class="hub-grid">
+                <article class="hub-card" data-kind="link" data-groups="link tributos"
+                    data-search="receita federal meu imposto de renda e-cac dctfweb">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-building"></i></span>
+                        <span class="hub-badge">Tributos</span>
+                    </div>
                     <h3>Receita Federal</h3>
-                    <p>Acesse o portal da Receita Federal</p>
-                </a>
-                <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" class="link-item">
-                    <i class="fi fi-rr-document"></i>
+                    <p>Meu Imposto de Renda, e-CAC e serviços federais para pessoa física e jurídica.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="https://www.gov.br/receitafederal/pt-br" target="_blank"
+                            rel="noopener noreferrer">Acessar</a>
+                    </div>
+                </article>
+
+                <article class="hub-card" data-kind="link" data-groups="link trabalhista"
+                    data-search="eSocial folha de pagamento eventos trabalhistas SST">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-users"></i></span>
+                        <span class="hub-badge">Trabalhista</span>
+                    </div>
+                    <h3>Portal eSocial</h3>
+                    <p>Eventos periódicos, SST e manuais para obrigações trabalhistas digitais.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="https://www.gov.br/esocial/pt-br" target="_blank"
+                            rel="noopener noreferrer">Acessar</a>
+                    </div>
+                </article>
+
+                <article class="hub-card" data-kind="link" data-groups="link empreendedor"
+                    data-search="portal empreendedor mei abertura empresa cnpj">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-briefcase"></i></span>
+                        <span class="hub-badge">Empreendedor</span>
+                    </div>
                     <h3>Portal do Empreendedor</h3>
-                    <p>Informações para MEI e empresários</p>
-                </a>
-                <a href="https://www.gov.br/esocial/pt-br" target="_blank" class="link-item">
-                    <i class="fi fi-rr-users"></i>
-                    <h3>e-Social</h3>
-                    <p>Sistema de escrituração digital</p>
-                </a>
+                    <p>Abertura, alteração e regularização de MEI com orientações oficiais.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor"
+                            target="_blank" rel="noopener noreferrer">Acessar</a>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section class="documentos">
-            <h2>Documentos e Modelos</h2>
-            <div class="documentos-grid">
-                <div class="documento-item">
-                    <i class="fi fi-rr-file-pdf"></i>
-                    <h3>Contrato Social</h3>
-                    <p>Modelo básico de contrato social</p>
-                    <a href="#" class="download-btn">Download</a>
-                </div>
-                <div class="documento-item">
-                    <i class="fi fi-rr-file-pdf"></i>
-                    <h3>Recibo de Pagamento</h3>
-                    <p>Modelo de recibo de pagamento</p>
-                    <a href="#" class="download-btn">Download</a>
-                </div>
-                <div class="documento-item">
-                    <i class="fi fi-rr-file-pdf"></i>
-                    <h3>Termo de Rescisão</h3>
-                    <p>Modelo de termo de rescisão</p>
-                    <a href="#" class="download-btn">Download</a>
-                </div>
+        <section id="docs-section" class="hub-section">
+            <div class="hub-section-header">
+                <h2>Documentos e Modelos</h2>
+                <p>Materiais para agilizar coleta de dados</p>
+            </div>
+
+            <div class="hub-grid">
+                <article class="hub-card" data-kind="documento" data-groups="documento imposto"
+                    data-search="checklist imposto de renda documentos declaracao irpf">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-check"></i></span>
+                        <span class="hub-badge">Checklist</span>
+                    </div>
+                    <h3>Checklist IRPF</h3>
+                    <p>Lista imprimível para organizar documentos da declaração de imposto de renda.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="checklist.html" target="_blank">Abrir</a>
+                    </div>
+                </article>
+
+                <article class="hub-card" data-kind="documento" data-groups="documento trabalhista"
+                    data-search="trct termo rescisao contrato trabalho caixa fgts">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-file"></i></span>
+                        <span class="hub-badge">Rescisão</span>
+                    </div>
+                    <h3>TRCT e guias FGTS</h3>
+                    <p>Central de referência para documentos de desligamento e movimentação do FGTS.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="https://www.gov.br/trabalho-e-emprego/pt-br/servicos/empregador"
+                            target="_blank" rel="noopener noreferrer">Acessar</a>
+                    </div>
+                </article>
+
+                <article class="hub-card" data-kind="documento" data-groups="documento fiscal"
+                    data-search="certidao negativa debitos cnd pgfn regularidade fiscal">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-shield-check"></i></span>
+                        <span class="hub-badge">Fiscal</span>
+                    </div>
+                    <h3>Certidões e Regularidade</h3>
+                    <p>Emissão de certidões e consultas de pendências fiscais nos portais oficiais.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="https://www.regularize.pgfn.gov.br/" target="_blank"
+                            rel="noopener noreferrer">Acessar</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="hub-section-cta">
+            <h2>Precisa de um fluxo sob medida para a sua empresa?</h2>
+            <p>
+                Se você quiser, estruturamos uma esteira personalizada com rotina mensal, calendário de obrigações e
+                acompanhamento de indicadores.
+            </p>
+            <div class="hub-hero-actions">
+                <a class="hub-btn hub-btn-primary" href="contatos.html">Falar com Especialista</a>
+                <a class="hub-btn hub-btn-ghost" href="https://wa.me/5511916539680" target="_blank"
+                    rel="noopener noreferrer">WhatsApp Direto</a>
             </div>
         </section>
     </main>
@@ -143,7 +281,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contato</h3>
-                <p><i class="fi fi-rr-phone-call"></i> (11) 916539680</p>
+                <p><i class="fi fi-rr-phone-call"></i> (11) 91653-9680</p>
                 <p><i class="fi fi-rr-envelope"></i> contato@vlcontabilidadeempresarial.com.br</p>
                 <p><i class="fi fi-rr-marker"></i> Escritório 100% Digital</p>
             </div>
@@ -168,20 +306,17 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a
-                    href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+            <p>&copy; <span id="current-year">2024</span> Contabilidade Empresarial. Todos os direitos reservados.
+                Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor
+                    Rodrigues</a></p>
         </div>
     </footer>
 
-    <script>
-        // O código das calculadoras foi removido pois será movido para páginas específicas
-    </script>
-
-    <!-- Cookie Consent -->
     <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.js"></script>
-    <!-- Script de cookies -->
     <script src="../assets/js/cookies.js" defer></script>
     <script src="../assets/js/menu.js" defer></script>
+    <script src="../assets/js/footer.js" defer></script>
+    <script src="../assets/js/ferramentas.js" defer></script>
 </body>
 
 </html>

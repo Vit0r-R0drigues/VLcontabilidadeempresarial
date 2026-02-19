@@ -1,290 +1,160 @@
-// Variáveis globais para elementos do DOM
-let tipoRescisao, salarioBruto, tempoServico, mesesAnoAtual, diasTrabalhados, avisoPrevio;
-let btnCalcular, btnExemplo, btnDetalhes;
-let tabelaDetalhes, progressBar;
-let resultados = {}; // Adicionando variável global para resultados
+const RESCISAO_CONFIG = {
+    storageKey: 'vl_rescisao_2026_form_v1'
+};
 
-// Constantes para o cálculo do INSS 2025
-const FAIXAS_INSS = [
-    { limite: 1412.00, aliquota: 0.075 },
-    { limite: 2666.68, aliquota: 0.09 },
-    { limite: 4000.03, aliquota: 0.12 },
-    { limite: 7786.02, aliquota: 0.14 }
-];
+let graficoRescisao = null;
 
-// Constantes para o cálculo do IRRF 2025
-const FAIXAS_IRRF = [
-    { limite: 2259.20, aliquota: 0, deducao: 0 },
-    { limite: 2826.65, aliquota: 0.075, deducao: 169.44 },
-    { limite: 3751.05, aliquota: 0.15, deducao: 381.44 },
-    { limite: 4664.68, aliquota: 0.225, deducao: 662.77 },
-    { limite: Infinity, aliquota: 0.275, deducao: 896.00 }
-];
+const refs = {};
 
-let graficoResultados = null;
-
-// Função para validar se todos os elementos foram inicializados
-function validarInicializacao() {
-    const elementos = {
-        tipoRescisao,
-        salarioBruto,
-        tempoServico,
-        mesesAnoAtual,
-        diasTrabalhados,
-        btnCalcular,
-        btnExemplo,
-        btnDetalhes,
-        tabelaDetalhes,
-        progressBar
-    };
-
-    for (const [nome, elemento] of Object.entries(elementos)) {
-        if (!elemento) {
-            console.error(`Elemento ${nome} não foi inicializado corretamente`);
-            return false;
-        }
-    }
-    return true;
+function getEl(id) {
+    return document.getElementById(id);
 }
 
-// Função para formatar valores monetários
-function formatMoney(value) {
-    if (typeof value !== 'number') {
-        console.error('Valor inválido para formatação monetária:', value);
-        return 'R$ 0,00';
-    }
-    return new Intl.NumberFormat('pt-BR', {
+function formatarMoeda(valor) {
+    return Number(valor || 0).toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-    }).format(value);
+    });
 }
 
-// Função para mostrar/ocultar campos baseado no tipo de rescisão
-document.getElementById('tipoRescisao').addEventListener('change', function() {
-    const tipo = this.value;
-    const diasTrabalhadosGroup = document.getElementById('diasTrabalhadosGroup');
-    const avisoPrevioGroup = document.getElementById('avisoPrevioGroup');
-    const motivoRescisaoGroup = document.getElementById('motivoRescisaoGroup');
+function round2(valor) {
+    return Math.round((Number(valor) + Number.EPSILON) * 100) / 100;
+}
 
-    // Reset display
-    diasTrabalhadosGroup.classList.remove('hidden');
-    avisoPrevioGroup.classList.add('hidden');
-    motivoRescisaoGroup.classList.add('hidden');
+function mapearElementos() {
+    [
+        'tipoRescisao',
+        'salarioBruto',
+        'tempoServico',
+        'mesesAnoAtual',
+        'diasTrabalhados',
+        'avisoPrevio',
+        'motivoRescisao',
+        'feriasVencidas',
+        'saldoFGTS',
+        'descontosExtras',
+        'calcular',
+        'exemploValores',
+        'verDetalhes',
+        'tabelaDetalhes',
+        'resultado',
+        'resultadoTabela',
+        'progressBar',
+        'valorProventos',
+        'valorDescontos',
+        'valorFGTS',
+        'valorLiquido',
+        'graficoResultados',
+        'diasTrabalhadosGroup',
+        'avisoPrevioGroup',
+        'motivoRescisaoGroup',
+        'stepsContainer'
+    ].forEach((id) => {
+        refs[id] = getEl(id);
+    });
+}
 
-    // Show relevant fields based on type
-    if (tipo === 'pedido') {
-        avisoPrevioGroup.classList.remove('hidden');
-    } else if (tipo === 'prazo_determinado') {
-        motivoRescisaoGroup.classList.remove('hidden');
+function salvarDados() {
+    const payload = {
+        tipoRescisao: refs.tipoRescisao?.value || '',
+        salarioBruto: refs.salarioBruto?.value || '',
+        tempoServico: refs.tempoServico?.value || '',
+        mesesAnoAtual: refs.mesesAnoAtual?.value || '',
+        diasTrabalhados: refs.diasTrabalhados?.value || '',
+        avisoPrevio: refs.avisoPrevio?.checked || false,
+        motivoRescisao: refs.motivoRescisao?.value || '',
+        feriasVencidas: refs.feriasVencidas?.value || '0',
+        saldoFGTS: refs.saldoFGTS?.value || '',
+        descontosExtras: refs.descontosExtras?.value || ''
+    };
+
+    localStorage.setItem(RESCISAO_CONFIG.storageKey, JSON.stringify(payload));
+}
+
+function restaurarDados() {
+    let payload;
+    try {
+        payload = JSON.parse(localStorage.getItem(RESCISAO_CONFIG.storageKey) || '{}');
+    } catch (error) {
+        payload = {};
     }
-});
 
-// Função para validar campos com mensagens mais específicas
-function validarCampos() {
-    const campos = [
-        { 
-            elem: tipoRescisao, 
-            msg: 'Selecione o tipo de rescisão',
-            validacao: (valor) => valor !== ''
-        },
-        { 
-            elem: salarioBruto, 
-            msg: 'Informe um salário válido (maior que zero)',
-            validacao: (valor) => !isNaN(valor) && parseFloat(valor) > 0
-        },
-        { 
-            elem: tempoServico, 
-            msg: 'Informe o tempo de serviço (mínimo 0)',
-            validacao: (valor) => !isNaN(valor) && parseInt(valor) >= 0
-        },
-        { 
-            elem: mesesAnoAtual, 
-            msg: 'Informe os meses do ano atual (entre 1 e 12)',
-            validacao: (valor) => !isNaN(valor) && parseInt(valor) >= 1 && parseInt(valor) <= 12
-        },
-        { 
-            elem: diasTrabalhados, 
-            msg: 'Informe os dias trabalhados (entre 0 e 31)',
-            validacao: (valor) => !isNaN(valor) && parseInt(valor) >= 0 && parseInt(valor) <= 31
+    Object.entries(payload).forEach(([chave, valor]) => {
+        if (!refs[chave]) return;
+        if (refs[chave].type === 'checkbox') {
+            refs[chave].checked = !!valor;
+        } else {
+            refs[chave].value = valor;
         }
-    ];
+    });
+}
 
-    for (const campo of campos) {
-        const valor = campo.elem.value;
-        campo.elem.classList.remove('error');
+function atualizarProgresso(valor) {
+    if (refs.progressBar) refs.progressBar.style.width = `${valor}%`;
+}
 
-        if (!campo.validacao(valor)) {
-            campo.elem.classList.add('error');
-            alert(campo.msg);
-            campo.elem.focus();
-            return false;
-        }
+function calcularAvisoProporcionalDias(mesesContrato) {
+    const meses = Math.max(0, Number(mesesContrato) || 0);
+    const anosCompletos = Math.floor(meses / 12);
+    let dias = 30;
+    if (anosCompletos > 1) dias += (anosCompletos - 1) * 3;
+    return Math.min(90, dias);
+}
+
+function atualizarCamposVisiveis() {
+    const tipo = refs.tipoRescisao?.value || '';
+
+    if (refs.avisoPrevioGroup) {
+        refs.avisoPrevioGroup.style.display = tipo === 'pedido' ? 'block' : 'none';
+    }
+    if (refs.motivoRescisaoGroup) {
+        refs.motivoRescisaoGroup.style.display = tipo === 'prazo_determinado' ? 'block' : 'none';
+    }
+}
+
+function validarFormulario() {
+    if (!refs.tipoRescisao?.value) {
+        alert('Selecione o tipo de rescisão.');
+        return false;
+    }
+
+    const salario = parseFloat(refs.salarioBruto?.value) || 0;
+    if (salario <= 0) {
+        alert('Informe um salário base válido.');
+        return false;
+    }
+
+    const mesesAno = parseInt(refs.mesesAnoAtual?.value, 10);
+    if (Number.isNaN(mesesAno) || mesesAno < 0 || mesesAno > 12) {
+        alert('Meses trabalhados no ano devem estar entre 0 e 12.');
+        return false;
+    }
+
+    const dias = parseInt(refs.diasTrabalhados?.value, 10);
+    if (Number.isNaN(dias) || dias < 0 || dias > 31) {
+        alert('Dias trabalhados no mês devem estar entre 0 e 31.');
+        return false;
     }
 
     return true;
 }
 
-// Função para calcular férias proporcionais
-function calcularFerias(salario, mesesAnoAtual, diasTrabalhados) {
-    const mesesAjustados = mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0);
-    const base = (salario / 12) * mesesAjustados;
-    const terco = base / 3;
-    const total = base + terco;
+function atualizarGrafico(proventos, descontos, fgtsTotal) {
+    if (!refs.graficoResultados) return;
+    const liquido = Math.max(0, proventos - descontos);
+    const ctx = refs.graficoResultados.getContext('2d');
 
-    return {
-        base: base,
-        terco: terco,
-        total: total,
-        mesesAjustados: mesesAjustados
-    };
-}
-
-// Função para calcular décimo terceiro
-function calcularDecimoTerceiro(salario, mesesAnoAtual, diasTrabalhados, tipoRescisao) {
-    const mesesAjustados = mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0);
-    
-    // Verificar regra especial para justa causa
-    if (tipoRescisao === 'justa_causa' && mesesAjustados < 3) {
-        return {
-            valor: 0,
-            mensagem: 'Não há direito ao 13º salário (menos de 3 meses trabalhados)'
-        };
+    if (graficoRescisao) {
+        graficoRescisao.destroy();
     }
 
-    return {
-        valor: (salario / 12) * mesesAjustados,
-        mensagem: null
-    };
-}
-
-// Função para atualizar detalhes do cálculo
-function atualizarDetalhesCalculo(ferias, decimoTerceiro) {
-    const detalhesFerias = document.getElementById('detalhesFerias');
-    const detalhesDecimoTerceiro = document.getElementById('detalhesDecimoTerceiro');
-
-    if (!detalhesFerias || !detalhesDecimoTerceiro) return;
-
-    // Atualizar detalhes das férias
-    detalhesFerias.innerHTML = `
-        <div class="detalhe-linha">
-            <span>Base (${ferias.mesesAjustados} meses):</span>
-            <span>${formatMoney(ferias.base)}</span>
-        </div>
-        <div class="detalhe-linha">
-            <span>1/3 Constitucional:</span>
-            <span>${formatMoney(ferias.terco)}</span>
-        </div>
-        <div class="detalhe-linha">
-            <span>Total:</span>
-            <span>${formatMoney(ferias.total)}</span>
-        </div>
-    `;
-
-    // Atualizar detalhes do décimo terceiro
-    detalhesDecimoTerceiro.innerHTML = decimoTerceiro.mensagem 
-        ? `<div class="detalhe-linha">${decimoTerceiro.mensagem}</div>`
-        : `<div class="detalhe-linha">
-            <span>Valor Proporcional:</span>
-            <span>${formatMoney(decimoTerceiro.valor)}</span>
-           </div>`;
-}
-
-// Função para calcular INSS (tabela 2025)
-function calcularINSS(salarioBruto) {
-    let inss = 0;
-    let salarioRestante = salarioBruto;
-    let faixaAnterior = 0;
-
-    for (let faixa of FAIXAS_INSS) {
-        if (salarioBruto > faixaAnterior) {
-            let baseCalculo = Math.min(salarioBruto, faixa.limite) - faixaAnterior;
-            inss += baseCalculo * faixa.aliquota;
-            faixaAnterior = faixa.limite;
-        }
-    }
-
-    return Math.min(inss, 876.97); // Teto do INSS 2025
-}
-
-// Função para calcular IRRF (tabela 2025)
-function calcularIRRF(baseCalculo) {
-    for (let faixa of FAIXAS_IRRF) {
-        if (baseCalculo <= faixa.limite) {
-            return Math.max(0, (baseCalculo * faixa.aliquota) - faixa.deducao);
-        }
-    }
-    return 0;
-}
-
-// Função para atualizar campos visíveis baseado no tipo de rescisão
-function atualizarCamposVisiveis() {
-    const tipo = tipoRescisao.value;
-    const diasTrabalhadosGroup = document.getElementById('diasTrabalhadosGroup');
-    const avisoPrevioGroup = document.getElementById('avisoPrevioGroup');
-    const motivoRescisaoGroup = document.getElementById('motivoRescisaoGroup');
-
-    if (!diasTrabalhadosGroup || !avisoPrevioGroup || !motivoRescisaoGroup) return;
-
-    // Reset display
-    diasTrabalhadosGroup.classList.remove('hidden');
-    avisoPrevioGroup.classList.add('hidden');
-    motivoRescisaoGroup.classList.add('hidden');
-
-    // Show relevant fields based on type
-    if (tipo === 'pedido') {
-        avisoPrevioGroup.classList.remove('hidden');
-    } else if (tipo === 'prazo_determinado') {
-        motivoRescisaoGroup.classList.remove('hidden');
-    }
-}
-
-// Função para preencher valores de exemplo
-function preencherExemplo() {
-    tipoRescisao.value = 'sem_justa_causa';
-    salarioBruto.value = '3000';
-    tempoServico.value = '24';
-    mesesAnoAtual.value = '6';
-    diasTrabalhados.value = '15';
-    if (avisoPrevio) {
-        avisoPrevio.checked = false;
-    }
-    calcular();
-}
-
-// Função para alternar visibilidade dos detalhes
-function toggleDetalhes() {
-    if (!tabelaDetalhes || !btnDetalhes) return;
-    
-    const isHidden = tabelaDetalhes.style.display === 'none';
-    tabelaDetalhes.style.display = isHidden ? 'block' : 'none';
-    btnDetalhes.classList.toggle('active', isHidden);
-    
-    const icon = btnDetalhes.querySelector('i');
-    if (icon) {
-        icon.className = isHidden ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
-    }
-}
-
-// Função para atualizar o gráfico
-function atualizarGrafico(proventos, descontos, fgts, outrosValores) {
-    const ctx = document.getElementById('graficoResultados').getContext('2d');
-    
-    if (graficoResultados) {
-        graficoResultados.destroy();
-    }
-
-    graficoResultados = new Chart(ctx, {
+    graficoRescisao = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Proventos', 'Descontos', 'FGTS', 'Outros Valores'],
+            labels: ['Proventos', 'Descontos', 'FGTS + multa', 'Líquido'],
             datasets: [{
-                data: [proventos, descontos, fgts, outrosValores],
-                backgroundColor: [
-                    '#4CAF50',
-                    '#F44336',
-                    '#2196F3',
-                    '#FFC107'
-                ]
+                data: [proventos, descontos, fgtsTotal, liquido],
+                backgroundColor: ['#0a7dd1', '#c2410c', '#d46d13', '#0f766e']
             }]
         },
         options: {
@@ -293,179 +163,205 @@ function atualizarGrafico(proventos, descontos, fgts, outrosValores) {
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: {
-                        color: '#fff'
-                    }
+                    labels: { color: '#334155' }
                 }
             }
         }
     });
 }
 
-// Função para animar a barra de progresso
-function animarProgresso(progresso) {
-    const progressBar = document.getElementById('progressBar');
-    progressBar.style.width = `${progresso}%`;
-}
+function atualizarPassos(dados) {
+    if (!refs.stepsContainer) return;
 
-// Função principal de cálculo
-function calcular() {
-    if (!validarCampos()) {
-        return;
-    }
+    const etapas = [
+        `Saldo de salário: ${formatarMoeda(dados.saldoSalario)} (${dados.diasTrabalhados} dias trabalhados)`,
+        `13º proporcional: ${formatarMoeda(dados.decimoTerceiro)} (${dados.mesesConsiderados} avos)`,
+        `Férias proporcionais + 1/3: ${formatarMoeda(dados.feriasProp + dados.tercoFeriasProp)}`,
+        `FGTS + multa aplicável: ${formatarMoeda(dados.fgtsTotal)}`
+    ];
 
-    try {
-        // Obter valores dos campos
-        const tipo = tipoRescisao.value;
-        const salarioBase = parseFloat(salarioBruto.value);
-        const mesesTotal = parseInt(tempoServico.value);
-        const mesesAno = parseInt(mesesAnoAtual.value);
-        const dias = parseInt(diasTrabalhados.value);
-        const avisoPrevioCumprido = avisoPrevio?.checked || false;
-        
-        // Validação de tempo de serviço
-        if (mesesTotal > 120) {
-            if (!confirm('Atenção: O tempo de serviço informado é superior a 120 meses. Deseja continuar?')) {
-                return;
-            }
-        }
-
-        animarProgresso(25);
-
-        // Limpar resultados anteriores
-        resultados = {};
-
-        // Calcular férias e décimo terceiro
-        const ferias = calcularFerias(salarioBase, mesesAno, dias);
-        const decimoTerceiro = calcularDecimoTerceiro(salarioBase, mesesAno, dias, tipo);
-
-        animarProgresso(50);
-
-        // Adicionar resultados ao objeto de resultados
-        resultados['Saldo de Salário'] = (salarioBase / 30) * dias;
-        resultados['Férias Proporcionais'] = ferias.base;
-        resultados['1/3 Férias Proporcionais'] = ferias.terco;
-        
-        if (decimoTerceiro.valor > 0) {
-            resultados['13º Proporcional'] = decimoTerceiro.valor;
-        }
-
-        // FGTS
-        const fgtsAcumulado = salarioBase * 0.08 * mesesTotal;
-        resultados['FGTS Acumulado'] = fgtsAcumulado;
-
-        animarProgresso(75);
-
-        // Cálculos específicos por tipo
-        switch(tipo) {
-            case 'sem_justa_causa':
-                resultados['Multa FGTS (40%)'] = fgtsAcumulado * 0.4;
-                resultados['Aviso Prévio Indenizado'] = salarioBase;
-                break;
-                
-            case 'pedido':
-                if (!avisoPrevioCumprido) {
-                    resultados['Desconto Aviso Prévio'] = -salarioBase;
-                }
-                break;
-                
-            case 'justa_causa':
-                // Apenas direitos básicos
-                break;
-                
-            case 'prazo_determinado':
-                // Sem multa FGTS ou aviso prévio
-                break;
-        }
-
-        // Cálculo de descontos
-        let totalBruto = Object.values(resultados).reduce((a, b) => a + (b > 0 ? b : 0), 0);
-        
-        // INSS
-        const inss = calcularINSS(totalBruto);
-        resultados['Desconto INSS'] = -inss;
-
-        // IRRF
-        const baseIRRF = totalBruto - inss;
-        if (baseIRRF > 2259.20) {
-            const irrf = calcularIRRF(baseIRRF);
-            resultados['Desconto IRRF'] = -irrf;
-        }
-
-        // Calcular totais
-        const totalDescontos = Object.values(resultados).reduce((a, b) => a + (b < 0 ? Math.abs(b) : 0), 0);
-        const totalProventos = Object.values(resultados).reduce((a, b) => a + (b > 0 ? b : 0), 0);
-        const totalFGTS = fgtsAcumulado + (tipo === 'sem_justa_causa' ? fgtsAcumulado * 0.4 : 0);
-        const totalLiquido = totalProventos - totalDescontos;
-
-        // Atualizar interface
-        document.getElementById('valorProventos').textContent = formatMoney(totalProventos);
-        document.getElementById('valorDescontos').textContent = formatMoney(totalDescontos);
-        document.getElementById('valorFGTS').textContent = formatMoney(totalFGTS);
-        document.getElementById('valorLiquido').textContent = formatMoney(totalLiquido);
-
-        // Atualizar tabela de detalhes
-        const tbody = document.getElementById('resultadoTabela');
-        tbody.innerHTML = '';
-        
-        for (const [descricao, valor] of Object.entries(resultados)) {
-            const tr = document.createElement('tr');
-            const valorClass = valor >= 0 ? 'valor-positivo' : 'valor-negativo';
-            tr.innerHTML = `
-                <td>${descricao}</td>
-                <td class="${valorClass}">${formatMoney(valor)}</td>
-            `;
-            tbody.appendChild(tr);
-        }
-
-        // Adicionar linha do total
-        const trTotal = document.createElement('tr');
-        trTotal.className = 'total-row';
-        const totalClass = totalLiquido >= 0 ? 'valor-positivo' : 'valor-negativo';
-        trTotal.innerHTML = `
-            <td>Total Líquido</td>
-            <td class="${totalClass}">${formatMoney(totalLiquido)}</td>
+    refs.stepsContainer.innerHTML = '';
+    etapas.forEach((etapa, indice) => {
+        const step = document.createElement('div');
+        step.className = 'step';
+        step.innerHTML = `
+            <div class="step-number">${indice + 1}</div>
+            <div class="step-content"><p>${etapa}</p></div>
         `;
-        tbody.appendChild(trTotal);
+        refs.stepsContainer.appendChild(step);
+    });
+}
 
-        // Mostrar resultados
-        document.getElementById('resultado').style.display = 'block';
-        
-        // Atualizar gráfico
-        atualizarGrafico(totalProventos, totalDescontos, totalFGTS, 0);
+function montarLinhasResultado(partes) {
+    if (!refs.resultadoTabela) return;
+    refs.resultadoTabela.innerHTML = '';
 
-        animarProgresso(100);
+    partes.forEach((parte) => {
+        const tr = document.createElement('tr');
+        const classeValor = parte.valor < 0 ? 'valor-negativo' : 'valor-positivo';
+        tr.innerHTML = `
+            <td>${parte.label}</td>
+            <td class="${classeValor}">${formatarMoeda(parte.valor)}</td>
+        `;
+        refs.resultadoTabela.appendChild(tr);
+    });
+}
 
-    } catch (erro) {
-        console.error('Erro ao calcular rescisão:', erro);
-        alert('Ocorreu um erro ao calcular a rescisão. Por favor, verifique os valores informados.');
+function calcularRescisao() {
+    if (!validarFormulario()) return;
+
+    atualizarProgresso(18);
+
+    const tipo = refs.tipoRescisao.value;
+    const salario = parseFloat(refs.salarioBruto.value) || 0;
+    const mesesContrato = parseInt(refs.tempoServico.value, 10) || 0;
+    const mesesAnoAtual = parseInt(refs.mesesAnoAtual.value, 10) || 0;
+    const diasTrabalhados = parseInt(refs.diasTrabalhados.value, 10) || 0;
+    const avisoCumprido = !!refs.avisoPrevio.checked;
+    const feriasVencidasQtd = parseInt(refs.feriasVencidas.value, 10) || 0;
+    const saldoFGTSInformado = parseFloat(refs.saldoFGTS.value) || 0;
+    const descontosExtras = parseFloat(refs.descontosExtras.value) || 0;
+
+    const mesesConsiderados = Math.min(12, Math.max(0, mesesAnoAtual + (diasTrabalhados >= 15 ? 1 : 0)));
+    const saldoSalario = (salario / 30) * diasTrabalhados;
+    const decimoTerceiro = tipo === 'justa_causa' ? 0 : (salario / 12) * mesesConsiderados;
+    const feriasProp = tipo === 'justa_causa' ? 0 : (salario / 12) * mesesConsiderados;
+    const tercoFeriasProp = feriasProp / 3;
+
+    const feriasVencidas = feriasVencidasQtd * salario;
+    const tercoFeriasVencidas = feriasVencidas / 3;
+
+    atualizarProgresso(45);
+
+    let avisoIndenizado = 0;
+    let descontoAviso = 0;
+
+    if (tipo === 'sem_justa_causa') {
+        const diasAviso = calcularAvisoProporcionalDias(mesesContrato);
+        avisoIndenizado = (salario / 30) * diasAviso;
+    }
+
+    if (tipo === 'pedido' && !avisoCumprido) {
+        descontoAviso = salario;
+    }
+
+    const fgtsEstimado = salario * 0.08 * mesesContrato;
+    const fgtsBase = saldoFGTSInformado > 0 ? saldoFGTSInformado : fgtsEstimado;
+    const multaFGTS = tipo === 'sem_justa_causa' ? fgtsBase * 0.4 : 0;
+    const fgtsTotal = fgtsBase + multaFGTS;
+
+    const motivoPrazo = refs.motivoRescisao?.value || 'termino_normal';
+    let indenizacaoPrazo = 0;
+    if (tipo === 'prazo_determinado' && motivoPrazo === 'antecipado_empregador') {
+        indenizacaoPrazo = salario / 2;
+    }
+
+    atualizarProgresso(72);
+
+    const partes = [
+        { label: 'Saldo de salário', valor: round2(saldoSalario) },
+        { label: '13º proporcional', valor: round2(decimoTerceiro) },
+        { label: 'Férias proporcionais', valor: round2(feriasProp) },
+        { label: '1/3 sobre férias proporcionais', valor: round2(tercoFeriasProp) },
+        { label: 'Férias vencidas indenizadas', valor: round2(feriasVencidas) },
+        { label: '1/3 sobre férias vencidas', valor: round2(tercoFeriasVencidas) },
+        { label: 'Aviso prévio indenizado', valor: round2(avisoIndenizado) },
+        { label: 'Indenização prazo determinado', valor: round2(indenizacaoPrazo) },
+        { label: 'Desconto aviso prévio', valor: round2(-descontoAviso) },
+        { label: 'Outros descontos', valor: round2(-descontosExtras) }
+    ];
+
+    const proventos = partes
+        .filter((item) => item.valor > 0)
+        .reduce((total, item) => total + item.valor, 0);
+
+    const descontos = Math.abs(partes
+        .filter((item) => item.valor < 0)
+        .reduce((total, item) => total + item.valor, 0));
+
+    const liquido = proventos - descontos;
+
+    if (refs.valorProventos) refs.valorProventos.textContent = formatarMoeda(proventos);
+    if (refs.valorDescontos) refs.valorDescontos.textContent = formatarMoeda(descontos);
+    if (refs.valorFGTS) refs.valorFGTS.textContent = formatarMoeda(fgtsTotal);
+    if (refs.valorLiquido) refs.valorLiquido.textContent = formatarMoeda(liquido);
+
+    montarLinhasResultado([
+        ...partes.filter((item) => item.valor !== 0),
+        { label: 'Total líquido estimado', valor: round2(liquido) }
+    ]);
+
+    if (refs.resultado) refs.resultado.style.display = 'block';
+
+    atualizarPassos({
+        saldoSalario: round2(saldoSalario),
+        diasTrabalhados,
+        decimoTerceiro: round2(decimoTerceiro),
+        mesesConsiderados,
+        feriasProp: round2(feriasProp),
+        tercoFeriasProp: round2(tercoFeriasProp),
+        fgtsTotal: round2(fgtsTotal)
+    });
+
+    atualizarGrafico(round2(proventos), round2(descontos), round2(fgtsTotal));
+    salvarDados();
+    atualizarProgresso(100);
+}
+
+function preencherExemplo() {
+    if (refs.tipoRescisao) refs.tipoRescisao.value = 'sem_justa_causa';
+    if (refs.salarioBruto) refs.salarioBruto.value = '4200';
+    if (refs.tempoServico) refs.tempoServico.value = '36';
+    if (refs.mesesAnoAtual) refs.mesesAnoAtual.value = '5';
+    if (refs.diasTrabalhados) refs.diasTrabalhados.value = '18';
+    if (refs.avisoPrevio) refs.avisoPrevio.checked = true;
+    if (refs.feriasVencidas) refs.feriasVencidas.value = '0';
+    if (refs.saldoFGTS) refs.saldoFGTS.value = '';
+    if (refs.descontosExtras) refs.descontosExtras.value = '150';
+
+    atualizarCamposVisiveis();
+    calcularRescisao();
+}
+
+function toggleDetalhes() {
+    if (!refs.tabelaDetalhes || !refs.verDetalhes) return;
+    const abriu = refs.tabelaDetalhes.style.display === 'none';
+    refs.tabelaDetalhes.style.display = abriu ? 'block' : 'none';
+
+    const icone = refs.verDetalhes.querySelector('i');
+    if (icone) {
+        icone.className = abriu ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
     }
 }
 
-// Inicialização quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        // Inicializar elementos do DOM
-        tipoRescisao = document.getElementById('tipoRescisao');
-        salarioBruto = document.getElementById('salarioBruto');
-        tempoServico = document.getElementById('tempoServico');
-        mesesAnoAtual = document.getElementById('mesesAnoAtual');
-        diasTrabalhados = document.getElementById('diasTrabalhados');
-        avisoPrevio = document.getElementById('avisoPrevio');
-        btnCalcular = document.getElementById('calcular');
-        btnExemplo = document.getElementById('exemploValores');
-        btnDetalhes = document.getElementById('verDetalhes');
-        tabelaDetalhes = document.getElementById('tabelaDetalhes');
-        progressBar = document.getElementById('progressBar');
+function registrarEventos() {
+    refs.tipoRescisao?.addEventListener('change', () => {
+        atualizarCamposVisiveis();
+        salvarDados();
+    });
+    refs.calcular?.addEventListener('click', calcularRescisao);
+    refs.exemploValores?.addEventListener('click', preencherExemplo);
+    refs.verDetalhes?.addEventListener('click', toggleDetalhes);
 
-        // Event Listeners
-        btnCalcular.addEventListener('click', calcular);
-        btnExemplo.addEventListener('click', preencherExemplo);
-        btnDetalhes.addEventListener('click', toggleDetalhes);
-        tipoRescisao.addEventListener('change', atualizarCamposVisiveis);
+    [
+        refs.salarioBruto,
+        refs.tempoServico,
+        refs.mesesAnoAtual,
+        refs.diasTrabalhados,
+        refs.feriasVencidas,
+        refs.saldoFGTS,
+        refs.descontosExtras
+    ].forEach((input) => {
+        input?.addEventListener('input', salvarDados);
+    });
 
-        console.log('Inicialização concluída com sucesso');
-    } catch (erro) {
-        console.error('Erro na inicialização:', erro);
-    }
-}); 
+    refs.avisoPrevio?.addEventListener('change', salvarDados);
+    refs.motivoRescisao?.addEventListener('change', salvarDados);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    mapearElementos();
+    restaurarDados();
+    atualizarCamposVisiveis();
+    registrarEventos();
+});

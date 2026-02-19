@@ -1,66 +1,111 @@
-// Constantes para o cálculo do IRRF 2025
-const VALOR_DEPENDENTE = 189.59;
-const DESCONTO_SIMPLIFICADO = 564.80;
-const LIMITE_DESCONTO_SIMPLIFICADO = 2824.00;
+const IRRF_CONFIG_2026 = {
+    deducaoDependente: 189.59,
+    descontoSimplificado: 607.20,
+    reducaoMaxima: 312.89,
+    faixaReducaoAte: 5000.0,
+    faixaReducaoFim: 7350.0,
+    reducaoCoeficienteA: 978.62,
+    reducaoCoeficienteB: 0.133145,
+    faixasIRRF: [
+        { limite: 2428.80, aliquota: 0, deducao: 0 },
+        { limite: 2826.65, aliquota: 0.075, deducao: 182.16 },
+        { limite: 3751.05, aliquota: 0.15, deducao: 394.16 },
+        { limite: 4664.68, aliquota: 0.225, deducao: 675.49 },
+        { limite: Infinity, aliquota: 0.275, deducao: 908.73 }
+    ],
+    faixasINSS: [
+        { limite: 1621.00, aliquota: 0.075 },
+        { limite: 2902.84, aliquota: 0.09 },
+        { limite: 4354.27, aliquota: 0.12 },
+        { limite: 8475.55, aliquota: 0.14 }
+    ]
+};
 
-// Tabela progressiva IRRF 2025
-const FAIXAS_IRRF = [
-    { limite: 2259.20, aliquota: 0, deducao: 0 },
-    { limite: 2826.65, aliquota: 0.075, deducao: 169.44 },
-    { limite: 3751.05, aliquota: 0.15, deducao: 381.44 },
-    { limite: 4664.68, aliquota: 0.225, deducao: 662.77 },
-    { limite: Infinity, aliquota: 0.275, deducao: 896.00 }
-];
-
-// Tabela INSS 2024 (atualizar quando disponível a tabela 2025)
-const FAIXAS_INSS = [
-    { limite: 1412.00, aliquota: 0.075 },
-    { limite: 2666.68, aliquota: 0.09 },
-    { limite: 4000.03, aliquota: 0.12 },
-    { limite: 7786.02, aliquota: 0.14 }
-];
+const STORAGE_KEY = 'vl_irrf_2026_form_v1';
 
 let graficoResultados = null;
 
-// Função para calcular o INSS
-function calcularINSS(salarioBruto) {
-    let inss = 0;
-    let salarioRestante = salarioBruto;
-    let faixaAnterior = 0;
-
-    for (let faixa of FAIXAS_INSS) {
-        if (salarioBruto > faixaAnterior) {
-            let baseCalculo = Math.min(salarioBruto, faixa.limite) - faixaAnterior;
-            inss += baseCalculo * faixa.aliquota;
-            faixaAnterior = faixa.limite;
-        }
-    }
-
-    return Math.min(inss, 876.97); // Teto do INSS
-}
-
-// Função para calcular o IRRF
-function calcularIRRF(baseCalculo) {
-    for (let faixa of FAIXAS_IRRF) {
-        if (baseCalculo <= faixa.limite) {
-            return Math.max(0, (baseCalculo * faixa.aliquota) - faixa.deducao);
-        }
-    }
-    return 0;
-}
-
-// Função para formatar valores monetários
 function formatarMoeda(valor) {
-    return valor.toLocaleString('pt-BR', { 
-        style: 'currency', 
-        currency: 'BRL' 
+    return Number(valor || 0).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
     });
 }
 
-// Função para atualizar o gráfico
-function atualizarGrafico(salarioBruto, inss, deducoes, irrf) {
-    const ctx = document.getElementById('graficoResultados').getContext('2d');
-    
+function arredondar(valor) {
+    return Math.round((Number(valor) + Number.EPSILON) * 100) / 100;
+}
+
+function calcularINSSProgressivo(rendimento) {
+    const salario = Math.max(0, Number(rendimento) || 0);
+    let total = 0;
+    let faixaAnterior = 0;
+
+    IRRF_CONFIG_2026.faixasINSS.forEach((faixa) => {
+        if (salario <= faixaAnterior) return;
+        const baseFaixa = Math.min(salario, faixa.limite) - faixaAnterior;
+        total += baseFaixa * faixa.aliquota;
+        faixaAnterior = faixa.limite;
+    });
+
+    return arredondar(total);
+}
+
+function calcularIRRFBruto(baseCalculo) {
+    const base = Math.max(0, Number(baseCalculo) || 0);
+    const faixa = IRRF_CONFIG_2026.faixasIRRF.find((item) => base <= item.limite) || IRRF_CONFIG_2026.faixasIRRF[0];
+    const imposto = Math.max(0, base * faixa.aliquota - faixa.deducao);
+
+    return {
+        faixa,
+        imposto: arredondar(imposto)
+    };
+}
+
+function calcularReducaoLei15270(rendimentoBruto, impostoBruto) {
+    const rendimento = Math.max(0, Number(rendimentoBruto) || 0);
+    const imposto = Math.max(0, Number(impostoBruto) || 0);
+    let reducaoTeorica = 0;
+
+    if (rendimento <= IRRF_CONFIG_2026.faixaReducaoAte) {
+        reducaoTeorica = IRRF_CONFIG_2026.reducaoMaxima;
+    } else if (rendimento <= IRRF_CONFIG_2026.faixaReducaoFim) {
+        reducaoTeorica =
+            IRRF_CONFIG_2026.reducaoCoeficienteA - (IRRF_CONFIG_2026.reducaoCoeficienteB * rendimento);
+    }
+
+    const reducaoAplicada = Math.min(imposto, Math.max(0, reducaoTeorica));
+    return arredondar(reducaoAplicada);
+}
+
+function preencherTabelaReferencia() {
+    const tbody = document.getElementById('tabelaIRRFTbody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+    IRRF_CONFIG_2026.faixasIRRF.forEach((faixa, index) => {
+        const faixaAnterior = index === 0 ? 0 : IRRF_CONFIG_2026.faixasIRRF[index - 1].limite + 0.01;
+        const limiteTexto = faixa.limite === Infinity
+            ? `Acima de ${formatarMoeda(faixaAnterior)}`
+            : `${index === 0 ? 'Até' : 'De'} ${formatarMoeda(index === 0 ? faixa.limite : faixaAnterior)} ${index === 0 ? '' : `até ${formatarMoeda(faixa.limite)}`}`;
+
+        const linha = document.createElement('tr');
+        linha.innerHTML = `
+            <td>${limiteTexto.trim()}</td>
+            <td>${(faixa.aliquota * 100).toFixed(1).replace('.', ',')}%</td>
+            <td>${formatarMoeda(faixa.deducao)}</td>
+        `;
+        tbody.appendChild(linha);
+    });
+}
+
+function atualizarGrafico(rendimentoBruto, inss, irrf, outrasDeducoes) {
+    const canvas = document.getElementById('graficoResultados');
+    if (!canvas) return;
+
+    const liquido = Math.max(0, rendimentoBruto - inss - irrf - outrasDeducoes);
+    const ctx = canvas.getContext('2d');
+
     if (graficoResultados) {
         graficoResultados.destroy();
     }
@@ -68,20 +113,10 @@ function atualizarGrafico(salarioBruto, inss, deducoes, irrf) {
     graficoResultados = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Salário Líquido', 'INSS', 'Deduções', 'IRRF'],
+            labels: ['Líquido estimado', 'INSS', 'IRRF', 'Outras deduções'],
             datasets: [{
-                data: [
-                    salarioBruto - inss - deducoes - irrf,
-                    inss,
-                    deducoes,
-                    irrf
-                ],
-                backgroundColor: [
-                    '#4CAF50',
-                    '#2196F3',
-                    '#FFC107',
-                    '#F44336'
-                ]
+                data: [liquido, inss, irrf, outrasDeducoes],
+                backgroundColor: ['#0f766e', '#0a7dd1', '#d46d13', '#64748b']
             }]
         },
         options: {
@@ -90,106 +125,139 @@ function atualizarGrafico(salarioBruto, inss, deducoes, irrf) {
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: {
-                        color: '#fff'
-                    }
+                    labels: { color: '#334155' }
                 }
             }
         }
     });
 }
 
-// Função para animar a barra de progresso
-function animarProgresso(progresso) {
-    const progressBar = document.getElementById('progressBar');
-    progressBar.style.width = `${progresso}%`;
+function salvarUltimaSimulacao() {
+    const dados = {
+        salarioBruto: document.getElementById('salarioBruto')?.value || '',
+        dependentes: document.getElementById('dependentes')?.value || '',
+        pensaoAlimenticia: document.getElementById('pensaoAlimenticia')?.value || '',
+        outrasDeducoes: document.getElementById('outrasDeducoes')?.value || ''
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
 }
 
-// Função principal de cálculo
+function restaurarUltimaSimulacao() {
+    let dados;
+    try {
+        dados = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch (error) {
+        dados = {};
+    }
+
+    ['salarioBruto', 'dependentes', 'pensaoAlimenticia', 'outrasDeducoes'].forEach((id) => {
+        if (dados[id] !== undefined && document.getElementById(id)) {
+            document.getElementById(id).value = dados[id];
+        }
+    });
+}
+
+function atualizarProgresso(percentual) {
+    const barra = document.getElementById('progressBar');
+    if (barra) {
+        barra.style.width = `${percentual}%`;
+    }
+}
+
 function calcular() {
-    // Obtém os valores dos inputs
-    const salarioBruto = parseFloat(document.getElementById('salarioBruto').value) || 0;
-    const numDependentes = parseInt(document.getElementById('dependentes').value) || 0;
-    const pensaoAlimenticia = parseFloat(document.getElementById('pensaoAlimenticia').value) || 0;
-    const outrasDeducoes = parseFloat(document.getElementById('outrasDeducoes').value) || 0;
+    const salarioBruto = Math.max(0, parseFloat(document.getElementById('salarioBruto')?.value) || 0);
+    const dependentes = Math.max(0, parseInt(document.getElementById('dependentes')?.value, 10) || 0);
+    const pensaoAlimenticia = Math.max(0, parseFloat(document.getElementById('pensaoAlimenticia')?.value) || 0);
+    const outrasDeducoes = Math.max(0, parseFloat(document.getElementById('outrasDeducoes')?.value) || 0);
 
-    // Inicia animação
-    animarProgresso(25);
+    atualizarProgresso(15);
 
-    // Calcula o INSS
-    const inss = calcularINSS(salarioBruto);
-    animarProgresso(50);
+    const inss = calcularINSSProgressivo(salarioBruto);
+    const deducaoDependentes = dependentes * IRRF_CONFIG_2026.deducaoDependente;
+    const deducoesLegais = inss + deducaoDependentes + pensaoAlimenticia + outrasDeducoes;
 
-    // Calcula deduções totais
-    const deducaoDependentes = numDependentes * VALOR_DEPENDENTE;
-    const deducoesTotais = inss + deducaoDependentes + pensaoAlimenticia + outrasDeducoes;
-    animarProgresso(75);
+    atualizarProgresso(40);
 
-    // Calcula base de cálculo
-    let baseCalculo = salarioBruto - deducoesTotais;
+    const deducaoAplicadaValor = Math.max(deducoesLegais, IRRF_CONFIG_2026.descontoSimplificado);
+    const tipoDeducao = deducoesLegais >= IRRF_CONFIG_2026.descontoSimplificado
+        ? 'Deduções legais'
+        : 'Desconto simplificado mensal';
 
-    // Aplica desconto simplificado se aplicável
-    if (baseCalculo <= LIMITE_DESCONTO_SIMPLIFICADO) {
-        baseCalculo = Math.max(0, baseCalculo - DESCONTO_SIMPLIFICADO);
-    }
+    const baseCalculo = Math.max(0, salarioBruto - deducaoAplicadaValor);
 
-    // Calcula IRRF
-    const irrf = calcularIRRF(baseCalculo);
+    atualizarProgresso(65);
 
-    // Calcula alíquota efetiva
-    const aliquotaEfetiva = baseCalculo > 0 ? (irrf / baseCalculo) * 100 : 0;
+    const irrfBruto = calcularIRRFBruto(baseCalculo).imposto;
+    const reducaoLei = calcularReducaoLei15270(salarioBruto, irrfBruto);
+    const irrfFinal = Math.max(0, irrfBruto - reducaoLei);
+    const aliquotaEfetiva = salarioBruto > 0 ? (irrfFinal / salarioBruto) * 100 : 0;
 
-    // Atualiza os resultados na tela
-    document.getElementById('baseCalculo').textContent = formatarMoeda(baseCalculo);
-    document.getElementById('aliquota').textContent = `${aliquotaEfetiva.toFixed(2)}%`;
-    document.getElementById('irrfFinal').textContent = formatarMoeda(irrf);
+    atualizarProgresso(85);
 
-    // Atualiza o gráfico
-    atualizarGrafico(salarioBruto, inss, deducoesTotais - inss, irrf);
-    animarProgresso(100);
+    const baseCalculoElem = document.getElementById('baseCalculo');
+    const aliquotaElem = document.getElementById('aliquota');
+    const irrfFinalElem = document.getElementById('irrfFinal');
+    const inssElem = document.getElementById('inssCalculado');
+    const deducaoElem = document.getElementById('deducaoAplicada');
+    const reducaoElem = document.getElementById('reducaoAplicada');
+
+    if (baseCalculoElem) baseCalculoElem.textContent = formatarMoeda(baseCalculo);
+    if (aliquotaElem) aliquotaElem.textContent = `${aliquotaEfetiva.toFixed(2).replace('.', ',')}%`;
+    if (irrfFinalElem) irrfFinalElem.textContent = formatarMoeda(irrfFinal);
+    if (inssElem) inssElem.textContent = formatarMoeda(inss);
+    if (deducaoElem) deducaoElem.textContent = `${tipoDeducao} (${formatarMoeda(deducaoAplicadaValor)})`;
+    if (reducaoElem) reducaoElem.textContent = formatarMoeda(reducaoLei);
+
+    atualizarGrafico(salarioBruto, inss, irrfFinal, pensaoAlimenticia + outrasDeducoes + deducaoDependentes);
+    salvarUltimaSimulacao();
+    atualizarProgresso(100);
 }
 
-// Função para preencher valores de exemplo
 function preencherExemplo() {
-    document.getElementById('salarioBruto').value = '5000.00';
-    document.getElementById('dependentes').value = '1';
-    document.getElementById('pensaoAlimenticia').value = '0.00';
-    document.getElementById('outrasDeducoes').value = '0.00';
-    calcular();
-}
+    const campos = {
+        salarioBruto: '6200',
+        dependentes: '1',
+        pensaoAlimenticia: '0',
+        outrasDeducoes: '200'
+    };
 
-// Função para mostrar/ocultar detalhes
-function toggleDetalhes() {
-    const detalhes = document.getElementById('tabelaDetalhes');
-    const btnDetalhes = document.getElementById('verDetalhes');
-    const icone = btnDetalhes.querySelector('i');
-    
-    if (detalhes.style.display === 'none') {
-        detalhes.style.display = 'block';
-        icone.className = 'fas fa-chevron-up';
-    } else {
-        detalhes.style.display = 'none';
-        icone.className = 'fas fa-chevron-down';
-    }
-}
-
-// Adiciona eventos aos inputs e botões
-document.addEventListener('DOMContentLoaded', function() {
-    const inputs = [
-        'salarioBruto',
-        'dependentes',
-        'pensaoAlimenticia',
-        'outrasDeducoes'
-    ];
-
-    inputs.forEach(id => {
-        document.getElementById(id).addEventListener('input', calcular);
+    Object.entries(campos).forEach(([id, valor]) => {
+        const campo = document.getElementById(id);
+        if (campo) campo.value = valor;
     });
 
-    document.getElementById('calcular').addEventListener('click', calcular);
-    document.getElementById('exemploValores').addEventListener('click', preencherExemplo);
-    document.getElementById('verDetalhes').addEventListener('click', toggleDetalhes);
-
-    // Inicializa a calculadora
     calcular();
-}); 
+}
+
+function toggleDetalhes() {
+    const detalhes = document.getElementById('tabelaDetalhes');
+    const botao = document.getElementById('verDetalhes');
+    const icone = botao?.querySelector('i');
+    if (!detalhes || !botao || !icone) return;
+
+    const abriu = detalhes.style.display === 'none';
+    detalhes.style.display = abriu ? 'block' : 'none';
+    icone.className = abriu ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
+}
+
+function registrarEventos() {
+    const entradas = ['salarioBruto', 'dependentes', 'pensaoAlimenticia', 'outrasDeducoes'];
+    entradas.forEach((id) => {
+        const campo = document.getElementById(id);
+        if (campo) {
+            campo.addEventListener('input', calcular);
+            campo.addEventListener('change', salvarUltimaSimulacao);
+        }
+    });
+
+    document.getElementById('calcular')?.addEventListener('click', calcular);
+    document.getElementById('exemploValores')?.addEventListener('click', preencherExemplo);
+    document.getElementById('verDetalhes')?.addEventListener('click', toggleDetalhes);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    preencherTabelaReferencia();
+    restaurarUltimaSimulacao();
+    registrarEventos();
+    calcular();
+});

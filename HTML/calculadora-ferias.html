@@ -8,26 +8,27 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-5TQ0YTWHK9');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Férias - VL Contabilidade</title>
+    <meta name="description" content="Calculadora de férias com regras CLT e descontos estimados de INSS/IRRF.">
+    <title>Calculadora de Férias 2026 - VL Contabilidade</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet'
         href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../assets/img/FAVICON.ICO" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/mediaquery.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/cookies.css">
+    <link rel="stylesheet" href="../assets/css/calculadoras-mobile-first.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/menu.js" defer></script>
 </head>
 
-<body>
+<body class="calc-modern">
     <div class="bg">
         <header>
             <div class="logo">
@@ -35,19 +36,19 @@
             </div>
             <nav role="navigation" aria-label="Menu principal">
                 <ul class="menu">
-                    <li type="none"><a href="../index.html" target="_self" title="Página inicial">
+                    <li><a href="../index.html" target="_self" title="Página inicial">
                             <i class="fi fi-rr-home"></i> Home</a>
                     </li>
-                    <li type="none"><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
+                    <li><a href="sobre.html" target="_self" title="Saiba mais sobre nós">
                             <i class="fi fi-rr-info"></i> Sobre</a>
                     </li>
-                    <li type="none"><a href="servicos.html" target="_self" title="Veja nossos serviços">
+                    <li><a href="servicos.html" target="_self" title="Veja nossos serviços">
                             <i class="fi fi-rr-briefcase"></i> Serviços</a>
                     </li>
-                    <li type="none"><a href="contatos.html" target="_self" title="Entre em contato conosco">
+                    <li><a href="contatos.html" target="_self" title="Entre em contato conosco">
                             <i class="fi fi-rr-phone-call"></i> Contatos</a>
                     </li>
-                    <li type="none"><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
+                    <li><a href="ferramentas.html" target="_self" title="Ferramentas úteis">
                             <i class="fi fi-rr-calculator"></i> Ferramentas</a>
                     </li>
                 </ul>
@@ -59,83 +60,87 @@
                         class="fi fi-brands-whatsapp"></i></a>
                 <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"
                     title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
-                <a href="https://www.google.com/search?sca_esv=8ee07bb068160570&sxsrf=AHTn8zr0_BM6lVu8rv6ySbMa4pufPiyMzw%3A1737928997476&q=VL%20Contabilidade%20Empresarial&stick=H4sIAAAAAAAAAONgU1I1qLCwTE4zMDNLSjI1Skm1TDK2MqgwMTdJSUy1sDBJNTAyTjQ3WcQqE-aj4JyfV5KYlJmTmZKYkqrgmltQlFqcWJSZmAMALORsN0gAAAA&mat=CQwi07iXATQK&ved=2ahUKEwjP_KeEspSLAxV5rZUCHRm4FrIQrMcEegQIGxAC"
-                    target="_blank" title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
+                <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank"
+                    title="Acesse nosso site"><i class="fi fi-brands-google"></i></a>
             </div>
         </header>
     </div>
 
     <main class="calculadora-page">
-        <div class="calculadora-hero">
-            <h1>Calculadora de Férias</h1>
-            <p>Calcule facilmente o valor das férias dos seus funcionários</p>
-        </div>
+        <section class="calculadora-hero">
+            <h1>Calculadora de Férias CLT 2026</h1>
+            <p>Simule férias, adicional de 1/3, abono pecuniário e descontos estimados.</p>
+            <div class="calc-info-badges">
+                <span class="calc-info-badge">Férias de 10 a 30 dias</span>
+                <span class="calc-info-badge">Abono de até 1/3 do período</span>
+                <span class="calc-info-badge">Simulação para folha</span>
+            </div>
+        </section>
 
-        <main class="calculadora-container">
-            <!-- Seção de Entrada de Dados -->
+        <div class="calculadora-container">
             <section class="entrada-dados">
-                <h2>Dados para Cálculo</h2>
+                <h2>Dados para Simulação</h2>
                 <div class="form-group">
                     <label for="salarioBase">
-                        Salário Base
-                        <i class="fas fa-question-circle" title="Informe seu salário mensal bruto"></i>
+                        Salário Base Mensal
+                        <i class="fas fa-question-circle" title="Salário contratual mensal"></i>
                     </label>
-                    <input type="number" id="salarioBase" min="0" step="0.01" required>
+                    <input type="number" id="salarioBase" min="0" step="0.01" placeholder="R$ 0,00">
                 </div>
 
                 <div class="form-group">
                     <label for="diasFerias">
                         Dias de Férias
-                        <i class="fas fa-question-circle" title="Mínimo 10 dias, máximo 30 dias"></i>
+                        <i class="fas fa-question-circle"
+                            title="Período de gozo de férias para esta simulação (entre 10 e 30 dias)"></i>
                     </label>
                     <input type="number" id="diasFerias" min="10" max="30" value="30">
                 </div>
 
                 <div class="form-group">
                     <label for="horasExtras">
-                        Média de Horas Extras (R$)
-                        <i class="fas fa-question-circle" title="Média dos últimos 12 meses (opcional)"></i>
+                        Média Variável Mensal (R$)
+                        <i class="fas fa-question-circle"
+                            title="Informe média de adicionais (horas extras, comissões etc.) se aplicável"></i>
                     </label>
-                    <input type="number" id="horasExtras" min="0" step="0.01">
+                    <input type="number" id="horasExtras" min="0" step="0.01" placeholder="R$ 0,00">
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox-container">
                         <input type="checkbox" id="venderFerias">
-                        Vender 1/3 das Férias
-                        <i class="fas fa-question-circle" title="Você pode vender até 10 dias das suas férias"></i>
+                        Incluir abono pecuniário (venda de férias)
+                        <i class="fas fa-question-circle"
+                            title="Pode ser convertido em abono até 1/3 dos dias de férias"></i>
                     </label>
                     <div id="diasVendidosContainer" style="display: none;">
-                        <input type="range" id="diasVendidos" min="0" max="10" value="10" step="10">
+                        <label for="diasVendidos">Dias vendidos</label>
+                        <input type="range" id="diasVendidos" min="0" max="10" value="10" step="1">
                         <div class="range-markers">
-                            <span>0 dias</span>
-                            <span>10 dias</span>
+                            <span>0</span>
+                            <span id="maxDiasVendidos">10</span>
                         </div>
                         <span id="diasVendidosValue">10 dias</span>
                     </div>
                 </div>
 
                 <button id="calcular" class="btn-calcular">Calcular Férias</button>
-                <button id="exemploValores" class="btn-exemplo">Simular com Valores de Exemplo</button>
+                <button id="exemploValores" class="btn-exemplo">Simular com Exemplo</button>
             </section>
 
-            <!-- Seção do Passo a Passo -->
             <section class="passo-a-passo">
-                <h2>Como é Calculado</h2>
+                <h2>Passo a Passo</h2>
                 <div class="progress-bar">
                     <div class="progress" id="progressBar"></div>
                 </div>
-                <div class="steps-container" id="stepsContainer">
-                    <!-- Preenchido via JavaScript -->
-                </div>
+                <div class="steps-container" id="stepsContainer"></div>
             </section>
 
-            <!-- Seção de Resultados -->
             <section class="resultados">
-                <h2>Resultado Final</h2>
+                <h2>Resultado</h2>
                 <div class="resultado-cards">
                     <div class="card">
-                        <h3>Valor Bruto</h3>
+                        <h3>Total Bruto</h3>
                         <p id="valorBruto">R$ 0,00</p>
                     </div>
                     <div class="card">
@@ -143,8 +148,17 @@
                         <p id="valorDescontos">R$ 0,00</p>
                     </div>
                     <div class="card destaque">
-                        <h3>Valor Líquido</h3>
+                        <h3>Total Líquido</h3>
                         <p id="valorLiquido">R$ 0,00</p>
+                    </div>
+                </div>
+
+                <div class="result-note-list">
+                    <div class="result-note-item"><strong>INSS estimado:</strong> <span id="inssResultado">R$ 0,00</span>
+                    </div>
+                    <div class="result-note-item"><strong>IRRF estimado:</strong> <span id="irrfResultado">R$ 0,00</span>
+                    </div>
+                    <div class="result-note-item"><strong>Abono pecuniário:</strong> <span id="abonoResultado">R$ 0,00</span>
                     </div>
                 </div>
 
@@ -153,15 +167,19 @@
                 </div>
 
                 <button id="verDetalhes" class="btn-detalhes">
-                    Como foi Calculado?
+                    Como foi calculado
                     <i class="fas fa-chevron-down"></i>
                 </button>
 
                 <div id="tabelaDetalhes" class="detalhes-calculo" style="display: none;">
-                    <!-- Preenchido via JavaScript -->
+                    <div id="detalhesContainer"></div>
+                    <p class="calc-warning">
+                        Resultado para simulação operacional. A apuração oficial pode variar por convenção coletiva,
+                        rubricas e parâmetros do seu sistema de folha.
+                    </p>
                 </div>
             </section>
-        </main>
+        </div>
     </main>
 
     <footer>
@@ -193,14 +211,15 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Contabilidade Empresarial. Todos os direitos reservados. Desenvolvido por <a
-                    href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor Rodrigues</a></p>
+            <p>&copy; <span id="current-year">2024</span> Contabilidade Empresarial. Todos os direitos reservados.
+                Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor
+                    Rodrigues</a></p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="../assets/js/calculadora-ferias.js"></script>
-    <script src="../assets/js/cookies.js"></script>
+    <script src="../assets/js/calculadora-ferias.js" defer></script>
+    <script src="../assets/js/cookies.js" defer></script>
+    <script src="../assets/js/footer.js" defer></script>
 </body>
 
 </html>
