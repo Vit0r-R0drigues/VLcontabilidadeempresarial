@@ -35,10 +35,10 @@ class MobileMenu {
         </svg>
       </div>
       <div class="menu-items">
-        <a href="/index.html"><i class="fi fi-rr-home"></i> Inicio</a>
+        <a href="/index.html"><i class="fi fi-rr-home"></i> Início</a>
         <a href="/BLOG/blogemconstru%C3%A7%C3%A3o.html"><i class="fi fi-rr-book-alt"></i> Blog</a>
         <a href="/HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
-        <a href="/HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Servicos</a>
+        <a href="/HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Serviços</a>
         <a href="/HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
         <a href="/HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
       </div>

@@ -674,13 +674,14 @@ Grandes telas : maior que 1200px*/
         /* Avoid tonal bands caused by `contain` and iOS background rendering */
         background-size: cover !important;
         background-position: center top !important;
+        background-repeat: no-repeat !important;
         background-attachment: scroll !important;
     }
 
     .home1 {
         margin: 0 !important;
         padding: 105px 16px 28px !important;
-        background: linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 0%, var(--cor-fundo) 100%);
+        background: transparent !important;
     }
 
     .cta-button.cta-primary {
