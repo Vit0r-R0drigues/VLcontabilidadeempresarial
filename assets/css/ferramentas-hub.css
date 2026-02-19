@@ -18,6 +18,17 @@
     color: var(--hub-text);
 }
 
+body.hub-js .hub-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+body.hub-js .hub-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .hub-hero {
     position: relative;
     overflow: hidden;
@@ -108,6 +119,16 @@
     border-radius: 20px;
     padding: 0.95rem;
     box-shadow: var(--hub-shadow);
+    transition: border-color 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease;
+}
+
+.hub-toolbar.is-search-focus {
+    border-color: #8cb6de;
+    box-shadow: 0 14px 28px rgba(8, 43, 73, 0.14);
+}
+
+.hub-toolbar.is-searching {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
 }
 
 .hub-search-wrap {
@@ -155,12 +176,18 @@
     font-weight: 700;
     font-size: 0.85rem;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .hub-filter-btn.active {
     color: #ffffff;
     border-color: transparent;
     background: linear-gradient(120deg, #005691, #0a6fb8);
+    box-shadow: 0 7px 16px rgba(0, 86, 145, 0.28);
+}
+
+.hub-filter-btn:active {
+    transform: translateY(1px);
 }
 
 .hub-results-info {
@@ -212,6 +239,11 @@
 
 .hub-card.is-hidden {
     display: none;
+}
+
+body.hub-js .hub-card.is-filtered-in {
+    animation: hubCardIn 0.34s ease both;
+    animation-delay: var(--hub-enter-delay, 0ms);
 }
 
 .hub-card.is-favorite {
@@ -306,6 +338,10 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+}
+
+.hub-fav-btn.is-pulsing {
+    animation: hubFavPulse 0.3s ease;
 }
 
 .hub-fav-btn[aria-pressed="true"] {
@@ -405,5 +441,40 @@
 
     .hub-hero {
         padding: 2rem;
+    }
+}
+
+@keyframes hubCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(9px) scale(0.992);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes hubFavPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.hub-js .hub-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    body.hub-js .hub-card.is-filtered-in {
+        animation: none;
     }
 }

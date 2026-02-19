@@ -24,12 +24,36 @@ const IRRF_CONFIG_2026 = {
 const STORAGE_KEY = 'vl_irrf_2026_form_v1';
 
 let graficoResultados = null;
+const calcUI = window.CalculadoraUI || null;
 
 function formatarMoeda(valor) {
     return Number(valor || 0).toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
     });
+}
+
+function atualizarTextoMoeda(elemento, valor) {
+    if (!elemento) return;
+    if (calcUI && typeof calcUI.animateCurrency === 'function') {
+        calcUI.animateCurrency(elemento, valor);
+        return;
+    }
+    elemento.textContent = formatarMoeda(valor);
+}
+
+function atualizarTextoPercentual(elemento, valor) {
+    if (!elemento) return;
+    if (calcUI && typeof calcUI.animatePercent === 'function') {
+        calcUI.animatePercent(elemento, valor);
+        return;
+    }
+    elemento.textContent = `${Number(valor || 0).toFixed(2).replace('.', ',')}%`;
+}
+
+function marcarAtualizacao(elemento) {
+    if (!elemento || !calcUI || typeof calcUI.pulseElement !== 'function') return;
+    calcUI.pulseElement(elemento);
 }
 
 function arredondar(valor) {
@@ -160,6 +184,10 @@ function restaurarUltimaSimulacao() {
 function atualizarProgresso(percentual) {
     const barra = document.getElementById('progressBar');
     if (barra) {
+        if (calcUI && typeof calcUI.updateProgress === 'function') {
+            calcUI.updateProgress(barra, percentual);
+            return;
+        }
         barra.style.width = `${percentual}%`;
     }
 }
@@ -201,12 +229,15 @@ function calcular() {
     const deducaoElem = document.getElementById('deducaoAplicada');
     const reducaoElem = document.getElementById('reducaoAplicada');
 
-    if (baseCalculoElem) baseCalculoElem.textContent = formatarMoeda(baseCalculo);
-    if (aliquotaElem) aliquotaElem.textContent = `${aliquotaEfetiva.toFixed(2).replace('.', ',')}%`;
-    if (irrfFinalElem) irrfFinalElem.textContent = formatarMoeda(irrfFinal);
-    if (inssElem) inssElem.textContent = formatarMoeda(inss);
-    if (deducaoElem) deducaoElem.textContent = `${tipoDeducao} (${formatarMoeda(deducaoAplicadaValor)})`;
-    if (reducaoElem) reducaoElem.textContent = formatarMoeda(reducaoLei);
+    atualizarTextoMoeda(baseCalculoElem, baseCalculo);
+    atualizarTextoPercentual(aliquotaElem, aliquotaEfetiva);
+    atualizarTextoMoeda(irrfFinalElem, irrfFinal);
+    atualizarTextoMoeda(inssElem, inss);
+    if (deducaoElem) {
+        deducaoElem.textContent = `${tipoDeducao} (${formatarMoeda(deducaoAplicadaValor)})`;
+        marcarAtualizacao(deducaoElem);
+    }
+    atualizarTextoMoeda(reducaoElem, reducaoLei);
 
     atualizarGrafico(salarioBruto, inss, irrfFinal, pensaoAlimenticia + outrasDeducoes + deducaoDependentes);
     salvarUltimaSimulacao();

@@ -3,6 +3,7 @@ const RESCISAO_CONFIG = {
 };
 
 let graficoRescisao = null;
+const calcUI = window.CalculadoraUI || null;
 
 const refs = {};
 
@@ -15,6 +16,20 @@ function formatarMoeda(valor) {
         style: 'currency',
         currency: 'BRL'
     });
+}
+
+function atualizarTextoMoeda(elemento, valor) {
+    if (!elemento) return;
+    if (calcUI && typeof calcUI.animateCurrency === 'function') {
+        calcUI.animateCurrency(elemento, valor);
+        return;
+    }
+    elemento.textContent = formatarMoeda(valor);
+}
+
+function marcarAtualizacao(elemento) {
+    if (!elemento || !calcUI || typeof calcUI.pulseElement !== 'function') return;
+    calcUI.pulseElement(elemento);
 }
 
 function round2(valor) {
@@ -90,7 +105,12 @@ function restaurarDados() {
 }
 
 function atualizarProgresso(valor) {
-    if (refs.progressBar) refs.progressBar.style.width = `${valor}%`;
+    if (!refs.progressBar) return;
+    if (calcUI && typeof calcUI.updateProgress === 'function') {
+        calcUI.updateProgress(refs.progressBar, valor);
+        return;
+    }
+    refs.progressBar.style.width = `${valor}%`;
 }
 
 function calcularAvisoProporcionalDias(mesesContrato) {
@@ -281,15 +301,16 @@ function calcularRescisao() {
 
     const liquido = proventos - descontos;
 
-    if (refs.valorProventos) refs.valorProventos.textContent = formatarMoeda(proventos);
-    if (refs.valorDescontos) refs.valorDescontos.textContent = formatarMoeda(descontos);
-    if (refs.valorFGTS) refs.valorFGTS.textContent = formatarMoeda(fgtsTotal);
-    if (refs.valorLiquido) refs.valorLiquido.textContent = formatarMoeda(liquido);
+    atualizarTextoMoeda(refs.valorProventos, proventos);
+    atualizarTextoMoeda(refs.valorDescontos, descontos);
+    atualizarTextoMoeda(refs.valorFGTS, fgtsTotal);
+    atualizarTextoMoeda(refs.valorLiquido, liquido);
 
     montarLinhasResultado([
         ...partes.filter((item) => item.valor !== 0),
         { label: 'Total líquido estimado', valor: round2(liquido) }
     ]);
+    marcarAtualizacao(refs.resultadoTabela);
 
     if (refs.resultado) refs.resultado.style.display = 'block';
 

@@ -40,6 +40,8 @@ body.calc-modern .calculadora-page {
 }
 
 body.calc-modern .calculadora-hero {
+    position: relative;
+    overflow: hidden;
     border-radius: 24px;
     padding: 1.2rem;
     background:
@@ -48,6 +50,15 @@ body.calc-modern .calculadora-hero {
         linear-gradient(130deg, #032642 0%, #005691 55%, #1174bc 100%);
     color: #ffffff;
     box-shadow: 0 22px 36px rgba(3, 33, 55, 0.2);
+}
+
+body.calc-modern .calculadora-hero::after {
+    content: '';
+    position: absolute;
+    inset: -120% -40%;
+    background: linear-gradient(110deg, transparent 34%, rgba(255, 255, 255, 0.22) 50%, transparent 66%);
+    animation: calcHeroSweep 6.5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 body.calc-modern .calculadora-hero h1 {
@@ -92,6 +103,17 @@ body.calc-modern .resultados {
     border-radius: 20px;
     padding: 1rem;
     box-shadow: 0 12px 24px rgba(9, 39, 64, 0.08);
+}
+
+body.calc-modern .calc-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+body.calc-modern .calc-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 body.calc-modern .entrada-dados h2,
@@ -171,6 +193,12 @@ body.calc-modern .btn-detalhes {
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
+body.calc-modern .btn-calcular:active,
+body.calc-modern .btn-exemplo:active,
+body.calc-modern .btn-detalhes:active {
+    transform: scale(0.99);
+}
+
 body.calc-modern .btn-calcular {
     color: #ffffff;
     background: linear-gradient(120deg, #005691, #0b70b9);
@@ -210,6 +238,10 @@ body.calc-modern .progress {
     width: 0;
     background: linear-gradient(120deg, #005691, #2c97e0);
     transition: width 0.35s ease;
+}
+
+body.calc-modern .progress.calc-value-updated {
+    animation: calcProgressPulse 0.4s ease;
 }
 
 body.calc-modern .steps-container {
@@ -261,6 +293,11 @@ body.calc-modern .resultado-cards .card {
     border-radius: 14px;
     padding: 0.78rem;
     background: #f9fcff;
+}
+
+body.calc-modern .resultado-cards .card.calc-card-enter {
+    animation: calcCardEnter 0.45s ease both;
+    animation-delay: var(--calc-delay, 0ms);
 }
 
 body.calc-modern .resultado-cards .card h3 {
@@ -345,6 +382,10 @@ body.calc-modern .result-note-item {
     font-size: 0.88rem;
 }
 
+body.calc-modern .calc-value-updated {
+    animation: calcValueFlash 0.42s ease;
+}
+
 body.calc-modern .result-note-item strong {
     color: #0b385c;
 }
@@ -369,6 +410,62 @@ body.calc-modern .valor-negativo {
 
 body.calc-modern .hidden {
     display: none !important;
+}
+
+@keyframes calcCardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes calcProgressPulse {
+    0% { filter: saturate(1); }
+    50% { filter: saturate(1.45); }
+    100% { filter: saturate(1); }
+}
+
+@keyframes calcValueFlash {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.035); color: #0c3f67; }
+    100% { transform: scale(1); }
+}
+
+@keyframes calcHeroSweep {
+    0%, 70% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    78% {
+        opacity: 0.65;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.calc-modern .calculadora-hero::after {
+        animation: none;
+    }
+
+    body.calc-modern .calc-reveal,
+    body.calc-modern .calc-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    body.calc-modern .calc-value-updated,
+    body.calc-modern .progress.calc-value-updated,
+    body.calc-modern .resultado-cards .card.calc-card-enter {
+        animation: none;
+    }
 }
 
 @media (min-width: 780px) {

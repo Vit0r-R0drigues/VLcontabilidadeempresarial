@@ -94,6 +94,20 @@ powershell -ExecutionPolicy Bypass -File .\tools\check-links.ps1
 
 Se o script encontrar links inválidos, ele retorna código `1` e lista arquivo/linha.
 
+### Testes automatizados das calculadoras
+
+Execute os testes de regressão das fórmulas (IRRF, férias e rescisão) antes de deploy:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\run-calculadoras-tests.ps1
+```
+
+Você também pode rodar diretamente:
+
+```powershell
+python .\tools\test_calculadoras_formulas.py
+```
+
 ### Variáveis de ambiente
 
 Use o arquivo `.env.example` como base para criar o seu `.env` local.

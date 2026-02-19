@@ -23,6 +23,7 @@ const FERIAS_CONFIG_2026 = {
 const STORAGE_KEY = 'vl_ferias_2026_form_v1';
 
 let chartFerias = null;
+const calcUI = window.CalculadoraUI || null;
 
 const elementos = {};
 
@@ -35,6 +36,20 @@ function formatarMoeda(valor) {
         style: 'currency',
         currency: 'BRL'
     });
+}
+
+function atualizarTextoMoeda(elemento, valor) {
+    if (!elemento) return;
+    if (calcUI && typeof calcUI.animateCurrency === 'function') {
+        calcUI.animateCurrency(elemento, valor);
+        return;
+    }
+    elemento.textContent = formatarMoeda(valor);
+}
+
+function marcarAtualizacao(elemento) {
+    if (!elemento || !calcUI || typeof calcUI.pulseElement !== 'function') return;
+    calcUI.pulseElement(elemento);
 }
 
 function arredondar(valor) {
@@ -102,6 +117,10 @@ function atualizarDiasVendidosValue() {
 
 function atualizarProgresso(percentual) {
     if (elementos.progressBar) {
+        if (calcUI && typeof calcUI.updateProgress === 'function') {
+            calcUI.updateProgress(elementos.progressBar, percentual);
+            return;
+        }
         elementos.progressBar.style.width = `${percentual}%`;
     }
 }
@@ -280,15 +299,17 @@ function calcularFerias(exibirAlerta = false) {
         liquido: arredondar(liquido)
     };
 
-    if (elementos.valorBruto) elementos.valorBruto.textContent = formatarMoeda(brutoTotal);
-    if (elementos.valorDescontos) elementos.valorDescontos.textContent = formatarMoeda(dados.descontos);
-    if (elementos.valorLiquido) elementos.valorLiquido.textContent = formatarMoeda(dados.liquido);
-    if (elementos.inssResultado) elementos.inssResultado.textContent = formatarMoeda(dados.inss);
-    if (elementos.irrfResultado) elementos.irrfResultado.textContent = formatarMoeda(dados.irrf);
-    if (elementos.abonoResultado) elementos.abonoResultado.textContent = formatarMoeda(dados.abonoTotal);
+    atualizarTextoMoeda(elementos.valorBruto, brutoTotal);
+    atualizarTextoMoeda(elementos.valorDescontos, dados.descontos);
+    atualizarTextoMoeda(elementos.valorLiquido, dados.liquido);
+    atualizarTextoMoeda(elementos.inssResultado, dados.inss);
+    atualizarTextoMoeda(elementos.irrfResultado, dados.irrf);
+    atualizarTextoMoeda(elementos.abonoResultado, dados.abonoTotal);
 
     atualizarPassos(dados);
     atualizarDetalhes(dados);
+    marcarAtualizacao(elementos.stepsContainer);
+    marcarAtualizacao(elementos.detalhesContainer);
     atualizarGrafico(dados);
 
     salvarUltimosDados();
