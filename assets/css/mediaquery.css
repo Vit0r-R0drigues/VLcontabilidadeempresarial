@@ -120,6 +120,16 @@ Grandes telas : maior que 1200px*/
         background-color: var(--cor-fundo);
     }
 
+    /* Typing text - permitir quebra de linha no mobile */
+    .typing-text {
+        white-space: normal;
+        overflow: visible;
+        animation: none;
+        border-right: none;
+        font-size: 1rem;
+        text-align: center;
+    }
+
     /* Header Mobile - Compacto e Horizontal */
     header {
         flex-direction: row;
@@ -167,7 +177,7 @@ Grandes telas : maior que 1200px*/
 
     .home1 {
         height: auto;
-        padding: 130px 20px 60px;
+        padding: 120px 16px 50px;
         text-align: center;
         min-height: auto;
     }
@@ -185,15 +195,23 @@ Grandes telas : maior que 1200px*/
 
     .home1 p {
         font-size: 1rem;
-        margin-bottom: 25px;
-        padding: 0 10px;
+        margin-bottom: 20px;
+        padding: 0 5px;
     }
 
+    /* CTA Principal - Dominante e thumb-friendly */
     .cta-button.cta-primary {
-        width: 100%;
-        max-width: 280px;
-        font-size: 1rem;
-        padding: 14px 24px;
+        display: block;
+        width: 90%;
+        max-width: none;
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 16px 24px;
+        min-height: 54px;
+        border-radius: 12px;
+        margin: 0 auto;
+        letter-spacing: 0.3px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
     }
 
     .home2 {
