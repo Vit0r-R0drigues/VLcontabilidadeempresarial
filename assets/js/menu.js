@@ -1,4 +1,4 @@
-class MobileMenu {
+﻿class MobileMenu {
   static instance = null;
 
   constructor() {
@@ -27,11 +27,7 @@ class MobileMenu {
     const menuMobile = document.createElement('div');
     menuMobile.className = 'menu-mobile';
 
-    const path = window.location.pathname;
-    // Fix: Include BLOG and other potential subfolders in the check
-    const isSubfolder = /(\/html|\/HTML|\/BLOG|\/blog)(\/|$)/i.test(path);
-    const basePath = isSubfolder ? '../' : '';
-
+    // Use root-relative links to work from any subfolder, including /BLOG/posts.
     menuMobile.innerHTML = `
       <div class="menu-toggle" aria-expanded="false" aria-label="Menu mobile">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -39,11 +35,12 @@ class MobileMenu {
         </svg>
       </div>
       <div class="menu-items">
-        <a href="${basePath}index.html"><i class="fi fi-rr-home"></i> Início</a>
-        <a href="${basePath}HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
-        <a href="${basePath}HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Serviços</a>
-        <a href="${basePath}HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
-        <a href="${basePath}HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
+        <a href="/index.html"><i class="fi fi-rr-home"></i> Inicio</a>
+        <a href="/BLOG/blogemconstru%C3%A7%C3%A3o.html"><i class="fi fi-rr-book-alt"></i> Blog</a>
+        <a href="/HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
+        <a href="/HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Servicos</a>
+        <a href="/HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
+        <a href="/HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
       </div>
     `;
 
@@ -58,7 +55,7 @@ class MobileMenu {
       document.addEventListener('click', this.handleDocumentClick);
 
       const menuLinks = this.menuItems.querySelectorAll('a');
-      menuLinks.forEach(link => {
+      menuLinks.forEach((link) => {
         link.addEventListener('click', this.handleLinkClick);
       });
     }
@@ -95,10 +92,12 @@ class MobileMenu {
     }
     document.removeEventListener('click', this.handleDocumentClick);
 
-    const menuLinks = this.menuItems.querySelectorAll('a');
-    menuLinks.forEach(link => {
-      link.removeEventListener('click', this.handleLinkClick);
-    });
+    if (this.menuItems) {
+      const menuLinks = this.menuItems.querySelectorAll('a');
+      menuLinks.forEach((link) => {
+        link.removeEventListener('click', this.handleLinkClick);
+      });
+    }
 
     const menuMobile = document.querySelector('.menu-mobile');
     if (menuMobile) menuMobile.remove();
@@ -121,7 +120,7 @@ function initMobileMenu() {
   }
 }
 
-// Inicialização controlada
+// Inicializacao controlada
 let resizeTimeout;
 const handleResize = () => {
   clearTimeout(resizeTimeout);
@@ -140,7 +139,7 @@ if (document.readyState === 'loading') {
   window.addEventListener('resize', handleResize);
 }
 
-// Controle do header na página da calculadora
+// Controle do header na pagina da calculadora
 if (document.querySelector('.calculadora-page')) {
   const header = document.querySelector('header');
   const calculadora = document.querySelector('.calculadora-container');
@@ -161,10 +160,12 @@ if (document.querySelector('.calculadora-page')) {
         if (!inThrottle) {
           func.apply(context, args);
           inThrottle = true;
-          setTimeout(() => inThrottle = false, limit);
+          setTimeout(() => {
+            inThrottle = false;
+          }, limit);
         }
-      }
-    }
+      };
+    };
 
     const throttledCheck = throttle(checkOverlap, 100);
     window.addEventListener('scroll', throttledCheck);
@@ -176,7 +177,6 @@ if (document.querySelector('.calculadora-page')) {
 document.addEventListener('DOMContentLoaded', function () {
   const header = document.querySelector('header');
   if (header) {
-    // Implementar throttling para eventos de scroll
     function throttle(fn, delay) {
       let last = 0;
       return (...args) => {
@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function () {
       };
     }
 
-    // Aplicar throttling no evento de scroll
     window.addEventListener('scroll', throttle(() => {
       header.classList.toggle('scrolled', window.scrollY > 50);
     }, 100));
@@ -198,15 +197,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const currentPath = window.location.pathname.toLowerCase();
   const menuLinks = document.querySelectorAll('.menu a, .menu-items a');
 
-  menuLinks.forEach(link => {
-    const href = link.getAttribute('href').toLowerCase();
+  menuLinks.forEach((link) => {
+    const href = (link.getAttribute('href') || '').toLowerCase();
     const linkPage = href.split('/').pop().replace('.html', '');
     const currentPage = currentPath.split('/').pop().replace('.html', '');
 
-    // Verificar se é a página atual
-    if (linkPage === currentPage ||
+    if (
+      linkPage === currentPage ||
       (currentPage === '' && linkPage === 'index') ||
-      (currentPage === 'index' && linkPage === 'index')) {
+      (currentPage === 'index' && linkPage === 'index')
+    ) {
       link.classList.add('active');
     }
   });
