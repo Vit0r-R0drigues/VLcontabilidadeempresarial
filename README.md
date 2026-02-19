@@ -84,6 +84,21 @@ Para manter o site:
 3. Monitore o desempenho
 4. Mantenha o conteúdo atualizado
 
+### Verificação de links locais
+
+Antes de publicar, execute a checagem de links locais para evitar referências quebradas em `href/src`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\check-links.ps1
+```
+
+Se o script encontrar links inválidos, ele retorna código `1` e lista arquivo/linha.
+
+### Variáveis de ambiente
+
+Use o arquivo `.env.example` como base para criar o seu `.env` local.
+O arquivo `.env` está no `.gitignore` e não deve ser versionado.
+
 ## 📝 SEO Checklist
 
 - [x] Meta tags otimizadas

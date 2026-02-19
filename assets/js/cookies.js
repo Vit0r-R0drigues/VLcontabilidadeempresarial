@@ -1,225 +1,180 @@
-// Configurações de cookies
+// Configuracao de cookies
 const COOKIE_CONFIG = {
-    expiry: 365, // dias
+    expiryDays: 365,
     names: {
         consent: 'vlcont_cookie_consent',
         analytics: 'vlcont_analytics_cookies',
         marketing: 'vlcont_marketing_cookies'
-    },
-    domain: window.location.hostname
+    }
 };
 
-// Função para obter um cookie
 function getCookie(name) {
-    try {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            return decodeURIComponent(parts.pop().split(';').shift());
+    const prefix = `${name}=`;
+    const parts = document.cookie.split(';');
+    for (const rawPart of parts) {
+        const part = rawPart.trim();
+        if (part.startsWith(prefix)) {
+            return decodeURIComponent(part.substring(prefix.length));
         }
-        return null;
-    } catch (error) {
-        console.error('Erro ao obter cookie:', error);
-        return null;
     }
+    return null;
 }
 
-// Função para definir um cookie
-function setCookie(name, value, days) {
-    try {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = `expires=${date.toUTCString()}`;
-        const sameSite = 'SameSite=Lax';
-        const secure = location.protocol === 'https:' ? 'Secure' : '';
-        document.cookie = `${name}=${encodeURIComponent(value)};${expires};path=/;${sameSite};${secure}`;
-    } catch (error) {
-        console.error('Erro ao definir cookie:', error);
-    }
+function setCookie(name, value, days = COOKIE_CONFIG.expiryDays) {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax${secure}`;
 }
 
-// Função para deletar um cookie
-function deleteCookie(name) {
-    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+function hideCookieBanner() {
+    const banner = document.querySelector('.cookie-banner');
+    if (!banner) return;
+    banner.classList.remove('show');
+    setTimeout(() => banner.remove(), 300);
 }
 
-// Função para mostrar o banner de cookies
+function closeCookieSettings() {
+    const overlay = document.querySelector('.cookie-overlay');
+    const settings = document.querySelector('.cookie-settings');
+
+    if (overlay) overlay.classList.remove('show');
+    if (settings) settings.classList.remove('show');
+
+    setTimeout(() => {
+        if (overlay) overlay.remove();
+        if (settings) settings.remove();
+    }, 300);
+}
+
 function showCookieBanner() {
-    if (!getCookie(COOKIE_CONFIG.names.consent)) {
-        const banner = document.createElement('div');
-        banner.className = 'cookie-banner';
-        banner.innerHTML = `
-            <div class="cookie-content">
-                <p>Utilizamos cookies para melhorar sua experiência em nosso site. Ao continuar navegando, você concorda com nossa 
-                   <a href="/HTML/politica-de-privacidade.html" target="_blank">Política de Privacidade</a>.</p>
-                <div class="cookie-buttons">
-                    <button class="cookie-btn settings-btn" onclick="showCookieSettings()">Configurar Preferências</button>
-                    <button class="cookie-btn accept-btn" onclick="acceptAllCookies()">Aceitar Todos</button>
-                </div>
+    if (getCookie(COOKIE_CONFIG.names.consent) === 'true') return;
+    if (document.querySelector('.cookie-banner')) return;
+
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML = `
+        <div class="cookie-content">
+            <p>
+                Utilizamos cookies para melhorar sua experiencia.
+                Leia nossa <a href="/HTML/politica-de-privacidade.html" target="_blank" rel="noopener noreferrer">Politica de Privacidade</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button type="button" class="cookie-btn settings-btn" onclick="showCookieSettings()">Configurar Preferencias</button>
+                <button type="button" class="cookie-btn accept-btn" onclick="acceptAllCookies()">Aceitar Todos</button>
             </div>
-        `;
-        document.body.appendChild(banner);
-        setTimeout(() => banner.classList.add('show'), 100);
-    }
+        </div>
+    `;
+
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => banner.classList.add('show'));
 }
 
-// Função para mostrar as configurações de cookies
 function showCookieSettings() {
+    if (document.querySelector('.cookie-overlay') || document.querySelector('.cookie-settings')) return;
+
+    const analyticsChecked = getCookie(COOKIE_CONFIG.names.analytics) === 'true';
+    const marketingChecked = getCookie(COOKIE_CONFIG.names.marketing) === 'true';
+
     const overlay = document.createElement('div');
     overlay.className = 'cookie-overlay';
-    
+
     const settings = document.createElement('div');
     settings.className = 'cookie-settings';
     settings.innerHTML = `
-        <h3>Preferências de Cookies</h3>
-        <p class="cookie-description">Personalize suas preferências de cookies para melhor atender às suas necessidades.</p>
-        
+        <h3>Preferencias de Cookies</h3>
+        <p class="cookie-description">Escolha quais cookies deseja permitir.</p>
         <div class="cookie-option">
             <div class="cookie-option-text">
                 <label>Cookies Essenciais</label>
-                <p>Necessários para o funcionamento básico do site. Não podem ser desativados.</p>
+                <p>Necessarios para o funcionamento do site. Nao podem ser desativados.</p>
             </div>
             <label class="switch">
                 <input type="checkbox" checked disabled>
                 <span class="slider"></span>
             </label>
         </div>
-
         <div class="cookie-option">
             <div class="cookie-option-text">
-                <label>Cookies Analíticos</label>
-                <p>Nos ajudam a entender como você usa o site, melhorando a experiência.</p>
+                <label>Cookies Analiticos</label>
+                <p>Ajudam a medir desempenho e melhorar a experiencia.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" id="analyticsCookies" ${getCookie(COOKIE_CONFIG.names.analytics) === 'true' ? 'checked' : ''}>
+                <input type="checkbox" id="analyticsCookies" ${analyticsChecked ? 'checked' : ''}>
                 <span class="slider"></span>
             </label>
         </div>
-
         <div class="cookie-option">
             <div class="cookie-option-text">
                 <label>Cookies de Marketing</label>
-                <p>Usados para personalizar anúncios e conteúdo relevante.</p>
+                <p>Usados para personalizacao de campanhas.</p>
             </div>
             <label class="switch">
-                <input type="checkbox" id="marketingCookies" ${getCookie(COOKIE_CONFIG.names.marketing) === 'true' ? 'checked' : ''}>
+                <input type="checkbox" id="marketingCookies" ${marketingChecked ? 'checked' : ''}>
                 <span class="slider"></span>
             </label>
         </div>
-
         <div class="cookie-buttons">
-            <button class="cookie-btn settings-btn" onclick="closeCookieSettings()">Cancelar</button>
-            <button class="cookie-btn accept-btn" onclick="saveSettings()">Salvar Preferências</button>
+            <button type="button" class="cookie-btn settings-btn" onclick="closeCookieSettings()">Cancelar</button>
+            <button type="button" class="cookie-btn accept-btn" onclick="saveSettings()">Salvar Preferencias</button>
         </div>
     `;
-    
-    document.body.appendChild(overlay);
-    document.body.appendChild(settings);
-    
-    setTimeout(() => {
-        overlay.classList.add('show');
-        settings.classList.add('show');
-    }, 100);
 
-    // Fechar ao clicar fora
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
             closeCookieSettings();
         }
     });
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(settings);
+
+    requestAnimationFrame(() => {
+        overlay.classList.add('show');
+        settings.classList.add('show');
+    });
 }
 
-// Função para fechar as configurações de cookies
-function closeCookieSettings() {
-    const overlay = document.querySelector('.cookie-overlay');
-    const settings = document.querySelector('.cookie-settings');
-    
-    if (overlay && settings) {
-        overlay.classList.remove('show');
-        settings.classList.remove('show');
-        
-        setTimeout(() => {
-            overlay.remove();
-            settings.remove();
-        }, 500);
-    }
-}
-
-// Função para aceitar todos os cookies
 function acceptAllCookies() {
-    setCookie(COOKIE_CONFIG.names.consent, 'true', COOKIE_CONFIG.expiry);
-    setCookie(COOKIE_CONFIG.names.analytics, 'true', COOKIE_CONFIG.expiry);
-    setCookie(COOKIE_CONFIG.names.marketing, 'true', COOKIE_CONFIG.expiry);
-    
-    const banner = document.querySelector('.cookie-banner');
-    if (banner) {
-        banner.classList.remove('show');
-        setTimeout(() => banner.remove(), 500);
-    }
-
-    // Inicializar serviços após aceitação
-    initializeServices();
-}
-
-// Função para salvar as configurações de cookies
-function saveSettings() {
-    const analyticsCookies = document.getElementById('analyticsCookies')?.checked || false;
-    const marketingCookies = document.getElementById('marketingCookies')?.checked || false;
-    
-    setCookie(COOKIE_CONFIG.names.consent, 'true', COOKIE_CONFIG.expiry);
-    setCookie(COOKIE_CONFIG.names.analytics, analyticsCookies, COOKIE_CONFIG.expiry);
-    setCookie(COOKIE_CONFIG.names.marketing, marketingCookies, COOKIE_CONFIG.expiry);
-    
+    setCookie(COOKIE_CONFIG.names.consent, 'true');
+    setCookie(COOKIE_CONFIG.names.analytics, 'true');
+    setCookie(COOKIE_CONFIG.names.marketing, 'true');
     closeCookieSettings();
-    
-    const banner = document.querySelector('.cookie-banner');
-    if (banner) {
-        banner.classList.remove('show');
-        setTimeout(() => banner.remove(), 500);
-    }
-
-    // Inicializar serviços com base nas preferências
+    hideCookieBanner();
     initializeServices();
 }
 
-// Função para inicializar serviços com base nas preferências de cookies
+function saveSettings() {
+    const analyticsEnabled = document.getElementById('analyticsCookies')?.checked ?? false;
+    const marketingEnabled = document.getElementById('marketingCookies')?.checked ?? false;
+
+    setCookie(COOKIE_CONFIG.names.consent, 'true');
+    setCookie(COOKIE_CONFIG.names.analytics, String(analyticsEnabled));
+    setCookie(COOKIE_CONFIG.names.marketing, String(marketingEnabled));
+
+    closeCookieSettings();
+    hideCookieBanner();
+    initializeServices();
+}
+
+function initializeAnalytics() {
+    // Placeholder para inicializacao de analytics.
+}
+
+function initializeMarketing() {
+    // Placeholder para inicializacao de marketing/pixels.
+}
+
 function initializeServices() {
     const analyticsEnabled = getCookie(COOKIE_CONFIG.names.analytics) === 'true';
     const marketingEnabled = getCookie(COOKIE_CONFIG.names.marketing) === 'true';
 
-    if (analyticsEnabled) {
-        // Inicializar serviços analíticos (exemplo: Google Analytics)
-        initializeAnalytics();
-    }
-
-    if (marketingEnabled) {
-        // Inicializar serviços de marketing (exemplo: pixels de remarketing)
-        initializeMarketing();
-    }
+    if (analyticsEnabled) initializeAnalytics();
+    if (marketingEnabled) initializeMarketing();
 }
 
-// Função para inicializar analytics
-function initializeAnalytics() {
-    // Implementar inicialização do Google Analytics ou similar
-    console.log('Serviços analíticos inicializados');
-}
-
-// Função para inicializar marketing
-function initializeMarketing() {
-    // Implementar inicialização de pixels de marketing
-    console.log('Serviços de marketing inicializados');
-}
-
-// Inicializar banner de cookies quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
     showCookieBanner();
-    
-    // Se já houver consentimento, inicializar serviços
     if (getCookie(COOKIE_CONFIG.names.consent) === 'true') {
         initializeServices();
     }
 });
-
-// Implementar batch para múltiplas atualizações
-class BatchProcessor {
-  constructor(delay = 1000) {

@@ -2,21 +2,68 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/</loc>
-        <lastmod>2024-02-20</lastmod>
+        <lastmod>2026-02-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://vlcontabilidadeempresarial.com.br/blog/</loc>
-        <lastmod>2024-02-20</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://vlcontabilidadeempresarial.com.br/blog/posts/mei-2024.html</loc>
-        <lastmod>2024-02-20</lastmod>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/sobre.html</loc>
+        <lastmod>2026-02-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-    <!-- ... outras URLs -->
-</urlset> 
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/servicos.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/contatos.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/ferramentas.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/calculadora-irrf.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/calculadora-ferias.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/calculadora-rescisao.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/politica-de-privacidade.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/blogemconstru%C3%A7%C3%A3o.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/landingpages/irrf2025.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
