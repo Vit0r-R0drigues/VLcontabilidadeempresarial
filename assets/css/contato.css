@@ -90,7 +90,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 .contato-form h2 {
@@ -102,54 +102,36 @@
 
 .form-container {
     width: 100%;
-    height: 700px;
-    overflow: hidden;
     border-radius: 8px;
     position: relative;
 }
 
-.form-container iframe {
+.contato-formulario {
     width: 100%;
-    height: 100%;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.02);
 }
 
-/* Loader enquanto o iframe carrega */
-.form-loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.form-hint {
+    margin-top: 12px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+.whatsapp-submit {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: rgba(26, 29, 35, 0.8);
-    z-index: 1;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25D366;
 }
 
-.loader {
-    border: 5px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    border-top: 5px solid var(--cor-texto-1);
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.whatsapp-submit:hover {
+    background-color: #128C7E;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
     .contato-content {
         grid-template-columns: 1fr;
-    }
-    
-    .form-container {
-        height: 800px;
     }
 } 
