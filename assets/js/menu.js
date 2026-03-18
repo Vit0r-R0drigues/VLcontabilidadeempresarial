@@ -6,8 +6,15 @@ class MobileMenu {
       return MobileMenu.instance;
     }
 
-    this.menuBtn = document.querySelector('.menu-toggle');
-    this.menuItems = document.querySelector('.menu-items');
+    this.menuBtn = document.getElementById('btn-mobile');
+    this.navMenu = document.querySelector('header nav, .site-header nav, .header-nav');
+
+    // Se o botao de mobile nao existe no HTML (paginas secundarias), cria ele.
+    const header = document.querySelector('header, .site-header');
+    if (!this.menuBtn && header) {
+      this.createMenuButton(header);
+    }
+
     this.toggleMenu = this.toggleMenu.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleLinkClick = this.handleLinkClick.bind(this);
@@ -16,10 +23,19 @@ class MobileMenu {
     MobileMenu.instance = this;
   }
 
+  createMenuButton(parent) {
+    const menuMobileDiv = document.createElement('div');
+    menuMobileDiv.className = 'menu-mobile';
+    menuMobileDiv.innerHTML = `
+      <button class="menu-toggle" aria-label="Abrir menu" id="btn-mobile">
+        <i class="fi fi-rr-menu-burger"></i>
+      </button>
+    `;
+    parent.appendChild(menuMobileDiv);
+    this.menuBtn = menuMobileDiv.querySelector('#btn-mobile');
+  }
+
   init() {
-    if (!document.querySelector('.menu-mobile')) {
-      this.createMenuStructure();
-    }
     this.addEventListeners();
   }
 
@@ -50,11 +66,13 @@ class MobileMenu {
   }
 
   addEventListeners() {
-    if (this.menuBtn && this.menuItems) {
+    if (this.menuBtn && this.navMenu) {
       this.menuBtn.addEventListener('click', this.toggleMenu);
       document.addEventListener('click', this.handleDocumentClick);
 
-      const menuLinks = this.menuItems.querySelectorAll('a');
+      // Use navMenu (the existing HTML nav ul) instead of this.menuItems
+      // which is only populated by createMenuStructure() — a path never taken.
+      const menuLinks = this.navMenu.querySelectorAll('a');
       menuLinks.forEach((link) => {
         link.addEventListener('click', this.handleLinkClick);
       });
@@ -63,27 +81,42 @@ class MobileMenu {
 
   toggleMenu(e) {
     e.stopPropagation();
-    const isActive = this.menuItems.classList.toggle('active');
+    const isActive = this.navMenu.classList.toggle('active');
+    this.menuBtn.classList.toggle('active');
 
-    this.menuBtn.style.transform = isActive ? 'rotate(90deg)' : 'rotate(0deg)';
+    const icon = this.menuBtn.querySelector('i');
+    if (isActive) {
+      icon.className = 'fi fi-rr-cross';
+      this.navMenu.style.display = 'flex';
+      // Pequeno delay para permitir a transição de opacidade/transform
+      setTimeout(() => {
+        this.navMenu.style.opacity = '1';
+        this.navMenu.style.transform = 'translateY(0)';
+      }, 10);
+    } else {
+      icon.className = 'fi fi-rr-menu-burger';
+      this.navMenu.style.opacity = '0';
+      this.navMenu.style.transform = 'translateY(-20px)';
+      setTimeout(() => {
+        this.navMenu.style.display = 'none';
+      }, 300);
+    }
+    
     this.menuBtn.setAttribute('aria-expanded', isActive.toString());
     document.body.style.overflow = isActive ? 'hidden' : '';
   }
 
   handleDocumentClick(e) {
-    if (!e.target.closest('.menu-mobile')) {
-      this.menuItems.classList.remove('active');
-      this.menuBtn.style.transform = 'rotate(0deg)';
-      this.menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+    if (!e.target.closest('.menu-mobile') && !e.target.closest('nav') && this.navMenu.classList.contains('active')) {
+      this.toggleMenu(e);
     }
   }
 
   handleLinkClick() {
-    this.menuItems.classList.remove('active');
-    this.menuBtn.style.transform = 'rotate(0deg)';
-    this.menuBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    if (this.navMenu.classList.contains('active')) {
+      const e = { stopPropagation: () => {} };
+      this.toggleMenu(e);
+    }
   }
 
   destroy() {
@@ -106,13 +139,11 @@ class MobileMenu {
 
 // Gerenciamento de redimensionamento
 function initMobileMenu() {
-  const existingMenu = document.querySelector('.menu-mobile');
-
   if (window.innerWidth <= 768) {
-    if (!existingMenu) {
+    if (!MobileMenu.instance) {
       new MobileMenu();
     }
-  } else if (existingMenu) {
+  } else {
     if (MobileMenu.instance) {
       MobileMenu.instance.destroy();
       MobileMenu.instance = null;
@@ -191,11 +222,39 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', throttle(() => {
       header.classList.toggle('scrolled', window.scrollY > 50);
     }, 100));
+
+    // Logo click fix: se a logo nao tem link ou o link esta errado em subpaginas.
+    const logo = header.querySelector('.logo, .brand');
+    if (logo) {
+      const path = window.location.pathname.toLowerCase();
+      let prefix = '';
+      
+      if (path.includes('/blog/posts/')) {
+        prefix = '../../';
+      } else if (path.includes('/blog/') || path.includes('/html/')) {
+        prefix = '../';
+      }
+
+      let logoLink = logo.querySelector('a') || (logo.tagName === 'A' ? logo : null);
+      
+      if (!logoLink && logo.classList.contains('logo')) {
+        const img = logo.querySelector('img');
+        if (img) {
+          const a = document.createElement('a');
+          a.href = prefix + 'index.html';
+          img.parentNode.insertBefore(a, img);
+          a.appendChild(img);
+        }
+      } else if (logoLink) {
+        // Se ja existe, garante que aponta para o lugar certo
+        logoLink.href = prefix + 'index.html';
+      }
+    }
   }
 
   // Marcar link ativo no menu
   const currentPath = window.location.pathname.toLowerCase();
-  const menuLinks = document.querySelectorAll('.menu a, .menu-items a');
+  const menuLinks = document.querySelectorAll('.menu a, .menu-items a, .header-nav a');
 
   menuLinks.forEach((link) => {
     const href = (link.getAttribute('href') || '').toLowerCase();

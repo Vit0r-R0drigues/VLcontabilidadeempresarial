@@ -112,313 +112,221 @@ Grandes telas : maior que 1200px*/
     }
 }
 
-/* Dispositivos Extra Pequenos (até 600px) */
-@media screen and (max-width: 600px) {
+/* Dispositivos Móveis (até 768px) */
+@media screen and (max-width: 768px) {
+    /* No mobile, o background no body com cover+scroll nao funciona
+       porque o body e muito alto (pagina inteira). Aplicamos a imagem
+       diretamente na .home1 que tem min-height:100vh. */
     body {
-        background-size: contain;
-        background-position: top center;
+        background-image: none !important;
         background-color: var(--cor-fundo);
     }
 
-    /* Typing text - permitir quebra de linha no mobile */
-    .typing-text {
-        white-space: normal;
-        overflow: visible;
-        animation: none;
-        border-right: none;
-        font-size: 1rem;
-        text-align: center;
+    /* Ocultar icones sociais no header mobile */
+    header .social-icons {
+        display: none !important;
     }
 
-    /* Header Mobile - Compacto e Horizontal */
+    /* Header Mobile - Alinhado e Funcional */
     header {
-        flex-direction: row;
-        height: 70px;
-        padding: 10px 15px;
-        margin: 10px;
-        width: calc(100% - 20px);
-        border-radius: 10px;
-        gap: 10px;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 70px !important;
+        padding: 5px 20px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        top: 0 !important;
+        left: 0 !important;
+        background-color: rgba(15, 23, 42, 0.95) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        z-index: 2000 !important;
     }
 
-    header.scrolled {
-        height: 60px;
-        margin: 5px 10px;
-        padding: 8px 12px;
+    header .logo {
+        display: block !important;
+        margin: 0 !important;
     }
 
     header .logo img {
-        display: none;
+        display: block !important;
+        width: 55px !important;
+        height: 55px !important;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    header.scrolled {
+        height: 60px !important;
+        background-color: rgba(15, 23, 42, 0.98) !important;
     }
 
     header.scrolled .logo img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    /* Esconde o menu desktop e ícones sociais */
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 10px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 8px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        background: rgba(232, 130, 14, 0.1) !important;
+        border-color: var(--cor-texto-1);
+    }
+
+    .menu-toggle i {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    /* Menu Mobile Overlay */
+    header nav, 
+    .site-header nav,
+    .header-nav {
         display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        z-index: 1500;
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Esconde o menu desktop no mobile */
-    header nav {
-        display: none;
+    header nav.active,
+    .site-header nav.active,
+    .header-nav.active {
+        display: flex !important;
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    /* Social icons no mobile */
-    header .social-icons {
-        gap: 8px;
-        margin-left: auto;
+    header nav ul.menu,
+    .site-header nav ul.menu,
+    .header-nav ul.menu,
+    .site-header .header-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100%;
+        padding: 40px 20px !important;
+        align-items: center !important;
     }
 
-    header .social-icons a {
-        width: 32px;
-        height: 32px;
-    }
-
-    header .social-icons a i {
-        font-size: 0.9rem;
-    }
-
-    .home1 {
-        height: auto;
-        padding: 120px 16px 50px;
+    header nav ul.menu li {
+        width: 100%;
         text-align: center;
-        min-height: auto;
     }
 
-    .hero-badge {
-        font-size: 0.8rem;
-        padding: 6px 16px;
+    header nav ul.menu li a {
+        font-size: 1.2rem !important;
+        padding: 15px !important;
+        justify-content: center !important;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    /* Ajuste para o Cookie Banner no Mobile */
+    .cookie-banner {
+        padding: 1rem !important;
+        text-align: left !important;
+    }
+
+    .cookie-banner p {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .cookie-buttons {
+        gap: 0.5rem !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .cookie-btn {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.8rem !important;
+        flex: 1;
+        text-align: center;
+    }
+
+    /* Hero Section mobile - aplicar foto diretamente aqui */
+    .home1 {
+        padding: 110px 20px 50px !important;
+        min-height: 100vh !important;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(15, 23, 42, 0.85)),
+                          url(../img/FT-HOME.png) !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;
     }
 
     .home1 h1 {
-        font-size: 1.8em;
-        margin-bottom: 12px;
+        font-size: 2em !important;
         line-height: 1.2;
     }
 
     .home1 p {
-        font-size: 1rem;
-        margin-bottom: 20px;
-        padding: 0 5px;
+        font-size: 1.1rem !important;
     }
 
-    /* CTA Principal - Dominante e thumb-friendly */
-    .cta-button.cta-primary {
-        display: block;
-        width: 90%;
-        max-width: none;
-        font-size: 1.1rem;
-        font-weight: 700;
-        padding: 16px 24px;
-        min-height: 54px;
-        border-radius: 12px;
-        margin: 0 auto;
-        letter-spacing: 0.3px;
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
-    }
-
-    .home2 {
-        padding: 40px 15px;
+    .typing-text {
+        white-space: normal !important;
+        overflow: visible !important;
+        animation: none !important;
+        border-right: none !important;
+        font-size: 1rem !important;
         text-align: center;
+        max-width: 90%;
     }
 
-    .beneficios-grid {
-        padding: 0 10px;
-        gap: 15px;
+    .cta-button.cta-primary {
+        display: block !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
     }
 
-    .beneficio-item {
-        padding: 15px;
-    }
-
-    .beneficio-item h3 {
-        font-size: 1rem;
-    }
-
-    .beneficio-item p {
-        font-size: 0.85rem;
-    }
-
-    .conteudo1 h2#segu,
-    .conteudo1 p#segu {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-
-    .servicos-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 0 15px;
-    }
-
-    .servico-card {
-        padding: 25px 20px;
-        min-height: 48px;
-    }
-
-    .numeros-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    /* General responsive grids */
+    .beneficios-grid,
+    .servicos-grid,
+    .numeros-grid,
+    .footer-content {
+        grid-template-columns: 1fr !important;
     }
 
     .numero-item {
-        padding: 20px;
+        padding: 15px !important;
     }
 
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 30px;
-    }
-
-    .social-footer {
-        justify-content: center;
-    }
-
-    /* WhatsApp mobile */
     .whatsapp-float {
-        bottom: 20px;
-        right: 20px;
-        width: 55px;
-        height: 55px;
-    }
-
-    .whatsapp-tooltip {
-        display: none;
-    }
-
-    /* Ajustes para o formulário de contato */
-    .contato-rapido {
-        padding: 40px 15px;
-    }
-
-    .contato-rapido h2 {
-        font-size: 2em;
-        margin-bottom: 30px;
-    }
-
-    #form-contato {
-        padding: 0;
-    }
-
-    #form-contato input,
-    #form-contato textarea {
-        padding: 10px;
-        font-size: 16px;
-        /* Evita zoom em iOS */
-    }
-
-    #form-contato button {
-        width: 100%;
-        max-width: none;
-        padding: 12px 20px;
-    }
-}
-
-/* Tablets (601px até 768px) */
-@media screen and (min-width: 601px) and (max-width: 768px) {
-    body {
-        background-size: cover;
-        background-position: center 30%;
-    }
-
-    header {
-        padding: 10px;
-        margin: 0;
-        background-color: rgba(15, 23, 42, 0.95);
-    }
-
-    .menu {
-        gap: 15px;
-    }
-
-    ul>li>a {
-        font-size: 0.9rem;
-        padding: 8px 10px;
-    }
-
-    .home1 {
-        height: auto;
-        padding: 140px 30px 80px;
-    }
-
-    .home1 h1 {
-        font-size: 2.8em;
-    }
-
-    .servicos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-}
-
-/* Tablets Grandes e Notebooks (769px até 992px) */
-@media screen and (min-width: 769px) and (max-width: 992px) {
-    .home1 h1 {
-        font-size: 3em;
-    }
-
-    .servicos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Desktops (993px até 1200px) */
-@media screen and (min-width: 993px) and (max-width: 1200px) {
-    .container {
-        max-width: 960px;
-    }
-}
-
-/* Telas Grandes (acima de 1200px) */
-@media screen and (min-width: 1201px) {
-    .container {
-        max-width: 1140px;
-    }
-}
-
-/* Menu Mobile */
-@media screen and (max-width: 768px) {
-    nav .menu {
-        display: none;
-    }
-
-    .menu-mobile {
-        display: block;
-    }
-
-    .menu-items {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 8px 0;
-        min-width: 180px;
-        margin-top: 10px;
-    }
-
-    header {
-        height: 50px;
-        padding: 5px 15px;
-        margin: 0;
-        justify-content: flex-end;
-        background-color: transparent;
-        backdrop-filter: none;
-    }
-
-    header .logo {
-        display: none;
-    }
-
-    header .social-icons {
-        display: none;
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 55px !important;
+        height: 55px !important;
     }
 }
 
@@ -670,18 +578,10 @@ Grandes telas : maior que 1200px*/
 
 /* Mobile visual fixes for home */
 @media screen and (max-width: 600px) {
-    body {
-        /* Avoid tonal bands caused by `contain` and iOS background rendering */
-        background-size: cover !important;
-        background-position: center top !important;
-        background-repeat: no-repeat !important;
-        background-attachment: scroll !important;
-    }
-
     .home1 {
         margin: 0 !important;
-        padding: 105px 16px 28px !important;
-        background: transparent !important;
+        padding: 100px 16px 28px !important;
+        /* Nao sobrescrever o background-image aplicado no bloco 768px */
     }
 
     .cta-button.cta-primary {
@@ -692,6 +592,16 @@ Grandes telas : maior que 1200px*/
     .home2 {
         margin-top: 0 !important;
         padding: 26px 16px 36px !important;
+    }
+}
+
+/* ============================================================
+   Desktop Only — re-enable parallax (fixed) effect
+   Only applied on 992px+ where iOS/Android restrictions don't apply
+   ============================================================ */
+@media screen and (min-width: 992px) {
+    body {
+        background-attachment: fixed;
     }
 }
 

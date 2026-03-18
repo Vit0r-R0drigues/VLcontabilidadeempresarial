@@ -47,7 +47,10 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    /* scroll = mobile-first: works on all devices incl. iOS Safari.
+       background-attachment: fixed (parallax) is added only on desktop
+       via @media (min-width: 992px) in mediaquery.css               */
+    background-attachment: scroll;
     min-height: 100vh;
 }
 
@@ -456,7 +459,7 @@ main {
 }
 
 .cta-card p {
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 
@@ -603,17 +606,21 @@ main {
 .ver-mais {
     display: inline-block;
     margin-top: 40px;
-    padding: 12px 25px;
+    padding: 12px 30px;
     background-color: transparent;
     border: 2px solid var(--cor-texto-1);
     color: var(--cor-texto);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
+    font-family: var(--fonte-botoes);
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .ver-mais:hover {
     background-color: var(--cor-texto-1);
+    box-shadow: 0 4px 15px rgba(232, 130, 14, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Números */
@@ -1814,6 +1821,7 @@ input[type="range"] {
     background: rgba(255, 255, 255, 0.1);
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
     margin: 1rem 0;
 }
 
@@ -2288,6 +2296,7 @@ input[type="range"] {
     background: rgba(255, 255, 255, 0.1);
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
     margin: 1rem 0;
 }
 
