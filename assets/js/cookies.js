@@ -8,6 +8,11 @@ const COOKIE_CONFIG = {
     }
 };
 
+const ANALYTICS_CONFIG = {
+    measurementId: 'G-5TQ0YTWHK9',
+    scriptId: 'vl-analytics-script'
+};
+
 function getCookie(name) {
     const prefix = `${name}=`;
     const parts = document.cookie.split(';');
@@ -157,7 +162,43 @@ function saveSettings() {
 }
 
 function initializeAnalytics() {
-    // Placeholder para inicializacao de analytics.
+    if (window.vlAnalyticsInitialized) {
+        return Promise.resolve();
+    }
+
+    const existingScript = document.getElementById(ANALYTICS_CONFIG.scriptId);
+    if (existingScript) {
+        return existingScript.dataset.loaded === 'true'
+            ? Promise.resolve()
+            : new Promise((resolve, reject) => {
+                existingScript.addEventListener('load', resolve, { once: true });
+                existingScript.addEventListener('error', reject, { once: true });
+            });
+    }
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.id = ANALYTICS_CONFIG.scriptId;
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_CONFIG.measurementId}`;
+
+        script.addEventListener('load', () => {
+            script.dataset.loaded = 'true';
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+            window.gtag('js', new Date());
+            window.gtag('config', ANALYTICS_CONFIG.measurementId, {
+                anonymize_ip: true
+            });
+            window.vlAnalyticsInitialized = true;
+            resolve();
+        }, { once: true });
+
+        script.addEventListener('error', reject, { once: true });
+        document.head.appendChild(script);
+    }).catch((error) => {
+        console.warn('Nao foi possivel carregar o Google Analytics apos o consentimento.', error);
+    });
 }
 
 function initializeMarketing() {

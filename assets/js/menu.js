@@ -252,6 +252,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  function getExternalLabel(href) {
+    if (!href) return '';
+    const normalizedHref = href.toLowerCase();
+
+    if (normalizedHref.includes('instagram.com/vitor_rodri_cont')) return 'Instagram de Vitor Rodrigues';
+    if (normalizedHref.includes('instagram.com')) return 'Instagram da VL Contabilidade Empresarial';
+    if (normalizedHref.includes('wa.me/')) return 'WhatsApp da VL Contabilidade Empresarial';
+    if (normalizedHref.includes('youtube.com')) return 'Canal da VL Contabilidade Empresarial no YouTube';
+    if (normalizedHref.includes('google.com/search')) return 'Perfil da VL Contabilidade Empresarial no Google';
+
+    return '';
+  }
+
+  function enhanceExternalLinks() {
+    document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+      const relValues = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+      relValues.add('noopener');
+      relValues.add('noreferrer');
+      link.setAttribute('rel', Array.from(relValues).join(' '));
+
+      const text = (link.textContent || '').trim();
+      const hasOnlyIcon = text.length <= 2 && link.querySelector('i');
+      const inferredLabel = getExternalLabel(link.getAttribute('href'));
+
+      if (hasOnlyIcon && inferredLabel && !link.getAttribute('aria-label')) {
+        link.setAttribute('aria-label', inferredLabel);
+      }
+    });
+  }
+
+  enhanceExternalLinks();
+
   // Marcar link ativo no menu
   const currentPath = window.location.pathname.toLowerCase();
   const menuLinks = document.querySelectorAll('.menu a, .menu-items a, .header-nav a');

@@ -154,4 +154,150 @@
             };
         }
     });
+
+    suite.registerDefinition('pj-vs-clt', {
+        pageTitle: 'Comparador PJ x CLT',
+        pageDescription: 'Compare o caixa anual estimado como CLT e como PJ para apoiar negociacao de contrato e retirada.',
+        badges: ['Comparativo', 'Contratacao', 'Retirada'],
+        calculateLabel: 'Comparar PJ x CLT',
+        fields: [
+            { id: 'salarioCLTBruto', type: 'number', label: 'Salario CLT bruto mensal', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'beneficiosCLT', type: 'number', label: 'Beneficios CLT mensais', placeholder: 'R$ 0,00', min: 0, step: '0.01', help: 'Use VR, VA, plano de saude, bonus fixos e outros valores recorrentes.' },
+            { id: 'dependentes', type: 'number', label: 'Dependentes para IRRF', min: 0, step: '1' },
+            {
+                id: 'regimePJ',
+                type: 'select',
+                label: 'Regime da empresa PJ',
+                options: [
+                    { value: 'simples', label: 'Simples Nacional' },
+                    { value: 'presumido', label: 'Lucro Presumido' }
+                ]
+            },
+            { id: 'faturamentoPJMensal', type: 'number', label: 'Receita PJ mensal', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'custosPJMensais', type: 'number', label: 'Custos mensais da PJ', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'prolaboreMensal', type: 'number', label: 'Pro-labore mensal', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'rbt12PJ', type: 'number', label: 'Faturamento PJ em 12 meses (para Simples)', placeholder: 'R$ 0,00', min: 0, step: '0.01', help: 'Se nao informar, a calculadora usa 12x a receita mensal.' },
+            {
+                id: 'anexoPJ',
+                type: 'select',
+                label: 'Anexo do Simples (se aplicavel)',
+                options: [
+                    { value: 'I', label: 'Anexo I - Comercio' },
+                    { value: 'II', label: 'Anexo II - Industria' },
+                    { value: 'III', label: 'Anexo III - Servicos' },
+                    { value: 'IV', label: 'Anexo IV - Servicos especificos' },
+                    { value: 'V', label: 'Anexo V - Servicos intelectuais' }
+                ]
+            },
+            { id: 'atividadePJ', type: 'select', label: 'Atividade da PJ (para Presumido)', options: H.atividadePresumidoOptions() },
+            { id: 'aliquotaLocalPJ', type: 'number', label: 'ISS ou ICMS adicional no Presumido (%)', min: 0, max: 10, step: '0.1' }
+        ],
+        example: {
+            salarioCLTBruto: 9500,
+            beneficiosCLT: 1350,
+            dependentes: 1,
+            regimePJ: 'simples',
+            faturamentoPJMensal: 17500,
+            custosPJMensais: 1800,
+            prolaboreMensal: 5000,
+            rbt12PJ: 210000,
+            anexoPJ: 'III',
+            atividadePJ: 'servicos',
+            aliquotaLocalPJ: 0
+        },
+        validate(values) {
+            if (values.salarioCLTBruto <= 0) return 'Informe o salario CLT bruto mensal.';
+            if (values.faturamentoPJMensal <= 0) return 'Informe a receita PJ mensal.';
+            if (values.prolaboreMensal < 0) return 'Informe um pro-labore valido.';
+            return '';
+        },
+        compute(values) {
+            const cltMensal = H.calcularIRRFMensal(values.salarioCLTBruto, {
+                dependentes: values.dependentes
+            });
+            const feriasCLT = H.calcularFeriasLiquidas({
+                salarioBase: values.salarioCLTBruto,
+                diasFerias: 30,
+                mediaVariavel: 0,
+                venderFerias: false,
+                diasVendidos: 0
+            });
+            const decimoCLT = H.calcularDecimoTerceiroLiquido({
+                salarioBase: values.salarioCLTBruto,
+                mesesTrabalhados: 12,
+                percentualAdiantamento: 50,
+                dependentes: values.dependentes
+            });
+            const adicionalFerias = Math.max(0, feriasCLT.liquido - cltMensal.liquido);
+            const caixaCLTAnual = (cltMensal.liquido * 12) + (values.beneficiosCLT * 12) + adicionalFerias + decimoCLT.liquidoTotal;
+            const fgtsAnual = values.salarioCLTBruto * 0.08 * 13;
+            const pacoteCLTComFGTS = caixaCLTAnual + fgtsAnual;
+
+            const receitaPJAnual = values.faturamentoPJMensal * 12;
+            const rbt12 = values.rbt12PJ > 0 ? values.rbt12PJ : receitaPJAnual;
+            const proLabore = H.calcularProLaboreLiquido(values.prolaboreMensal, {
+                dependentes: values.dependentes
+            });
+
+            let tributoPJMensal = 0;
+            let leituraRegime = '';
+            let detalheTributo = '';
+
+            if (values.regimePJ === 'simples') {
+                const simples = H.calcularAliquotaEfetivaSimples(values.anexoPJ, rbt12);
+                const das = values.faturamentoPJMensal * simples.aliquotaEfetiva;
+                const cpp = values.anexoPJ === 'IV'
+                    ? H.calcularCPPPatronalProLabore('simples_iv', values.prolaboreMensal)
+                    : 0;
+                tributoPJMensal = das + cpp;
+                leituraRegime = 'PJ no Simples Nacional';
+                detalheTributo = `DAS ${H.formatCurrency(das)}${cpp > 0 ? ` + CPP ${H.formatCurrency(cpp)}` : ''}`;
+            } else {
+                const presumido = H.calcularLucroPresumidoMensal(values.faturamentoPJMensal, values.atividadePJ, values.aliquotaLocalPJ);
+                const cpp = H.calcularCPPPatronalProLabore('presumido_real', values.prolaboreMensal);
+                tributoPJMensal = presumido.total + cpp;
+                leituraRegime = 'PJ no Lucro Presumido';
+                detalheTributo = `Presumido ${H.formatCurrency(presumido.total)} + CPP ${H.formatCurrency(cpp)}`;
+            }
+
+            const caixaEmpresaAntesDistribuicao = receitaPJAnual - (values.custosPJMensais * 12) - (tributoPJMensal * 12);
+            const distribuicaoLucros = Math.max(0, caixaEmpresaAntesDistribuicao - (values.prolaboreMensal * 12));
+            const caixaPJAnual = (proLabore.liquido * 12) + distribuicaoLucros;
+            const diferencaAnualCaixa = caixaPJAnual - caixaCLTAnual;
+            const diferencaAnualPacote = caixaPJAnual - pacoteCLTComFGTS;
+            const melhorModelo = diferencaAnualCaixa >= 0 ? 'PJ' : 'CLT';
+
+            return {
+                highlight: H.metricCurrency(
+                    melhorModelo === 'PJ' ? 'Ganho anual estimado como PJ' : 'Ganho anual estimado como CLT',
+                    Math.abs(diferencaAnualCaixa)
+                ),
+                secondaryA: H.metricCurrency('Caixa anual CLT', caixaCLTAnual),
+                secondaryB: H.metricCurrency('Caixa anual PJ', caixaPJAnual),
+                notes: [
+                    { label: 'Pacote CLT com FGTS', metric: H.metricCurrency('CLT + FGTS', pacoteCLTComFGTS) },
+                    { label: 'Diferenca anual considerando FGTS', metric: H.metricCurrency('PJ - CLT + FGTS', diferencaAnualPacote) },
+                    { label: 'Leitura do regime PJ', metric: H.metricText('Tributos PJ', `${leituraRegime}: ${detalheTributo}`) }
+                ],
+                steps: [
+                    'Calculo do liquido CLT mensal, 13o e adicional de ferias.',
+                    'Apuracao do caixa PJ apos tributos, custos e pro-labore.',
+                    'Comparacao anual entre os dois formatos de contratacao.'
+                ],
+                details: [
+                    { label: 'Liquido CLT mensal', value: H.formatCurrency(cltMensal.liquido) },
+                    { label: 'Beneficios CLT anuais', value: H.formatCurrency(values.beneficiosCLT * 12) },
+                    { label: 'FGTS anual estimado', value: H.formatCurrency(fgtsAnual) },
+                    { label: 'Caixa anual distribuivel na PJ', value: H.formatCurrency(distribuicaoLucros) },
+                    { label: 'Tributos PJ no ano', value: H.formatCurrency(tributoPJMensal * 12) },
+                    { label: 'Custos PJ no ano', value: H.formatCurrency(values.custosPJMensais * 12) }
+                ],
+                chart: {
+                    labels: ['Caixa anual CLT', 'Caixa anual PJ', 'FGTS anual'],
+                    values: [H.round2(caixaCLTAnual), H.round2(caixaPJAnual), H.round2(fgtsAnual)],
+                    colors: ['#0a7dd1', '#0f766e', '#d46d13']
+                }
+            };
+        }
+    });
 })();

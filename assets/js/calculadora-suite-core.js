@@ -2,13 +2,15 @@
     const suite = window.CalculadoraSuite || {};
     const calcUI = window.CalculadoraUI || null;
     const STORAGE_PREFIX = 'vl_suite_calculadora_v1_';
+    const WHATSAPP_NUMBER = '5511916539680';
     const H = suite.helpers;
 
     if (!H) return;
 
     const state = {
         current: null,
-        chartRef: null
+        chartRef: null,
+        lastSummary: ''
     };
 
     const el = {};
@@ -32,9 +34,12 @@
             'secondaryLabelB',
             'secondaryValueB',
             'notesList',
+            'resultSummary',
             'chartWrap',
             'graficoResultados',
             'ctaEspecialista',
+            'copyResumo',
+            'copyFeedback',
             'verDetalhes',
             'tabelaDetalhes',
             'detailBlocks'
@@ -271,6 +276,57 @@
         });
     }
 
+    function buildSummary(definition, result) {
+        const parts = [
+            `${definition.pageTitle}: ${result.highlight.label} em ${metricToText(result.highlight)}.`,
+            `${result.secondaryA.label}: ${metricToText(result.secondaryA)}.`,
+            `${result.secondaryB.label}: ${metricToText(result.secondaryB)}.`
+        ];
+
+        const firstNote = (result.notes || [])[0];
+        if (firstNote) {
+            parts.push(`${firstNote.label}: ${metricToText(firstNote.metric)}.`);
+        }
+
+        return parts.join(' ');
+    }
+
+    function setCopyFeedback(message) {
+        if (!el.copyFeedback) return;
+        el.copyFeedback.textContent = message;
+        el.copyFeedback.classList.remove('is-visible');
+        if (!message) return;
+        requestAnimationFrame(() => {
+            el.copyFeedback.classList.add('is-visible');
+        });
+    }
+
+    function updateResultActions(definition, result) {
+        const summary = buildSummary(definition, result);
+        state.lastSummary = summary;
+
+        if (el.resultSummary) {
+            el.resultSummary.textContent = `${summary} Use o WhatsApp para levar o contexto pronto ao atendimento.`;
+        }
+
+        if (el.ctaEspecialista) {
+            const message = [
+                'Oi, VL! Fiz uma simulacao no site e quero analisar meu caso.',
+                `Calculadora: ${definition.pageTitle}.`,
+                summary
+            ].join('\n');
+
+            el.ctaEspecialista.textContent = 'Levar esse resultado no WhatsApp';
+            el.ctaEspecialista.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            el.ctaEspecialista.target = '_blank';
+            el.ctaEspecialista.rel = 'noopener noreferrer';
+        }
+
+        if (el.copyResumo) {
+            el.copyResumo.disabled = false;
+        }
+    }
+
     function renderDetails(details) {
         if (!el.detailBlocks) return;
         el.detailBlocks.innerHTML = '';
@@ -346,14 +402,12 @@
         renderSteps(result.steps);
         renderDetails(result.details);
         renderChart(result.chart);
-        if (el.ctaEspecialista) {
-            el.ctaEspecialista.textContent = 'Fale com um especialista e analise seu caso';
-            el.ctaEspecialista.href = state.current.ctaHref || 'contatos.html';
-        }
+        updateResultActions(state.current, result);
     }
 
     function runCalculation(focus = false) {
         if (!state.current) return;
+        setCopyFeedback('');
         const values = collectValues(state.current);
         const errorMessage = state.current.validate ? state.current.validate(values) : '';
         if (errorMessage) {
@@ -389,6 +443,21 @@
                 if (icon) icon.className = isHidden ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
             });
         }
+        if (el.copyResumo) {
+            el.copyResumo.addEventListener('click', async () => {
+                if (!state.lastSummary) {
+                    setCopyFeedback('Gere uma simulacao antes de copiar o resumo.');
+                    return;
+                }
+
+                try {
+                    await navigator.clipboard.writeText(state.lastSummary);
+                    setCopyFeedback('Resumo copiado. Agora voce pode colar no WhatsApp, e-mail ou proposta.');
+                } catch (error) {
+                    setCopyFeedback('Nao foi possivel copiar automaticamente. Tente novamente.');
+                }
+            });
+        }
         document.addEventListener('keydown', (event) => {
             if (event.key !== 'Enter') return;
             if (!state.current) return;
@@ -404,12 +473,14 @@
         if (el.dynamicFields) el.dynamicFields.innerHTML = '';
         if (el.calcular) el.calcular.disabled = true;
         if (el.exemploValores) el.exemploValores.disabled = true;
+        if (el.copyResumo) el.copyResumo.disabled = true;
     }
 
     function hideEmptyState() {
         if (el.emptyState) el.emptyState.style.display = 'none';
         if (el.calcular) el.calcular.disabled = false;
         if (el.exemploValores) el.exemploValores.disabled = false;
+        if (el.copyResumo) el.copyResumo.disabled = true;
     }
 
     function boot() {
@@ -436,6 +507,7 @@
         if (el.tabelaDetalhes) {
             el.tabelaDetalhes.style.display = 'none';
         }
+        setCopyFeedback('');
         setProgress(0);
     }
 

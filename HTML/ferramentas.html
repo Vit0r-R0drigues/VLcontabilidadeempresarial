@@ -2,17 +2,22 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TQ0YTWHK9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-5TQ0YTWHK9');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F172A">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vlcontabilidadeempresarial.com.br/HTML/ferramentas.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hub de Ferramentas 2026 - VL Contabilidade Empresarial">
+    <meta property="og:description"
+        content="Calculadoras, links uteis oficiais e modelos de apoio para rotina fiscal, trabalhista e financeira.">
+    <meta property="og:image" content="https://vlcontabilidadeempresarial.com.br/assets/img/LOGO%20-P.png">
+    <meta property="og:url" content="https://vlcontabilidadeempresarial.com.br/HTML/ferramentas.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hub de Ferramentas 2026 - VL Contabilidade Empresarial">
+    <meta name="twitter:description"
+        content="Calculadoras, links uteis oficiais e modelos para rotina fiscal, trabalhista e financeira.">
+    <meta name="twitter:image" content="https://vlcontabilidadeempresarial.com.br/assets/img/LOGO%20-P.png">
     <meta name="description"
         content="Hub de ferramentas da VL Contabilidade: calculadoras por grupo, links úteis oficiais e modelos de apoio para rotina fiscal e trabalhista.">
     <title>Hub de Ferramentas 2026 - VL Contabilidade Empresarial</title>
@@ -20,10 +25,10 @@
     <link rel='stylesheet'
         href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../assets/img/FAVICON.ICO" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/main.css?v=3.5">
-    <link rel="stylesheet" href="../assets/css/mediaquery.css?v=3.5">
-    <link rel="stylesheet" href="../assets/css/cookies.css?v=3.5">
-    <link rel="stylesheet" href="../assets/css/ferramentas-hub.css?v=3.0">
+    <link rel="stylesheet" href="../assets/css/main.css?v=3.6">
+    <link rel="stylesheet" href="../assets/css/mediaquery.css?v=3.6">
+    <link rel="stylesheet" href="../assets/css/cookies.css?v=3.6">
+    <link rel="stylesheet" href="../assets/css/ferramentas-hub.css?v=3.1">
 </head>
 
 <body>
@@ -54,13 +59,13 @@
             </ul>
         </nav>
         <div class="social-icons">
-            <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank"
+            <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" rel="noopener noreferrer"
                 title="Siga-nos no Instagram"><i class="fi fi-brands-instagram"></i></a>
-            <a href="https://wa.me/5511916539680" target="_blank" title="Fale conosco no WhatsApp"><i
+            <a href="https://wa.me/5511916539680" target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp"><i
                     class="fi fi-brands-whatsapp"></i></a>
-            <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"
+            <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" rel="noopener noreferrer"
                 title="Inscreva-se em nosso canal"><i class="fi fi-brands-youtube"></i></a>
-            <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank"
+            <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank" rel="noopener noreferrer"
                 title="Acesse nosso perfil no Google"><i class="fi fi-brands-google"></i></a>
         </div>
     </header>
@@ -79,6 +84,30 @@
             </div>
         </section>
 
+        <section class="hub-overview" aria-label="Panorama rapido do hub">
+            <article class="hub-overview-card">
+                <span id="calcCount" class="hub-overview-value">0</span>
+                <span class="hub-overview-label">calculadoras ativas</span>
+            </article>
+            <article class="hub-overview-card">
+                <span id="linkCount" class="hub-overview-value">0</span>
+                <span class="hub-overview-label">links oficiais</span>
+            </article>
+            <article class="hub-overview-card">
+                <span id="docCount" class="hub-overview-value">0</span>
+                <span class="hub-overview-label">modelos e checklists</span>
+            </article>
+            <article class="hub-overview-card hub-overview-card--wide">
+                <p class="hub-overview-eyebrow">Atalhos mais procurados</p>
+                <div class="hub-pill-links">
+                    <a href="calculadora-suite.html?calc=pj-vs-clt">PJ x CLT</a>
+                    <a href="calculadora-suite.html?calc=simples-vs-lucro-presumido">Simples x Presumido</a>
+                    <a href="calculadora-suite.html?calc=pro-labore-liquido">Pro-labore</a>
+                    <a href="calculadora-suite.html?calc=custo-funcionario">Custo de funcionario</a>
+                </div>
+            </article>
+        </section>
+
         <section class="hub-toolbar" aria-label="Busca de ferramentas">
             <div class="hub-search-wrap">
                 <i class="fi fi-rr-search"></i>
@@ -87,6 +116,7 @@
             </div>
             <div class="hub-filters" role="tablist" aria-label="Filtro de recursos">
                 <button type="button" class="hub-filter-btn active" data-filter="todos">Todos</button>
+                <button type="button" class="hub-filter-btn" data-filter="favoritos">Favoritos</button>
                 <button type="button" class="hub-filter-btn" data-filter="calculadora">Calculadoras</button>
                 <button type="button" class="hub-filter-btn" data-filter="tributos">Tributos</button>
                 <button type="button" class="hub-filter-btn" data-filter="trabalhista">Trabalhista</button>
@@ -101,10 +131,86 @@
         <section id="calc-section" class="hub-section">
             <div class="hub-section-header">
                 <h2>Calculadoras por Grupo</h2>
-                <p>Tributário, folha e desligamento</p>
+                <p>Tributário, folha, socios e comparativos de decisao</p>
             </div>
 
             <div class="hub-grid">
+                <article class="hub-card hub-card--featured" data-kind="calculadora" data-groups="estrategico comparativo pj clt"
+                    data-search="pj clt comparador salario contrato pro labore retirada regime"
+                    data-fav-id="calc-pj-vs-clt">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-arrows-repeat"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Comparativo</span>
+                            <span class="hub-badge hub-badge--law">PJ x CLT</span>
+                            <span class="hub-badge hub-badge--new">Novo</span>
+                        </div>
+                    </div>
+                    <h3>Comparador PJ x CLT</h3>
+                    <p>Compara caixa anual, beneficios CLT, FGTS e retirada via PJ para apoiar negociacao.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-suite.html?calc=pj-vs-clt">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false"><i class="fi fi-rr-star"></i></button>
+                    </div>
+                </article>
+
+                <article class="hub-card hub-card--featured" data-kind="calculadora" data-groups="tributos comparativo simples presumido"
+                    data-search="simples nacional lucro presumido comparador das irpj csll pis cofins"
+                    data-fav-id="calc-simples-vs-presumido">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-chart-histogram"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Tributario</span>
+                            <span class="hub-badge hub-badge--law">Simples x Presumido</span>
+                            <span class="hub-badge hub-badge--new">Novo</span>
+                        </div>
+                    </div>
+                    <h3>Comparador Simples x Lucro Presumido</h3>
+                    <p>Confronta DAS e tributos do Presumido para indicar o regime com menor carga principal.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-suite.html?calc=simples-vs-lucro-presumido">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false"><i class="fi fi-rr-star"></i></button>
+                    </div>
+                </article>
+
+                <article class="hub-card hub-card--featured" data-kind="calculadora" data-groups="tributos socios retirada prolabore"
+                    data-search="pro labore liquido socio retirada irrf inss cpp patronal"
+                    data-fav-id="calc-pro-labore-liquido">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-users-alt"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Socios</span>
+                            <span class="hub-badge hub-badge--law">Pro-labore</span>
+                            <span class="hub-badge hub-badge--new">Novo</span>
+                        </div>
+                    </div>
+                    <h3>Calculadora de Pro-labore</h3>
+                    <p>Estima liquido do socio, INSS, IRRF e custo total da empresa conforme o regime.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-suite.html?calc=pro-labore-liquido">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false"><i class="fi fi-rr-star"></i></button>
+                    </div>
+                </article>
+
+                <article class="hub-card hub-card--featured" data-kind="calculadora" data-groups="estrategico socios distribuicao lucros"
+                    data-search="distribuicao lucros socios reserva participacao retirada mensal"
+                    data-fav-id="calc-distribuicao-lucros">
+                    <div class="hub-card-top">
+                        <span class="hub-icon"><i class="fi fi-rr-money-check"></i></span>
+                        <div class="hub-badges">
+                            <span class="hub-badge">Socios</span>
+                            <span class="hub-badge hub-badge--law">Lucros</span>
+                            <span class="hub-badge hub-badge--new">Novo</span>
+                        </div>
+                    </div>
+                    <h3>Distribuicao de Lucros</h3>
+                    <p>Projeta lucro distribuivel, reserva de caixa e a parcela estimada do socio no mes.</p>
+                    <div class="hub-card-actions">
+                        <a class="hub-link" href="calculadora-suite.html?calc=distribuicao-lucros">Abrir</a>
+                        <button class="hub-fav-btn" type="button" aria-pressed="false"><i class="fi fi-rr-star"></i></button>
+                    </div>
+                </article>
+
                 <article class="hub-card" data-kind="calculadora" data-groups="tributos folha irrf"
                     data-search="calculadora irrf imposto renda retido fonte 2026 lei 15270 inss"
                     data-fav-id="calc-irrf">
@@ -424,7 +530,7 @@
                     <h3>Checklist IRPF</h3>
                     <p>Lista imprimível para organizar documentos da declaração de imposto de renda.</p>
                     <div class="hub-card-actions">
-                        <a class="hub-link" href="checklist.html" target="_blank">Abrir</a>
+                        <a class="hub-link" href="checklist.html" target="_blank" rel="noopener noreferrer">Abrir</a>
                     </div>
                 </article>
 
@@ -492,27 +598,25 @@
             <div class="footer-section">
                 <h3>Redes Sociais</h3>
                 <div class="social-footer">
-                    <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank"><i
+                    <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank" rel="noopener noreferrer"><i
                             class="fi fi-brands-instagram"></i></a>
-                    <a href="https://wa.me/5511916539680" target="_blank"><i class="fi fi-brands-whatsapp"></i></a>
-                    <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank"><i
+                    <a href="https://wa.me/5511916539680" target="_blank" rel="noopener noreferrer"><i class="fi fi-brands-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/@contabilidadeempresarial" target="_blank" rel="noopener noreferrer"><i
                             class="fi fi-brands-youtube"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="current-year">2024</span> Contabilidade Empresarial. Todos os direitos reservados.
-                Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank">Vitor
+            <p>&copy; <span id="current-year">2024</span> VL Contabilidade Empresarial. Todos os direitos reservados.
+                Desenvolvido por <a href="https://www.instagram.com/vitor_rodri_cont/" target="_blank" rel="noopener noreferrer">Vitor
                     Rodrigues</a></p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.js"></script>
-    <script src="../assets/js/cookies.js" defer></script>
-    <script src="../assets/js/menu.js?v=3.5" defer></script>
-    <script src="../assets/js/footer.js" defer></script>
-    <script src="../assets/js/ferramentas.js" defer></script>
+    <script src="../assets/js/cookies.js?v=3.6" defer></script>
+    <script src="../assets/js/menu.js?v=3.6" defer></script>
+    <script src="../assets/js/footer.js?v=3.6" defer></script>
+    <script src="../assets/js/ferramentas.js?v=3.1" defer></script>
 </body>
 
 </html>
-

@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cards = Array.from(document.querySelectorAll('.hub-card[data-kind]'));
-    const revealBlocks = Array.from(document.querySelectorAll('.hub-hero, .hub-toolbar, .hub-section, .hub-section-cta'));
+    const revealBlocks = Array.from(document.querySelectorAll('.hub-hero, .hub-overview, .hub-toolbar, .hub-section, .hub-section-cta'));
     const searchInput = document.getElementById('toolSearch');
     const toolbar = document.querySelector('.hub-toolbar');
     const filterButtons = Array.from(document.querySelectorAll('.hub-filter-btn'));
     const resultInfo = document.getElementById('resultsInfo');
+    const calcCount = document.getElementById('calcCount');
+    const linkCount = document.getElementById('linkCount');
+    const docCount = document.getElementById('docCount');
     const favoritesKey = 'vl_tools_favorites_v1';
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -26,6 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(favoritesKey, JSON.stringify(Array.from(favorites)));
     }
 
+    function updateOverviewCounts() {
+        if (calcCount) {
+            calcCount.textContent = String(cards.filter((card) => card.dataset.kind === 'calculadora').length);
+        }
+        if (linkCount) {
+            linkCount.textContent = String(cards.filter((card) => card.dataset.kind === 'link').length);
+        }
+        if (docCount) {
+            docCount.textContent = String(cards.filter((card) => card.dataset.kind === 'documento').length);
+        }
+    }
+
     function pulseFavoriteButton(button) {
         if (!button || prefersReducedMotion) return;
         button.classList.remove('is-pulsing');
@@ -45,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 favButton.title = isFavorite ? 'Remover dos favoritos' : 'Salvar como favorito';
             }
         });
+        updateOverviewCounts();
     }
 
     function cardMatches(card, filter, query) {
@@ -52,8 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardText = `${card.dataset.search || ''} ${card.textContent || ''}`.toLowerCase();
         const groups = (card.dataset.groups || '').toLowerCase();
         const kind = (card.dataset.kind || '').toLowerCase();
+        const isFavorite = favorites.has(card.dataset.favId || '');
 
-        const matchFilter = filter === 'todos' || filter === kind || groups.includes(filter);
+        const matchFilter = filter === 'todos'
+            || (filter === 'favoritos' && isFavorite)
+            || filter === kind
+            || groups.includes(filter);
         const matchQuery = normalizedQuery.length === 0 || cardText.includes(normalizedQuery);
 
         return matchFilter && matchQuery;
@@ -67,6 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateResultInfo(visibleCount) {
         if (!resultInfo) return;
         const total = cards.length;
+        if (visibleCount === 0) {
+            resultInfo.textContent = `Nenhum recurso encontrado em ${getActiveFilterLabel()}. Ajuste o termo de busca ou troque o filtro.`;
+            return;
+        }
         resultInfo.textContent = `Mostrando ${visibleCount} de ${total} recursos em ${getActiveFilterLabel()}.`;
     }
 
@@ -162,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadFavorites();
+    updateOverviewCounts();
     applyFavoritesState();
     bindFavorites();
     initRevealAnimations();

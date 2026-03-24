@@ -44,27 +44,21 @@
             return '';
         },
         compute(values) {
-            const avos = H.clamp(values.mesesTrabalhados, 1, 12);
-            const bruto13 = (values.salarioBruto / 12) * avos;
-            const primeiraParcela = bruto13 * (H.clamp(values.percentualAdiantamento, 30, 50) / 100);
-
-            const inss = H.calcularINSS(bruto13);
-            const baseIRRF = Math.max(
-                0,
-                bruto13 - inss - (values.dependentes * H.config.deducaoDependente) - H.config.descontoSimplificado
-            );
-            const irrf = H.calcularIRRF(baseIRRF, bruto13);
-            const liquidoTotal = bruto13 - inss - irrf.impostoFinal;
-            const segundaParcelaLiquida = Math.max(0, liquidoTotal - primeiraParcela);
+            const decimo = H.calcularDecimoTerceiroLiquido({
+                salarioBase: values.salarioBruto,
+                mesesTrabalhados: values.mesesTrabalhados,
+                percentualAdiantamento: values.percentualAdiantamento,
+                dependentes: values.dependentes
+            });
 
             return {
-                highlight: H.metricCurrency('2a parcela liquida estimada', segundaParcelaLiquida),
-                secondaryA: H.metricCurrency('1a parcela', primeiraParcela),
-                secondaryB: H.metricCurrency('13o liquido total', liquidoTotal),
+                highlight: H.metricCurrency('2a parcela liquida estimada', decimo.segundaParcelaLiquida),
+                secondaryA: H.metricCurrency('1a parcela', decimo.primeiraParcela),
+                secondaryB: H.metricCurrency('13o liquido total', decimo.liquidoTotal),
                 notes: [
-                    { label: 'INSS no 13o', metric: H.metricCurrency('INSS', inss) },
-                    { label: 'IRRF no 13o', metric: H.metricCurrency('IRRF', irrf.impostoFinal) },
-                    { label: 'Base de IRRF', metric: H.metricCurrency('Base', baseIRRF) }
+                    { label: 'INSS no 13o', metric: H.metricCurrency('INSS', decimo.inss) },
+                    { label: 'IRRF no 13o', metric: H.metricCurrency('IRRF', decimo.irrf.impostoFinal) },
+                    { label: 'Valor bruto do 13o', metric: H.metricCurrency('Bruto', decimo.bruto13) }
                 ],
                 steps: [
                     'Apuracao do 13o proporcional por avos.',
@@ -72,17 +66,17 @@
                     'Descontos na segunda parcela e exibicao do liquido.'
                 ],
                 details: [
-                    { label: 'Avos considerados', value: `${avos}/12` },
-                    { label: 'Valor bruto do 13o', value: H.formatCurrency(bruto13) },
+                    { label: 'Avos considerados', value: `${decimo.avos}/12` },
+                    { label: 'Valor bruto do 13o', value: H.formatCurrency(decimo.bruto13) },
                     { label: 'Dependentes', value: `${values.dependentes} dependente(s)` },
                     { label: 'Percentual da 1a parcela', value: H.formatPercent(values.percentualAdiantamento) }
                 ],
                 chart: {
                     labels: ['1a parcela', '2a parcela liquida', 'Descontos'],
                     values: [
-                        H.round2(primeiraParcela),
-                        H.round2(segundaParcelaLiquida),
-                        H.round2(inss + irrf.impostoFinal)
+                        H.round2(decimo.primeiraParcela),
+                        H.round2(decimo.segundaParcelaLiquida),
+                        H.round2(decimo.inss + decimo.irrf.impostoFinal)
                     ],
                     colors: ['#0a7dd1', '#0f766e', '#d46d13']
                 }
@@ -128,15 +122,18 @@
 
             const custoTotal = values.salarioBase + encargos + beneficiosTotal + provisoes;
             const indiceCusto = values.salarioBase > 0 ? (custoTotal / values.salarioBase) * 100 : 0;
+            const custoAnual = custoTotal * 12;
+            const blocoFixosEquipe = encargos + provisoes;
 
             return {
                 highlight: H.metricCurrency('Custo total mensal', custoTotal),
-                secondaryA: H.metricCurrency('Encargos patronais', encargos),
-                secondaryB: H.metricPercent('Custo sobre salario', indiceCusto),
+                secondaryA: H.metricCurrency('Encargos + provisoes', blocoFixosEquipe),
+                secondaryB: H.metricCurrency('Custo anual estimado', custoAnual),
                 notes: [
                     { label: 'FGTS estimado', metric: H.metricCurrency('FGTS', fgts) },
                     { label: 'Beneficios totais', metric: H.metricCurrency('Beneficios', beneficiosTotal) },
-                    { label: 'Provisoes', metric: H.metricCurrency('Provisoes', provisoes) }
+                    { label: 'Provisoes', metric: H.metricCurrency('Provisoes', provisoes) },
+                    { label: 'Indice sobre salario', metric: H.metricPercent('Indice', indiceCusto) }
                 ],
                 steps: [
                     'Soma do salario base e encargos patronais.',
@@ -147,7 +144,8 @@
                     { label: 'INSS patronal (20%)', value: H.formatCurrency(inssPatronal) },
                     { label: 'RAT + terceiros (6,8%)', value: H.formatCurrency(ratTerceiros) },
                     { label: 'Salario base', value: H.formatCurrency(values.salarioBase) },
-                    { label: 'Modelo com provisoes', value: values.incluirProvisoes ? 'Sim' : 'Nao' }
+                    { label: 'Modelo com provisoes', value: values.incluirProvisoes ? 'Sim' : 'Nao' },
+                    { label: 'Custo sobre salario', value: H.formatPercent(indiceCusto) }
                 ],
                 chart: {
                     labels: ['Salario base', 'Encargos', 'Beneficios', 'Provisoes'],

@@ -21,6 +21,49 @@ INSS_FAIXAS = (
     {"limite": 8475.55, "aliquota": 0.14},
 )
 
+SIMPLES_TABELAS = {
+    "I": (
+        {"limite": 180000, "aliquota": 0.04, "deducao": 0},
+        {"limite": 360000, "aliquota": 0.073, "deducao": 5940},
+        {"limite": 720000, "aliquota": 0.095, "deducao": 13860},
+        {"limite": 1800000, "aliquota": 0.107, "deducao": 22500},
+        {"limite": 3600000, "aliquota": 0.143, "deducao": 87300},
+        {"limite": 4800000, "aliquota": 0.19, "deducao": 378000},
+    ),
+    "II": (
+        {"limite": 180000, "aliquota": 0.045, "deducao": 0},
+        {"limite": 360000, "aliquota": 0.078, "deducao": 5940},
+        {"limite": 720000, "aliquota": 0.1, "deducao": 13860},
+        {"limite": 1800000, "aliquota": 0.112, "deducao": 22500},
+        {"limite": 3600000, "aliquota": 0.147, "deducao": 85500},
+        {"limite": 4800000, "aliquota": 0.3, "deducao": 720000},
+    ),
+    "III": (
+        {"limite": 180000, "aliquota": 0.06, "deducao": 0},
+        {"limite": 360000, "aliquota": 0.112, "deducao": 9360},
+        {"limite": 720000, "aliquota": 0.135, "deducao": 17640},
+        {"limite": 1800000, "aliquota": 0.16, "deducao": 35640},
+        {"limite": 3600000, "aliquota": 0.21, "deducao": 125640},
+        {"limite": 4800000, "aliquota": 0.33, "deducao": 648000},
+    ),
+    "IV": (
+        {"limite": 180000, "aliquota": 0.045, "deducao": 0},
+        {"limite": 360000, "aliquota": 0.09, "deducao": 8100},
+        {"limite": 720000, "aliquota": 0.102, "deducao": 12420},
+        {"limite": 1800000, "aliquota": 0.14, "deducao": 39780},
+        {"limite": 3600000, "aliquota": 0.22, "deducao": 183780},
+        {"limite": 4800000, "aliquota": 0.33, "deducao": 828000},
+    ),
+    "V": (
+        {"limite": 180000, "aliquota": 0.155, "deducao": 0},
+        {"limite": 360000, "aliquota": 0.18, "deducao": 4500},
+        {"limite": 720000, "aliquota": 0.195, "deducao": 9900},
+        {"limite": 1800000, "aliquota": 0.205, "deducao": 17100},
+        {"limite": 3600000, "aliquota": 0.23, "deducao": 62100},
+        {"limite": 4800000, "aliquota": 0.305, "deducao": 540000},
+    ),
+}
+
 DESCONTO_SIMPLIFICADO = 607.20
 DEDUCAO_DEPENDENTE = 189.59
 REDUCAO_MAXIMA = 312.89
@@ -232,6 +275,157 @@ def calcular_rescisao(
     }
 
 
+def calcular_aliquota_efetiva_simples(anexo: str, rbt12: float) -> dict:
+    receita = max(0.0, float(rbt12 or 0))
+    tabela = SIMPLES_TABELAS.get(anexo, SIMPLES_TABELAS["III"])
+    faixa = next((item for item in tabela if receita <= item["limite"]), tabela[-1])
+    if receita <= 0:
+        return {"faixa": faixa, "aliquota_efetiva": 0.0}
+    aliquota = ((receita * faixa["aliquota"]) - faixa["deducao"]) / receita
+    return {"faixa": faixa, "aliquota_efetiva": max(0.0, aliquota)}
+
+
+def calcular_inss_prolabore(base: float) -> float:
+    teto = INSS_FAIXAS[-1]["limite"]
+    return round2(min(max(0.0, float(base or 0)), teto) * 0.11)
+
+
+def calcular_prolabore_liquido(
+    prolabore_bruto: float,
+    dependentes: int = 0,
+    pensao: float = 0.0,
+    outras_deducoes: float = 0.0,
+) -> dict:
+    bruto = max(0.0, float(prolabore_bruto or 0))
+    inss = calcular_inss_prolabore(bruto)
+    mensal = calcular_irrf_mensal(
+        bruto,
+        dependentes=dependentes,
+        pensao_alimenticia=pensao,
+        outras_deducoes=outras_deducoes,
+    )
+    # Reprocessa IRRF com o INSS especifico do pro-labore.
+    deducao_dependentes = max(0, int(dependentes or 0)) * DEDUCAO_DEPENDENTE
+    deducoes_legais = inss + deducao_dependentes + max(0.0, float(pensao or 0)) + max(0.0, float(outras_deducoes or 0))
+    deducao_aplicada = max(deducoes_legais, DESCONTO_SIMPLIFICADO)
+    base_calculo = max(0.0, bruto - deducao_aplicada)
+    irrf_bruto = calcular_irrf_bruto(base_calculo)
+    reducao = calcular_reducao_lei_15270(bruto, irrf_bruto)
+    irrf_final = max(0.0, irrf_bruto - reducao)
+    liquido = bruto - inss - irrf_final - max(0.0, float(pensao or 0)) - max(0.0, float(outras_deducoes or 0))
+    return {
+        "inss": inss,
+        "base_calculo": round2(base_calculo),
+        "irrf_final": round2(irrf_final),
+        "liquido": round2(liquido),
+        "deducao_aplicada": round2(deducao_aplicada),
+        "mensal_helper": mensal,
+    }
+
+
+def calcular_lucro_presumido_mensal(faturamento_mensal: float, atividade: str, aliquota_local: float = 0.0) -> dict:
+    receita = max(0.0, float(faturamento_mensal or 0))
+    aliq_local = max(0.0, float(aliquota_local or 0)) / 100.0
+    if atividade == "servicos":
+        percentual_irpj = 0.32
+        percentual_csll = 0.32
+    else:
+        percentual_irpj = 0.08
+        percentual_csll = 0.12
+    base_irpj = receita * percentual_irpj
+    irpj = (base_irpj * 0.15) + (max(0.0, base_irpj - 20000.0) * 0.10)
+    base_csll = receita * percentual_csll
+    csll = base_csll * 0.09
+    pis_cofins = receita * 0.0365
+    tributo_local = receita * aliq_local
+    total = irpj + csll + pis_cofins + tributo_local
+    return {
+        "base_irpj": round2(base_irpj),
+        "base_csll": round2(base_csll),
+        "irpj": round2(irpj),
+        "csll": round2(csll),
+        "pis_cofins": round2(pis_cofins),
+        "tributo_local": round2(tributo_local),
+        "total": round2(total),
+    }
+
+
+def calcular_decimo_terceiro_liquido(salario_base: float, dependentes: int = 0) -> dict:
+    bruto = max(0.0, float(salario_base or 0))
+    primeira_parcela = bruto * 0.5
+    mensal = calcular_irrf_mensal(bruto, dependentes=dependentes)
+    liquido_total = bruto - mensal["inss"] - mensal["irrf_final"]
+    return {
+        "bruto": round2(bruto),
+        "primeira_parcela": round2(primeira_parcela),
+        "liquido_total": round2(liquido_total),
+        "segunda_parcela": round2(max(0.0, liquido_total - primeira_parcela)),
+    }
+
+
+def calcular_distribuicao_lucros(
+    faturamento_mensal: float,
+    custos_mensais: float,
+    tributos_mensais: float,
+    reserva_percentual: float,
+    participacao_socio: float,
+) -> dict:
+    lucro_antes_reserva = max(0.0, float(faturamento_mensal or 0)) - max(0.0, float(custos_mensais or 0)) - max(0.0, float(tributos_mensais or 0))
+    reserva = lucro_antes_reserva * (max(0.0, min(float(reserva_percentual or 0), 40.0)) / 100.0) if lucro_antes_reserva > 0 else 0.0
+    lucro_distribuivel = max(0.0, lucro_antes_reserva - reserva)
+    parcela_socio = lucro_distribuivel * (max(1.0, min(float(participacao_socio or 0), 100.0)) / 100.0)
+    return {
+        "lucro_antes_reserva": round2(lucro_antes_reserva),
+        "reserva": round2(reserva),
+        "lucro_distribuivel": round2(lucro_distribuivel),
+        "parcela_socio": round2(parcela_socio),
+    }
+
+
+def calcular_pj_vs_clt(
+    salario_clt_bruto: float,
+    beneficios_clt: float,
+    dependentes: int,
+    regime_pj: str,
+    faturamento_pj_mensal: float,
+    custos_pj_mensais: float,
+    prolabore_mensal: float,
+    rbt12_pj: float,
+    anexo_pj: str,
+    atividade_pj: str,
+    aliquota_local_pj: float,
+) -> dict:
+    clt_mensal = calcular_irrf_mensal(salario_clt_bruto, dependentes=dependentes)
+    ferias = calcular_ferias(salario_clt_bruto, 30)
+    ferias_incremental = round2(max(0.0, ferias["liquido"] - (salario_clt_bruto - clt_mensal["inss"] - clt_mensal["irrf_final"])))
+    decimo = calcular_irrf_mensal(salario_clt_bruto, dependentes=dependentes)
+    decimo_liquido = round2(salario_clt_bruto - decimo["inss"] - decimo["irrf_final"])
+    caixa_clt_anual = round2(((salario_clt_bruto - clt_mensal["inss"] - clt_mensal["irrf_final"]) * 12) + (beneficios_clt * 12) + ferias_incremental + decimo_liquido)
+    fgts_anual = round2(salario_clt_bruto * 0.08 * 13)
+
+    prolabore = calcular_prolabore_liquido(prolabore_mensal, dependentes=dependentes)
+    receita_anual = faturamento_pj_mensal * 12
+    rbt12 = rbt12_pj if rbt12_pj > 0 else receita_anual
+    if regime_pj == "simples":
+        simples = calcular_aliquota_efetiva_simples(anexo_pj, rbt12)
+        das_mensal = faturamento_pj_mensal * simples["aliquota_efetiva"]
+        cpp_mensal = prolabore_mensal * 0.20 if anexo_pj == "IV" else 0.0
+        tributo_pj_mensal = das_mensal + cpp_mensal
+    else:
+        presumido = calcular_lucro_presumido_mensal(faturamento_pj_mensal, atividade_pj, aliquota_local_pj)
+        tributo_pj_mensal = presumido["total"] + (prolabore_mensal * 0.20)
+    caixa_empresa_antes_distribuicao = receita_anual - (custos_pj_mensais * 12) - (tributo_pj_mensal * 12)
+    distribuicao_lucros = max(0.0, caixa_empresa_antes_distribuicao - (prolabore_mensal * 12))
+    caixa_pj_anual = round2((prolabore["liquido"] * 12) + distribuicao_lucros)
+    return {
+        "caixa_clt_anual": caixa_clt_anual,
+        "fgts_anual": fgts_anual,
+        "caixa_pj_anual": caixa_pj_anual,
+        "diferenca_anual": round2(caixa_pj_anual - caixa_clt_anual),
+        "distribuicao_lucros": round2(distribuicao_lucros),
+    }
+
+
 class CalculadorasFormulaTests(unittest.TestCase):
     def assertMoney(self, actual: float, expected: float, label: str) -> None:
         self.assertAlmostEqual(actual, expected, places=2, msg=label)
@@ -347,6 +541,65 @@ class CalculadorasFormulaTests(unittest.TestCase):
         self.assertMoney(resultado["fgts_total"], 1792.00, "FGTS prazo determinado")
         self.assertMoney(resultado["proventos"], 6704.43, "Proventos prazo determinado")
         self.assertMoney(resultado["liquido"], 6704.43, "Liquido prazo determinado")
+
+    def test_prolabore_liquido_presumido(self) -> None:
+        resultado = calcular_prolabore_liquido(8000, dependentes=1)
+        self.assertMoney(resultado["inss"], 880.00, "INSS pro-labore")
+        self.assertMoney(resultado["base_calculo"], 6930.41, "Base IRRF pro-labore")
+        self.assertMoney(resultado["irrf_final"], 997.13, "IRRF pro-labore")
+        self.assertMoney(resultado["liquido"], 6122.87, "Liquido pro-labore")
+
+    def test_lucro_presumido_servicos_com_tributo_local(self) -> None:
+        resultado = calcular_lucro_presumido_mensal(85000, "servicos", aliquota_local=2)
+        self.assertMoney(resultado["base_irpj"], 27200.00, "Base IRPJ servicos")
+        self.assertMoney(resultado["irpj"], 4800.00, "IRPJ servicos")
+        self.assertMoney(resultado["csll"], 2448.00, "CSLL servicos")
+        self.assertMoney(resultado["pis_cofins"], 3102.50, "PIS/Cofins servicos")
+        self.assertMoney(resultado["tributo_local"], 1700.00, "Tributo local servicos")
+        self.assertMoney(resultado["total"], 12050.50, "Total presumido servicos")
+
+    def test_simples_vs_presumido_servicos(self) -> None:
+        simples = calcular_aliquota_efetiva_simples("III", 1020000)
+        total_simples = round2((85000 * simples["aliquota_efetiva"]))
+        presumido = calcular_lucro_presumido_mensal(85000, "servicos", aliquota_local=2)
+        total_presumido = round2(presumido["total"] + (18000 * 0.20))
+        economia_anual = round2((total_presumido - total_simples) * 12)
+        self.assertMoney(total_simples, 10630.00, "Total Simples mensal")
+        self.assertMoney(total_presumido, 15650.50, "Total Presumido mensal")
+        self.assertMoney(economia_anual, 60246.00, "Economia anual no Simples")
+
+    def test_distribuicao_lucros_com_reserva(self) -> None:
+        resultado = calcular_distribuicao_lucros(
+            faturamento_mensal=120000,
+            custos_mensais=63000,
+            tributos_mensais=9800,
+            reserva_percentual=15,
+            participacao_socio=50,
+        )
+        self.assertMoney(resultado["lucro_antes_reserva"], 47200.00, "Lucro antes da reserva")
+        self.assertMoney(resultado["reserva"], 7080.00, "Reserva mensal")
+        self.assertMoney(resultado["lucro_distribuivel"], 40120.00, "Lucro distribuivel")
+        self.assertMoney(resultado["parcela_socio"], 20060.00, "Parcela do socio")
+
+    def test_pj_vs_clt_comparativo_base(self) -> None:
+        resultado = calcular_pj_vs_clt(
+            salario_clt_bruto=9500,
+            beneficios_clt=1350,
+            dependentes=1,
+            regime_pj="simples",
+            faturamento_pj_mensal=17500,
+            custos_pj_mensais=1800,
+            prolabore_mensal=5000,
+            rbt12_pj=210000,
+            anexo_pj="III",
+            atividade_pj="servicos",
+            aliquota_local_pj=0,
+        )
+        self.assertMoney(resultado["caixa_clt_anual"], 111159.70, "Caixa anual CLT")
+        self.assertMoney(resultado["fgts_anual"], 9880.00, "FGTS anual")
+        self.assertMoney(resultado["distribuicao_lucros"], 114240.00, "Distribuicao de lucros")
+        self.assertMoney(resultado["caixa_pj_anual"], 167640.00, "Caixa anual PJ")
+        self.assertMoney(resultado["diferenca_anual"], 56480.30, "Diferenca anual PJ x CLT")
 
 
 if __name__ == "__main__":

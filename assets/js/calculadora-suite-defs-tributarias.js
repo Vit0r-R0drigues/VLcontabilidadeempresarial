@@ -68,6 +68,11 @@
             const leituraFatorR = values.folha12 > 0
                 ? (fatorR >= 0.28 ? 'Fator R acima de 28%: tende a favorecer anexo III.' : 'Fator R abaixo de 28%: revisar enquadramento de servicos.')
                 : 'Informe a folha anual para analisar Fator R.';
+            const anexoSugerido = values.folha12 > 0 && (values.anexo === 'III' || values.anexo === 'V')
+                ? (fatorR >= 0.28 ? 'III' : 'V')
+                : values.anexo;
+            const simulacaoSugerida = H.calcularAliquotaEfetivaSimples(anexoSugerido, values.rbt12);
+            const diferencaPotencialMes = values.receitaMes * (simples.aliquotaEfetiva - simulacaoSugerida.aliquotaEfetiva);
 
             return {
                 highlight: H.metricCurrency('DAS estimado no mes', dasMes),
@@ -76,7 +81,8 @@
                 notes: [
                     { label: 'Faixa aplicada', metric: H.metricText('Faixa', `Ate ${H.formatCurrency(simples.faixa.limite)} | nominal ${H.formatPercent(simples.faixa.aliquota * 100)}`) },
                     { label: 'Parcela a deduzir', metric: H.metricCurrency('Parcela', simples.faixa.deducao) },
-                    { label: 'Fator R', metric: H.metricText('Leitura', leituraFatorR) }
+                    { label: 'Fator R', metric: H.metricText('Leitura', leituraFatorR) },
+                    { label: 'Potencial mensal com anexo sugerido', metric: H.metricCurrency('Diferenca', diferencaPotencialMes) }
                 ],
                 steps: [
                     `Classificacao por faixa do anexo ${values.anexo}.`,
@@ -87,7 +93,8 @@
                     { label: 'Receita do mes', value: H.formatCurrency(values.receitaMes) },
                     { label: 'Receita liquida apos DAS', value: H.formatCurrency(receitaPosDAS) },
                     { label: 'Aliquota nominal da faixa', value: H.formatPercent(simples.faixa.aliquota * 100) },
-                    { label: 'Aliquota efetiva usada', value: H.formatPercent(simples.aliquotaEfetiva * 100) }
+                    { label: 'Aliquota efetiva usada', value: H.formatPercent(simples.aliquotaEfetiva * 100) },
+                    { label: 'Anexo sugerido pelo Fator R', value: anexoSugerido }
                 ],
                 chart: {
                     labels: ['DAS estimado', 'Receita apos DAS'],
@@ -120,22 +127,20 @@
             return '';
         },
         compute(values) {
-            const inss = H.calcularINSS(values.rendimentoBruto);
-            const dedDependentes = values.dependentes * H.config.deducaoDependente;
-            const deducoesLegais = inss + dedDependentes + values.pensao + values.outrasDeducoes;
-            const deducaoAplicada = Math.max(deducoesLegais, H.config.descontoSimplificado);
-            const baseIRRF = Math.max(0, values.rendimentoBruto - deducaoAplicada);
-            const irrf = H.calcularIRRF(baseIRRF, values.rendimentoBruto);
-            const liquido = values.rendimentoBruto - inss - irrf.impostoFinal - values.pensao - values.outrasDeducoes;
+            const mensal = H.calcularIRRFMensal(values.rendimentoBruto, {
+                dependentes: values.dependentes,
+                pensao: values.pensao,
+                outrasDeducoes: values.outrasDeducoes
+            });
 
             return {
-                highlight: H.metricCurrency('Liquido estimado', liquido),
-                secondaryA: H.metricCurrency('INSS estimado', inss),
-                secondaryB: H.metricCurrency('IRRF estimado', irrf.impostoFinal),
+                highlight: H.metricCurrency('Liquido estimado', mensal.liquido),
+                secondaryA: H.metricCurrency('INSS estimado', mensal.inss),
+                secondaryB: H.metricCurrency('IRRF estimado', mensal.irrf.impostoFinal),
                 notes: [
-                    { label: 'Base de calculo IRRF', metric: H.metricCurrency('Base', baseIRRF) },
-                    { label: 'Reducao legal aplicada', metric: H.metricCurrency('Reducao', irrf.reducao) },
-                    { label: 'Deducao considerada', metric: H.metricCurrency('Deducao', deducaoAplicada) }
+                    { label: 'Base de calculo IRRF', metric: H.metricCurrency('Base', mensal.baseIRRF) },
+                    { label: 'Reducao legal aplicada', metric: H.metricCurrency('Reducao', mensal.irrf.reducao) },
+                    { label: 'Deducao considerada', metric: H.metricCurrency('Deducao', mensal.deducaoAplicada) }
                 ],
                 steps: [
                     'Calculo do INSS progressivo por faixas.',
@@ -151,9 +156,9 @@
                 chart: {
                     labels: ['Liquido', 'INSS', 'IRRF', 'Outras deducoes'],
                     values: [
-                        H.round2(Math.max(0, liquido)),
-                        H.round2(inss),
-                        H.round2(irrf.impostoFinal),
+                        H.round2(Math.max(0, mensal.liquido)),
+                        H.round2(mensal.inss),
+                        H.round2(mensal.irrf.impostoFinal),
                         H.round2(values.pensao + values.outrasDeducoes)
                     ],
                     colors: ['#0f766e', '#0a7dd1', '#d46d13', '#64748b']
@@ -318,6 +323,222 @@
                     labels: ['MEI mensal', 'Simples mensal'],
                     values: [H.round2(meiMensal), H.round2(simplesMensal)],
                     colors: ['#0f766e', '#0a7dd1']
+                }
+            };
+        }
+    });
+
+    suite.registerDefinition('simples-vs-lucro-presumido', {
+        pageTitle: 'Comparador Simples Nacional x Lucro Presumido',
+        pageDescription: 'Compare os principais tributos mensais entre Simples e Lucro Presumido para apoiar o enquadramento.',
+        badges: ['Comparativo', 'Tributario', 'Planejamento'],
+        calculateLabel: 'Comparar regimes',
+        fields: [
+            { id: 'faturamentoMensal', type: 'number', label: 'Faturamento medio mensal', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'rbt12', type: 'number', label: 'Faturamento acumulado de 12 meses', placeholder: 'R$ 0,00', min: 0, step: '0.01', help: 'Se nao tiver, use 12x o faturamento medio.' },
+            { id: 'atividade', type: 'select', label: 'Atividade predominante', options: H.atividadePresumidoOptions() },
+            {
+                id: 'anexoSimples',
+                type: 'select',
+                label: 'Anexo estimado no Simples',
+                options: [
+                    { value: 'I', label: 'Anexo I - Comercio' },
+                    { value: 'II', label: 'Anexo II - Industria' },
+                    { value: 'III', label: 'Anexo III - Servicos' },
+                    { value: 'IV', label: 'Anexo IV - Servicos especificos' },
+                    { value: 'V', label: 'Anexo V - Servicos intelectuais' }
+                ]
+            },
+            { id: 'folhaMensal', type: 'number', label: 'Folha mensal estimada', placeholder: 'R$ 0,00', min: 0, step: '0.01', help: 'Usada para estimar CPP fora do DAS no Anexo IV e no Presumido.' },
+            { id: 'aliquotaLocal', type: 'number', label: 'ISS ou ICMS adicional no Presumido (%)', min: 0, max: 10, step: '0.1', help: 'Opcional. Use apenas se quiser incluir tributo local na simulacao do Presumido.' }
+        ],
+        example: {
+            faturamentoMensal: 85000,
+            rbt12: 1020000,
+            atividade: 'servicos',
+            anexoSimples: 'III',
+            folhaMensal: 18000,
+            aliquotaLocal: 2
+        },
+        validate(values) {
+            if (values.faturamentoMensal <= 0) return 'Informe o faturamento medio mensal.';
+            if (values.rbt12 <= 0) return 'Informe o faturamento acumulado de 12 meses.';
+            return '';
+        },
+        compute(values) {
+            const simples = H.calcularAliquotaEfetivaSimples(values.anexoSimples, values.rbt12);
+            const dasMensal = values.faturamentoMensal * simples.aliquotaEfetiva;
+            const cppSimples = values.anexoSimples === 'IV' ? (values.folhaMensal * 0.20) : 0;
+            const totalSimples = dasMensal + cppSimples;
+
+            const presumido = H.calcularLucroPresumidoMensal(values.faturamentoMensal, values.atividade, values.aliquotaLocal);
+            const cppPresumido = values.folhaMensal * 0.20;
+            const totalPresumido = presumido.total + cppPresumido;
+
+            const economiaMensal = Math.abs(totalSimples - totalPresumido);
+            const economiaAnual = economiaMensal * 12;
+            const regimeMaisLeve = totalSimples <= totalPresumido ? 'Simples Nacional' : 'Lucro Presumido';
+            const diferencaPontos = values.faturamentoMensal > 0
+                ? ((totalPresumido - totalSimples) / values.faturamentoMensal) * 100
+                : 0;
+
+            return {
+                highlight: H.metricCurrency(`Economia anual estimada no ${regimeMaisLeve}`, economiaAnual),
+                secondaryA: H.metricCurrency('Custo mensal no Simples', totalSimples),
+                secondaryB: H.metricCurrency('Custo mensal no Presumido', totalPresumido),
+                notes: [
+                    { label: 'Aliquota efetiva do Simples', metric: H.metricPercent('Aliquota', simples.aliquotaEfetiva * 100) },
+                    { label: 'Diferenca em pontos sobre a receita', metric: H.metricPercent('Diferenca', diferencaPontos) },
+                    { label: 'Leitura', metric: H.metricText('Regime mais leve', `${regimeMaisLeve} tende a gerar menor carga principal nesta simulacao.`) }
+                ],
+                steps: [
+                    'Estimativa do DAS pelo RBT12 e anexo informado.',
+                    'Apuracao do Lucro Presumido com IRPJ, CSLL, PIS/Cofins e tributo local.',
+                    'Comparacao mensal e anual entre os dois regimes.'
+                ],
+                details: [
+                    { label: 'DAS mensal no Simples', value: H.formatCurrency(dasMensal) },
+                    { label: 'CPP fora do DAS (Simples)', value: H.formatCurrency(cppSimples) },
+                    { label: 'Tributos principais no Presumido', value: H.formatCurrency(presumido.total) },
+                    { label: 'CPP sobre folha no Presumido', value: H.formatCurrency(cppPresumido) },
+                    { label: 'PIS/Cofins no Presumido', value: H.formatCurrency(presumido.pisCofins) },
+                    { label: 'IRPJ + adicional no Presumido', value: H.formatCurrency(presumido.irpj) }
+                ],
+                chart: {
+                    labels: ['Simples', 'Lucro Presumido'],
+                    values: [H.round2(totalSimples), H.round2(totalPresumido)],
+                    colors: ['#0f766e', '#d46d13']
+                }
+            };
+        }
+    });
+
+    suite.registerDefinition('pro-labore-liquido', {
+        pageTitle: 'Calculadora de Pro-labore Liquido',
+        pageDescription: 'Estime o liquido do pro-labore do socio, o INSS retido, o IRRF e o custo total para a empresa.',
+        badges: ['Socios', 'Pro-labore', 'Retirada'],
+        calculateLabel: 'Calcular pro-labore',
+        fields: [
+            { id: 'proLaboreBruto', type: 'number', label: 'Pro-labore bruto mensal', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'regimeEmpresa', type: 'select', label: 'Regime da empresa para CPP patronal', options: H.regimeProLaboreOptions() },
+            { id: 'dependentes', type: 'number', label: 'Dependentes para IRRF', min: 0, step: '1' },
+            { id: 'pensao', type: 'number', label: 'Pensao alimenticia dedutivel', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'outrasDeducoes', type: 'number', label: 'Outras deducoes mensais', placeholder: 'R$ 0,00', min: 0, step: '0.01' }
+        ],
+        example: {
+            proLaboreBruto: 8000,
+            regimeEmpresa: 'presumido_real',
+            dependentes: 1,
+            pensao: 0,
+            outrasDeducoes: 0
+        },
+        validate(values) {
+            if (values.proLaboreBruto <= 0) return 'Informe o pro-labore bruto mensal.';
+            return '';
+        },
+        compute(values) {
+            const proLabore = H.calcularProLaboreLiquido(values.proLaboreBruto, {
+                dependentes: values.dependentes,
+                pensao: values.pensao,
+                outrasDeducoes: values.outrasDeducoes
+            });
+            const cppPatronal = H.calcularCPPPatronalProLabore(values.regimeEmpresa, values.proLaboreBruto);
+            const custoEmpresa = values.proLaboreBruto + cppPatronal;
+            const cargaTotal = proLabore.inssSocio + proLabore.irrf.impostoFinal + cppPatronal;
+
+            return {
+                highlight: H.metricCurrency('Pro-labore liquido mensal', proLabore.liquido),
+                secondaryA: H.metricCurrency('Custo total da empresa', custoEmpresa),
+                secondaryB: H.metricCurrency('Retirada liquida anual', proLabore.liquido * 12),
+                notes: [
+                    { label: 'INSS do socio', metric: H.metricCurrency('11% sobre o pro-labore ate o teto', proLabore.inssSocio) },
+                    { label: 'IRRF estimado', metric: H.metricCurrency('IRRF', proLabore.irrf.impostoFinal) },
+                    { label: 'Carga total mensal', metric: H.metricCurrency('Carga total', cargaTotal) }
+                ],
+                steps: [
+                    'Retencao previdenciaria do socio sobre o pro-labore.',
+                    'Calculo da base mensal de IRRF com dependentes e deducoes.',
+                    'Soma do custo patronal quando o regime exige CPP fora do DAS.'
+                ],
+                details: [
+                    { label: 'Base mensal de IRRF', value: H.formatCurrency(proLabore.baseIRRF) },
+                    { label: 'CPP patronal estimada', value: H.formatCurrency(cppPatronal) },
+                    { label: 'Deducao aplicada no IRRF', value: H.formatCurrency(proLabore.deducaoAplicada) },
+                    { label: 'Liquido anual estimado', value: H.formatCurrency(proLabore.liquido * 12) }
+                ],
+                chart: {
+                    labels: ['Liquido do socio', 'INSS socio', 'IRRF', 'CPP patronal'],
+                    values: [
+                        H.round2(proLabore.liquido),
+                        H.round2(proLabore.inssSocio),
+                        H.round2(proLabore.irrf.impostoFinal),
+                        H.round2(cppPatronal)
+                    ],
+                    colors: ['#0f766e', '#0a7dd1', '#d46d13', '#64748b']
+                }
+            };
+        }
+    });
+
+    suite.registerDefinition('distribuicao-lucros', {
+        pageTitle: 'Calculadora de Distribuicao de Lucros Disponivel',
+        pageDescription: 'Projete o lucro distribuivel do mes e a parcela estimada do socio conforme a participacao informada.',
+        badges: ['Socios', 'Lucros', 'Caixa'],
+        calculateLabel: 'Calcular distribuicao',
+        fields: [
+            { id: 'faturamentoMensal', type: 'number', label: 'Faturamento do mes', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'custosMensais', type: 'number', label: 'Custos operacionais + pro-labore', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'tributosMensais', type: 'number', label: 'Tributos do mes', placeholder: 'R$ 0,00', min: 0, step: '0.01' },
+            { id: 'reservaPercentual', type: 'range', label: 'Percentual para reserva de caixa', min: 0, max: 40, step: 1, value: 15, outputSuffix: '%' },
+            { id: 'participacaoSocio', type: 'range', label: 'Participacao do socio nos lucros', min: 1, max: 100, step: 1, value: 100, outputSuffix: '%' }
+        ],
+        example: {
+            faturamentoMensal: 120000,
+            custosMensais: 63000,
+            tributosMensais: 9800,
+            reservaPercentual: 15,
+            participacaoSocio: 50
+        },
+        validate(values) {
+            if (values.faturamentoMensal <= 0) return 'Informe o faturamento do mes.';
+            return '';
+        },
+        compute(values) {
+            const lucroAntesReserva = values.faturamentoMensal - values.custosMensais - values.tributosMensais;
+            const reserva = lucroAntesReserva > 0 ? (lucroAntesReserva * (H.clamp(values.reservaPercentual, 0, 40) / 100)) : 0;
+            const lucroDistribuivel = Math.max(0, lucroAntesReserva - reserva);
+            const parcelaSocio = lucroDistribuivel * (H.clamp(values.participacaoSocio, 1, 100) / 100);
+            const margemLiquida = values.faturamentoMensal > 0 ? (lucroAntesReserva / values.faturamentoMensal) * 100 : 0;
+
+            return {
+                highlight: H.metricCurrency('Parcela mensal estimada do socio', parcelaSocio),
+                secondaryA: H.metricCurrency('Lucro distribuivel total', lucroDistribuivel),
+                secondaryB: H.metricCurrency('Reserva mensal sugerida', reserva),
+                notes: [
+                    { label: 'Lucro antes da reserva', metric: H.metricCurrency('Lucro', lucroAntesReserva) },
+                    { label: 'Margem liquida apos tributos', metric: H.metricPercent('Margem', margemLiquida) },
+                    { label: 'Leitura', metric: H.metricText('Leitura', lucroAntesReserva > 0 ? 'Ha espaco para distribuir lucros sem consumir toda a folga do caixa.' : 'Nao ha lucro mensal para distribuicao neste cenario.') }
+                ],
+                steps: [
+                    'Subtracao de custos e tributos sobre a receita do mes.',
+                    'Separacao de uma reserva minima para capital de giro.',
+                    'Rateio da parcela distribuivel conforme a participacao do socio.'
+                ],
+                details: [
+                    { label: 'Receita anualizada', value: H.formatCurrency(values.faturamentoMensal * 12) },
+                    { label: 'Lucro distribuivel anual', value: H.formatCurrency(lucroDistribuivel * 12) },
+                    { label: 'Participacao do socio', value: H.formatPercent(values.participacaoSocio) },
+                    { label: 'Parcela anual do socio', value: H.formatCurrency(parcelaSocio * 12) }
+                ],
+                chart: {
+                    labels: ['Custos + pro-labore', 'Tributos', 'Reserva', 'Lucro distribuivel'],
+                    values: [
+                        H.round2(values.custosMensais),
+                        H.round2(values.tributosMensais),
+                        H.round2(reserva),
+                        H.round2(lucroDistribuivel)
+                    ],
+                    colors: ['#64748b', '#d46d13', '#0a7dd1', '#0f766e']
                 }
             };
         }

@@ -161,6 +161,120 @@
         };
     }
 
+    function calcularIRRFMensal(rendimentoBruto, options = {}) {
+        const rendimento = Math.max(0, toNumber(rendimentoBruto));
+        const dependentes = Math.max(0, Math.trunc(toNumber(options.dependentes)));
+        const pensao = Math.max(0, toNumber(options.pensao));
+        const outrasDeducoes = Math.max(0, toNumber(options.outrasDeducoes));
+        const inss = options.inssOverride !== undefined && options.inssOverride !== null
+            ? round2(Math.max(0, toNumber(options.inssOverride)))
+            : calcularINSS(rendimento);
+        const deducaoDependentes = dependentes * config.deducaoDependente;
+        const deducoesLegais = inss + deducaoDependentes + pensao + outrasDeducoes;
+        const deducaoAplicada = Math.max(deducoesLegais, config.descontoSimplificado);
+        const baseIRRF = Math.max(0, rendimento - deducaoAplicada);
+        const irrf = calcularIRRF(baseIRRF, rendimento);
+        const liquido = rendimento - inss - irrf.impostoFinal - pensao - outrasDeducoes;
+
+        return {
+            inss: round2(inss),
+            deducaoDependentes: round2(deducaoDependentes),
+            deducoesLegais: round2(deducoesLegais),
+            deducaoAplicada: round2(deducaoAplicada),
+            baseIRRF: round2(baseIRRF),
+            irrf,
+            liquido: round2(liquido)
+        };
+    }
+
+    function calcularINSSProLabore(base) {
+        const teto = config.faixasINSS[config.faixasINSS.length - 1].limite;
+        const contribuicao = Math.min(Math.max(0, toNumber(base)), teto) * 0.11;
+        return round2(contribuicao);
+    }
+
+    function calcularProLaboreLiquido(proLaboreBruto, options = {}) {
+        const proLabore = Math.max(0, toNumber(proLaboreBruto));
+        const inssSocio = calcularINSSProLabore(proLabore);
+        const mensal = calcularIRRFMensal(proLabore, {
+            ...options,
+            inssOverride: inssSocio
+        });
+
+        return {
+            ...mensal,
+            proLaboreBruto: round2(proLabore),
+            inssSocio,
+            liquido: mensal.liquido
+        };
+    }
+
+    function calcularFeriasLiquidas(options = {}) {
+        const salarioBase = Math.max(0, toNumber(options.salarioBase));
+        const mediaVariavel = Math.max(0, toNumber(options.mediaVariavel));
+        const diasFerias = Math.max(0, Math.trunc(toNumber(options.diasFerias || 30)));
+        const venderFerias = options.venderFerias === true;
+        const diasVendidos = venderFerias ? Math.max(0, Math.trunc(toNumber(options.diasVendidos))) : 0;
+
+        const valorDiario = (salarioBase + mediaVariavel) / 30;
+        const valorFerias = valorDiario * diasFerias;
+        const tercoFerias = valorFerias / 3;
+        const feriasComTerco = valorFerias + tercoFerias;
+
+        const abono = valorDiario * diasVendidos;
+        const tercoAbono = abono / 3;
+        const abonoTotal = abono + tercoAbono;
+
+        const baseTributavel = feriasComTerco;
+        const inss = calcularINSS(baseTributavel);
+        const baseIRRF = Math.max(0, baseTributavel - Math.max(inss, config.descontoSimplificado));
+        const irrf = calcularIRRF(baseIRRF, baseTributavel);
+        const descontos = inss + irrf.impostoFinal;
+        const brutoTotal = feriasComTerco + abonoTotal;
+        const liquido = brutoTotal - descontos;
+
+        return {
+            salarioBase: round2(salarioBase),
+            mediaVariavel: round2(mediaVariavel),
+            diasFerias,
+            diasVendidos,
+            valorDiario: round2(valorDiario),
+            valorFerias: round2(valorFerias),
+            tercoFerias: round2(tercoFerias),
+            feriasComTerco: round2(feriasComTerco),
+            abono: round2(abono),
+            tercoAbono: round2(tercoAbono),
+            abonoTotal: round2(abonoTotal),
+            inss: round2(inss),
+            irrf: irrf,
+            descontos: round2(descontos),
+            brutoTotal: round2(brutoTotal),
+            liquido: round2(liquido)
+        };
+    }
+
+    function calcularDecimoTerceiroLiquido(options = {}) {
+        const salarioBase = Math.max(0, toNumber(options.salarioBase));
+        const avos = clamp(options.mesesTrabalhados || 12, 1, 12);
+        const percentualAdiantamento = clamp(options.percentualAdiantamento || 50, 30, 50);
+        const bruto13 = (salarioBase / 12) * avos;
+        const primeiraParcela = bruto13 * (percentualAdiantamento / 100);
+        const mensal = calcularIRRFMensal(bruto13, {
+            dependentes: options.dependentes
+        });
+        const segundaParcelaLiquida = Math.max(0, mensal.liquido - primeiraParcela);
+
+        return {
+            avos,
+            bruto13: round2(bruto13),
+            primeiraParcela: round2(primeiraParcela),
+            segundaParcelaLiquida: round2(segundaParcelaLiquida),
+            liquidoTotal: round2(mensal.liquido),
+            inss: mensal.inss,
+            irrf: mensal.irrf
+        };
+    }
+
     function obterFaixaSimples(anexo, rbt12) {
         const tabela = config.simples[anexo] || config.simples.III;
         const receita = Math.max(0, toNumber(rbt12));
@@ -195,6 +309,68 @@
         ];
     }
 
+    function atividadePresumidoOptions() {
+        return [
+            { value: 'comercio', label: 'Comercio ou revenda' },
+            { value: 'industria', label: 'Industria' },
+            { value: 'servicos', label: 'Prestacao de servicos' }
+        ];
+    }
+
+    function regimeProLaboreOptions() {
+        return [
+            { value: 'simples_iii_v', label: 'Simples Anexos I, II, III ou V' },
+            { value: 'simples_iv', label: 'Simples Anexo IV' },
+            { value: 'presumido_real', label: 'Lucro Presumido ou Real' }
+        ];
+    }
+
+    function calcularCPPPatronalProLabore(regimeEmpresa, proLaboreBruto) {
+        const proLabore = Math.max(0, toNumber(proLaboreBruto));
+        if (regimeEmpresa === 'simples_iv' || regimeEmpresa === 'presumido_real') {
+            return round2(proLabore * 0.20);
+        }
+        return 0;
+    }
+
+    function obterConfigLucroPresumido(atividade) {
+        if (atividade === 'servicos') {
+            return {
+                percentualIRPJ: 0.32,
+                percentualCSLL: 0.32
+            };
+        }
+
+        return {
+            percentualIRPJ: 0.08,
+            percentualCSLL: 0.12
+        };
+    }
+
+    function calcularLucroPresumidoMensal(faturamentoMensal, atividade, aliquotaLocal = 0) {
+        const faturamento = Math.max(0, toNumber(faturamentoMensal));
+        const aliquota = Math.max(0, toNumber(aliquotaLocal)) / 100;
+        const configPresumido = obterConfigLucroPresumido(atividade);
+        const baseIRPJ = faturamento * configPresumido.percentualIRPJ;
+        const irpj = (baseIRPJ * 0.15) + (Math.max(0, baseIRPJ - 20000) * 0.10);
+        const baseCSLL = faturamento * configPresumido.percentualCSLL;
+        const csll = baseCSLL * 0.09;
+        const pisCofins = faturamento * 0.0365;
+        const tributoLocal = faturamento * aliquota;
+        const total = irpj + csll + pisCofins + tributoLocal;
+
+        return {
+            faturamento: round2(faturamento),
+            baseIRPJ: round2(baseIRPJ),
+            baseCSLL: round2(baseCSLL),
+            irpj: round2(irpj),
+            csll: round2(csll),
+            pisCofins: round2(pisCofins),
+            tributoLocal: round2(tributoLocal),
+            total: round2(total)
+        };
+    }
+
     suite.helpers = {
         config,
         round2,
@@ -209,10 +385,20 @@
         metricText,
         calcularINSS,
         calcularIRRF,
+        calcularIRRFMensal,
+        calcularINSSProLabore,
+        calcularProLaboreLiquido,
+        calcularFeriasLiquidas,
+        calcularDecimoTerceiroLiquido,
         obterFaixaSimples,
         calcularAliquotaEfetivaSimples,
         simOuNaoOptions,
-        diagnosticoOptions
+        diagnosticoOptions,
+        atividadePresumidoOptions,
+        regimeProLaboreOptions,
+        calcularCPPPatronalProLabore,
+        obterConfigLucroPresumido,
+        calcularLucroPresumidoMensal
     };
 
     window.CalculadoraSuite = suite;

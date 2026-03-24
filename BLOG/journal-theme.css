@@ -1,0 +1,253 @@
+/* 
+   Hybrid Journal Theme - VL Contabilidade 
+   Harmonizing the Premium Journal look with the Main Site's Dark/Gold Identity
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    /* Main Site Colors */
+    --site-bg: #0F172A;
+    --site-dark: #1A1D23;
+    --site-gold: #E8820E;
+    --site-hover: #D46D13;
+    --site-text: #ffffff;
+    
+    /* Journal Refinements (Hybrid) */
+    --journal-paper: #FDFCF8; /* Still using paper for the article itself to maintain "Journal" feel */
+    --font-title: 'Syne', sans-serif; /* Harmonizing with main site */
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'Lora', serif;
+    --font-ui: 'Inter', sans-serif;
+    
+    --container-width: 1100px;
+    --content-width: 760px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.journal-theme {
+    background-color: var(--site-bg); /* Use site dark background */
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Header & Nav (Exact Site Match) --- */
+.journal-header {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232, 130, 14, 0.2);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--site-text);
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.site-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--site-gold);
+}
+
+.journal-nav a {
+    color: var(--site-text);
+    text-decoration: none;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 8px 15px;
+    transition: 0.3s;
+}
+
+.journal-nav a:hover {
+    color: var(--site-gold);
+}
+
+/* --- Article Layout (Journal Feel) --- */
+.journal-main {
+    padding-top: 120px;
+    min-height: 100vh;
+}
+
+/* The "Paper" Container for the content */
+.article-card {
+    background: var(--journal-paper); /* Light paper for the actual reading experience */
+    color: #1A1A1A; /* Dark text for readability on paper */
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.journal-post-header {
+    padding: 4rem 3rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.journal-kicker {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: var(--site-gold);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.journal-title {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: #0F172A;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.journal-meta {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Content Styling --- */
+.journal-content {
+    padding: 3rem;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.journal-content p {
+    margin-bottom: 1.8rem;
+    font-size: 1.2rem;
+}
+
+.journal-content h2 {
+    font-family: var(--site-gold);
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--site-bg);
+    margin: 3rem 0 1.5rem;
+    border-left: 5px solid var(--site-gold);
+    padding-left: 15px;
+}
+
+.journal-content blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: var(--site-gold);
+    padding: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+    background: rgba(232, 130, 14, 0.05);
+    border-radius: 8px;
+}
+
+.journal-content .dropcap::first-letter {
+    font-family: var(--font-title);
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    padding-top: 0.4rem;
+    padding-right: 0.8rem;
+    color: var(--site-gold);
+}
+
+/* Decoration */
+.ornament {
+    text-align: center;
+    margin: 3rem 0;
+    color: var(--site-gold);
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+}
+
+/* CTA - Harmonized with site buttons */
+.clean-cta {
+    background: var(--site-bg);
+    color: #fff;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 4rem;
+}
+
+.clean-cta h3 {
+    font-family: var(--font-title);
+    color: var(--site-gold);
+}
+
+.clean-cta .btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background: var(--site-gold);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: var(--font-title);
+    font-weight: 700;
+    margin-top: 2rem;
+    transition: 0.3s;
+}
+
+.clean-cta .btn:hover {
+    background: var(--site-hover);
+    transform: translateY(-3px);
+}
+
+/* --- Mobile Specific Optimization --- */
+@media (max-width: 768px) {
+    .journal-title {
+        font-size: 2rem;
+    }
+    
+    .journal-content {
+        padding: 1.5rem;
+    }
+    
+    .journal-post-header {
+        padding: 2rem 1rem;
+    }
+    
+    .journal-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
