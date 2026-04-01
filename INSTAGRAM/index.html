@@ -3,63 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VL Contabilidade - Links</title>
-    <link rel="stylesheet" href="style.css">
+    <title>VL Contabilidade Empresarial | Soluções Estratégicas</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="shortcut icon" href="../assets/img/FAVICON.ICO" type="image/x-icon">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Background Elements -->
+    <div class="bg-mesh"></div>
+    <div class="bg-overlay"></div>
+
     <div class="container">
-        <div class="profile">
-            <img src="../assets/img/LOGO (2).png" alt="VL Contabilidade" class="profile-pic">
-            <h1>VL Contabilidade Empresarial</h1>
-            <p>💼 Contabilidade Digital 📊 Consultoria Empresarial ⭐ Excelência</p>
-        </div>
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="logo-container">
+                <img src="../assets/img/LOGO (2).png" alt="VL Contabilidade" class="logo">
+            </div>
+            <h1 class="headline">Sua empresa merece uma gestão de <span>alto nível</span>.</h1>
+            <p class="subline">Contabilidade Estratégica e Consultiva para impulsionar o seu crescimento com segurança e inovação.</p>
+            
+            <div class="hero-ctas">
+                <a href="https://wa.me/5511916539680" class="btn btn-primary">
+                    <i class="fi fi-brands-whatsapp"></i>
+                    Falar com Especialista
+                </a>
+                <a href="../HTML/ferramentas.html" class="btn btn-secondary">
+                    <i class="fi fi-rr-calculator"></i>
+                    Calculadoras
+                </a>
+            </div>
+        </header>
 
-        <div class="links">
-            <a href="../HTML/ferramentas.html" class="link-item">
-                Calculadoras [último update]
-                <span class="dots">•••</span>
+        <!-- Links Hub -->
+        <section class="links-grid">
+            <h2 class="section-title">Acesso Rápido</h2>
+            
+            <a href="../landingpages/irrf2026.html" class="glass-card highlight-card" style="--i:1">
+                <div class="card-icon"><i class="fi fi-rr-document-signed"></i></div>
+                <div class="card-content">
+                    <h3>IRRF 2026 <span class="badge">Novo</span></h3>
+                    <p>Consultoria e Declaração de Imposto de Renda</p>
+                </div>
+                <i class="fi fi-rr-angle-small-right arrow"></i>
             </a>
 
-            <a href="../HTML/servicos.html" class="link-item">
-                Ajustes de serviços
-                <span class="dots">•••</span>
+            <a href="../HTML/servicos.html" class="glass-card" style="--i:2">
+                <div class="card-icon"><i class="fi fi-rr-briefcase"></i></div>
+                <div class="card-content">
+                    <h3>Nossos Serviços</h3>
+                    <p>Conheça nossas soluções contábeis</p>
+                </div>
+                <i class="fi fi-rr-angle-small-right arrow"></i>
             </a>
 
-            <a href="../index.html" class="link-item">
-                Site Oficial
-                <span class="dots">•••</span>
+            <a href="../index.html" class="glass-card" style="--i:3">
+                <div class="card-icon"><i class="fi fi-rr-browser"></i></div>
+                <div class="card-content">
+                    <h3>Site Oficial</h3>
+                    <p>Explore nosso portal institucional</p>
+                </div>
+                <i class="fi fi-rr-angle-small-right arrow"></i>
             </a>
 
-            <a href="https://wa.me/5511916539680" class="link-item" id="contact-button">
-                Fale Conosco
-                <span class="dots">•••</span>
+            <a href="https://www.instagram.com/vl_contabilidade_empresarial/" class="glass-card" style="--i:4">
+                <div class="card-icon"><i class="fi fi-brands-instagram"></i></div>
+                <div class="card-content">
+                    <h3>Siga no Instagram</h3>
+                    <p>Dicas diárias de gestão e negócios</p>
+                </div>
+                <i class="fi fi-rr-angle-small-right arrow"></i>
             </a>
-        </div>
 
-        <div class="social-bar">
-            <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <i class="fi fi-brands-google"></i>
+            <a href="https://www.youtube.com/@contabilidadeempresarial" class="glass-card" style="--i:5">
+                <div class="card-icon"><i class="fi fi-brands-youtube"></i></div>
+                <div class="card-content">
+                    <h3>Canal do YouTube</h3>
+                    <p>Conteúdo educativo empresarial</p>
+                </div>
+                <i class="fi fi-rr-angle-small-right arrow"></i>
             </a>
-            <a href="https://www.instagram.com/vl_contabilidade_empresarial/" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <i class="fi fi-brands-instagram"></i>
-            </a>
-            <a href="https://wa.me/5511916539680" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <i class="fi fi-brands-whatsapp"></i>
-            </a>
-            <a href="https://www.youtube.com/@contabilidadeempresarial" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <i class="fi fi-brands-youtube"></i>
-            </a>
-        </div>
+        </section>
 
-        <div class="cookie-notice">
-            <button id="cookie-settings">Definições de cookies</button>
-        </div>
+        <!-- Credibility Block -->
+        <section class="trust-block">
+            <div class="trust-item">
+                <i class="fi fi-rr-shield-check"></i>
+                <span>100% Digital & Seguro</span>
+            </div>
+            <div class="trust-item">
+                <i class="fi fi-rr-comment-user"></i>
+                <span>Atendimento Humanizado</span>
+            </div>
+            <div class="trust-item">
+                <i class="fi fi-rr-chart-line-up"></i>
+                <span>Visão Consultiva</span>
+            </div>
+        </section>
 
-        <div id="visit-counter" class="visit-counter">Visitas: <span id="counter">0</span></div>
+        <!-- Social Bar -->
+        <footer class="footer">
+            <div class="social-links">
+                <a href="https://www.google.com/search?q=VL+Contabilidade+Empresarial" target="_blank"><i class="fi fi-brands-google"></i></a>
+                <a href="https://www.instagram.com/vl_contabilidade_empresarial/" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                <a href="https://wa.me/5511916539680" target="_blank"><i class="fi fi-brands-whatsapp"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 VL Contabilidade Empresarial. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Floating Background Elements -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
     </div>
 </body>
 </html> 
