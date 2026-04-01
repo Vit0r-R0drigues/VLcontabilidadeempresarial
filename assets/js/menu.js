@@ -1,4 +1,4 @@
-class MobileMenu {
+﻿class MobileMenu {
   static instance = null;
 
   constructor() {
@@ -51,10 +51,10 @@ class MobileMenu {
         </svg>
       </div>
       <div class="menu-items">
-        <a href="/index.html"><i class="fi fi-rr-home"></i> Início</a>
-        <a href="/BLOG/blogemconstru%C3%A7%C3%A3o.html"><i class="fi fi-rr-book-alt"></i> Blog</a>
+        <a href="/index.html"><i class="fi fi-rr-home"></i> InÃ­cio</a>
+        <a href="/landingpages/irrf2026.html"><i class="fi fi-rr-book-alt"></i> IRRF 2026</a>
         <a href="/HTML/sobre.html"><i class="fi fi-rr-info"></i> Sobre</a>
-        <a href="/HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> Serviços</a>
+        <a href="/HTML/servicos.html"><i class="fi fi-rr-briefcase"></i> ServiÃ§os</a>
         <a href="/HTML/ferramentas.html"><i class="fi fi-rr-apps"></i> Ferramentas</a>
         <a href="/HTML/contatos.html"><i class="fi fi-rr-phone-call"></i> Contatos</a>
       </div>
@@ -71,7 +71,7 @@ class MobileMenu {
       document.addEventListener('click', this.handleDocumentClick);
 
       // Use navMenu (the existing HTML nav ul) instead of this.menuItems
-      // which is only populated by createMenuStructure() — a path never taken.
+      // which is only populated by createMenuStructure() â€” a path never taken.
       const menuLinks = this.navMenu.querySelectorAll('a');
       menuLinks.forEach((link) => {
         link.addEventListener('click', this.handleLinkClick);
@@ -88,7 +88,7 @@ class MobileMenu {
     if (isActive) {
       icon.className = 'fi fi-rr-cross';
       this.navMenu.style.display = 'flex';
-      // Pequeno delay para permitir a transição de opacidade/transform
+      // Pequeno delay para permitir a transiÃ§Ã£o de opacidade/transform
       setTimeout(() => {
         this.navMenu.style.opacity = '1';
         this.navMenu.style.transform = 'translateY(0)';
@@ -302,3 +302,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+
