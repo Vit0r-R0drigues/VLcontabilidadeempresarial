@@ -1,9 +1,7 @@
-/**
- * Atualiza dinamicamente o ano no rodapé.
- */
 document.addEventListener('DOMContentLoaded', () => {
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
+    const currentYear = String(new Date().getFullYear());
+
+    document.querySelectorAll('#current-year, #currentYear, [data-current-year]').forEach((element) => {
+        element.textContent = currentYear;
+    });
 });

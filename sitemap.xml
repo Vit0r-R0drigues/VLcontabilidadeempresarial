@@ -2,39 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-04-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/sobre.html</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-04-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/servicos.html</loc>
-        <lastmod>2026-02-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/contatos.html</loc>
-        <lastmod>2026-02-19</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/ferramentas.html</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-04-02</lastmod>
         <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/abertura-de-empresa.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/troca-de-contador.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/diagnostico-tributario.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/contabilidade-prestadores-servico.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/HTML/contabilidade-profissionais-liberais.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/calculadora-irrf.html</loc>
         <lastmod>2026-02-19</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/calculadora-ferias.html</loc>
@@ -52,17 +82,35 @@
         <loc>https://vlcontabilidadeempresarial.com.br/HTML/politica-de-privacidade.html</loc>
         <lastmod>2026-02-19</lastmod>
         <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/blogemconstru%C3%A7%C3%A3o.html</loc>
-        <lastmod>2026-03-18</lastmod>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/index.html</loc>
+        <lastmod>2026-04-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/irpf-2026-atualizacoes.html</loc>
-        <lastmod>2026-02-19</lastmod>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/abrir-empresa-prestador-servico.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/trocar-de-contador-com-seguranca.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/planejamento-tributario-prestadores-servico.html</loc>
+        <lastmod>2026-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/fluxo-de-caixa-para-pequenas-empresas.html</loc>
+        <lastmod>2026-04-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -70,30 +118,42 @@
         <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/mei-2026-guia-completo.html</loc>
         <lastmod>2026-02-19</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/imposto-de-renda-2026-journal.html</loc>
-        <lastmod>2026-03-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/simples-nacional-2026-guia-pratico.html</loc>
         <lastmod>2026-02-19</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://vlcontabilidadeempresarial.com.br/landingpages/irrf2025.html</loc>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/irpf-2026-atualizacoes.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/BLOG/posts/imposto-de-renda-2026-journal.html</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/landingpages/irrf2026.html</loc>
         <lastmod>2026-02-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://vlcontabilidadeempresarial.com.br/landingpages/irrf2025.html</loc>
+        <lastmod>2026-02-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://vlcontabilidadeempresarial.com.br/landingpages/cst-ibs-cbs-2026.html</loc>
         <lastmod>2026-03-06</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.5</priority>
     </url>
 </urlset>

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cards = Array.from(document.querySelectorAll('.hub-card[data-kind]'));
-    const revealBlocks = Array.from(document.querySelectorAll('.hub-hero, .hub-overview, .hub-toolbar, .hub-section, .hub-section-cta'));
+    const revealBlocks = Array.from(document.querySelectorAll('.hub-hero, .hub-overview, .tools-commercial-band, .service-path-grid, .hub-toolbar, .hub-section, .hub-section-cta'));
     const searchInput = document.getElementById('toolSearch');
     const toolbar = document.querySelector('.hub-toolbar');
     const filterButtons = Array.from(document.querySelectorAll('.hub-filter-btn'));
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const linkCount = document.getElementById('linkCount');
     const docCount = document.getElementById('docCount');
     const favoritesKey = 'vl_tools_favorites_v1';
+    const whatsappNumber = '5511916539680';
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let activeFilter = 'todos';
@@ -52,9 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach((card) => {
             const favId = card.dataset.favId;
             if (!favId) return;
+
             const isFavorite = favorites.has(favId);
             const favButton = card.querySelector('.hub-fav-btn');
             card.classList.toggle('is-favorite', isFavorite);
+
             if (favButton) {
                 favButton.setAttribute('aria-pressed', isFavorite ? 'true' : 'false');
                 favButton.title = isFavorite ? 'Remover dos favoritos' : 'Salvar como favorito';
@@ -100,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.add('is-filtered-in');
                 return;
             }
+
             card.classList.remove('is-filtered-in');
             card.style.setProperty('--hub-enter-delay', `${Math.min(index * 35, 220)}ms`);
             requestAnimationFrame(() => {
@@ -115,7 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach((card) => {
             const visible = cardMatches(card, activeFilter, query);
             card.classList.toggle('is-hidden', !visible);
-            if (visible) visibleCards.push(card);
+            if (visible) {
+                visibleCards.push(card);
+            }
         });
 
         if (toolbar) {
@@ -145,10 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     favorites.add(favId);
                 }
+
                 saveFavorites();
                 applyFavoritesState();
                 pulseFavoriteButton(button);
             });
+        });
+    }
+
+    function bindWhatsappLinks() {
+        document.querySelectorAll('.hub-whatsapp-link[data-wa-text]').forEach((link) => {
+            const rawText = link.dataset.waText || '';
+            link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(rawText)}`;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
         });
     }
 
@@ -189,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateOverviewCounts();
     applyFavoritesState();
     bindFavorites();
+    bindWhatsappLinks();
     initRevealAnimations();
     applyFilter();
 });

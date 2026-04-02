@@ -1,0 +1,416 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Logo VL Contabilidade Empresarial" [ref=e4] [cursor=pointer]:
+      - /url: /index.html
+      - img "Logo VL Contabilidade Empresarial" [ref=e5]
+    - navigation "Menu principal" [ref=e6]:
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - link "Home" [ref=e9] [cursor=pointer]:
+            - /url: /index.html
+            - text:  Home
+        - listitem [ref=e10]:
+          - link "Servicos" [ref=e11] [cursor=pointer]:
+            - /url: /HTML/servicos.html
+            - text:  Servicos
+        - listitem [ref=e12]:
+          - link "Ferramentas" [ref=e13] [cursor=pointer]:
+            - /url: /HTML/ferramentas.html
+            - text:  Ferramentas
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /BLOG/index.html
+            - text:  Blog
+        - listitem [ref=e16]:
+          - link "Sobre" [ref=e17] [cursor=pointer]:
+            - /url: /HTML/sobre.html
+            - text:  Sobre
+        - listitem [ref=e18]:
+          - link "Contato" [ref=e19] [cursor=pointer]:
+            - /url: /HTML/contatos.html
+            - text:  Contato
+        - listitem [ref=e20]:
+          - link "IR 2026" [ref=e21] [cursor=pointer]:
+            - /url: /landingpages/irrf2026.html
+            - text:  IR 2026
+    - generic [ref=e22]:
+      - link "" [ref=e23] [cursor=pointer]:
+        - /url: https://www.instagram.com/vl_contabilidade_empresarial/
+        - generic [ref=e24]: 
+      - link " Falar no WhatsApp" [ref=e25] [cursor=pointer]:
+        - /url: https://wa.me/5511916539680
+        - generic [ref=e26]: 
+        - text: Falar no WhatsApp
+      - link "" [ref=e27] [cursor=pointer]:
+        - /url: https://www.youtube.com/@contabilidadeempresarial
+        - generic [ref=e28]: 
+      - link "" [ref=e29] [cursor=pointer]:
+        - /url: https://www.google.com/search?q=VL+Contabilidade+Empresarial
+        - generic [ref=e30]: 
+    - text: 
+  - main [ref=e31]:
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]: 
+          - text: Atendimento em ate 24h
+        - heading "Contabilidade digital consultiva para prestadores de servico, MEIs em crescimento e pequenas empresas" [level=1] [ref=e38]
+        - paragraph [ref=e39]: A VL ajuda voce a abrir empresa, trocar de contador, revisar enquadramento e organizar a rotina fiscal, financeira e operacional sem burocracia desnecessaria.
+        - generic [ref=e40]:
+          - link "Falar no WhatsApp" [ref=e41] [cursor=pointer]:
+            - /url: https://wa.me/5511916539680?text=Ola%2C%20quero%20falar%20com%20a%20VL%20sobre%20contabilidade%20consultiva.
+          - link "Ver servicos" [ref=e42] [cursor=pointer]:
+            - /url: /HTML/servicos.html
+          - link "Abrir empresa" [ref=e43] [cursor=pointer]:
+            - /url: /HTML/abertura-de-empresa.html
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e46]: 
+            - text: Contador responsavel com CRC
+          - generic [ref=e47]:
+            - generic [ref=e48]: 
+            - text: Orientacao clara e humana
+          - generic [ref=e49]:
+            - generic [ref=e50]: 
+            - text: Fiscal, financeiro e operacional
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - heading "Para quem a VL foi posicionada" [level=3] [ref=e53]
+            - paragraph [ref=e54]: Prestadores de servico, profissionais liberais, pequenas empresas, quem quer abrir CNPJ e quem precisa trocar um contador lento por um suporte consultivo.
+          - generic [ref=e55]:
+            - heading "Resultado esperado" [level=3] [ref=e56]
+            - paragraph [ref=e57]: Mais clareza na tomada de decisao, menos risco tributario e uma rotina mais organizada para crescer com seguranca.
+      - complementary [ref=e58]:
+        - generic [ref=e59]:
+          - img "Vitor Rodrigues de Lima, contador responsavel" [ref=e60]
+          - generic [ref=e61]:
+            - strong [ref=e62]: Vitor Rodrigues de Lima
+            - text: Contador responsavel | CRC SP353836
+            - paragraph [ref=e63]: Atendimento direto, digital e consultivo para quem quer entender o impacto das decisoes antes de executar.
+        - list [ref=e64]:
+          - listitem [ref=e65]:
+            - generic [ref=e66]: 
+            - text: Abertura de empresa com escolha orientada de regime
+          - listitem [ref=e67]:
+            - generic [ref=e68]: 
+            - text: Troca de contador com onboarding e organizacao de documentos
+          - listitem [ref=e69]:
+            - generic [ref=e70]: 
+            - text: Diagnostico tributario apoiado por simuladores e comparadores
+          - listitem [ref=e71]:
+            - generic [ref=e72]: 
+            - text: Suporte para folha, obrigacoes e saude financeira empresarial
+        - generic [ref=e73]:
+          - generic [ref=e74]: Escritorio 100% digital
+          - generic [ref=e75]: Processo claro
+          - generic [ref=e76]: Suporte consultivo
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]: 
+          - text: Para quem e
+        - heading "Uma contabilidade feita para dores reais de quem empreende" [level=2] [ref=e83]
+        - paragraph [ref=e84]: A VL deixa de parecer uma contabilidade generica e assume um posicionamento claro para quem precisa de mais criterio, suporte e previsibilidade.
+      - generic [ref=e85]:
+        - article [ref=e86]:
+          - generic [ref=e88]: 
+          - heading "Prestadores de servico" [level=3] [ref=e89]
+          - paragraph [ref=e90]: Quem precisa comparar regimes, organizar retirada dos socios e ganhar previsibilidade no caixa.
+        - article [ref=e91]:
+          - generic [ref=e93]: 
+          - heading "MEIs em crescimento" [level=3] [ref=e94]
+          - paragraph [ref=e95]: Empreendedores que estao perto do limite, contratando ou sentindo que o MEI nao acompanha a operacao.
+        - article [ref=e96]:
+          - generic [ref=e98]: 
+          - heading "Pequenas empresas" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Negocios que precisam manter o fiscal em dia sem perder o controle financeiro e operacional.
+        - article [ref=e101]:
+          - generic [ref=e103]: 
+          - heading "Profissionais liberais" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Quem trabalha com agenda, honorarios ou atendimentos e precisa de estrutura tributaria mais inteligente.
+        - article [ref=e106]:
+          - generic [ref=e108]: 
+          - heading "Quem vai abrir empresa" [level=3] [ref=e109]
+          - paragraph [ref=e110]: Empresarios que querem comecar com CNPJ, CNAE e regime tributario bem definidos desde o inicio.
+        - article [ref=e111]:
+          - generic [ref=e113]: 
+          - heading "Quem quer trocar de contador" [level=3] [ref=e114]
+          - paragraph [ref=e115]: Empresas cansadas de atraso, falta de retorno, orientacao rasa ou operacao desorganizada.
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - generic [ref=e120]:
+          - generic [ref=e121]:
+            - generic [ref=e122]: 
+            - text: Dores do publico
+          - heading "O problema raramente e so emitir guia" [level=2] [ref=e123]
+          - paragraph [ref=e124]: Muitos empresarios chegam ate a VL quando percebem que falta leitura pratica do negocio e nao apenas execucao de rotina.
+        - generic [ref=e125]:
+          - article [ref=e126]:
+            - heading "Duvida sobre regime" [level=3] [ref=e127]
+            - paragraph [ref=e128]: Faturamento cresceu e ninguem explicou se voce ainda esta no enquadramento certo.
+          - article [ref=e129]:
+            - heading "Contador que demora" [level=3] [ref=e130]
+            - paragraph [ref=e131]: Voce manda mensagem, espera dias e continua sem clareza sobre o proximo passo.
+          - article [ref=e132]:
+            - heading "Medo de pagar imposto errado" [level=3] [ref=e133]
+            - paragraph [ref=e134]: Sem acompanhamento, o risco fiscal cresce e a decisao fica travada.
+          - article [ref=e135]:
+            - heading "Financeiro desorganizado" [level=3] [ref=e136]
+            - paragraph [ref=e137]: O negocio vende, mas o caixa nao mostra margem, retirada e custo real da operacao.
+          - article [ref=e138]:
+            - heading "Dificuldade com folha" [level=3] [ref=e139]
+            - paragraph [ref=e140]: Admissao, ferias, rescisao e encargos viram gargalo quando o time cresce.
+          - article [ref=e141]:
+            - heading "Falta de visao estrategica" [level=3] [ref=e142]
+            - paragraph [ref=e143]: Sem apoio consultivo, fica dificil saber onde economizar e como crescer com seguranca.
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]: 
+            - text: Solucao VL
+          - heading "Contabilidade digital com suporte humano e orientacao para decidir melhor" [level=2] [ref=e148]
+          - paragraph [ref=e149]: A proposta da VL combina rotina contabil em dia com leitura de impacto para cada momento do negocio.
+        - generic [ref=e150]:
+          - article [ref=e151]:
+            - heading "Suporte consultivo" [level=3] [ref=e152]
+            - paragraph [ref=e153]: Voce recebe contexto, criterio e encaminhamento, nao apenas resposta operacional.
+          - article [ref=e154]:
+            - heading "Ferramentas de decisao" [level=3] [ref=e155]
+            - paragraph [ref=e156]: Calculadoras e comparadores ajudam a visualizar cenarios antes de mudar regime ou estrutura.
+          - article [ref=e157]:
+            - heading "Acompanhamento fiscal e financeiro" [level=3] [ref=e158]
+            - paragraph [ref=e159]: Tributos, rotina contabil, folha e saude financeira passam a conversar.
+          - article [ref=e160]:
+            - heading "Onboarding claro" [level=3] [ref=e161]
+            - paragraph [ref=e162]: Na abertura ou troca de contador, a prioridade e reduzir ruido e organizar a operacao.
+          - article [ref=e163]:
+            - heading "Atendimento rapido" [level=3] [ref=e164]
+            - paragraph [ref=e165]: Demandas importantes trabalham com expectativa de retorno em ate 24h.
+          - article [ref=e166]:
+            - heading "Linguagem acessivel" [level=3] [ref=e167]
+            - paragraph [ref=e168]: Sem jargao inutil. O objetivo e voce entender o que muda e por que muda.
+    - generic [ref=e171]:
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - generic [ref=e174]: 
+          - text: Servicos e ofertas de entrada
+        - heading "Portas de entrada claras para quem quer agir agora" [level=2] [ref=e175]
+        - paragraph [ref=e176]: Se voce chegou com um problema especifico, estes sao os caminhos mais diretos para comecar a resolver com rapidez e criterio.
+      - generic [ref=e177]:
+        - article [ref=e178]:
+          - generic [ref=e179]:
+            - generic [ref=e181]: 
+            - generic [ref=e182]: Inicio estruturado
+          - heading "Abertura de empresa" [level=3] [ref=e183]
+          - paragraph [ref=e184]: Escolha de CNAE, natureza juridica e regime tributario para comecar certo e evitar retrabalho.
+          - link "Ver detalhes " [ref=e186] [cursor=pointer]:
+            - /url: /HTML/abertura-de-empresa.html
+            - text: Ver detalhes
+            - generic [ref=e187]: 
+        - article [ref=e188]:
+          - generic [ref=e189]:
+            - generic [ref=e191]: 
+            - generic [ref=e192]: Recuperar controle
+          - heading "Troca de contador" [level=3] [ref=e193]
+          - paragraph [ref=e194]: Migracao orientada para organizar documentos, obrigacoes e comunicacao sem travar a operacao.
+          - link "Ver detalhes " [ref=e196] [cursor=pointer]:
+            - /url: /HTML/troca-de-contador.html
+            - text: Ver detalhes
+            - generic [ref=e197]: 
+        - article [ref=e198]:
+          - generic [ref=e199]:
+            - generic [ref=e201]: 
+            - generic [ref=e202]: Economia com seguranca
+          - heading "Diagnostico tributario" [level=3] [ref=e203]
+          - paragraph [ref=e204]: Leitura do regime atual, comparacao de cenarios e recomendacao consultiva para pagar menos imposto com base tecnica.
+          - link "Ver detalhes " [ref=e206] [cursor=pointer]:
+            - /url: /HTML/diagnostico-tributario.html
+            - text: Ver detalhes
+            - generic [ref=e207]: 
+        - article [ref=e208]:
+          - generic [ref=e209]:
+            - generic [ref=e211]: 
+            - generic [ref=e212]: Nicho prioritario
+          - heading "Contabilidade para prestadores de servico" [level=3] [ref=e213]
+          - paragraph [ref=e214]: Organizacao tributaria, pro-labore, distribuicao e leitura de margem para quem vive de servico.
+          - link "Ver detalhes " [ref=e216] [cursor=pointer]:
+            - /url: /HTML/contabilidade-prestadores-servico.html
+            - text: Ver detalhes
+            - generic [ref=e217]: 
+        - article [ref=e218]:
+          - generic [ref=e219]:
+            - generic [ref=e221]: 
+            - generic [ref=e222]: Rotina profissional
+          - heading "Contabilidade para profissionais liberais" [level=3] [ref=e223]
+          - paragraph [ref=e224]: Estrutura tributaria e operacional para quem atende clientes, pacientes ou projetos com agenda variavel.
+          - link "Ver detalhes " [ref=e226] [cursor=pointer]:
+            - /url: /HTML/contabilidade-profissionais-liberais.html
+            - text: Ver detalhes
+            - generic [ref=e227]: 
+        - article [ref=e228]:
+          - generic [ref=e229]:
+            - generic [ref=e231]: 
+            - generic [ref=e232]: Rotina completa
+          - heading "Departamento pessoal e consultoria" [level=3] [ref=e233]
+          - paragraph [ref=e234]: Folha, admissao, ferias, rescisao e apoio a indicadores para manter a operacao funcionando sem surpresa.
+          - link "Ver todos os servicos " [ref=e236] [cursor=pointer]:
+            - /url: /HTML/servicos.html
+            - text: Ver todos os servicos
+            - generic [ref=e237]: 
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - generic [ref=e243]:
+          - generic [ref=e244]: 
+          - text: Ferramentas integradas ao funil
+        - heading "Simule cenarios antes de decidir e fale com a VL para interpretar" [level=2] [ref=e245]
+        - paragraph [ref=e246]: O hub de ferramentas ajuda voce a comparar enquadramento, projetar custo, pro-labore e impacto tributario antes da decisao operacional.
+        - generic [ref=e247]:
+          - link "Explorar ferramentas" [ref=e248] [cursor=pointer]:
+            - /url: /HTML/ferramentas.html
+          - link "Interpretar com a VL" [ref=e249] [cursor=pointer]:
+            - /url: https://wa.me/5511916539680?text=Ola%2C%20quero%20ajuda%20para%20interpretar%20um%20resultado%20das%20ferramentas%20da%20VL.
+      - generic [ref=e250]:
+        - article [ref=e251]:
+          - heading "Compare Simples x Presumido" [level=3] [ref=e252]
+          - paragraph [ref=e253]: Entenda se a empresa esta perto de um ponto em que mudar o regime faz sentido financeiro.
+          - link "Abrir comparador" [ref=e254] [cursor=pointer]:
+            - /url: /HTML/calculadora-suite.html?calc=simples-vs-lucro-presumido
+        - article [ref=e255]:
+          - heading "Veja se esta pagando imposto a mais" [level=3] [ref=e256]
+          - paragraph [ref=e257]: Use a simulacao para avaliar se vale uma revisao de enquadramento ou estrutura tributaria.
+          - link "Abrir simulacao" [ref=e258] [cursor=pointer]:
+            - /url: /HTML/calculadora-suite.html?calc=imposto-a-mais
+        - article [ref=e259]:
+          - heading "Calcule pro-labore e custo de equipe" [level=3] [ref=e260]
+          - paragraph [ref=e261]: Bom para decidir retirada, contratacao, folha e impacto real no caixa da empresa.
+          - link "Abrir pro-labore" [ref=e262] [cursor=pointer]:
+            - /url: /HTML/calculadora-suite.html?calc=pro-labore-liquido
+        - article [ref=e263]:
+          - heading "Receba orientacao com base no resultado" [level=3] [ref=e264]
+          - paragraph [ref=e265]: Depois da simulacao, voce pode falar com a VL e discutir o melhor caminho com contexto.
+          - link "Solicitar diagnostico" [ref=e266] [cursor=pointer]:
+            - /url: /HTML/diagnostico-tributario.html
+    - generic [ref=e269]:
+      - generic [ref=e270]:
+        - generic [ref=e271]:
+          - generic [ref=e272]: 
+          - text: Prova de confianca
+        - generic [ref=e273]:
+          - img "Vitor Rodrigues de Lima" [ref=e274]
+          - generic [ref=e275]:
+            - strong [ref=e276]: Vitor Rodrigues de Lima
+            - text: Contador responsavel | CRC SP353836
+            - paragraph [ref=e277]: A VL foi desenhada para ser pratica, confiavel, humana e tecnica ao mesmo tempo, sem promessas irreais.
+        - list [ref=e278]:
+          - listitem [ref=e279]:
+            - generic [ref=e280]: 
+            - text: Atendimento consultivo com linguagem clara
+          - listitem [ref=e281]:
+            - generic [ref=e282]: 
+            - text: Processo digital com suporte humano
+          - listitem [ref=e283]:
+            - generic [ref=e284]: 
+            - text: Base tecnica e legal na orientacao
+          - listitem [ref=e285]:
+            - generic [ref=e286]: 
+            - text: Apoio fiscal, financeiro e operacional no mesmo fluxo
+      - generic [ref=e287]:
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - generic [ref=e290]: 
+            - text: Como funciona
+          - heading "Uma jornada simples para destravar decisao e rotina" [level=2] [ref=e291]
+          - paragraph [ref=e292]: O objetivo e encurtar o caminho entre a duvida e a acao organizada, com clareza desde o primeiro contato.
+        - generic [ref=e293]:
+          - article [ref=e294]:
+            - strong [ref=e295]: "1"
+            - heading "Voce entra em contato" [level=3] [ref=e296]
+            - paragraph [ref=e297]: Pelo WhatsApp, formulario ou pagina do servico mais ligado a sua dor.
+          - article [ref=e298]:
+            - strong [ref=e299]: "2"
+            - heading "Entendemos o cenario" [level=3] [ref=e300]
+            - paragraph [ref=e301]: A VL levanta objetivo, tipo de empresa, regime atual e gargalos da rotina.
+          - article [ref=e302]:
+            - strong [ref=e303]: "3"
+            - heading "Indicamos o melhor caminho" [level=3] [ref=e304]
+            - paragraph [ref=e305]: Voce recebe orientacao pratica sobre abertura, migracao, diagnostico ou rotina mensal.
+          - article [ref=e306]:
+            - strong [ref=e307]: "4"
+            - heading "Organizamos a operacao" [level=3] [ref=e308]
+            - paragraph [ref=e309]: Documentos, obrigacoes, folha e pontos de controle passam a ter fluxo mais claro.
+          - article [ref=e310]:
+            - strong [ref=e311]: "5"
+            - heading "Acompanhamos a rotina" [level=3] [ref=e312]
+            - paragraph [ref=e313]: O atendimento segue com suporte rapido e leitura de impacto para o negocio.
+    - generic [ref=e316]:
+      - generic [ref=e317]:
+        - generic [ref=e318]: 
+        - text: Proximo passo
+      - heading "Fale com um especialista da VL e entenda qual caminho faz mais sentido para a sua empresa" [level=2] [ref=e319]
+      - paragraph [ref=e320]: Se voce quer abrir empresa, trocar de contador, revisar enquadramento ou organizar fiscal e financeiro, a VL pode orientar o proximo passo com clareza e rapidez.
+      - generic [ref=e321]:
+        - link "Falar com especialista" [ref=e322] [cursor=pointer]:
+          - /url: https://wa.me/5511916539680?text=Ola%2C%20quero%20falar%20com%20um%20especialista%20da%20VL%20sobre%20minha%20empresa.
+        - link "Quero abrir empresa" [ref=e323] [cursor=pointer]:
+          - /url: /HTML/abertura-de-empresa.html
+        - link "Solicitar diagnostico" [ref=e324] [cursor=pointer]:
+          - /url: /HTML/diagnostico-tributario.html
+        - link "Trocar de contador" [ref=e325] [cursor=pointer]:
+          - /url: /HTML/troca-de-contador.html
+  - contentinfo [ref=e326]:
+    - generic [ref=e327]:
+      - generic [ref=e328]:
+        - generic [ref=e329]:
+          - link "Logo VL Contabilidade Empresarial" [ref=e330] [cursor=pointer]:
+            - /url: /index.html
+            - img "Logo VL Contabilidade Empresarial" [ref=e331]
+          - paragraph [ref=e332]: Contabilidade digital consultiva para prestadores de servico, profissionais liberais, MEIs em crescimento e pequenas empresas que precisam de clareza para decidir.
+          - paragraph [ref=e333]: "Contador responsavel: Vitor Rodrigues de Lima | CRC SP353836"
+        - generic [ref=e334]:
+          - heading "Solucoes principais" [level=3] [ref=e335]
+          - list [ref=e336]:
+            - listitem [ref=e337]:
+              - link "Abertura de empresa" [ref=e338] [cursor=pointer]:
+                - /url: /HTML/abertura-de-empresa.html
+            - listitem [ref=e339]:
+              - link "Troca de contador" [ref=e340] [cursor=pointer]:
+                - /url: /HTML/troca-de-contador.html
+            - listitem [ref=e341]:
+              - link "Diagnostico tributario" [ref=e342] [cursor=pointer]:
+                - /url: /HTML/diagnostico-tributario.html
+            - listitem [ref=e343]:
+              - link "Ferramentas e simuladores" [ref=e344] [cursor=pointer]:
+                - /url: /HTML/ferramentas.html
+        - generic [ref=e345]:
+          - heading "Contato e conteudo" [level=3] [ref=e346]
+          - list [ref=e347]:
+            - listitem [ref=e348]:
+              - link "Blog" [ref=e349] [cursor=pointer]:
+                - /url: /BLOG/index.html
+            - listitem [ref=e350]:
+              - link "Triagem IR 2026" [ref=e351] [cursor=pointer]:
+                - /url: /landingpages/irrf2026.html
+            - listitem [ref=e352]:
+              - link "Pagina de contato" [ref=e353] [cursor=pointer]:
+                - /url: /HTML/contatos.html
+            - listitem [ref=e354]:
+              - 'link "WhatsApp: (11) 91653-9680" [ref=e355] [cursor=pointer]':
+                - /url: https://wa.me/5511916539680
+            - listitem [ref=e356]:
+              - link "contato@vlcontabilidadeempresarial.com.br" [ref=e357] [cursor=pointer]:
+                - /url: mailto:contato@vlcontabilidadeempresarial.com.br
+      - generic [ref=e358]:
+        - paragraph [ref=e359]: © 2026 VL Contabilidade Empresarial. Todos os direitos reservados.
+        - paragraph [ref=e360]: Atendimento digital com orientacao clara, responsavel e consultiva.
+  - link "Contato via WhatsApp" [ref=e361] [cursor=pointer]:
+    - /url: https://wa.me/5511916539680?text=Ola%2C%20quero%20falar%20com%20a%20VL.
+    - generic [ref=e362]: 
+  - generic [ref=e364]:
+    - paragraph [ref=e365]:
+      - text: Utilizamos cookies para melhorar sua experiencia. Leia nossa
+      - link "Politica de Privacidade" [ref=e366] [cursor=pointer]:
+        - /url: /HTML/politica-de-privacidade.html
+      - text: .
+    - generic [ref=e367]:
+      - button "Configurar Preferencias" [ref=e368] [cursor=pointer]
+      - button "Aceitar Todos" [ref=e369] [cursor=pointer]

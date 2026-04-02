@@ -1,18 +1,18 @@
 :root {
-    --calc-bg: #edf3fa;
-    --calc-card: #ffffff;
-    --calc-border: #d5e1ee;
-    --calc-text: #0f243a;
-    --calc-muted: #60748b;
-    --calc-primary: #005691;
-    --calc-primary-strong: #003f6b;
-    --calc-accent: #d46d13;
+    --calc-bg: #F4F1EA;
+    --calc-card: #fffdfa;
+    --calc-border: rgba(200, 168, 107, 0.22);
+    --calc-text: #0F2233;
+    --calc-muted: #65727d;
+    --calc-primary: #18354D;
+    --calc-primary-strong: #0F2233;
+    --calc-accent: #C8A86B;
     --calc-success: #0f766e;
     --calc-danger: #b42318;
 }
 
 body.calc-modern {
-    background: linear-gradient(180deg, #f5f8fc 0%, #e9f1f9 100%);
+    background: linear-gradient(180deg, #fbf7f0 0%, #F4F1EA 100%);
     color: var(--calc-text);
     overflow-x: hidden;
 }
@@ -38,8 +38,8 @@ body.calc-modern header {
     top: 0;
     z-index: 25;
     backdrop-filter: blur(10px);
-    background: rgba(15, 29, 45, 0.92);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 34, 51, 0.94);
+    border-bottom: 1px solid rgba(200, 168, 107, 0.14);
 }
 
 body.calc-modern .menu a {
@@ -60,11 +60,11 @@ body.calc-modern .calculadora-hero {
     border-radius: 18px;
     padding: 1.05rem;
     background:
-        radial-gradient(circle at 18% 20%, rgba(212, 109, 19, 0.3), transparent 38%),
-        radial-gradient(circle at 82% 22%, rgba(70, 167, 255, 0.22), transparent 40%),
-        linear-gradient(130deg, #032642 0%, #005691 55%, #1174bc 100%);
+        radial-gradient(circle at 18% 20%, rgba(200, 168, 107, 0.22), transparent 38%),
+        radial-gradient(circle at 82% 22%, rgba(24, 53, 77, 0.22), transparent 40%),
+        linear-gradient(130deg, #0F2233 0%, #18354D 55%, #234865 100%);
     color: #ffffff;
-    box-shadow: 0 22px 36px rgba(3, 33, 55, 0.2);
+    box-shadow: 0 22px 36px rgba(15, 34, 51, 0.2);
 }
 
 body.calc-modern .calculadora-hero::after {
@@ -145,7 +145,7 @@ body.calc-modern .resultados h2 {
     margin-bottom: 0.9rem;
     font-size: 1.2rem;
     line-height: 1.25;
-    color: #123a5c;
+    color: var(--calc-primary-strong);
 }
 
 body.calc-modern .resultados.resultado-em-foco {
@@ -238,20 +238,20 @@ body.calc-modern .btn-detalhes:active {
 
 body.calc-modern .btn-calcular {
     color: #ffffff;
-    background: linear-gradient(120deg, #005691, #0b70b9);
+    background: linear-gradient(120deg, #18354D, #0F2233);
     margin-bottom: 0.55rem;
 }
 
 body.calc-modern .btn-exemplo {
-    color: #163f61;
-    background: #e9f3fc;
-    border: 1px solid #c5d9ed;
+    color: var(--calc-primary-strong);
+    background: #f7efe3;
+    border: 1px solid rgba(200, 168, 107, 0.22);
 }
 
 body.calc-modern .btn-detalhes {
     margin-top: 0.9rem;
-    color: #ffffff;
-    background: linear-gradient(120deg, #d46d13, #d98534);
+    color: #111111;
+    background: linear-gradient(120deg, #C8A86B, #dec48f);
 }
 
 body.calc-modern .btn-calcular:hover,
@@ -273,7 +273,7 @@ body.calc-modern .progress-bar {
 body.calc-modern .progress {
     height: 100%;
     width: 0;
-    background: linear-gradient(120deg, #005691, #2c97e0);
+    background: linear-gradient(120deg, #18354D, #C8A86B);
     transition: width 0.35s ease;
 }
 
@@ -290,8 +290,8 @@ body.calc-modern .step {
     display: flex;
     gap: 0.6rem;
     align-items: flex-start;
-    background: #f7fbff;
-    border: 1px solid #d5e4f3;
+    background: #fffaf3;
+    border: 1px solid rgba(200, 168, 107, 0.2);
     border-radius: 12px;
     padding: 0.62rem;
     opacity: 1;
@@ -307,7 +307,7 @@ body.calc-modern .step-number {
     place-items: center;
     color: #ffffff;
     font-weight: 700;
-    background: #005691;
+    background: #18354D;
     font-size: 0.84rem;
     flex: 0 0 29px;
 }
@@ -365,7 +365,7 @@ body.calc-modern .resultado-cards .card p {
 
 body.calc-modern .resultado-cards .card.destaque {
     order: -1;
-    background: linear-gradient(140deg, #0f4a7a, #03578f);
+    background: linear-gradient(140deg, #18354D, #0F2233);
     border-color: transparent;
     color: #ffffff;
 }
@@ -386,12 +386,12 @@ body.calc-modern .result-note-list {
 }
 
 body.calc-modern .result-note-item {
-    background: #eef6ff;
-    border: 1px solid #cfe1f3;
+    background: #faf4ea;
+    border: 1px solid rgba(200, 168, 107, 0.2);
     border-radius: 10px;
     padding: 0.52rem 0.56rem;
     font-size: 0.9rem;
-    color: #143c5d;
+    color: #314555;
     overflow-wrap: anywhere;
 }
 
@@ -407,9 +407,9 @@ body.calc-modern .calc-summary {
     margin: 0.8rem 0 0;
     padding: 0.8rem 0.9rem;
     border-radius: 12px;
-    background: linear-gradient(180deg, #f3f8fe 0%, #eef5fc 100%);
-    border: 1px solid #d5e3f0;
-    color: #173d60;
+    background: linear-gradient(180deg, #fbf6ed 0%, #f7efe3 100%);
+    border: 1px solid rgba(200, 168, 107, 0.22);
+    color: #324655;
     font-size: 0.92rem;
     line-height: 1.5;
 }
@@ -459,7 +459,7 @@ body.calc-modern .calc-cta-button {
     font-weight: 800;
     line-height: 1.25;
     color: #ffffff;
-    background: linear-gradient(120deg, #005691, #0a7dd1);
+    background: linear-gradient(120deg, #18354D, #0F2233);
     padding: 0.74rem 0.9rem;
     box-shadow: 0 12px 20px rgba(13, 39, 63, 0.12);
 }

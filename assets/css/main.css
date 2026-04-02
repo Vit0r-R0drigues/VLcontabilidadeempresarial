@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap');
+
 /* Fontes carregadas via Google Fonts no HTML */
 
 
@@ -13,19 +15,23 @@
 
 :root {
     /* Fontes para o site */
-    --fonte-destaque: 'Syne';
-    --fonte-padrao: 'Inter';
-    --fonte-legendas: 'Playfair Display';
-    --fonte-botoes: 'Poppins';
+    --fonte-destaque: 'Cormorant Garamond', serif;
+    --fonte-padrao: 'Inter', sans-serif;
+    --fonte-legendas: 'Cormorant Garamond', serif;
+    --fonte-botoes: 'Poppins', sans-serif;
 
     /* Paleta de cores para o site */
-    --cor-fundo: #0F172A;
-    --cor-fundo-secundaria: #1A1D23;
-    --cor-hover: #D46D13;
-    --cor-texto-1: #E8820E;
-    --cor-texto: white;
-    --cor-detalhes: #174782;
-    --cor-detalhes-1: #2D351F;
+    --cor-fundo: #0F2233;
+    --cor-fundo-secundaria: #18354D;
+    --cor-hover: #C8A86B;
+    --cor-texto-1: #C8A86B;
+    --cor-texto: #F4F1EA;
+    --cor-texto-escuro: #111111;
+    --cor-detalhes: #18354D;
+    --cor-detalhes-1: #10202F;
+    --cor-superficie: rgba(244, 241, 234, 0.06);
+    --cor-superficie-forte: rgba(15, 34, 51, 0.92);
+    --cor-borda-suave: rgba(200, 168, 107, 0.18);
 
     /* Adicionar novas */
     --spacing-small: 10px;
@@ -43,13 +49,11 @@ body {
 
 body {
     color: var(--cor-texto);
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), var(--cor-fundo)), url(../img/FT-HOME.png);
-    background-position: top center;
+    background:
+        radial-gradient(circle at 12% 10%, rgba(200, 168, 107, 0.08), transparent 24%),
+        radial-gradient(circle at 88% 0%, rgba(24, 53, 77, 0.26), transparent 28%),
+        linear-gradient(180deg, #091522 0%, #0F2233 52%, #111A25 100%);
     background-repeat: no-repeat;
-    background-size: cover;
-    /* scroll = mobile-first: works on all devices incl. iOS Safari.
-       background-attachment: fixed (parallax) is added only on desktop
-       via @media (min-width: 992px) in mediaquery.css               */
     background-attachment: scroll;
     min-height: 100vh;
 }
@@ -58,17 +62,19 @@ body {
 header {
     display: flex;
     width: calc(100% - 40px);
-    height: 85px;
+    min-height: 88px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 15px 20px;
-    padding: 10px 30px;
-    background-color: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 16px 28px;
+    background:
+        linear-gradient(180deg, rgba(15, 34, 51, 0.96) 0%, rgba(15, 34, 51, 0.88) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--cor-borda-suave);
+    border-radius: 22px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
     position: fixed;
     top: 0;
     left: 0;
@@ -77,11 +83,12 @@ header {
 }
 
 header.scrolled {
-    height: 70px;
+    min-height: 78px;
     margin: 10px 20px;
-    padding: 8px 25px;
-    background-color: rgba(15, 23, 42, 0.98);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    padding: 12px 24px;
+    background:
+        linear-gradient(180deg, rgba(15, 34, 51, 0.98) 0%, rgba(15, 34, 51, 0.92) 100%);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32);
 }
 
 header>div.logo {
@@ -91,22 +98,21 @@ header>div.logo {
 }
 
 header>div.logo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: clamp(168px, 18vw, 244px);
+    height: auto;
     transition: all 0.3s ease;
-    object-fit: cover;
-    box-shadow: 0 2px 10px rgba(232, 130, 14, 0.2);
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
 }
 
 header.scrolled>div.logo img {
-    width: 60px;
-    height: 60px;
+    width: clamp(152px, 16vw, 214px);
+    height: auto;
 }
 
 header>div.logo img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(232, 130, 14, 0.4);
+    transform: translateY(-1px);
+    filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.24));
 }
 
 header ul {
@@ -121,35 +127,36 @@ header ul {
 }
 
 ul>li>a {
-    font-family: var(--fonte-destaque);
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-family: var(--fonte-padrao);
+    font-size: 0.92rem;
+    font-weight: 600;
     color: var(--cor-texto);
     text-decoration: none;
-    text-transform: uppercase;
     transition: all 0.3s ease;
-    padding: 8px 14px;
-    border-radius: 6px;
+    padding: 10px 14px;
+    border-radius: 999px;
     display: flex;
     align-items: center;
     gap: 6px;
+    letter-spacing: 0.01em;
 }
 
 ul>li>a i {
-    font-size: 0.9rem;
+    display: none;
 }
 
 li a:hover {
-    color: var(--cor-hover);
-    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--cor-texto);
+    background-color: rgba(244, 241, 234, 0.08);
 }
 
 /* Menu item ativo */
 .menu a.active,
 .menu-items a.active {
-    color: var(--cor-texto-1);
-    background-color: rgba(232, 130, 14, 0.1);
-    border-bottom: 2px solid var(--cor-texto-1);
+    color: var(--cor-texto);
+    background:
+        linear-gradient(180deg, rgba(200, 168, 107, 0.16) 0%, rgba(200, 168, 107, 0.08) 100%);
+    box-shadow: inset 0 0 0 1px rgba(200, 168, 107, 0.22);
 }
 
 /* Social icons */
@@ -157,28 +164,73 @@ li a:hover {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .social-icons a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(244, 241, 234, 0.1);
+    background-color: rgba(244, 241, 234, 0.05);
     color: var(--cor-texto);
     transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    background-color: var(--cor-texto-1);
-    color: var(--cor-fundo);
+    background-color: rgba(244, 241, 234, 0.1);
+    color: var(--cor-texto);
     transform: translateY(-2px);
 }
 
 .social-icons a i {
     font-size: 1rem;
+}
+
+.social-icons a[href*="wa.me"] {
+    width: auto;
+    min-width: 52px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border-color: rgba(200, 168, 107, 0.34);
+    background: linear-gradient(135deg, rgba(200, 168, 107, 0.18) 0%, rgba(200, 168, 107, 0.12) 100%);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+.social-icons a[href*="wa.me"]::after {
+    content: "Falar no WhatsApp";
+    margin-left: 8px;
+    font-family: var(--fonte-botoes);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.social-icons a[href*="wa.me"]:hover {
+    background: linear-gradient(135deg, rgba(200, 168, 107, 0.28) 0%, rgba(200, 168, 107, 0.16) 100%);
+}
+
+@media (max-width: 1180px) {
+    .social-icons a[href*="wa.me"]::after {
+        display: none;
+    }
+}
+
+@media (max-width: 1040px) {
+    header {
+        padding: 14px 22px;
+    }
+
+    ul > li > a {
+        font-size: 0.86rem;
+        padding: 10px 12px;
+    }
+
+    .social-icons a:not([href*="wa.me"]) {
+        display: none;
+    }
 }
 
 /* Main Content */
@@ -297,15 +349,16 @@ main {
     right: 25px;
     width: 60px;
     height: 60px;
-    background: #25D366;
+    background: linear-gradient(135deg, #1f8f4d 0%, #25D366 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 18px 30px rgba(11, 33, 24, 0.28);
     z-index: 999;
     transition: all 0.3s ease;
     animation: whatsappPulse 2s ease-in-out infinite;
+    border: 2px solid rgba(244, 241, 234, 0.28);
 }
 
 .whatsapp-float:hover {
@@ -449,7 +502,7 @@ main {
 
 .cta-card i {
     font-size: 2.5rem;
-    color: #D46D13;
+    color: var(--cor-texto-1);
     margin-bottom: 1rem;
 }
 
@@ -732,8 +785,10 @@ main {
 
 /* Footer */
 footer {
-    background-color: var(--cor-fundo);
+    background:
+        linear-gradient(180deg, rgba(12, 24, 36, 0.96) 0%, rgba(15, 34, 51, 0.98) 100%);
     padding: 60px 20px 20px;
+    border-top: 1px solid var(--cor-borda-suave);
 }
 
 .footer-content {
@@ -746,9 +801,10 @@ footer {
 
 .footer-section h3 {
     font-family: var(--fonte-destaque);
-    font-size: 1.3em;
+    font-size: 1.55rem;
     margin-bottom: 20px;
     color: var(--cor-texto-1);
+    letter-spacing: 0.01em;
 }
 
 .footer-section p {
@@ -797,7 +853,7 @@ footer {
     text-align: center;
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(244, 241, 234, 0.12);
 }
 
 footer a {
@@ -808,6 +864,16 @@ footer a {
 
 footer a:hover {
     color: var(--cor-texto);
+}
+
+.footer-content::before {
+    content: "";
+    display: block;
+    width: min(240px, 100%);
+    height: 48px;
+    margin-bottom: 10px;
+    grid-column: 1 / -1;
+    background: url("../img/logo/vl_logo_horizontal_branca.svg") left center / contain no-repeat;
 }
 
 /* Animações */

@@ -4,7 +4,7 @@
     bottom: -100%;
     left: 0;
     right: 0;
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(15, 34, 51, 0.95);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -27,7 +27,7 @@
 }
 
 .cookie-banner a {
-    color: #007bff;
+    color: var(--cor-texto-1);
     text-decoration: none;
     font-weight: 600;
 }
@@ -46,20 +46,20 @@
 .cookie-btn {
     padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 999px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .settings-btn {
-    background: #f8f9fa;
-    color: #333;
-    border: 1px solid #dee2e6;
+    background: rgba(244, 241, 234, 0.08);
+    color: var(--cor-texto);
+    border: 1px solid rgba(244, 241, 234, 0.18);
 }
 
 .settings-btn:hover {
-    background: #e9ecef;
+    background: rgba(244, 241, 234, 0.14);
 }
 
 .accept-btn {
@@ -169,7 +169,7 @@
 }
 
 input:checked + .slider {
-    background-color: #007bff;
+    background-color: var(--cor-texto-1);
 }
 
 input:disabled + .slider {

@@ -133,17 +133,18 @@ Grandes telas : maior que 1200px*/
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        height: 70px !important;
-        padding: 5px 20px !important;
+        min-height: 74px !important;
+        padding: 8px 18px !important;
         margin: 0 !important;
         width: 100% !important;
         border-radius: 0 !important;
         top: 0 !important;
         left: 0 !important;
-        background-color: rgba(15, 23, 42, 0.95) !important;
+        background-color: rgba(15, 34, 51, 0.96) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
         z-index: 2000 !important;
+        border: none !important;
     }
 
     header .logo {
@@ -153,20 +154,20 @@ Grandes telas : maior que 1200px*/
 
     header .logo img {
         display: block !important;
-        width: 55px !important;
-        height: 55px !important;
-        border-radius: 50%;
-        object-fit: cover;
+        width: 142px !important;
+        height: auto !important;
+        border-radius: 0 !important;
+        object-fit: contain !important;
     }
 
     header.scrolled {
-        height: 60px !important;
-        background-color: rgba(15, 23, 42, 0.98) !important;
+        min-height: 68px !important;
+        background-color: rgba(15, 34, 51, 0.98) !important;
     }
 
     header.scrolled .logo img {
-        width: 45px !important;
-        height: 45px !important;
+        width: 132px !important;
+        height: auto !important;
     }
 
     /* Esconde o menu desktop e ícones sociais */
@@ -175,9 +176,9 @@ Grandes telas : maior que 1200px*/
         align-items: center;
         justify-content: center;
         padding: 10px !important;
-        background: rgba(255, 255, 255, 0.05) !important;
-        border-radius: 8px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(244, 241, 234, 0.06) !important;
+        border-radius: 14px !important;
+        border: 1px solid rgba(200, 168, 107, 0.16);
         cursor: pointer;
         width: 44px;
         height: 44px;
@@ -185,7 +186,7 @@ Grandes telas : maior que 1200px*/
     }
 
     .menu-toggle:hover {
-        background: rgba(232, 130, 14, 0.1) !important;
+        background: rgba(200, 168, 107, 0.12) !important;
         border-color: var(--cor-texto-1);
     }
 
@@ -200,11 +201,11 @@ Grandes telas : maior que 1200px*/
     .header-nav {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 74px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 70px);
-        background: rgba(15, 23, 42, 0.98);
+        height: calc(100vh - 74px);
+        background: rgba(15, 34, 51, 0.98);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         z-index: 1500;
@@ -242,11 +243,11 @@ Grandes telas : maior que 1200px*/
     }
 
     header nav ul.menu li a {
-        font-size: 1.2rem !important;
+        font-size: 1.04rem !important;
         padding: 15px !important;
         justify-content: center !important;
         width: 100%;
-        border-radius: 8px;
+        border-radius: 14px;
     }
 
     /* Ajuste para o Cookie Banner no Mobile */

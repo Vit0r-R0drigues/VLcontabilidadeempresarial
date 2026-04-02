@@ -6,21 +6,21 @@
 
 /* ---------- Variáveis locais (herdam calc-modern) ---------- */
 .resc-page {
-  --resc-primary: #005691;
-  --resc-primary-dark: #003f6b;
-  --resc-accent: #d46d13;
-  --resc-accent-light: #fff4e8;
+  --resc-primary: #18354D;
+  --resc-primary-dark: #0F2233;
+  --resc-accent: #C8A86B;
+  --resc-accent-light: #fbf5eb;
   --resc-success: #0f766e;
   --resc-danger: #b42318;
   --resc-warn: #92400e;
-  --resc-warn-bg: #fffbeb;
-  --resc-border: #d5e1ee;
-  --resc-bg: #f4f8fc;
-  --resc-card: #ffffff;
-  --resc-text: #0f243a;
-  --resc-muted: #5b6f85;
+  --resc-warn-bg: #fdf7ef;
+  --resc-border: rgba(200, 168, 107, 0.22);
+  --resc-bg: #F4F1EA;
+  --resc-card: #fffdfa;
+  --resc-text: #0F2233;
+  --resc-muted: #65727d;
   --resc-radius: 16px;
-  --resc-shadow: 0 16px 32px rgba(3, 36, 61, 0.09);
+  --resc-shadow: 0 16px 32px rgba(15, 34, 51, 0.09);
 }
 
 /* ---------- Breadcrumb ---------- */
@@ -72,11 +72,11 @@
   font-size: clamp(1.5rem, 3vw + 0.8rem, 2.4rem);
   line-height: 1.1;
   margin: 0 0 10px;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--fonte-destaque);
   font-weight: 800;
 }
 .resc-hero-accent {
-  background: linear-gradient(90deg, #ffcd77, #ffaa38);
+  background: linear-gradient(90deg, #f1dcaf, #C8A86B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -134,9 +134,9 @@
   align-items: center;
   gap: 10px;
   font-size: 1.2rem;
-  color: #0d2f4c;
+  color: var(--resc-primary-dark);
   margin: 0 0 6px;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--fonte-destaque);
 }
 .resc-section-sub {
   color: var(--resc-muted);
@@ -150,12 +150,12 @@
   border: 1px solid var(--resc-border);
   border-radius: 14px;
   padding: 16px;
-  background: #fafcff;
+  background: #fffaf3;
   margin-bottom: 14px;
   transition: border-color 0.2s ease;
 }
 .resc-fieldset:focus-within {
-  border-color: #86aed2;
+  border-color: rgba(200, 168, 107, 0.4);
 }
 .resc-fieldset-title {
   display: flex;
@@ -204,7 +204,7 @@
 .resc-field label {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #1a3f62;
+  color: #324655;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -215,12 +215,12 @@
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
-  border: 1px solid #c6daee;
+  border: 1px solid rgba(200, 168, 107, 0.22);
   border-radius: 10px;
   font: inherit;
   font-size: 0.97rem;
-  color: #173651;
-  background: #f7fbff;
+  color: #253847;
+  background: #fffdf9;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   -webkit-appearance: none;
   appearance: none;
@@ -234,8 +234,8 @@
 .resc-field input:focus,
 .resc-field select:focus {
   outline: none;
-  border-color: #005691;
-  box-shadow: 0 0 0 3px rgba(0, 86, 145, 0.12);
+  border-color: rgba(200, 168, 107, 0.42);
+  box-shadow: 0 0 0 3px rgba(200, 168, 107, 0.12);
 }
 .resc-field input[type="date"] {
   color-scheme: light;
@@ -252,10 +252,10 @@
 .resc-suggest-btn {
   flex-shrink: 0;
   padding: 0 14px;
-  border: 1px solid #c6daee;
+  border: 1px solid rgba(200, 168, 107, 0.22);
   border-radius: 10px;
-  background: #e8f3fc;
-  color: #163f61;
+  background: #f7efe3;
+  color: #243846;
   font: inherit;
   font-size: 0.85rem;
   font-weight: 700;
@@ -264,7 +264,7 @@
   transition: background 0.15s ease;
   min-height: 44px;
 }
-.resc-suggest-btn:hover { background: #d4eaf8; }
+.resc-suggest-btn:hover { background: #efe5d6; }
 
 /* ---------- Help button / tooltip ---------- */
 .resc-help-btn {
