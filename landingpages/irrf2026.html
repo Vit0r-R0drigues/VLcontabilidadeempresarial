@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IRPF 2026 | Triagem Premium | VL Contabilidade Empresarial</title>
+  <title>IR 2026 | Triagem | VL Contabilidade Empresarial</title>
   <meta
     name="description"
-    content="Descubra com uma triagem premium e guiada se você pode estar obrigado a declarar o Imposto de Renda 2026."
+    content="Descubra em poucos minutos se você provavelmente precisa declarar o Imposto de Renda 2026 e fale com a VL pelo WhatsApp."
   />
-  <meta property="og:title" content="IRPF 2026 | Triagem Premium | VL Contabilidade Empresarial" />
+  <meta property="og:title" content="IR 2026 | Triagem | VL Contabilidade Empresarial" />
   <meta
     property="og:description"
-    content="Uma experiência elegante e objetiva para descobrir se você pode estar obrigado a declarar o Imposto de Renda 2026."
+    content="Triagem rápida, clara e prática para entender seu provável enquadramento no Imposto de Renda 2026."
   />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.vlcontabilidadeempresarial.com.br/assets/img/LOGO%20(2).png" />
@@ -19,35 +19,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #07101d;
-      --bg-deep: #040915;
-      --surface: rgba(10, 21, 39, 0.72);
-      --surface-strong: rgba(8, 17, 31, 0.88);
+      --bg-top: #07101d;
+      --bg-mid: #09111f;
+      --bg-bottom: #050a13;
+      --surface: rgba(8, 17, 31, 0.84);
+      --surface-strong: rgba(10, 21, 39, 0.92);
       --surface-soft: rgba(255, 255, 255, 0.05);
-      --line: rgba(255, 255, 255, 0.12);
-      --line-strong: rgba(255, 255, 255, 0.2);
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
       --text: #f8fafc;
-      --muted: #9ca9bf;
-      --muted-strong: #dbe5f2;
-      --navy: #0e2f63;
-      --gold: #e8bf62;
-      --gold-soft: #f6deb1;
-      --orange: #df7c33;
-      --green: #30c48d;
-      --red: #ef6a61;
-      --shadow-xl: 0 28px 90px rgba(0, 0, 0, 0.32);
-      --shadow-md: 0 18px 48px rgba(0, 0, 0, 0.2);
-      --radius-xl: 36px;
-      --radius-lg: 26px;
+      --muted: #dbe5f2;
+      --muted-soft: #9ca9bf;
+      --primary: #f5b942;
+      --accent: #f5b942;
+      --accent-deep: #d89012;
+      --green: #34d399;
+      --green-soft: rgba(52, 211, 153, 0.14);
+      --amber-soft: rgba(245, 185, 66, 0.14);
+      --blue-soft: rgba(56, 189, 248, 0.14);
+      --danger-soft: rgba(248, 113, 113, 0.16);
+      --shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.34);
+      --shadow-md: 0 20px 42px rgba(0, 0, 0, 0.2);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
       --radius-md: 18px;
-      --container: 1200px;
+      --container: 1120px;
     }
 
     * {
@@ -60,14 +61,14 @@
 
     body {
       margin: 0;
-      color: var(--text);
-      font-family: "Manrope", sans-serif;
-      background:
-        radial-gradient(circle at 15% 18%, rgba(232, 191, 98, 0.18), transparent 20%),
-        radial-gradient(circle at 85% 10%, rgba(14, 47, 99, 0.5), transparent 24%),
-        radial-gradient(circle at 50% 120%, rgba(223, 124, 51, 0.1), transparent 22%),
-        linear-gradient(180deg, #060b14 0%, #09111f 40%, #050a13 100%);
       min-height: 100vh;
+      color: var(--text);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(245, 185, 66, 0.16), transparent 20%),
+        radial-gradient(circle at 92% 16%, rgba(14, 47, 99, 0.42), transparent 18%),
+        radial-gradient(circle at 50% 84%, rgba(16, 185, 129, 0.08), transparent 22%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 46%, var(--bg-bottom) 100%);
       overflow-x: hidden;
     }
 
@@ -75,33 +76,27 @@
     body::after {
       content: "";
       position: fixed;
-      inset: auto;
       border-radius: 999px;
-      pointer-events: none;
-      filter: blur(100px);
-      opacity: 0.5;
+      filter: blur(110px);
       z-index: 0;
+      pointer-events: none;
+      opacity: 0.8;
     }
 
     body::before {
-      width: 340px;
-      height: 340px;
-      top: 3rem;
-      left: -8rem;
-      background: rgba(232, 191, 98, 0.18);
+      top: -7rem;
+      left: -7rem;
+      width: 20rem;
+      height: 20rem;
+      background: rgba(245, 185, 66, 0.18);
     }
 
     body::after {
-      width: 460px;
-      height: 460px;
-      right: -10rem;
-      top: 12rem;
-      background: rgba(14, 47, 99, 0.32);
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
+      top: 8rem;
+      right: -7rem;
+      width: 22rem;
+      height: 22rem;
+      background: rgba(14, 47, 99, 0.26);
     }
 
     a {
@@ -114,46 +109,51 @@
       font: inherit;
     }
 
-    .page {
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .page-shell {
       position: relative;
       z-index: 1;
-      width: min(calc(100% - 28px), var(--container));
+      width: min(calc(100% - 24px), var(--container));
       margin: 0 auto;
-      padding: 20px 0 80px;
+      padding: 18px 0 72px;
     }
 
-    .glass {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
-      border: 1px solid var(--line);
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .site-header {
+    .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 18px 0;
-      margin-bottom: 12px;
+      gap: 16px;
+      margin-bottom: 18px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 14px;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
       display: grid;
       place-items: center;
-      color: #07101d;
-      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      font-weight: 800;
-      box-shadow: 0 14px 28px rgba(232, 191, 98, 0.2);
+      width: 54px;
+      height: 54px;
+      padding: 7px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(245, 185, 66, 0.28);
+      box-shadow: 0 14px 28px rgba(245, 185, 66, 0.18);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .brand-copy {
@@ -163,1481 +163,1432 @@
 
     .brand-copy strong {
       font-size: 15px;
-      letter-spacing: 0.02em;
     }
 
     .brand-copy span {
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.14em;
+      color: var(--muted-soft);
+      font-size: 11px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .header-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--muted-strong);
-      background: rgba(255, 255, 255, 0.03);
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    }
-
-    .header-link:hover {
-      transform: translateY(-1px);
-      border-color: rgba(232, 191, 98, 0.45);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .hero {
-      position: relative;
-      min-height: calc(100vh - 96px);
-      display: grid;
-      place-items: center;
-      padding: 64px 0 120px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 5% 4% 12%;
-      border-radius: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)),
-        radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.05), transparent 46%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      width: 100%;
-      display: grid;
-      gap: 32px;
-      place-items: center;
-      text-align: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(232, 191, 98, 0.24);
-      background: rgba(232, 191, 98, 0.08);
-      color: var(--gold-soft);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-      max-width: 880px;
-      display: grid;
-      gap: 18px;
-      justify-items: center;
-    }
-
-    .hero-copy h1 {
-      margin: 0;
-      max-width: 900px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.1rem, 8vw, 6.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      font-weight: 700;
-    }
-
-    .hero-copy h1 span {
-      display: block;
-      color: var(--gold-soft);
-      text-shadow: 0 0 26px rgba(232, 191, 98, 0.16);
-    }
-
-    .hero-subline {
-      max-width: 480px;
-      font-size: clamp(1.05rem, 2vw, 1.28rem);
-      color: var(--muted-strong);
-      line-height: 1.65;
-    }
-
-    .cta-stack {
-      display: grid;
-      gap: 14px;
-      justify-items: center;
-    }
-
-    .btn {
-      appearance: none;
-      border: 0;
-      cursor: pointer;
+    .topbar-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      min-height: 58px;
-      padding: 16px 26px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      color: #07101d;
-      background: linear-gradient(135deg, var(--gold-soft), var(--gold), #f2c25a);
-      box-shadow:
-        0 18px 40px rgba(232, 191, 98, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.44);
-    }
-
-    .btn-secondary {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
+      min-height: 48px;
+      padding: 0 18px;
       border: 1px solid var(--line);
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(232, 191, 98, 0.36);
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    .hero-note {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 520px;
-    }
-
-    .hero-note strong {
-      color: var(--muted-strong);
-    }
-
-    .hero-floor {
-      position: absolute;
-      left: 50%;
-      bottom: 2rem;
-      width: min(88vw, 960px);
-      height: 120px;
-      transform: translateX(-50%);
       border-radius: 999px;
-      background:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 58%),
-        radial-gradient(circle at center, rgba(14, 47, 99, 0.28), transparent 72%);
-      filter: blur(2px);
-      opacity: 0.9;
-      pointer-events: none;
+      background: rgba(255, 255, 255, 0.05);
+      color: #f8fafc;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
     }
 
-    .diagnosis {
-      position: relative;
-      display: grid;
-      gap: 22px;
-      grid-template-columns: minmax(0, 1.55fr) minmax(290px, 0.8fr);
-      align-items: start;
-      margin-top: 10px;
-    }
-
-    .panel {
-      border-radius: var(--radius-xl);
-      padding: 28px;
-    }
-
-    .quiz-panel {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quiz-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(232, 191, 98, 0.12), transparent 24%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
-      pointer-events: none;
-    }
-
-    .section-intro {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .section-intro h2,
-    .side-panel h3 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      line-height: 0.96;
-      letter-spacing: -0.03em;
-    }
-
-    .section-intro p,
-    .side-panel p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .progress-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 10px;
-      color: var(--muted-strong);
-      font-size: 0.95rem;
-    }
-
-    .progress-track {
-      position: relative;
-      width: 100%;
-      height: 8px;
-      border-radius: 999px;
+    .topbar-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
       background: rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-      margin-bottom: 28px;
     }
 
-    .progress-fill {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--gold-soft), var(--gold), var(--orange));
-      box-shadow: 0 0 22px rgba(232, 191, 98, 0.35);
-      transition: width 0.35s ease;
+    .whatsapp-btn {
+      border-color: rgba(37, 211, 102, 0.38) !important;
+      background: linear-gradient(135deg, #25d366, #16a34a) !important;
+      color: #ffffff !important;
+      box-shadow: 0 16px 30px rgba(22, 163, 74, 0.28) !important;
     }
 
-    .stage-card {
-      position: relative;
-      min-height: 430px;
-      border-radius: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
-        rgba(5, 13, 25, 0.72);
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 24px;
+    .whatsapp-btn:hover {
+      border-color: rgba(74, 222, 128, 0.48) !important;
+      background: linear-gradient(135deg, #34d399, #16a34a) !important;
     }
 
-    .step-tag {
+    .hero {
+      display: grid;
+      gap: 26px;
+      align-items: start;
+      justify-items: center;
+      text-align: center;
+      padding: 28px 0 12px;
+    }
+
+    .hero-copy {
+      max-width: 860px;
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .eyebrow,
+    .card-chip,
+    .progress-tag,
+    .faq-kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 14px;
+      min-height: 38px;
+      padding: 0 14px;
       border-radius: 999px;
-      border: 1px solid rgba(232, 191, 98, 0.2);
-      background: rgba(232, 191, 98, 0.07);
-      color: var(--gold-soft);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+      color: #dbe5f2;
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-weight: 800;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .step-copy {
-      display: grid;
-      gap: 12px;
+    .chip-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #10b981, #34d399);
+      box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.12);
     }
 
-    .step-copy h3 {
+    .hero h1,
+    .intro-head h2,
+    .question-stage h2,
+    .result-title,
+    .faq-shell h2 {
       margin: 0;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.02;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 700;
+      line-height: 0.98;
       letter-spacing: -0.04em;
     }
 
-    .step-copy p {
+    .hero h1 {
+      max-width: 980px;
+      font-size: clamp(2.8rem, 8vw, 5.8rem);
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #f5c15a;
+    }
+
+    .hero-subtitle,
+    .intro-copy,
+    .helper-copy,
+    .result-copy,
+    .faq-shell > p {
       margin: 0;
+      max-width: 720px;
       color: var(--muted);
+      font-size: 1.03rem;
       line-height: 1.75;
-      max-width: 760px;
     }
 
-    .lead-grid {
+    .hero-pills,
+    .mini-grid,
+    .result-grid {
       display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      width: 100%;
     }
 
-    .field {
-      display: grid;
-      gap: 10px;
+    .hero-pills {
+      max-width: 780px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .field label {
-      color: var(--muted-strong);
-      font-size: 0.95rem;
+    .pill,
+    .mini-card,
+    .reason-item,
+    .result-benefit,
+    .result-empty {
+      padding: 15px 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+      color: var(--text);
+    }
+
+    .pill,
+    .mini-card {
+      font-size: 0.96rem;
       font-weight: 700;
     }
 
-    .field input {
-      width: 100%;
-      min-height: 56px;
-      padding: 0 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .field input:focus {
-      border-color: rgba(232, 191, 98, 0.48);
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow: 0 0 0 4px rgba(232, 191, 98, 0.08);
-    }
-
-    .option-grid {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .option-card {
-      position: relative;
-      width: 100%;
-      text-align: left;
-      padding: 18px 18px 18px 20px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.035);
-      color: var(--text);
-      display: grid;
-      gap: 8px;
-      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .option-card:hover,
-    .option-card:focus-visible {
-      transform: translateY(-2px);
-      border-color: rgba(232, 191, 98, 0.38);
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
-      outline: none;
-    }
-
-    .option-card.selected {
-      border-color: rgba(232, 191, 98, 0.58);
-      background: linear-gradient(180deg, rgba(232, 191, 98, 0.12), rgba(255, 255, 255, 0.05));
-      box-shadow: 0 20px 42px rgba(232, 191, 98, 0.1);
-    }
-
-    .option-card strong {
-      font-size: 1rem;
-      line-height: 1.45;
-    }
-
-    .option-card span {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .option-check {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      color: var(--gold-soft);
-      opacity: 0.38;
-      transition: opacity 0.22s ease, transform 0.22s ease;
-    }
-
-    .option-card.selected .option-check {
-      opacity: 1;
-      transform: scale(1.08);
-    }
-
-    .nav-row {
+    .hero-actions,
+    .nav-row,
+    .result-actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 14px;
-      margin-top: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .nav-row .btn {
-      min-width: 150px;
+    .intro-state .hero-actions {
+      margin-top: 18px;
     }
 
-    .btn[disabled] {
-      opacity: 0.55;
+    .hero-actions span {
+      color: #a8b6cc;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .inline-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      color: #f8fafc;
+      font-weight: 800;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .inline-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .accent-btn {
+      min-height: 56px;
+      padding: 0 22px;
+      border-radius: 20px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .accent-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #ffd777, var(--accent), var(--accent-deep));
+      color: #111827;
+      box-shadow: 0 20px 36px rgba(245, 185, 66, 0.24);
+    }
+
+    .secondary-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      border: 1px solid var(--line);
+    }
+
+    .accent-btn {
+      background: linear-gradient(135deg, #ffd777, var(--accent), var(--accent-deep));
+      color: #111827;
+      box-shadow: 0 18px 34px rgba(245, 185, 66, 0.28);
+    }
+
+    .primary-btn[disabled],
+    .secondary-btn[disabled] {
+      opacity: 0.42;
       cursor: not-allowed;
       transform: none;
       box-shadow: none;
     }
 
-    .side-panel {
-      position: sticky;
-      top: 20px;
+    .quiz-wrap {
+      width: 100%;
+      max-width: 780px;
+    }
+
+    .quiz-card,
+    .faq-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 17, 31, 0.84);
+      backdrop-filter: blur(22px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .quiz-card::before,
+    .faq-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top center, rgba(245, 185, 66, 0.14), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+
+    .card-state,
+    .faq-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-state {
+      padding: 24px;
+    }
+
+    .intro-head {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-top: 18px;
+    }
+
+    .intro-head h2 {
+      max-width: 480px;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      text-align: left;
+    }
+
+    .step-counter {
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #dbe5f2;
+      font-size: 0.95rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .card-note,
+    .progress-note,
+    .tap-note,
+    .helper-toggle,
+    .lead-note {
+      color: var(--muted-soft);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .card-note,
+    .tap-note,
+    .lead-note {
+      margin: 12px 0 0;
+      text-align: center;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .progress-tag {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+      color: #dbe5f2;
+      min-height: 34px;
+    }
+
+    .progress-meta {
+      text-align: right;
+      display: grid;
+      gap: 2px;
+    }
+
+    .progress-meta strong {
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .progress-meta span {
+      color: var(--muted-soft);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      margin: 18px 0 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #0f172a, #334155, #64748b);
+      transition: width 0.32s ease;
+    }
+
+    .question-stage {
       display: grid;
       gap: 18px;
     }
 
-    .side-card {
-      border-radius: 28px;
-      padding: 24px;
+    .stage-enter {
+      animation: riseIn 0.28s ease;
     }
 
-    .side-list,
-    .result-list {
-      display: grid;
-      gap: 12px;
+    .question-stage h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
     }
 
-    .side-item,
-    .result-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 12px;
-      align-items: start;
-      color: var(--muted-strong);
-      line-height: 1.6;
+    .helper-box,
+    .reasons-box,
+    .result-box,
+    .lead-box {
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+      box-shadow: var(--shadow-md);
     }
 
-    .side-item i,
-    .result-item i {
-      color: var(--gold-soft);
-      margin-top: 3px;
+    .helper-box,
+    .reasons-box,
+    .result-box,
+    .lead-box {
+      padding: 18px;
     }
 
-    .confidence-chip {
+    .helper-label,
+    .reasons-label,
+    .result-box strong {
+      display: inline-block;
+      color: var(--muted-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .helper-toggle {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--muted-strong);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.92rem;
-      font-weight: 700;
+      padding: 0;
+      background: none;
+      color: #f8fafc;
+      font-weight: 800;
     }
 
-    .result-shell {
-      display: grid;
-      gap: 20px;
-    }
-
-    .result-banner {
-      border-radius: 28px;
-      padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 25%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.03));
-    }
-
-    .result-banner[data-theme="danger"] {
-      background:
-        radial-gradient(circle at top right, rgba(239, 106, 97, 0.18), transparent 25%),
-        linear-gradient(180deg, rgba(239, 106, 97, 0.08), rgba(255, 255, 255, 0.03));
-      border-color: rgba(239, 106, 97, 0.22);
-    }
-
-    .result-banner[data-theme="alert"] {
-      background:
-        radial-gradient(circle at top right, rgba(223, 124, 51, 0.18), transparent 25%),
-        linear-gradient(180deg, rgba(232, 191, 98, 0.08), rgba(255, 255, 255, 0.03));
-      border-color: rgba(232, 191, 98, 0.22);
-    }
-
-    .result-head {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 14px;
-    }
-
-    .result-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
+    .helper-toggle::before {
+      content: "+";
+      width: 18px;
+      height: 18px;
       display: grid;
       place-items: center;
-      color: #07101d;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 800;
     }
 
-    .result-head small {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 4px;
-      font-size: 0.88rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+    .helper-toggle.is-open::before {
+      content: "−";
     }
 
-    .result-head h3 {
-      margin: 0;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      line-height: 1.04;
-      letter-spacing: -0.04em;
-    }
-
-    .result-banner p {
-      margin: 0;
-      color: var(--muted-strong);
-      line-height: 1.8;
-    }
-
-    .result-recommendation {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text);
-      font-weight: 700;
+    .helper-extra {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(245, 185, 66, 0.14);
+      color: #f9d788;
       line-height: 1.7;
     }
 
-    .result-grid {
+    .option-grid {
       display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .result-card {
-      border-radius: 24px;
-      padding: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .result-card h4 {
-      margin: 0 0 14px;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-    }
-
-    .result-actions {
-      display: flex;
-      flex-wrap: wrap;
       gap: 12px;
     }
 
-    .result-disclaimer {
-      padding: 18px 20px;
-      border-radius: 20px;
+    .option-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+      width: 100%;
+      padding: 16px;
+      border-radius: 24px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.035);
-      color: var(--muted);
-      line-height: 1.75;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+      text-align: left;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .footer {
-      margin-top: 24px;
-      padding: 20px 0 0;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.92rem;
+    .option-card:hover,
+    .option-card:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(245, 185, 66, 0.28);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+      outline: none;
+    }
+
+    .option-card.is-active {
+      background: linear-gradient(135deg, #ffd777, var(--accent), var(--accent-deep));
+      color: #111827;
+      border-color: rgba(245, 185, 66, 0.8);
+      box-shadow: 0 22px 40px rgba(245, 185, 66, 0.22);
+    }
+
+    .option-mark {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      font-size: 1.18rem;
+      font-weight: 800;
+    }
+
+    .option-card.is-active .option-mark {
+      background: rgba(17, 24, 39, 0.12);
+      color: #111827;
+    }
+
+    .option-copy strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 4px;
+    }
+
+    .option-copy span {
+      color: inherit;
+      opacity: 0.78;
+      line-height: 1.65;
+    }
+
+    .result-state {
+      display: grid;
+      gap: 18px;
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .tone-obligated {
+      background: rgba(52, 211, 153, 0.14);
+      color: #86efac;
+    }
+
+    .tone-special {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fda4af;
+    }
+
+    .tone-clear {
+      background: rgba(56, 189, 248, 0.14);
+      color: #7dd3fc;
+    }
+
+    .result-title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+    }
+
+    .reasons-box,
+    .result-grid {
+      margin-top: 2px;
+    }
+
+    .reason-list,
+    .benefit-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .reason-item,
+    .result-benefit {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-size: 0.96rem;
       line-height: 1.7;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
+    .reason-item::before,
+    .result-benefit::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #10b981, #34d399);
+      margin-top: 4px;
     }
 
-    .hidden {
+    .result-grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .lead-box {
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.12) 0%, rgba(8, 17, 31, 0.9) 100%);
+      border-color: rgba(52, 211, 153, 0.26);
+    }
+
+    .lead-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .lead-form input {
+      width: 100%;
+      min-height: 54px;
+      padding: 0 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lead-form input:focus {
+      border-color: rgba(52, 211, 153, 0.55);
+      box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.12);
+    }
+
+    .result-actions {
+      justify-content: stretch;
+      margin-top: 16px;
+    }
+
+    .result-actions .primary-btn,
+    .result-actions .secondary-btn {
+      flex: 1 1 220px;
+      justify-content: center;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .result-empty {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .faq-section {
+      margin-top: 30px;
+    }
+
+    .faq-shell {
+      padding: 24px;
+    }
+
+    .faq-shell h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-top: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .faq-item {
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-weight: 800;
+      color: #f8fafc;
+      position: relative;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      top: 18px;
+      color: #9ca9bf;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      margin: 0;
+      padding: 0 20px 18px;
+      color: #dbe5f2;
+      line-height: 1.75;
+    }
+
+    .is-hidden {
       display: none !important;
     }
 
-    @media (max-width: 1080px) {
-      .diagnosis {
-        grid-template-columns: 1fr;
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
       }
 
-      .side-panel {
-        position: static;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 52px;
-        padding-bottom: 150px;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 780px) {
-      .page {
-        width: min(calc(100% - 22px), var(--container));
-      }
-
-      .site-header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero-copy h1 {
-        font-size: clamp(2.7rem, 12vw, 4.4rem);
-      }
-
-      .hero-subline {
-        font-size: 1rem;
-      }
-
-      .panel,
-      .side-card {
-        padding: 22px;
-      }
-
-      .stage-card {
-        min-height: 400px;
-        padding: 22px;
-      }
-
-      .lead-grid,
-      .option-grid,
+    @media (max-width: 900px) {
+      .hero-pills,
+      .mini-grid,
       .result-grid {
         grid-template-columns: 1fr;
       }
 
-      .nav-row {
-        flex-direction: column-reverse;
+      .intro-head {
+        flex-direction: column;
+      }
+
+      .intro-head h2 {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(calc(100% - 18px), var(--container));
+        padding-top: 14px;
+        padding-bottom: 56px;
+      }
+
+      .topbar {
+        flex-direction: column;
         align-items: stretch;
       }
 
-      .nav-row .btn,
-      .result-actions .btn,
-      .cta-stack .btn {
+      .topbar-link {
         width: 100%;
       }
 
-    }
-
-    @media (max-width: 520px) {
       .hero {
-        padding-top: 34px;
-        padding-bottom: 150px;
+        gap: 18px;
+        padding-top: 10px;
       }
 
-      .eyebrow {
-        font-size: 11px;
-        letter-spacing: 0.1em;
+      .hero h1 {
+        font-size: clamp(2.35rem, 11vw, 3.3rem);
       }
 
-      .hero-note {
-        font-size: 0.88rem;
+      .hero-subtitle,
+      .intro-copy,
+      .helper-copy,
+      .result-copy,
+      .faq-shell > p {
+        font-size: 0.97rem;
       }
 
-      .stage-card {
-        min-height: 380px;
+      .card-state,
+      .faq-shell {
+        padding: 18px;
       }
 
-    }
-
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #101828 !important;
+      .question-stage h2,
+      .result-title {
+        font-size: clamp(1.85rem, 9vw, 2.35rem);
       }
 
-      body::before,
-      body::after,
-      .site-header,
-      .hero,
-      .side-panel,
+      .progress-top {
+        flex-direction: column;
+      }
+
+      .progress-meta {
+        text-align: left;
+      }
+
+      .hero-actions,
       .nav-row,
-      .footer {
-        display: none !important;
-      }
-
-      .page {
-        width: 100%;
-        padding: 0;
-      }
-
-      .quiz-panel,
-      .panel,
-      .stage-card,
-      .result-banner,
-      .result-card,
-      .result-disclaimer {
-        background: #ffffff !important;
-        color: #101828 !important;
-        border-color: #d0d5dd !important;
-        box-shadow: none !important;
-      }
-
-      .section-intro,
-      #progressShell {
-        display: none !important;
-      }
-
       .result-actions {
-        display: none !important;
+        flex-direction: column;
       }
 
-      .result-banner p,
-      .result-disclaimer,
-      .result-item,
-      .result-card h4 {
-        color: #344054 !important;
+      .primary-btn,
+      .secondary-btn,
+      .accent-btn,
+      .result-actions .primary-btn,
+      .result-actions .secondary-btn {
+        width: 100%;
+      }
+
+      .option-card {
+        grid-template-columns: 42px 1fr;
+        padding: 14px;
+      }
+
+      .option-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="page" id="pageRoot">
-    <header class="site-header">
+  <div class="page-shell">
+    <header class="topbar">
       <a class="brand" href="https://www.vlcontabilidadeempresarial.com.br/" target="_blank" rel="noreferrer">
-        <div class="brand-mark">VL</div>
+        <div class="brand-mark">
+          <img src="../assets/img/LOGO.png" alt="Logo VL Contabilidade Empresarial" />
+        </div>
         <div class="brand-copy">
           <strong>VL Contabilidade Empresarial</strong>
-          <span>Imposto de Renda 2026</span>
+          <span>Triagem IR 2026</span>
         </div>
       </a>
 
-      <a class="header-link" href="https://www.vlcontabilidadeempresarial.com.br/" target="_blank" rel="noreferrer">
-        <i data-lucide="external-link"></i>
-        Site oficial
+      <a
+        class="topbar-link whatsapp-btn"
+        href="https://wa.me/5511916539680"
+        target="_blank"
+        rel="noreferrer"
+      >
+        WhatsApp
       </a>
     </header>
 
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">
-            <i data-lucide="shield-check"></i>
-            Critérios baseados em fontes oficiais
-          </div>
-
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow">Triagem baseada nos fatos de 2025</div>
           <h1 id="hero-title">
-            Você está obrigado
-            <span>a declarar o Imposto de Renda?</span>
+            Descubra em poucos minutos se você provavelmente precisa declarar o
+            <span>Imposto de Renda 2026</span>
           </h1>
-
-          <div class="hero-subline">Não sabe? Então clique aqui.</div>
-
-          <div class="cta-stack">
-            <button class="btn btn-primary" id="heroStartBtn" type="button">
-              <i data-lucide="sparkles"></i>
-              Iniciar triagem agora
-            </button>
-          </div>
-
-          <p class="hero-note">
-            <strong>Triagem informativa:</strong> critérios inspirados em referências oficiais para orientar a primeira análise,
-            sem substituir validação documental individual.
+          <p class="hero-subtitle">
+            Responda perguntas simples, veja seu provável enquadramento e, se quiser, siga direto com a VL no WhatsApp.
           </p>
-        </div>
-      </div>
-      <div class="hero-floor" aria-hidden="true"></div>
-    </section>
 
-    <section class="diagnosis" id="diagnostico" aria-labelledby="diagnostico-title">
-      <section class="panel glass quiz-panel">
-        <div class="section-intro reveal">
-          <div class="eyebrow">
-            <i data-lucide="sparkle"></i>
-            Diagnóstico guiado
+          <div class="hero-pills" aria-label="benefícios da triagem">
+            <div class="pill">Sem enviar documentos agora</div>
+            <div class="pill">Resultado imediato no final</div>
+            <div class="pill">Atendimento humano da VL</div>
           </div>
-          <h2 id="diagnostico-title">Uma pergunta por vez. Sem burocracia, sem ruído.</h2>
-          <p>
-            O foco aqui é descobrir rapidamente se existem sinais de obrigatoriedade, pontos de atenção ou necessidade
-            de conferência com a equipe da VL.
-          </p>
-        </div>
 
-        <div id="progressShell">
-          <div class="progress-head">
-            <span id="progressLabel">Etapa 0 de 11</span>
-            <span id="progressText">0%</span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
+          <div class="hero-actions">
+            <button class="primary-btn" id="heroStartBtn" type="button">Começar agora</button>
+            <a class="inline-link" href="./crioteriosirrf2026.html">Ver critérios oficiais</a>
+            <span>Leva cerca de 2 minutos</span>
           </div>
         </div>
 
-        <div class="stage-card reveal" id="stepCard"></div>
+        <div class="quiz-wrap" id="quizRoot">
+          <article class="quiz-card" aria-live="polite">
+            <section class="card-state intro-state" id="introState">
+              <div class="card-chip">
+                <span class="chip-dot"></span>
+                Triagem rápida
+              </div>
 
-        <div class="nav-row" id="navRow">
-          <button class="btn btn-secondary" id="backBtn" type="button" disabled>
-            <i data-lucide="chevron-left"></i>
-            Voltar
-          </button>
-          <button class="btn btn-primary" id="nextBtn" type="button">
-            Continuar
-            <i data-lucide="chevron-right"></i>
-          </button>
+              <div class="intro-head">
+                <h2>Veja seu provável enquadramento sem complicação.</h2>
+                <div class="step-counter" id="questionCount">12 perguntas</div>
+              </div>
+
+              <p class="intro-copy">
+                Você responde agora, vê o resultado no final e decide se quer falar com a VL para seguir com mais tranquilidade.
+              </p>
+
+              <div class="mini-grid">
+                <div class="mini-card">Perguntas diretas</div>
+                <div class="mini-card">Ajuda curta quando precisar</div>
+                <div class="mini-card">Próximo passo no WhatsApp</div>
+              </div>
+
+              <div class="hero-actions">
+                <button class="accent-btn" id="cardStartBtn" type="button">Iniciar minha triagem</button>
+                <a class="inline-link" href="./crioteriosirrf2026.html">Quero ver os critérios</a>
+              </div>
+              <p class="card-note">Considere apenas o que aconteceu em 2025.</p>
+            </section>
+
+            <section class="card-state active-state is-hidden" id="activeState">
+              <div class="progress-top">
+                <div>
+                  <div class="progress-tag" id="progressLabel">Etapa 1 de 12</div>
+                  <div class="progress-note">Responda com base no que aconteceu em 2025.</div>
+                </div>
+                <div class="progress-meta">
+                  <strong id="progressPercent">0%</strong>
+                  <span id="progressStepsLeft">12 restantes</span>
+                </div>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+
+              <div class="question-stage stage-enter" id="questionStage"></div>
+
+              <div class="nav-row">
+                <button class="secondary-btn" id="backBtn" type="button" disabled>Voltar</button>
+                <button class="primary-btn" id="nextBtn" type="button" disabled>Continuar</button>
+              </div>
+            </section>
+
+            <section class="card-state result-state is-hidden" id="resultState"></section>
+          </article>
         </div>
       </section>
 
-      <aside class="side-panel">
-        <div class="side-card glass reveal">
-          <div class="eyebrow">
-            <i data-lucide="badge-info"></i>
-            O que a página faz
-          </div>
-          <h3>Clara na hero. Forte no resultado.</h3>
-          <p>
-            A experiência foi reduzida ao essencial: pergunta dominante, CTA central, quiz progressivo e um fechamento
-            pronto para impressão ou envio à VL pelo WhatsApp.
-          </p>
-        </div>
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="faq-shell">
+          <div class="faq-kicker">Dúvidas rápidas</div>
+          <h2 id="faq-title">Antes de seguir, vale saber isso.</h2>
+          <p>Respostas curtas para deixar a triagem mais simples.</p>
 
-        <div class="side-card glass reveal">
-          <div class="eyebrow">
-            <i data-lucide="check-check"></i>
-            Fluxo da triagem
-          </div>
-          <div class="side-list" style="margin-top: 16px;">
-            <div class="side-item">
-              <i data-lucide="user-round"></i>
-              <span>Primeiro coletamos dados basicos para personalizar o resumo final.</span>
-            </div>
-            <div class="side-item">
-              <i data-lucide="messages-square"></i>
-              <span>Depois voce responde uma pergunta por vez em etapas claras e objetivas.</span>
-            </div>
-            <div class="side-item">
-              <i data-lucide="send"></i>
-              <span>No resultado, voce pode imprimir ou enviar o resumo direto para a equipe da VL.</span>
-            </div>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>IRRF é a mesma coisa que declaração de Imposto de Renda?</summary>
+              <p>Não. O imposto pode ser retido ao longo do ano e, ainda assim, a declaração anual seguir regras próprias de obrigatoriedade.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Quem recebe até R$ 5 mil por mês está dispensado da declaração?</summary>
+              <p>Não necessariamente. A declaração entregue em 2026 considera os fatos de 2025 e outros critérios além da renda mensal.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Mesmo sem obrigação, ainda posso declarar?</summary>
+              <p>Pode. Em muitos casos isso ajuda a verificar restituição de imposto retido na fonte.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Preciso enviar documentos nesta etapa?</summary>
+              <p>Não. Aqui você faz uma triagem inicial. Se quiser seguir com a VL, o próximo passo acontece no WhatsApp.</p>
+            </details>
           </div>
         </div>
-
-        <div class="side-card glass reveal">
-          <div class="eyebrow">
-            <i data-lucide="library-big"></i>
-            Referências consideradas
-          </div>
-          <div class="side-list" id="officialCriteriaList" style="margin-top: 16px;"></div>
-        </div>
-      </aside>
-    </section>
-
-    <footer class="footer">
-      Resultado preliminar para apoio à decisão. A conclusão definitiva depende da análise completa de documentos,
-      informes, enquadramentos e situações específicas do contribuinte.
-    </footer>
-  </main>
+      </section>
+    </main>
+  </div>
 
   <script>
     const WHATSAPP_NUMBER = "5511916539680";
 
-    const officialCriteria = [
-      "Rendimentos tributáveis acima do limite anual aplicável.",
-      "Rendimentos isentos, não tributáveis ou tributados exclusivamente na fonte em volume relevante.",
-      "Bens e direitos acima do valor de referência considerado na análise.",
-      "Operações em bolsa, FIIs, ETFs ou mercados assemelhados.",
-      "Ganho de capital na venda de bens ou direitos.",
-      "Atividade rural com receita relevante ou compensação de prejuízos.",
-      "Residência fiscal, mudança de residência ou ativos e rendimentos no exterior."
-    ];
-
-    const questions = [
+    const QUESTIONS = [
       {
-        id: "tipo_contribuinte",
-        title: "Qual é o seu perfil principal?",
-        subtitle: "Isso ajuda a contextualizar a leitura do seu caso logo no início.",
-        options: [
-          ["clt", "Empregado CLT / assalariado", "Situação de renda mais previsível."],
-          ["autonomo", "Autônomo / profissional liberal", "Pode haver variação e múltiplas fontes."],
-          ["empresario", "Empresário / sócio / pró-labore", "Normalmente pede mais atenção patrimonial."],
-          ["misto", "Tenho mais de uma fonte de renda", "Pode cruzar regras diferentes ao mesmo tempo."],
-          ["nao_sei", "Prefiro que a VL me ajude a classificar", "Seguimos com uma análise guiada."]
-        ]
+        id: "taxableIncome",
+        title: "Em 2025, você recebeu salários, aposentadoria, pró-labore, aluguel ou outros ganhos que, somados no ano, passaram de R$ 35.584,00?",
+        shortHelp: "Pense no total bruto que entrou ao longo de 2025, antes de descontos. Se você recebeu de uma ou mais fontes, some tudo.",
+        extraHelp: "Exemplos comuns: salário, pró-labore, aposentadoria, aluguel recebido, pensão e alguns serviços prestados como pessoa física.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "tributaveis",
-        title: "Você recebeu rendimentos tributáveis em 2025?",
-        subtitle: "Salários, pró-labore, aposentadoria, aluguel, honorários e serviços entram aqui.",
-        options: [
-          ["nao", "Não recebi", "Sem rendimentos tributáveis relevantes informados."],
-          ["sim_abaixo", "Sim, mas acredito que fiquei abaixo do limite", "Existe sinal, mas ainda parece moderado."],
-          ["sim_acima", "Sim, acredito que ultrapassei o limite oficial", "Sinal forte de obrigatoriedade."],
-          ["nao_sei", "Não sei dizer com segurança", "Vale conferir com informes e extratos."]
-        ]
+        id: "exemptIncome",
+        title: "Em 2025, você recebeu rendimentos isentos, não tributáveis ou tributados só na fonte acima de R$ 200.000,00?",
+        shortHelp: "Essa é uma das partes que mais confunde. Se você teve valores recebidos sem tributação normal, vale atenção.",
+        extraHelp: "Exemplos que costumam entrar aqui: FGTS, herança, doações, parte de indenizações, rendimentos de poupança, alguns lucros e dividendos e aplicações tributadas exclusivamente na fonte.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "isentos",
-        title: "Teve rendimentos isentos, não tributáveis ou tributados exclusivamente na fonte?",
-        subtitle: "Poupança, FGTS, herança, certas aplicações e situações específicas entram nessa leitura.",
-        options: [
-          ["nao", "Não", "Nenhum indicativo adicional aqui."],
-          ["sim_abaixo", "Sim, mas em valor aparentemente baixo", "Pode ser neutro ou moderado."],
-          ["sim_acima", "Sim, em valor relevante", "Ponto importante para conferência."],
-          ["nao_sei", "Não sei classificar corretamente", "A VL pode te ajudar a separar isso."]
-        ]
+        id: "assets",
+        title: "Em 31/12/2025, a soma dos seus bens e direitos passou de R$ 800.000,00?",
+        shortHelp: "Some imóveis, carro, saldo em conta, investimentos, participação em empresa, terreno e outros bens no seu nome.",
+        extraHelp: "Aqui não é renda do mês. É patrimônio total em 31 de dezembro de 2025.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "bens",
-        title: "Seu patrimônio em 31/12/2025 pode ter ultrapassado o limite legal?",
-        subtitle: "Considere imóveis, veículos, investimentos, participações, saldos e outros direitos.",
-        options: [
-          ["nao", "Não", "Sem sinal patrimonial relevante informado."],
-          ["sim", "Sim", "Sinal forte de atenção."],
-          ["nao_sei", "Quero confirmar com a VL", "A dúvida por si só já merece checagem."]
-        ]
+        id: "ruralRevenue",
+        title: "Você teve atividade rural e a receita bruta passou de R$ 177.920,00 em 2025?",
+        shortHelp: "Receita bruta é o valor total da atividade rural antes de descontar despesas.",
+        extraHelp: "Se você trabalha com atividade rural e esse total anual passou do limite, a declaração pode ser obrigatória.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "bolsa",
-        title: "Você realizou operações em bolsa, FIIs, ETFs, ações ou contratos em 2025?",
-        subtitle: "Mesmo operações pequenas podem mudar a leitura da obrigatoriedade.",
-        options: [
-          ["nao", "Não", "Sem operações de mercado informadas."],
-          ["sim_sem_lucro", "Sim, mas sem lucro relevante", "Ainda assim pode exigir análise."],
-          ["sim_com_lucro", "Sim, com lucro ou volume relevante", "Sinal forte de obrigatoriedade ou revisão."],
-          ["nao_sei", "Não sei enquadrar minhas operações", "É um ponto clássico de dúvida."]
-        ]
+        id: "ruralLoss",
+        title: "Mesmo sem passar do limite rural, você quer compensar prejuízos da atividade rural deste ano ou de anos anteriores?",
+        shortHelp: "Essa é uma situação menos comum, mas importante.",
+        extraHelp: "Quem pretende compensar prejuízo da atividade rural pode precisar declarar mesmo sem receita acima do limite.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "ganho_capital",
-        title: "Você vendeu imóvel, veículo, participação societária ou outro bem com possível ganho de capital?",
-        subtitle: "Esse é um dos pontos que mais gera erro quando a pessoa analisa sozinha.",
-        options: [
-          ["nao", "Não", "Nenhuma alienação relevante informada."],
-          ["sim", "Sim", "Sinal forte de necessidade de revisão."],
-          ["nao_sei", "Não sei se houve ganho tributável", "Vale conferir antes de concluir."]
-        ]
+        id: "capitalGain",
+        title: "Você vendeu algum bem com lucro tributável em 2025, como imóvel, terreno, veículo, participação ou outro direito?",
+        shortHelp: "Lucro tributável, aqui, é quando a venda gerou ganho de capital sujeito a imposto.",
+        extraHelp: "Em regra, ganho de capital é a diferença positiva entre o valor da venda e o custo de aquisição. Nem toda venda obriga, mas venda com ganho tributável é um sinal forte.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "rural",
-        title: "Você teve atividade rural em 2025?",
-        subtitle: "Inclua receita relevante ou intenção de compensar prejuízos da atividade rural.",
-        options: [
-          ["nao", "Não", "Sem sinal adicional aqui."],
-          ["sim_baixa", "Sim, mas pequena", "Pode ser um ponto moderado."],
-          ["sim_relevante", "Sim, em valor relevante", "Sinal forte para análise."],
-          ["nao_sei", "Não sei se isso muda minha obrigação", "Situação que costuma exigir apoio técnico."]
-        ]
+        id: "realEstateExemption",
+        title: "Você vendeu um imóvel residencial e usou a regra de isenção para comprar outro em até 180 dias?",
+        shortHelp: "Essa regra é específica e aparece bastante em atendimentos de IR.",
+        extraHelp: "Mesmo usando essa isenção, a operação pode tornar a declaração obrigatória.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "exterior",
-        title: "Você teve conta, aplicação, rendimento ou ativo no exterior?",
-        subtitle: "Situações internacionais merecem atenção especial mesmo quando parecem simples.",
-        options: [
-          ["nao", "Não", "Sem exposição internacional informada."],
-          ["sim", "Sim", "Ponto sensível para conferência."],
-          ["nao_sei", "Não sei se minha situação se enquadra", "Melhor validar antes de decidir."]
-        ]
+        id: "stockMarket",
+        title: "Em 2025, você fez operações em bolsa acima de R$ 40.000,00 no total, ou teve lucro tributável com ações, FIIs, day trade ou similares?",
+        shortHelp: "Bolsa costuma exigir atenção especial, mesmo quando a pessoa acha que movimentou pouco.",
+        extraHelp: "Se houve operação acima do limite anual ou lucro líquido sujeito a imposto, isso pode obrigar a declaração.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "residente",
-        title: "Você passou à condição de residente no Brasil em 2025 ou teve mudança relevante de residência fiscal?",
-        subtitle: "Mudanças de residência podem alterar completamente a leitura do caso.",
-        options: [
-          ["nao", "Não", "Sem alteração fiscal informada."],
-          ["sim", "Sim", "Ponto sensível e relevante."],
-          ["nao_sei", "Não sei avaliar", "Melhor não concluir sem apoio."]
-        ]
+        id: "residentBrazil",
+        title: "Você passou a morar no Brasil em 2025 e ainda estava nessa condição em 31/12/2025?",
+        shortHelp: "É uma situação de residência fiscal, não apenas de viagem ou estadia curta.",
+        extraHelp: "Quem passa à condição de residente no Brasil em qualquer mês do ano e permanece assim em 31 de dezembro pode precisar declarar.",
+        obligationWhen: ["yes"]
       },
       {
-        id: "outras_situacoes",
-        title: "Existe alguma outra situação relevante que te deixa em dúvida?",
-        subtitle: "Espólio, herança, doação, dependentes, cripto, rendas pontuais ou qualquer cenário fora do comum.",
-        options: [
-          ["nao", "Não, meu caso parece mais simples", "Sem sinal adicional informado."],
-          ["sim_baixa", "Talvez exista um ponto isolado", "Pode pedir conferência dependendo do caso."],
-          ["sim", "Sim, há situações relevantes fora do padrão", "Sinal adicional importante."],
-          ["nao_sei", "Não sei se isso muda a obrigação", "Vale encaminhar para a VL."]
-        ]
+        id: "abroadAssetsIncome",
+        title: "Você teve rendimentos, investimentos, lucros ou estruturas no exterior em 2025?",
+        shortHelp: "Se teve algo fora do Brasil, vale atenção extra.",
+        extraHelp: "Aqui entram situações como rendimentos de aplicações financeiras no exterior, lucros de entidades no exterior, trust e outros casos previstos na legislação.",
+        obligationWhen: ["yes"]
+      },
+      {
+        id: "definitiveExit",
+        title: "Você está saindo do Brasil em caráter definitivo ou ficou não residente no país?",
+        shortHelp: "Essa situação costuma exigir uma declaração própria, diferente da declaração anual comum.",
+        extraHelp: "Se for o seu caso, a recomendação correta é analisar a declaração de saída definitiva do país.",
+        specialWhen: ["yes"]
+      },
+      {
+        id: "estate",
+        title: "Você é responsável por inventário encerrado com partilha finalizada?",
+        shortHelp: "É outra situação especial e precisa de tratamento próprio.",
+        extraHelp: "Nessa hipótese, pode ser necessária a declaração final de espólio.",
+        specialWhen: ["yes"]
       }
     ];
-
-    const scoreMap = {
-      sim_acima: 4,
-      sim_com_lucro: 4,
-      sim_relevante: 4,
-      sim: 4,
-      nao_sei: 2,
-      sim_sem_lucro: 2,
-      sim_abaixo: 1,
-      sim_baixa: 1,
-      autonomo: 1,
-      empresario: 2,
-      misto: 2,
-      clt: 0,
-      nao: 0
-    };
 
     const state = {
-      currentStep: 0,
       started: false,
+      step: 0,
       answers: {},
+      expandedHelp: {},
       lead: {
-        nome: "",
-        whatsapp: "",
-        email: "",
-        cidade: ""
+        name: "",
+        whatsapp: ""
       }
     };
 
+    let autoAdvanceTimer = null;
+
     const heroStartBtn = document.getElementById("heroStartBtn");
-    const stepCard = document.getElementById("stepCard");
-    const backBtn = document.getElementById("backBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const progressFill = document.getElementById("progressFill");
-    const progressText = document.getElementById("progressText");
+    const cardStartBtn = document.getElementById("cardStartBtn");
+    const introState = document.getElementById("introState");
+    const activeState = document.getElementById("activeState");
+    const resultState = document.getElementById("resultState");
+    const questionStage = document.getElementById("questionStage");
     const progressLabel = document.getElementById("progressLabel");
-    const officialCriteriaList = document.getElementById("officialCriteriaList");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressStepsLeft = document.getElementById("progressStepsLeft");
+    const progressFill = document.getElementById("progressFill");
+    const nextBtn = document.getElementById("nextBtn");
+    const backBtn = document.getElementById("backBtn");
+    const questionCount = document.getElementById("questionCount");
+    const quizRoot = document.getElementById("quizRoot");
 
-    function refreshIcons() {
-      if (window.lucide) {
-        lucide.createIcons();
-      }
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
     }
 
-    function renderCriteria() {
-      officialCriteriaList.innerHTML = officialCriteria
-        .map(
-          (item) => `
-            <div class="side-item">
-              <i data-lucide="check-circle-2"></i>
-              <span>${item}</span>
-            </div>
-          `
-        )
-        .join("");
-      refreshIcons();
+    function formatPhone(value) {
+      const digits = value.replace(/\D/g, "").slice(0, 11);
+
+      if (digits.length <= 2) return digits ? `(${digits}` : "";
+      if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
     }
 
-    function getTotalSteps() {
-      return questions.length + 1;
+    function clearAutoAdvance() {
+      if (!autoAdvanceTimer) return;
+      window.clearTimeout(autoAdvanceTimer);
+      autoAdvanceTimer = null;
     }
 
-    function getVisibleStepNumber() {
-      return Math.min(state.currentStep + 1, getTotalSteps());
+    function scrollToQuiz(block = "center") {
+      window.setTimeout(() => {
+        quizRoot.scrollIntoView({ behavior: "smooth", block, inline: "nearest" });
+      }, 60);
     }
 
-    function updateProgress() {
-      const percent = Math.round((getVisibleStepNumber() / getTotalSteps()) * 100);
-      progressFill.style.width = `${percent}%`;
-      progressText.textContent = `${percent}%`;
-
-      if (state.currentStep <= questions.length) {
-        progressLabel.textContent = `Etapa ${getVisibleStepNumber()} de ${getTotalSteps()}`;
-      } else {
-        progressLabel.textContent = "Resultado da triagem";
-      }
+    function getQuestion(index = state.step) {
+      return QUESTIONS[index];
     }
 
-    function renderLeadStep() {
-      stepCard.innerHTML = `
-        <div class="step-copy">
-          <div class="step-tag">
-            <i data-lucide="user-round"></i>
-            Etapa 1 de ${getTotalSteps()}
-          </div>
-          <h3>Antes de começar, me diga quem está fazendo esta consulta.</h3>
-          <p>
-            Esses dados ajudam a personalizar o resumo final, facilitar o contato e deixar o atendimento da VL muito
-            mais fluido depois.
-          </p>
-        </div>
-
-        <div class="lead-grid">
-          <div class="field">
-            <label for="leadNome">Nome completo</label>
-            <input id="leadNome" type="text" placeholder="Seu nome" value="${state.lead.nome}" />
-          </div>
-          <div class="field">
-            <label for="leadWhatsapp">WhatsApp</label>
-            <input id="leadWhatsapp" type="text" placeholder="(00) 00000-0000" value="${state.lead.whatsapp}" />
-          </div>
-          <div class="field">
-            <label for="leadEmail">E-mail</label>
-            <input id="leadEmail" type="email" placeholder="voce@exemplo.com" value="${state.lead.email}" />
-          </div>
-          <div class="field">
-            <label for="leadCidade">Cidade / Estado</label>
-            <input id="leadCidade" type="text" placeholder="São Paulo/SP" value="${state.lead.cidade}" />
-          </div>
-        </div>
-      `;
-
-      wireLeadInputs();
-    }
-
-    function renderQuestionStep(index) {
-      const question = questions[index - 1];
-      const selected = state.answers[question.id];
-
-      stepCard.innerHTML = `
-        <div class="step-copy">
-          <div class="step-tag">
-            <i data-lucide="messages-square"></i>
-            Etapa ${index + 1} de ${getTotalSteps()}
-          </div>
-          <h3>${question.title}</h3>
-          <p>${question.subtitle}</p>
-        </div>
-
-        <div class="option-grid">
-          ${question.options
-            .map(
-              ([value, label, hint]) => `
-                <button
-                  class="option-card ${selected === value ? "selected" : ""}"
-                  type="button"
-                  data-question="${question.id}"
-                  data-value="${value}"
-                >
-                  <div class="option-check"><i data-lucide="check-circle-2"></i></div>
-                  <strong>${label}</strong>
-                  <span>${hint}</span>
-                </button>
-              `
-            )
-            .join("")}
-        </div>
-      `;
+    function getReasons() {
+      const specialReasons = QUESTIONS.filter((question) => question.specialWhen && question.specialWhen.includes(state.answers[question.id]));
+      const obligationReasons = QUESTIONS.filter((question) => question.obligationWhen && question.obligationWhen.includes(state.answers[question.id]));
+      return [...specialReasons, ...obligationReasons];
     }
 
     function getResult() {
-      const values = Object.values(state.answers);
-      const score = values.reduce((sum, value) => sum + (scoreMap[value] || 0), 0);
-      const highSignals = [
-        state.answers.tributaveis,
-        state.answers.bens,
-        state.answers.bolsa,
-        state.answers.ganho_capital,
-        state.answers.exterior,
-        state.answers.residente,
-        state.answers.rural,
-        state.answers.outras_situacoes
-      ];
-      const danger = highSignals.some((value) => ["sim", "sim_acima", "sim_com_lucro", "sim_relevante"].includes(value));
+      const specialReasons = QUESTIONS.filter((question) => question.specialWhen && question.specialWhen.includes(state.answers[question.id]));
+      const obligationReasons = QUESTIONS.filter((question) => question.obligationWhen && question.obligationWhen.includes(state.answers[question.id]));
 
-      if (danger || score >= 15) {
+      if (specialReasons.length > 0) {
         return {
-          level: "Alta probabilidade de obrigatoriedade",
-          theme: "danger",
-          icon: "alert-triangle",
-          text: "Pelas respostas, existem sinais fortes de obrigatoriedade ou necessidade imediata de revisão técnica. O melhor próximo passo é cruzar documentos, informes e enquadramentos antes de qualquer conclusão definitiva.",
-          recommendation: "Encaminhe agora o resumo para a VL. Isso acelera uma avaliação humana mais segura e ajuda a evitar inconsistências, omissões e risco de malha fina."
+          type: "special",
+          toneClass: "tone-special",
+          badge: "Conferência individual",
+          title: "Seu caso pede uma conferência individual.",
+          summary: "A triagem encontrou um cenário especial. O próximo passo mais seguro é revisar o seu caso com orientação direcionada.",
+          cta: "Quero analisar meu caso com a VL"
         };
       }
 
-      if (score >= 8) {
+      if (obligationReasons.length > 0) {
         return {
-          level: "Seu caso pede conferência cuidadosa",
-          theme: "alert",
-          icon: "eye",
-          text: "Há pontos suficientes para justificar análise humana. Mesmo quando a obrigatoriedade não parece evidente, patrimônio, bolsa, ganho de capital, exterior ou dúvidas de enquadramento podem alterar o cenário.",
-          recommendation: "Vale enviar o resumo para a VL antes de concluir que você está dispensado de declarar."
+          type: "obligated",
+          toneClass: "tone-obligated",
+          badge: "Alta chance de obrigatoriedade",
+          title: "Você provavelmente precisa declarar em 2026.",
+          summary: "Pelas suas respostas, apareceu pelo menos um critério oficial de obrigatoriedade. A VL pode revisar tudo com você e conduzir o processo com mais segurança.",
+          cta: "Quero resolver minha declaração com a VL"
         };
       }
 
       return {
-        level: "Sinais menores de obrigatoriedade",
-        theme: "safe",
-        icon: "badge-check",
-        text: "Pelas respostas, os indícios aparentes são menores. Ainda assim, esta triagem é informativa e não substitui a conferência documental completa, especialmente se houver informes ou fatos não lembrados agora.",
-        recommendation: "Se quiser confirmação com mais segurança, a VL pode validar seu caso e orientar o melhor caminho."
+        type: "clear",
+        toneClass: "tone-clear",
+        badge: "Triagem concluída",
+        title: "Você provavelmente não está obrigado a declarar.",
+        summary: "Ainda assim, pode valer a pena confirmar se existe restituição ou algum detalhe que altere o seu enquadramento.",
+        cta: "Quero uma confirmação rápida da VL"
       };
     }
 
-    function renderResultStep() {
+    function getAnswerLabel(question) {
+      const value = state.answers[question.id];
+
+      if (value === "yes") return "Sim";
+      if (value === "no") return "Não";
+      if (value === "dontknow") return "Não tenho certeza";
+      return "Não respondido";
+    }
+
+    function buildWhatsAppHref() {
       const result = getResult();
-      const answersHtml = questions
-        .map((question) => {
-          const answerValue = state.answers[question.id];
-          const selected = question.options.find((item) => item[0] === answerValue);
-          return `
-            <div class="result-item">
-              <i data-lucide="check-circle-2"></i>
-              <span><strong>${question.title}</strong><br>${selected ? selected[1] : "Não informado"}</span>
-            </div>
-          `;
-        })
-        .join("");
+      const reasons = getReasons();
+      const answers = QUESTIONS.map((question) => `- ${question.title}: ${getAnswerLabel(question)}`).join("\n");
+      const reasonLines = reasons.length > 0 ? reasons.map((question) => `- ${question.title}`).join("\n") : "- Nenhum critério de obrigatoriedade foi marcado";
 
-      const sourceHtml = [
-        "Receita Federal — Meu Imposto de Renda",
-        "Receita Federal — Quem deve declarar",
-        "Gov.br — Informações oficiais ao contribuinte"
-      ]
-        .map(
-          (item) => `
-            <div class="result-item">
-              <i data-lucide="shield-check"></i>
-              <span>${item}</span>
-            </div>
-          `
-        )
-        .join("");
+      const message = [
+        "Olá, VL! Fiz a triagem do IR 2026 e quero atendimento.",
+        "",
+        `Nome: ${state.lead.name || "Não informado"}`,
+        `WhatsApp para retorno: ${state.lead.whatsapp || "Não informado"}`,
+        `Resultado provável: ${result.title}`,
+        "",
+        "Pontos marcados na triagem:",
+        reasonLines,
+        "",
+        "Resumo das respostas:",
+        answers,
+        "",
+        "Quero confirmar meu caso e entender o próximo passo."
+      ].join("\n");
 
-      const iconBackground =
-        result.theme === "danger"
-          ? "linear-gradient(135deg, #ef6a61, #f08b4b)"
-          : result.theme === "alert"
-            ? "linear-gradient(135deg, #f6deb1, #df7c33)"
-            : "linear-gradient(135deg, #7fe0bb, #30c48d)";
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
 
-      stepCard.innerHTML = `
-        <div class="result-shell">
-          <div class="result-banner" data-theme="${result.theme}">
-            <div class="result-head">
-              <div class="result-icon" style="background:${iconBackground};">
-                <i data-lucide="${result.icon}"></i>
+    function updateProgress() {
+      const current = state.step + 1;
+      const percent = Math.round((current / QUESTIONS.length) * 100);
+      const stepsLeft = Math.max(QUESTIONS.length - current, 0);
+
+      progressLabel.textContent = `Etapa ${current} de ${QUESTIONS.length}`;
+      progressPercent.textContent = `${percent}%`;
+      progressStepsLeft.textContent = stepsLeft === 0 ? "Última etapa" : `${stepsLeft} restantes`;
+      progressFill.style.width = `${percent}%`;
+      nextBtn.textContent = state.step === QUESTIONS.length - 1 ? "Ver meu resultado" : "Continuar";
+    }
+
+    function renderQuestion() {
+      const question = getQuestion();
+      const answer = state.answers[question.id];
+      const isHelpOpen = !!state.expandedHelp[question.id];
+
+      questionStage.classList.remove("stage-enter");
+      void questionStage.offsetWidth;
+      questionStage.classList.add("stage-enter");
+
+      questionStage.innerHTML = `
+        <h2>${question.title}</h2>
+
+        <div class="helper-box">
+          <span class="helper-label">Ajuda rápida</span>
+          <p class="helper-copy">${question.shortHelp}</p>
+          <button class="helper-toggle ${isHelpOpen ? "is-open" : ""}" type="button" data-action="toggle-help">
+            ${isHelpOpen ? "Esconder exemplo" : "Ver exemplo rápido"}
+          </button>
+          ${isHelpOpen ? `<div class="helper-extra">${question.extraHelp}</div>` : ""}
+        </div>
+
+        <div class="option-grid">
+          ${[
+            ["yes", "Sim", "Isso aconteceu comigo em 2025"],
+            ["no", "Não", "Isso não aconteceu comigo"],
+            ["dontknow", "Não tenho certeza", "Quero seguir e confirmar isso depois com ajuda"]
+          ].map(([value, label, hint]) => `
+            <button
+              class="option-card ${answer === value ? "is-active" : ""}"
+              type="button"
+              data-action="answer"
+              data-value="${value}"
+              aria-pressed="${answer === value ? "true" : "false"}"
+            >
+              <div class="option-mark">${answer === value ? "•" : "○"}</div>
+              <div class="option-copy">
+                <strong>${label}</strong>
+                <span>${hint}</span>
               </div>
-              <div>
-                <small>Resultado preliminar</small>
-                <h3>${result.level}</h3>
-              </div>
-            </div>
-            <p>${result.text}</p>
-            <div class="result-recommendation">${result.recommendation}</div>
-          </div>
-
-          <div class="result-grid">
-            <div class="result-card">
-              <h4>Dados informados</h4>
-              <div class="result-list">
-                <div class="result-item">
-                  <i data-lucide="user"></i>
-                  <span>${state.lead.nome || "Não informado"}</span>
-                </div>
-                <div class="result-item">
-                  <i data-lucide="phone"></i>
-                  <span>${state.lead.whatsapp || "Não informado"}</span>
-                </div>
-                <div class="result-item">
-                  <i data-lucide="mail"></i>
-                  <span>${state.lead.email || "Não informado"}</span>
-                </div>
-                <div class="result-item">
-                  <i data-lucide="map-pin"></i>
-                  <span>${state.lead.cidade || "Não informado"}</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="result-card">
-              <h4>Base informativa considerada</h4>
-              <div class="result-list">${sourceHtml}</div>
-            </div>
-          </div>
-
-          <div class="result-card">
-            <h4>Leitura resumida da sua triagem</h4>
-            <div class="result-list">${answersHtml}</div>
-          </div>
-
-          <div class="result-disclaimer">
-            Este diagnóstico não constitui parecer jurídico-contábil definitivo. A obrigatoriedade real depende da
-            análise integral dos documentos, informes, operações e enquadramentos aplicáveis ao contribuinte.
-          </div>
-
-          <div class="result-actions">
-            <button class="btn btn-primary" type="button" id="waBtn">
-              <i data-lucide="message-circle-more"></i>
-              Enviar para a VL no WhatsApp
             </button>
-            <button class="btn btn-secondary" type="button" id="printBtn">
-              <i data-lucide="printer"></i>
-              Imprimir / salvar resultado
-            </button>
-            <button class="btn btn-secondary" type="button" id="resetBtn">
-              <i data-lucide="rotate-ccw"></i>
-              Refazer triagem
-            </button>
+          `).join("")}
+        </div>
+
+        <p class="tap-note">Toque em uma resposta para avançar automaticamente.</p>
+      `;
+
+      backBtn.disabled = state.step === 0;
+      nextBtn.disabled = !answer;
+      updateProgress();
+    }
+
+    function bindResultEvents() {
+      const nameInput = document.getElementById("leadName");
+      const whatsappInput = document.getElementById("leadWhatsapp");
+      const whatsappBtn = document.getElementById("whatsAppResultBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      if (!nameInput || !whatsappInput || !whatsappBtn || !resetBtn) return;
+
+      const syncLink = () => {
+        whatsappBtn.href = buildWhatsAppHref();
+      };
+
+      nameInput.addEventListener("input", (event) => {
+        state.lead.name = event.target.value;
+        syncLink();
+      });
+
+      whatsappInput.addEventListener("input", (event) => {
+        const formatted = formatPhone(event.target.value);
+        state.lead.whatsapp = formatted;
+        event.target.value = formatted;
+        syncLink();
+      });
+
+      resetBtn.addEventListener("click", resetQuiz);
+      syncLink();
+    }
+
+    function renderResult() {
+      const result = getResult();
+      const reasons = getReasons();
+      const reasonsMarkup = reasons.length > 0
+        ? `
+          <div class="reasons-box">
+            <span class="reasons-label">O que apareceu na sua triagem</span>
+            <div class="reason-list">
+              ${reasons.map((question) => `<div class="reason-item">${question.title}</div>`).join("")}
+            </div>
+          </div>
+        `
+        : `<div class="result-empty">Nenhum critério de obrigatoriedade foi marcado na triagem.</div>`;
+
+      resultState.innerHTML = `
+        <div class="result-badge ${result.toneClass}">${result.badge}</div>
+        <h2 class="result-title">${result.title}</h2>
+        <p class="result-copy">${result.summary}</p>
+
+        ${reasonsMarkup}
+
+        <div class="result-grid">
+          <div class="result-box">
+            <strong>Com a VL você ganha</strong>
+            <div class="benefit-list">
+              <div class="result-benefit">Conferência rápida do seu enquadramento</div>
+              <div class="result-benefit">Orientação prática sobre próximos passos</div>
+              <div class="result-benefit">Atendimento direto no WhatsApp</div>
+            </div>
+          </div>
+
+          <div class="lead-box">
+            <strong>Falar com a VL agora</strong>
+            <p class="helper-copy">Se quiser, envie o seu resultado para o atendimento e receba orientação sobre o próximo passo.</p>
+
+            <div class="lead-form">
+              <input id="leadName" type="text" placeholder="Seu nome" value="${escapeHtml(state.lead.name)}" />
+              <input id="leadWhatsapp" type="text" placeholder="WhatsApp para retorno" value="${escapeHtml(state.lead.whatsapp)}" />
+            </div>
+
+            <div class="result-actions">
+              <a class="primary-btn whatsapp-btn" id="whatsAppResultBtn" href="${buildWhatsAppHref()}" target="_blank" rel="noreferrer">${result.cta}</a>
+              <button class="secondary-btn" id="resetBtn" type="button">Refazer triagem</button>
+            </div>
+
+            <p class="lead-note">Seu contato segue direto para o WhatsApp da VL.</p>
           </div>
         </div>
       `;
 
-      document.getElementById("waBtn").addEventListener("click", openWhatsApp);
-      document.getElementById("printBtn").addEventListener("click", () => window.print());
-      document.getElementById("resetBtn").addEventListener("click", resetFlow);
+      bindResultEvents();
     }
 
-    function persistLead() {
-      const nome = document.getElementById("leadNome");
-      const whatsapp = document.getElementById("leadWhatsapp");
-      const email = document.getElementById("leadEmail");
-      const cidade = document.getElementById("leadCidade");
-
-      state.lead.nome = nome ? nome.value.trim() : state.lead.nome;
-      state.lead.whatsapp = whatsapp ? whatsapp.value.trim() : state.lead.whatsapp;
-      state.lead.email = email ? email.value.trim() : state.lead.email;
-      state.lead.cidade = cidade ? cidade.value.trim() : state.lead.cidade;
+    function showIntro() {
+      introState.classList.remove("is-hidden");
+      activeState.classList.add("is-hidden");
+      resultState.classList.add("is-hidden");
     }
 
-    function isLeadStepValid() {
-      persistLead();
-      return state.lead.nome.length > 1;
+    function showQuestion() {
+      introState.classList.add("is-hidden");
+      activeState.classList.remove("is-hidden");
+      resultState.classList.add("is-hidden");
+      renderQuestion();
     }
 
-    function buildWhatsappMessage() {
-      const result = getResult();
-      const answersText = questions
-        .map((question) => {
-          const selected = question.options.find((item) => item[0] === state.answers[question.id]);
-          return `• ${question.title}: ${selected ? selected[1] : "Não informado"}`;
-        })
-        .join("\n");
-
-      return `Triagem IRPF 2026 - VL Contabilidade Empresarial\n\nNome: ${state.lead.nome || "Não informado"}\nWhatsApp: ${state.lead.whatsapp || "Não informado"}\nE-mail: ${state.lead.email || "Não informado"}\nCidade: ${state.lead.cidade || "Não informado"}\n\nResultado preliminar: ${result.level}\n\nRespostas:\n${answersText}\n\nObservação: triagem informativa baseada em critérios oficiais e estruturada pela landing page da VL.`;
+    function showResult() {
+      introState.classList.add("is-hidden");
+      activeState.classList.add("is-hidden");
+      resultState.classList.remove("is-hidden");
+      renderResult();
     }
 
-    function openWhatsApp() {
-      const encoded = encodeURIComponent(buildWhatsappMessage());
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, "_blank", "noopener");
-    }
+    function renderState() {
+      questionCount.textContent = `${QUESTIONS.length} perguntas`;
+      document.body.dataset.started = state.started ? "true" : "false";
 
-    function updateNav() {
-      backBtn.disabled = state.currentStep === 0;
-      backBtn.classList.toggle("hidden", state.currentStep > questions.length);
-      nextBtn.classList.toggle("hidden", state.currentStep > questions.length);
-
-      if (state.currentStep === 0) {
-        nextBtn.innerHTML = 'Começar a triagem <i data-lucide="chevron-right"></i>';
-        nextBtn.disabled = !isLeadStepValid();
-      } else if (state.currentStep <= questions.length - 1) {
-        nextBtn.innerHTML = 'Continuar <i data-lucide="chevron-right"></i>';
-        nextBtn.disabled = !state.answers[questions[state.currentStep - 1].id];
-      } else if (state.currentStep === questions.length) {
-        nextBtn.innerHTML = 'Ver resultado <i data-lucide="sparkles"></i>';
-        nextBtn.disabled = !state.answers[questions[state.currentStep - 1].id];
-      }
-    }
-
-    function showStep() {
-      if (state.currentStep === 0) {
-        renderLeadStep();
-      } else if (state.currentStep <= questions.length) {
-        renderQuestionStep(state.currentStep);
-      } else {
-        renderResultStep();
+      if (!state.started) {
+        showIntro();
+        return;
       }
 
-      updateProgress();
-      updateNav();
-      refreshIcons();
-
-      if (window.gsap) {
-        gsap.fromTo(
-          stepCard.children,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.42, stagger: 0.05, ease: "power2.out" }
-        );
+      if (state.step >= QUESTIONS.length) {
+        showResult();
+        return;
       }
+
+      showQuestion();
+    }
+
+    function startQuiz() {
+      clearAutoAdvance();
+      state.started = true;
+      state.step = 0;
+      renderState();
+      scrollToQuiz("center");
     }
 
     function goNext() {
-      if (state.currentStep === 0 && !isLeadStepValid()) {
+      clearAutoAdvance();
+
+      if (!state.started) {
+        startQuiz();
         return;
       }
 
-      if (state.currentStep > 0 && state.currentStep <= questions.length) {
-        const currentQuestion = questions[state.currentStep - 1];
-        if (!state.answers[currentQuestion.id]) {
-          return;
-        }
-      }
+      const question = getQuestion();
+      if (!question || !state.answers[question.id]) return;
 
-      if (state.currentStep === questions.length) {
-        state.currentStep += 1;
-        showStep();
+      if (state.step === QUESTIONS.length - 1) {
+        state.step = QUESTIONS.length;
+        renderState();
+        scrollToQuiz("start");
         return;
       }
 
-      state.currentStep += 1;
-      showStep();
+      state.step += 1;
+      renderState();
     }
 
     function goBack() {
-      if (state.currentStep <= 0) return;
-      state.currentStep -= 1;
-      showStep();
+      clearAutoAdvance();
+      if (!state.started || state.step === 0) return;
+      state.step -= 1;
+      renderState();
     }
 
-    function selectAnswer(questionId, value) {
-      state.answers[questionId] = value;
-      window.setTimeout(goNext, 240);
-    }
-
-    function wireLeadInputs() {
-      ["leadNome", "leadWhatsapp", "leadEmail", "leadCidade"].forEach((id) => {
-        const node = document.getElementById(id);
-        if (!node) return;
-
-        node.addEventListener("focus", () => {
-          if (!state.started) {
-            state.started = true;
-          }
-        });
-        node.addEventListener("input", () => {
-          persistLead();
-          updateNav();
-        });
-      });
-    }
-
-    function bindEvents() {
-      heroStartBtn.addEventListener("click", () => {
-        state.started = true;
-        state.currentStep = 0;
-        showStep();
-        document.getElementById("diagnostico").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-
-      backBtn.addEventListener("click", goBack);
-      nextBtn.addEventListener("click", goNext);
-
-      stepCard.addEventListener("click", (event) => {
-        const option = event.target.closest(".option-card");
-        if (!option) return;
-        stepCard.querySelectorAll(".option-card").forEach((node) => node.classList.remove("selected"));
-        option.classList.add("selected");
-        selectAnswer(option.dataset.question, option.dataset.value);
-      });
-    }
-
-    function resetFlow() {
-      state.currentStep = 0;
+    function resetQuiz() {
+      clearAutoAdvance();
       state.started = true;
+      state.step = 0;
       state.answers = {};
-      state.lead = { nome: "", whatsapp: "", email: "", cidade: "" };
-      showStep();
-      document.getElementById("diagnostico").scrollIntoView({ behavior: "smooth", block: "start" });
+      state.expandedHelp = {};
+      state.lead = { name: "", whatsapp: "" };
+      renderState();
+      scrollToQuiz("start");
     }
 
-    function revealElements() {
-      const items = document.querySelectorAll(".reveal");
-      if (!window.gsap) {
-        items.forEach((item) => {
-          item.style.opacity = 1;
-          item.style.transform = "translateY(0)";
-        });
+    heroStartBtn.addEventListener("click", startQuiz);
+    cardStartBtn.addEventListener("click", startQuiz);
+    nextBtn.addEventListener("click", goNext);
+    backBtn.addEventListener("click", goBack);
+
+    questionStage.addEventListener("click", (event) => {
+      const answerButton = event.target.closest("[data-action='answer']");
+      if (answerButton) {
+        const question = getQuestion();
+        const selectedValue = answerButton.dataset.value;
+        clearAutoAdvance();
+        state.answers[question.id] = selectedValue;
+        renderQuestion();
+
+        autoAdvanceTimer = window.setTimeout(() => {
+          const currentQuestion = getQuestion();
+          if (!currentQuestion) return;
+          if (currentQuestion.id !== question.id) return;
+          if (state.answers[question.id] !== selectedValue) return;
+          goNext();
+        }, 360);
+
         return;
       }
 
-      gsap.to(items, {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: "power2.out"
-      });
-    }
+      const helpButton = event.target.closest("[data-action='toggle-help']");
+      if (helpButton) {
+        const question = getQuestion();
+        state.expandedHelp[question.id] = !state.expandedHelp[question.id];
+        renderQuestion();
+      }
+    });
 
-    function init() {
-      renderCriteria();
-      bindEvents();
-      showStep();
-      revealElements();
-      refreshIcons();
-    }
-
-    init();
+    renderState();
   </script>
 </body>
 </html>

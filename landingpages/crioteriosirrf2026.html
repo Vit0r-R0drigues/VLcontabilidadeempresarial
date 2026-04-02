@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Critérios IR 2026 | VL Contabilidade Empresarial</title>
+  <meta
+    name="description"
+    content="Veja de forma simples os principais critérios de obrigatoriedade do Imposto de Renda 2026 e siga para a triagem da VL."
+  />
+  <meta property="og:title" content="Critérios IR 2026 | VL Contabilidade Empresarial" />
+  <meta
+    property="og:description"
+    content="Critérios principais de obrigatoriedade do IR 2026 em uma página simples, clara e prática."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.vlcontabilidadeempresarial.com.br/assets/img/LOGO%20(2).png" />
+  <link rel="icon" href="../assets/img/FAVICON.ICO" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg-top: #07101d;
+      --bg-mid: #09111f;
+      --bg-bottom: #050a13;
+      --surface: rgba(8, 17, 31, 0.86);
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #f8fafc;
+      --muted: #dbe5f2;
+      --muted-soft: #9ca9bf;
+      --primary: #f5b942;
+      --accent: #f5b942;
+      --accent-deep: #d48d11;
+      --green: #34d399;
+      --shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.34);
+      --shadow-md: 0 18px 38px rgba(0, 0, 0, 0.2);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 12%, rgba(245, 185, 66, 0.16), transparent 22%),
+        radial-gradient(circle at 92% 16%, rgba(14, 47, 99, 0.42), transparent 18%),
+        radial-gradient(circle at 50% 88%, rgba(16, 185, 129, 0.08), transparent 26%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-bottom) 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(110px);
+      opacity: 0.7;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      top: -7rem;
+      left: -8rem;
+      width: 21rem;
+      height: 21rem;
+      background: rgba(245, 185, 66, 0.18);
+    }
+
+    body::after {
+      top: 8rem;
+      right: -8rem;
+      width: 23rem;
+      height: 23rem;
+      background: rgba(14, 47, 99, 0.24);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 24px), var(--container));
+      margin: 0 auto;
+      padding: 18px 0 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      padding: 7px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(245, 185, 66, 0.28);
+      box-shadow: 0 14px 28px rgba(245, 185, 66, 0.16);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 3px;
+    }
+
+    .brand-copy strong {
+      font-size: 15px;
+    }
+
+    .brand-copy span {
+      color: var(--muted-soft);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ghost-link,
+    .primary-link,
+    .accent-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 18px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ghost-link:hover,
+    .primary-link:hover,
+    .accent-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .whatsapp-btn {
+      border-color: rgba(37, 211, 102, 0.38) !important;
+      background: linear-gradient(135deg, #25d366, #16a34a) !important;
+      color: #ffffff !important;
+      box-shadow: 0 16px 30px rgba(22, 163, 74, 0.28) !important;
+    }
+
+    .whatsapp-btn:hover {
+      border-color: rgba(74, 222, 128, 0.48) !important;
+      background: linear-gradient(135deg, #34d399, #16a34a) !important;
+    }
+
+    .ghost-link {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      color: #f8fafc;
+    }
+
+    .primary-link {
+      background: linear-gradient(135deg, #ffd777, var(--accent), var(--accent-deep));
+      color: #111827;
+      box-shadow: 0 18px 34px rgba(245, 185, 66, 0.24);
+    }
+
+    .accent-link {
+      background: linear-gradient(135deg, #ffd777, var(--accent), var(--accent-deep));
+      color: #111827;
+      box-shadow: 0 18px 34px rgba(245, 185, 66, 0.24);
+    }
+
+    .hero,
+    .info-shell,
+    .criteria-shell,
+    .cta-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero::before,
+    .info-shell::before,
+    .criteria-shell::before,
+    .cta-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top center, rgba(245, 185, 66, 0.12), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+
+    .hero-inner,
+    .info-shell,
+    .criteria-shell,
+    .cta-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      margin-top: 8px;
+    }
+
+    .hero-inner {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+    }
+
+    h1 span,
+    .accent-text {
+      color: #b7791f;
+    }
+
+    .hero-copy,
+    .hero-note,
+    .section-copy,
+    .cta-copy {
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 760px;
+    }
+
+    .hero-copy {
+      margin-top: 18px;
+      font-size: 1.06rem;
+    }
+
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.98rem;
+    }
+
+    .hero-points,
+    .quick-notes,
+    .criteria-grid,
+    .abroad-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-points {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 24px;
+    }
+
+    .point-card,
+    .note-card,
+    .criteria-card,
+    .abroad-item {
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+      box-shadow: var(--shadow-md);
+    }
+
+    .point-card,
+    .note-card,
+    .abroad-item {
+      padding: 16px;
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .info-shell,
+    .criteria-shell,
+    .cta-shell {
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .notice-card {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(245, 185, 66, 0.14);
+      border: 1px solid rgba(245, 185, 66, 0.24);
+      box-shadow: var(--shadow-md);
+    }
+
+    .notice-card strong {
+      font-size: 1.1rem;
+    }
+
+    .notice-card p {
+      margin: 0;
+      color: #f5d58a;
+      line-height: 1.75;
+    }
+
+    .quick-notes {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .note-card {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .note-card::before,
+    .abroad-item::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #10b981, #34d399);
+      margin-top: 4px;
+    }
+
+    .criteria-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .criteria-head h2,
+    .cta-shell h3 {
+      margin-top: 14px;
+      font-size: clamp(2.1rem, 5vw, 3.3rem);
+    }
+
+    .section-copy {
+      margin-top: 14px;
+      font-size: 1rem;
+    }
+
+    .criteria-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 24px;
+    }
+
+    .criteria-card {
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .criteria-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(245, 185, 66, 0.14);
+      color: #f5c15a;
+      font-size: 1.25rem;
+    }
+
+    .criteria-card h3 {
+      font-size: 1.55rem;
+    }
+
+    .criteria-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .criteria-hint {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .criteria-hint strong {
+      color: var(--text);
+    }
+
+    .abroad-list {
+      margin-top: 22px;
+    }
+
+    .abroad-item {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 12px;
+      align-items: start;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    .cta-shell {
+      text-align: center;
+    }
+
+    .cta-copy {
+      margin-top: 16px;
+      font-size: 1rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-points,
+      .quick-notes,
+      .criteria-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(calc(100% - 18px), var(--container));
+        padding-top: 14px;
+        padding-bottom: 54px;
+      }
+
+      .topbar,
+      .topbar-actions,
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .ghost-link,
+      .primary-link,
+      .accent-link {
+        width: 100%;
+      }
+
+      .hero-inner,
+      .info-shell,
+      .criteria-shell,
+      .cta-shell {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 10vw, 3.2rem);
+      }
+
+      .criteria-head h2,
+      .cta-shell h3 {
+        font-size: clamp(1.95rem, 9vw, 2.5rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="https://www.vlcontabilidadeempresarial.com.br/" target="_blank" rel="noreferrer">
+        <div class="brand-mark">
+          <img src="../assets/img/LOGO.png" alt="Logo VL Contabilidade Empresarial" />
+        </div>
+        <div class="brand-copy">
+          <strong>VL Contabilidade Empresarial</strong>
+          <span>Critérios IR 2026</span>
+        </div>
+      </a>
+
+      <div class="topbar-actions">
+        <a class="ghost-link" href="./irrf2026.html">Voltar para a triagem</a>
+        <a class="ghost-link whatsapp-btn" href="https://wa.me/5511916539680" target="_blank" rel="noreferrer">WhatsApp da VL</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="eyebrow">Critérios principais de obrigatoriedade</div>
+          <h1 id="hero-title">Quem está <span>obrigado a declarar</span> o Imposto de Renda 2026?</h1>
+          <p class="hero-copy">
+            Veja de forma simples os principais critérios. Se algum deles combina com o seu caso, vale revisar com calma e seguir com mais segurança.
+          </p>
+          <p class="hero-note">A declaração de 2026 considera o que aconteceu em 2025.</p>
+
+          <div class="hero-points">
+            <div class="point-card">Leitura rápida e objetiva</div>
+            <div class="point-card">Critérios mais comuns em um só lugar</div>
+            <div class="point-card">Link direto para a triagem da VL</div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="primary-link" href="./irrf2026.html">Fazer minha triagem</a>
+            <a class="accent-link" href="#criterios">Ver critérios agora</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-shell">
+        <div class="notice-card">
+          <strong>Antes de tudo: 2026 olha para 2025</strong>
+          <p>A declaração do exercício de 2026 considera rendimentos, operações, patrimônio e situações ocorridas no ano-calendário de 2025.</p>
+        </div>
+
+        <div class="quick-notes">
+          <div class="note-card">Se você se encaixa em um ou mais critérios, provavelmente precisa declarar.</div>
+          <div class="note-card">Nem sempre estar obrigado significa pagar imposto.</div>
+          <div class="note-card">Quando existe dúvida, o melhor caminho é confirmar antes de enviar.</div>
+        </div>
+      </section>
+
+      <section class="criteria-shell" id="criterios" aria-labelledby="criteria-title">
+        <div class="criteria-head">
+          <div class="section-kicker">Critérios principais</div>
+          <h2 id="criteria-title">Se algum item abaixo combina com seu caso, vale atenção imediata.</h2>
+          <p class="section-copy">Os cartões abaixo resumem os cenários mais comuns que costumam gerar obrigatoriedade na declaração.</p>
+        </div>
+
+        <div class="criteria-grid" id="criteriaGrid"></div>
+      </section>
+
+      <section class="criteria-shell" aria-labelledby="abroad-title">
+        <div class="criteria-head">
+          <div class="section-kicker">Exterior</div>
+          <h2 id="abroad-title">Situações no exterior que também podem exigir declaração.</h2>
+          <p class="section-copy">Quem tem patrimônio, rendimentos ou estruturas fora do Brasil precisa de uma análise ainda mais cuidadosa.</p>
+        </div>
+
+        <div class="abroad-list" id="abroadList"></div>
+      </section>
+
+      <section class="cta-shell">
+        <div class="section-kicker">Próximo passo</div>
+        <h3>Quer confirmar seu caso com segurança?</h3>
+        <p class="cta-copy">A VL pode revisar seu enquadramento, confirmar a obrigatoriedade e orientar o melhor caminho para a sua declaração.</p>
+        <div class="cta-actions">
+          <a
+            class="primary-link whatsapp-btn"
+            href="https://wa.me/5511916539680?text=Olá!%20Quero%20confirmar%20se%20estou%20obrigado%20a%20declarar%20o%20IR%202026."
+            target="_blank"
+            rel="noreferrer"
+          >
+            Confirmar meu caso no WhatsApp
+          </a>
+          <a class="ghost-link" href="./irrf2026.html">Ir para a triagem agora</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const mainCriteria = [
+      {
+        icon: "R$",
+        title: "Rendimentos tributáveis acima de R$ 35.584,00",
+        text: "Se em 2025 você recebeu salários, aposentadoria, pró-labore, aluguel ou outros rendimentos tributáveis acima desse total anual, já entra na obrigatoriedade.",
+        hint: "Exemplo: salário, aposentadoria, aluguel, pensão ou pró-labore."
+      },
+      {
+        icon: "✓",
+        title: "Rendimentos isentos, não tributáveis ou tributados na fonte acima de R$ 200.000,00",
+        text: "Se a soma desses valores em 2025 passou desse limite, a declaração também pode ser obrigatória.",
+        hint: "Exemplo: FGTS, herança, indenização, poupança e alguns rendimentos já tributados na fonte."
+      },
+      {
+        icon: "▣",
+        title: "Bens e direitos acima de R$ 800.000,00 em 31/12/2025",
+        text: "Se o valor total do seu patrimônio passou desse limite ao fim de 2025, entra como critério de obrigatoriedade.",
+        hint: "Exemplo: imóveis, veículos, saldo em conta, investimentos, participação em empresa e outros bens."
+      },
+      {
+        icon: "∿",
+        title: "Receita bruta da atividade rural acima de R$ 177.920,00",
+        text: "Quem teve atividade rural e ultrapassou esse valor em receita bruta no ano de 2025 também precisa declarar.",
+        hint: "Receita bruta é o total recebido antes de descontar despesas."
+      },
+      {
+        icon: "↺",
+        title: "Compensação de prejuízo da atividade rural",
+        text: "Mesmo sem passar do limite de receita, quem pretende compensar prejuízos da atividade rural deste ano ou de anos anteriores pode precisar declarar.",
+        hint: "Esse caso exige atenção especial."
+      },
+      {
+        icon: "▲",
+        title: "Ganho de capital na venda de bens ou direitos",
+        text: "Se você vendeu algum bem com lucro sujeito ao imposto em qualquer mês de 2025, isso pode gerar obrigatoriedade.",
+        hint: "Exemplo: imóvel, terreno, veículo, quotas ou outros direitos vendidos com ganho."
+      },
+      {
+        icon: "⌂",
+        title: "Venda de imóvel com uso da isenção dos 180 dias",
+        text: "Se você vendeu imóvel residencial e usou a regra de isenção para comprar outro imóvel residencial no prazo legal, essa operação pode obrigar a declaração.",
+        hint: "É a regra da reinversão em até 180 dias."
+      },
+      {
+        icon: "≈",
+        title: "Operações em bolsa acima de R$ 40.000,00 ou com ganhos tributáveis",
+        text: "Quem operou em bolsa em 2025 precisa de atenção. Acima do limite anual ou com certos ganhos, pode haver obrigatoriedade.",
+        hint: "Inclui operações em bolsa de valores, mercadorias, futuros e assemelhadas."
+      },
+      {
+        icon: "BR",
+        title: "Passou à condição de residente no Brasil em 2025",
+        text: "Se você se tornou residente no Brasil em qualquer mês de 2025 e permaneceu nessa condição até 31 de dezembro, isso pode obrigar a declaração.",
+        hint: "É critério de residência fiscal."
+      }
+    ];
+
+    const abroadCriteria = [
+      "Optou por declarar bens, direitos e obrigações de entidade controlada no exterior como se fossem detidos diretamente.",
+      "Tinha trust no exterior em 31/12/2025.",
+      "Teve rendimentos de aplicações financeiras no exterior.",
+      "Pretende compensar perdas de aplicações financeiras no exterior de 2025 ou de anos anteriores.",
+      "Teve lucros ou dividendos de entidades no exterior."
+    ];
+
+    const criteriaGrid = document.getElementById("criteriaGrid");
+    const abroadList = document.getElementById("abroadList");
+
+    criteriaGrid.innerHTML = mainCriteria.map((item) => `
+      <article class="criteria-card">
+        <div class="criteria-icon">${item.icon}</div>
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+        <div class="criteria-hint"><strong>Exemplo rápido:</strong> ${item.hint}</div>
+      </article>
+    `).join("");
+
+    abroadList.innerHTML = abroadCriteria.map((item) => `
+      <div class="abroad-item">${item}</div>
+    `).join("");
+  </script>
+</body>
+</html>
