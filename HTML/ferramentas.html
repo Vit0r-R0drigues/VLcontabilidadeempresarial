@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="/assets/css/cookies.css?v=3.7">
     <link rel="stylesheet" href="/assets/css/site-v2.css?v=1.0">
     <link rel="stylesheet" href="/assets/css/ferramentas-hub.css?v=4.0">
+    <link rel="stylesheet" href="/assets/css/motion.css?v=1.0">
 </head>
 
 <body class="internal-page" data-page="tools">
@@ -81,16 +82,77 @@
     </header>
 
     <main class="ferramentas-page hub-page">
-        <section class="hub-hero">
-            <span class="hub-kicker"><i class="fi fi-rr-bolt"></i> Ferramentas para decidir melhor</span>
-            <h1>Simuladores e calculadoras conectados a diagnostico, enquadramento e rotina empresarial</h1>
-            <p>
-                Use as ferramentas da VL para comparar regimes, projetar custo, organizar folha e visualizar cenarios
-                antes da decisao. Se quiser, a equipe interpreta o resultado com voce no contexto da sua empresa.
-            </p>
-            <div class="hub-hero-actions">
-                <a class="hub-btn hub-btn-primary" href="#calc-section">Explorar Calculadoras</a>
-                <a class="hub-btn hub-btn-ghost" href="/HTML/diagnostico-tributario.html">Solicitar diagnostico</a>
+        <section class="hub-hero hub-hero--calculator" data-tax-hero>
+            <div class="tax-hero-grid">
+                <div class="tax-hero-copy">
+                    <span class="hub-kicker"><i class="fi fi-rr-bolt"></i> Ferramentas para decidir melhor</span>
+                    <h1>Calculadoras e comparadores com cara de inteligencia contabil aplicada</h1>
+                    <p>
+                        Use o hub da VL para comparar regimes, projetar custo, revisar retirada e enxergar cenarios antes da decisao. Se precisar, a equipe interpreta o resultado com voce no contexto da empresa.
+                    </p>
+                    <div class="hub-hero-actions">
+                        <a class="hub-btn hub-btn-primary" href="#calc-section">Explorar Calculadoras</a>
+                        <a class="hub-btn hub-btn-ghost" href="/HTML/diagnostico-tributario.html">Solicitar diagnostico</a>
+                    </div>
+                    <div class="tax-hero-pills">
+                        <span>Simples Nacional</span>
+                        <span>Lucro Presumido</span>
+                        <span>DAS, INSS e IRRF</span>
+                        <span>Economia tributaria possivel</span>
+                    </div>
+                </div>
+
+                <div class="tax-visual-panel" aria-hidden="true">
+                    <div class="tax-calc-board" data-tax-board>
+                        <div class="tax-calc-cursor" data-tax-cursor></div>
+
+                        <div class="tax-calc-row" data-tax-row style="--tax-fill: 84%;">
+                            <div>
+                                <label>Faturamento</label>
+                                <strong data-count-mode="manual" data-count-to="125000" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div><span class="hub-badge">Receita</span></div>
+                        </div>
+
+                        <div class="tax-calc-row" data-tax-row style="--tax-fill: 66%;">
+                            <div>
+                                <label>Base de calculo</label>
+                                <strong data-count-mode="manual" data-count-to="94800" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div><span class="hub-badge">Apuracao</span></div>
+                        </div>
+
+                        <div class="tax-calc-row" data-tax-row style="--tax-fill: 35%;">
+                            <div>
+                                <label>Aliquota projetada</label>
+                                <strong data-count-mode="manual" data-count-to="13.5" data-decimals="1" data-suffix="%">0%</strong>
+                            </div>
+                            <div><span class="hub-badge">Simples Nacional</span></div>
+                        </div>
+
+                        <div class="tax-calc-row" data-tax-row style="--tax-fill: 42%;">
+                            <div>
+                                <label>DAS estimado</label>
+                                <strong data-count-mode="manual" data-count-to="12798" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div><span class="hub-badge">DAS</span></div>
+                        </div>
+
+                        <div class="tax-calc-row" data-tax-row style="--tax-fill: 28%;">
+                            <div>
+                                <label>INSS + IRRF sobre retirada</label>
+                                <strong data-count-mode="manual" data-count-to="3120" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div><span class="hub-badge">Retirada</span></div>
+                        </div>
+
+                        <div class="tax-calc-result" data-tax-result>
+                            <span>Tributo estimado</span>
+                            <strong data-count-mode="manual" data-count-to="15918" data-prefix="R$ ">R$ 0</strong>
+                            <p>Com revisao de enquadramento e leitura consultiva, a economia tributaria possivel pode chegar a R$ 2.180 no mes.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -672,6 +734,8 @@
     <script src="/assets/js/menu.js?v=3.7" defer></script>
     <script src="/assets/js/footer.js?v=3.7" defer></script>
     <script src="/assets/js/ferramentas.js?v=4.0" defer></script>
+    <script src="/assets/js/motion.js?v=1.0" defer></script>
+    <script src="/assets/js/main.js?v=1.0" defer></script>
 </body>
 
 </html>

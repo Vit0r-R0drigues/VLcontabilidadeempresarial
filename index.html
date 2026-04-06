@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="/assets/css/mediaquery.css?v=3.7">
     <link rel="stylesheet" href="/assets/css/cookies.css?v=3.7">
     <link rel="stylesheet" href="/assets/css/site-v2.css?v=1.0">
+    <link rel="stylesheet" href="/assets/css/motion.css?v=1.0">
+    <link rel="stylesheet" href="/assets/css/hero-background.css?v=1.0">
     <script src="/assets/js/menu.js?v=3.7" defer></script>
     <script src="/assets/js/cookies.js?v=3.7" defer></script>
 
@@ -94,223 +96,477 @@
         </div>
     </header>
 
-    <main class="site-main-v2">
-        <section class="hero-section">
-            <div class="section-shell">
-                <div class="hero-grid-v2">
-                    <div class="hero-copy-card">
-                        <span class="eyebrow-label"><i class="fi fi-rr-bolt"></i> Atendimento em ate 24h</span>
-                        <h1>Contabilidade digital <span class="hero-highlight">consultiva</span> para prestadores de servico, MEIs em crescimento e pequenas empresas</h1>
-                        <p>A VL ajuda voce a abrir empresa, trocar de contador, revisar enquadramento e organizar a rotina fiscal, financeira e operacional sem burocracia desnecessaria.</p>
+    <main class="site-main-v2 home-main-premium">
+        <div class="hero-bg-interactive" aria-hidden="true" data-hero-background>
+                    <canvas class="hero-bg-canvas" data-hero-bg-canvas></canvas>
+                    <div class="hero-bg-panels">
+                        <div class="hero-bg-panel hero-bg-panel--flow">
+                            <span class="hero-bg-panel-label">Fluxo contabil</span>
+                            <div class="hero-bg-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="hero-bg-panel hero-bg-panel--dre">
+                            <span class="hero-bg-panel-label">DRE resumida</span>
+                            <div class="hero-bg-bars">
+                                <span style="--bar-height: 44%;"></span>
+                                <span style="--bar-height: 62%;"></span>
+                                <span style="--bar-height: 88%;"></span>
+                                <span style="--bar-height: 58%;"></span>
+                            </div>
+                        </div>
+                        <div class="hero-bg-panel hero-bg-panel--tax">
+                            <span class="hero-bg-panel-label">Base e tributo</span>
+                            <div class="hero-bg-indicators">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="hero-bg-panel hero-bg-panel--trust">
+                            <span class="hero-bg-panel-label">Rotina validada</span>
+                            <div class="hero-bg-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-bg-overlay"></div>
+                    <div class="hero-bg-fade"></div>
+        </div>
+        <section class="hero-section hero-home-premium">
+            <div class="hero-main">
+                <div class="section-shell hero-content">
+                <div class="hero-home-grid">
+                    <div class="hero-copy-card hero-home-copy">
+                        <div class="hero-eyebrow-stack">
+                            <span class="eyebrow-label"><i class="fi fi-rr-bolt"></i> Atendimento consultivo em ate 24h</span>
+                            <span class="hero-proof-pill">CRC ativo e responsavel tecnico</span>
+                            <span class="hero-proof-pill">Fiscal, financeiro e decisao conectados</span>
+                        </div>
+                        <h1>Contabilidade digital e consultiva para abrir, organizar e decidir com clareza.</h1>
+                        <p>A VL assume a abertura, a migracao de contador, a rotina fiscal e a leitura estrategica para prestadores de servico, profissionais liberais, empresas em fase de ajuste e pequenas operacoes que precisam reduzir ruido e ganhar criterio.</p>
                         <div class="hero-actions-v2">
                             <a href="https://wa.me/5511916539680?text=Ola%2C%20quero%20falar%20com%20a%20VL%20sobre%20contabilidade%20consultiva." class="btn-v2 btn-v2-whatsapp" target="_blank">Falar no WhatsApp</a>
-                            <a href="/HTML/servicos.html" class="btn-v2 btn-v2-primary">Ver servicos</a>
-                            <a href="/HTML/abertura-de-empresa.html" class="btn-v2 btn-v2-secondary">Abrir empresa</a>
+                            <a href="/HTML/abertura-de-empresa.html" class="btn-v2 btn-v2-primary">Abrir empresa</a>
+                            <a href="/HTML/troca-de-contador.html" class="btn-v2 btn-v2-secondary">Trocar de contador</a>
                         </div>
-                        <div class="inline-points">
-                            <span class="inline-point"><i class="fi fi-rr-shield-check"></i> Contador responsavel com CRC</span>
-                            <span class="inline-point"><i class="fi fi-rr-comment-alt"></i> Orientacao clara e humana</span>
-                            <span class="inline-point"><i class="fi fi-rr-layers"></i> Fiscal, financeiro e operacional</span>
-                        </div>
-                        <div class="hero-stats-list">
-                            <div class="hero-stat-card">
-                                <h3>Para quem a VL foi posicionada</h3>
-                                <p>Prestadores de servico, profissionais liberais, pequenas empresas, quem quer abrir CNPJ e quem precisa trocar um contador lento por um suporte consultivo.</p>
-                            </div>
-                            <div class="hero-stat-card">
-                                <h3>Resultado esperado</h3>
-                                <p>Mais clareza na tomada de decisao, menos risco tributario e uma rotina mais organizada para crescer com seguranca.</p>
-                            </div>
+                        <div class="hero-direct-links">
+                            <a href="/HTML/diagnostico-tributario.html" class="hero-direct-link">Revisar enquadramento <i class="fi fi-rr-arrow-right"></i></a>
+                            <a href="/HTML/ferramentas.html" class="hero-direct-link">Explorar ferramentas <i class="fi fi-rr-arrow-right"></i></a>
+                            <a href="/HTML/servicos.html#rotina" class="hero-direct-link">Organizar rotina mensal <i class="fi fi-rr-arrow-right"></i></a>
+                            <a href="/HTML/contatos.html" class="hero-direct-link">Falar com especialista <i class="fi fi-rr-arrow-right"></i></a>
                         </div>
                     </div>
-                    <aside class="hero-side-card">
-                        <div class="founder-profile">
-                            <img src="/assets/img/fotoprofissional.jpg" alt="Vitor Rodrigues de Lima, contador responsavel">
-                            <div>
-                                <strong>Vitor Rodrigues de Lima</strong>
-                                <span>Contador responsavel | CRC SP353836</span>
-                                <p class="copy-muted">Atendimento direto, digital e consultivo para quem quer entender o impacto das decisoes antes de executar.</p>
+
+                    <aside class="hero-side-card hero-visual-card">
+                        <div class="hero-visual-top">
+                            <span class="hero-visual-chip">Assistente analitico VL</span>
+                            <span class="hero-visual-chip hero-visual-chip--soft">Leitura contabil em tempo real</span>
+                        </div>
+                        <div class="analyst-scene" data-hero-scene>
+                            <div class="hero-analyst-figure" aria-hidden="true">
+                                <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Assistente inteligente analisando um painel contabil">
+                                    <defs>
+                                        <linearGradient id="robotBodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#1f4d73"/>
+                                            <stop offset="100%" stop-color="#0d2135"/>
+                                        </linearGradient>
+                                        <linearGradient id="robotGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#7da7ff"/>
+                                            <stop offset="100%" stop-color="#8ff2b6"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <ellipse cx="140" cy="314" rx="92" ry="18" fill="rgba(6, 14, 22, 0.34)"/>
+                                    <rect x="76" y="192" width="128" height="112" rx="34" fill="url(#robotBodyGradient)"/>
+                                    <path d="M115 194C115 164 137 138 168 138C198 138 222 162 222 194V212H115V194Z" fill="#0b1a2a"/>
+                                    <circle cx="168" cy="136" r="74" fill="url(#robotBodyGradient)"/>
+                                    <circle cx="168" cy="136" r="70" fill="rgba(16, 40, 62, 0.92)" stroke="rgba(125, 167, 255, 0.26)" stroke-width="2"/>
+                                    <rect class="hero-visor-glow" x="118" y="116" width="100" height="38" rx="18" fill="rgba(12, 22, 35, 0.92)" stroke="rgba(125, 167, 255, 0.26)" stroke-width="2"/>
+                                    <circle class="hero-eye" cx="151" cy="135" r="5.6" fill="url(#robotGlowGradient)"/>
+                                    <circle class="hero-eye hero-eye--delay" cx="185" cy="135" r="5.6" fill="url(#robotGlowGradient)"/>
+                                    <path d="M123 164C137 174 152 179 168 179C184 179 198 174 212 164" stroke="rgba(143, 242, 182, 0.66)" stroke-width="3" stroke-linecap="round"/>
+                                    <path d="M217 218C247 214 260 226 272 254" fill="none" stroke="rgba(125, 167, 255, 0.74)" stroke-width="12" stroke-linecap="round"/>
+                                    <path d="M98 226C80 232 68 246 58 270" fill="none" stroke="rgba(125, 167, 255, 0.32)" stroke-width="9" stroke-linecap="round"/>
+                                    <circle cx="278" cy="262" r="16" fill="#0b1c2f" stroke="rgba(125, 167, 255, 0.24)" stroke-width="2"/>
+                                </svg>
+                            </div>
+
+                            <div class="report-surface" aria-hidden="true">
+                                <div class="report-scanner"></div>
+                                <div class="report-topline">
+                                    <span class="report-tag">Relatorio em leitura</span>
+                                    <span class="report-score">Status validado</span>
+                                </div>
+                                <div class="report-lines">
+                                    <div class="report-line" style="--line-fill: 78%; --line-delay: 0ms;">
+                                        <span>Receita consolidada</span>
+                                        <strong data-swap-values="R$ 184.200|R$ 185.000|R$ 185.640">R$ 184.200</strong>
+                                    </div>
+                                    <div class="report-line" style="--line-fill: 46%; --line-delay: 280ms;">
+                                        <span>Tributos projetados</span>
+                                        <strong data-swap-values="R$ 18.100|R$ 18.500|R$ 18.240">R$ 18.100</strong>
+                                    </div>
+                                    <div class="report-line" style="--line-fill: 68%; --line-delay: 520ms;">
+                                        <span>Margem operacional</span>
+                                        <strong data-swap-values="36,2%|36,8%|37,1%">36,2%</strong>
+                                    </div>
+                                </div>
+                                <div class="report-bottom">
+                                    <div class="report-metric">
+                                        <span>Lucro liquido</span>
+                                        <strong data-swap-values="R$ 60.880|R$ 61.480|R$ 61.920">R$ 60.880</strong>
+                                    </div>
+                                    <div class="report-metric">
+                                        <span>Cenario fiscal</span>
+                                        <strong data-swap-values="Estavel|Ajuste fino|Validado">Estavel</strong>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <ul class="hero-side-list">
-                            <li><i class="fi fi-rr-check-circle"></i> Abertura de empresa com escolha orientada de regime</li>
-                            <li><i class="fi fi-rr-check-circle"></i> Troca de contador com onboarding e organizacao de documentos</li>
-                            <li><i class="fi fi-rr-check-circle"></i> Diagnostico tributario apoiado por simuladores e comparadores</li>
-                            <li><i class="fi fi-rr-check-circle"></i> Suporte para folha, obrigacoes e saude financeira empresarial</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="mini-chip">Escritorio 100% digital</span>
-                            <span class="mini-chip">Processo claro</span>
-                            <span class="mini-chip">Suporte consultivo</span>
-                        </div>
+                        <p class="hero-scene-caption">Relatorios, tributos e margem sendo lidos em uma unica camada de decisao, com mais criterio e menos improviso para a empresa.</p>
                     </aside>
                 </div>
+                <div class="hero-proof-band">
+                    <article class="hero-proof-stat">
+                        <span>Retorno consultivo</span>
+                        <strong data-count-to="24" data-suffix="h">0h</strong>
+                        <p>ritmo esperado para nao travar a proxima decisao</p>
+                    </article>
+                    <article class="hero-proof-stat">
+                        <span>Fluxo digital</span>
+                        <strong data-count-to="100" data-suffix="%">0%</strong>
+                        <p>documentos, simulacoes e atendimento em uma rotina mais limpa</p>
+                    </article>
+                    <article class="hero-proof-stat">
+                        <span>Base tecnica</span>
+                        <strong>CRC</strong>
+                        <p>responsabilidade tecnica ativa e leitura orientada por criterio</p>
+                    </article>
+                    <article class="hero-proof-stat">
+                        <span>Atendimento</span>
+                        <strong>Brasil</strong>
+                        <p>estrutura digital para empresas em diferentes regioes do pais</p>
+                    </article>
+                </div>
+            </div>
             </div>
         </section>
 
-        <section class="section-block">
+        <section class="section-block" id="home-audiencia">
             <div class="section-shell">
-                <div class="section-panel">
+                <div class="section-panel audience-fusion-panel">
                     <div class="section-heading">
-                        <span class="eyebrow-label"><i class="fi fi-rr-users"></i> Para quem e</span>
-                        <h2>Uma contabilidade feita para dores reais de quem empreende</h2>
-                        <p>A VL deixa de parecer uma contabilidade generica e assume um posicionamento claro para quem precisa de mais criterio, suporte e previsibilidade.</p>
+                        <span class="eyebrow-label"><i class="fi fi-rr-users"></i> Onde a VL encaixa melhor</span>
+                        <h2>Uma base digital e consultiva para quem precisa abrir, reorganizar ou ganhar criterio na rotina</h2>
+                        <p>A linguagem premium continua, mas a operacao precisa ser objetiva. A VL entra melhor quando a empresa precisa se reconhecer rapido no problema e sair com direcao pratica.</p>
                     </div>
-                    <div class="grid-3">
-                        <article class="audience-card"><span class="card-icon"><i class="fi fi-rr-briefcase"></i></span><h3>Prestadores de servico</h3><p>Quem precisa comparar regimes, organizar retirada dos socios e ganhar previsibilidade no caixa.</p></article>
-                        <article class="audience-card"><span class="card-icon"><i class="fi fi-rr-badge-check"></i></span><h3>MEIs em crescimento</h3><p>Empreendedores que estao perto do limite, contratando ou sentindo que o MEI nao acompanha a operacao.</p></article>
-                        <article class="audience-card"><span class="card-icon"><i class="fi fi-rr-building"></i></span><h3>Pequenas empresas</h3><p>Negocios que precisam manter o fiscal em dia sem perder o controle financeiro e operacional.</p></article>
-                        <article class="audience-card"><span class="card-icon"><i class="fi fi-rr-stethoscope"></i></span><h3>Profissionais liberais</h3><p>Quem trabalha com agenda, honorarios ou atendimentos e precisa de estrutura tributaria mais inteligente.</p></article>
-                        <article class="audience-card"><span class="card-icon"><i class="fi fi-rr-apps-add"></i></span><h3>Quem vai abrir empresa</h3><p>Empresarios que querem comecar com CNPJ, CNAE e regime tributario bem definidos desde o inicio.</p></article>
-                        <article class="audience-card"><span class="card-icon"><i class="fi fi-rr-refresh"></i></span><h3>Quem quer trocar de contador</h3><p>Empresas cansadas de atraso, falta de retorno, orientacao rasa ou operacao desorganizada.</p></article>
+                    <div class="audience-layout">
+                        <aside class="audience-callout-card">
+                            <span class="eyebrow-label"><i class="fi fi-rr-cloud"></i> Operacao digital</span>
+                            <h3>Uma estrutura para abrir, migrar e manter a casa em ordem sem perder o atendimento humano.</h3>
+                            <p>Abertura, troca de contador, revisao de enquadramento e rotina mensal passam a seguir um fluxo mais previsivel, com checkpoints mais claros e menos retrabalho.</p>
+                            <div class="audience-track-list">
+                                <div class="audience-track-item">
+                                    <div class="audience-track-meta">
+                                        <span>Abertura e enquadramento</span>
+                                        <strong>direcao inicial com criterio</strong>
+                                    </div>
+                                    <div class="audience-track-bar" style="--audience-fill: 82%;"></div>
+                                </div>
+                                <div class="audience-track-item">
+                                    <div class="audience-track-meta">
+                                        <span>Migracao de contador</span>
+                                        <strong>continuidade sem ruido operacional</strong>
+                                    </div>
+                                    <div class="audience-track-bar" style="--audience-fill: 68%;"></div>
+                                </div>
+                                <div class="audience-track-item">
+                                    <div class="audience-track-meta">
+                                        <span>Fiscal, folha e documentos</span>
+                                        <strong>rotina mensal mais organizada</strong>
+                                    </div>
+                                    <div class="audience-track-bar" style="--audience-fill: 76%;"></div>
+                                </div>
+                            </div>
+                            <div class="audience-callout-actions">
+                                <a href="/HTML/abertura-de-empresa.html" class="btn-v2 btn-v2-primary">Quero abrir empresa</a>
+                                <a href="/HTML/troca-de-contador.html" class="btn-v2 btn-v2-secondary">Quero migrar de contador</a>
+                            </div>
+                        </aside>
+                        <div class="audience-grid">
+                            <article class="audience-card-v3">
+                                <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-briefcase"></i></span><span class="offer-badge">Prestadores de servico</span></div>
+                                <h3>Quem precisa alinhar imposto, retirada e rotina com mais clareza</h3>
+                                <p>Indicada para operacoes que faturam bem, mas ainda sofrem com ruido fiscal e pouca leitura de margem.</p>
+                                <div class="offer-footer"><a href="/HTML/contabilidade-prestadores-servico.html" class="text-link-v2">Ver pagina dedicada <i class="fi fi-rr-arrow-right"></i></a></div>
+                            </article>
+                            <article class="audience-card-v3">
+                                <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-stethoscope"></i></span><span class="offer-badge">Profissionais liberais</span></div>
+                                <h3>Quem quer uma estrutura mais inteligente para honorarios e crescimento</h3>
+                                <p>Bom encaixe para quem atende com agenda, servico recorrente ou faturamento pulverizado e precisa de mais criterio tributario.</p>
+                                <div class="offer-footer"><a href="/HTML/contabilidade-profissionais-liberais.html" class="text-link-v2">Ver especialidade <i class="fi fi-rr-arrow-right"></i></a></div>
+                            </article>
+                            <article class="audience-card-v3">
+                                <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-apps-add"></i></span><span class="offer-badge">Abertura de CNPJ</span></div>
+                                <h3>Quem vai comecar e quer CNAE, natureza e regime definidos sem improviso</h3>
+                                <p>A VL ajuda a iniciar a operacao com enquadramento mais coerente desde a largada.</p>
+                                <div class="offer-footer"><a href="/HTML/abertura-de-empresa.html" class="text-link-v2">Abrir com criterio <i class="fi fi-rr-arrow-right"></i></a></div>
+                            </article>
+                            <article class="audience-card-v3">
+                                <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-refresh"></i></span><span class="offer-badge">Troca de contador</span></div>
+                                <h3>Quem cansou de atraso, resposta lenta e operacao sem contexto</h3>
+                                <p>Migracao com checklist, sequencia de envio e leitura do cenario para nao perder continuidade.</p>
+                                <div class="offer-footer"><a href="/HTML/troca-de-contador.html" class="text-link-v2">Migrar com apoio <i class="fi fi-rr-arrow-right"></i></a></div>
+                            </article>
+                            <article class="audience-card-v3">
+                                <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-chart-pie"></i></span><span class="offer-badge">Revisao tributaria</span></div>
+                                <h3>Quem sente que a empresa cresceu e o enquadramento pode ter ficado para tras</h3>
+                                <p>Simulacoes e comparacoes entram para mostrar se o problema esta no regime, na retirada ou na rotina.</p>
+                                <div class="offer-footer"><a href="/HTML/diagnostico-tributario.html" class="text-link-v2">Revisar enquadramento <i class="fi fi-rr-arrow-right"></i></a></div>
+                            </article>
+                            <article class="audience-card-v3">
+                                <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-users"></i></span><span class="offer-badge">Rotina com equipe</span></div>
+                                <h3>Quem precisa organizar folha, eventos e encargos sem perder controle operacional</h3>
+                                <p>Quando a empresa cresce, a folha deixa de ser detalhe e passa a exigir processo claro e acompanhamento constante.</p>
+                                <div class="offer-footer"><a href="/HTML/servicos.html#rotina" class="text-link-v2">Ver rotina de folha <i class="fi fi-rr-arrow-right"></i></a></div>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-block">
+        <section class="section-block" id="home-servicos">
             <div class="section-shell">
-                <div class="dual-panel">
-                    <div class="section-panel">
-                        <div class="section-heading">
-                            <span class="eyebrow-label"><i class="fi fi-rr-interrogation"></i> Dores do publico</span>
-                            <h2>O problema raramente e so emitir guia</h2>
-                            <p>Muitos empresarios chegam ate a VL quando percebem que falta leitura pratica do negocio e nao apenas execucao de rotina.</p>
-                        </div>
-                        <div class="grid-2">
-                            <article class="pain-card"><h3>Duvida sobre regime</h3><p>Faturamento cresceu e ninguem explicou se voce ainda esta no enquadramento certo.</p></article>
-                            <article class="pain-card"><h3>Contador que demora</h3><p>Voce manda mensagem, espera dias e continua sem clareza sobre o proximo passo.</p></article>
-                            <article class="pain-card"><h3>Medo de pagar imposto errado</h3><p>Sem acompanhamento, o risco fiscal cresce e a decisao fica travada.</p></article>
-                            <article class="pain-card"><h3>Financeiro desorganizado</h3><p>O negocio vende, mas o caixa nao mostra margem, retirada e custo real da operacao.</p></article>
-                            <article class="pain-card"><h3>Dificuldade com folha</h3><p>Admissao, ferias, rescisao e encargos viram gargalo quando o time cresce.</p></article>
-                            <article class="pain-card"><h3>Falta de visao estrategica</h3><p>Sem apoio consultivo, fica dificil saber onde economizar e como crescer com seguranca.</p></article>
-                        </div>
-                    </div>
-                    <div class="section-panel">
-                        <div class="section-heading">
-                            <span class="eyebrow-label"><i class="fi fi-rr-lightbulb-on"></i> Solucao VL</span>
-                            <h2>Contabilidade digital com suporte humano e orientacao para decidir melhor</h2>
-                            <p>A proposta da VL combina rotina contabil em dia com leitura de impacto para cada momento do negocio.</p>
-                        </div>
-                        <div class="grid-2">
-                            <article class="solution-card"><h3>Suporte consultivo</h3><p>Voce recebe contexto, criterio e encaminhamento, nao apenas resposta operacional.</p></article>
-                            <article class="solution-card"><h3>Ferramentas de decisao</h3><p>Calculadoras e comparadores ajudam a visualizar cenarios antes de mudar regime ou estrutura.</p></article>
-                            <article class="solution-card"><h3>Acompanhamento fiscal e financeiro</h3><p>Tributos, rotina contabil, folha e saude financeira passam a conversar.</p></article>
-                            <article class="solution-card"><h3>Onboarding claro</h3><p>Na abertura ou troca de contador, a prioridade e reduzir ruido e organizar a operacao.</p></article>
-                            <article class="solution-card"><h3>Atendimento rapido</h3><p>Demandas importantes trabalham com expectativa de retorno em ate 24h.</p></article>
-                            <article class="solution-card"><h3>Linguagem acessivel</h3><p>Sem jargao inutil. O objetivo e voce entender o que muda e por que muda.</p></article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-block">
-            <div class="section-shell">
-                <div class="section-panel">
+                <div class="section-panel services-home-panel">
                     <div class="section-heading">
-                        <span class="eyebrow-label"><i class="fi fi-rr-briefcase"></i> Servicos e ofertas de entrada</span>
-                        <h2>Portas de entrada claras para quem quer agir agora</h2>
-                        <p>Se voce chegou com um problema especifico, estes sao os caminhos mais diretos para comecar a resolver com rapidez e criterio.</p>
+                        <span class="eyebrow-label"><i class="fi fi-rr-briefcase"></i> Nossos servicos</span>
+                        <h2>Solucoes principais para imposto, rotina e decisao</h2>
+                        <p>A VL entra onde mais pesa no dia a dia da empresa: abertura, enquadramento, folha, leitura de margem e rotina operacional que precisa funcionar com menos atrito.</p>
                     </div>
-                    <div class="grid-3">
-                        <article class="offer-card-v2">
+                    <div class="services-home-grid">
+                        <article class="offer-card-v2 offer-card-v2--spotlight offer-card-v2--featured">
+                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-calculator"></i></span><span class="offer-badge">Destaque tributario</span></div>
+                            <h3>Contabilidade Fiscal</h3>
+                            <p>Apuracao, enquadramento, comparacao de carga tributaria e leitura preventiva para reduzir desperdicio, risco e decisao mal tomada.</p>
+                            <div class="mini-panel">
+                                <div class="mini-tax-line">
+                                    <span>Base de calculo</span>
+                                    <strong data-swap-values="R$ 82 mil|R$ 84 mil|R$ 83,4 mil">R$ 82 mil</strong>
+                                </div>
+                                <div class="mini-tax-bar" style="--bar-fill: 74%;"></div>
+                                <div class="mini-tax-line is-negative">
+                                    <span>Tributo estimado</span>
+                                    <strong data-swap-values="-R$ 11,8 mil|-R$ 12,1 mil|-R$ 11,9 mil">-R$ 11,8 mil</strong>
+                                </div>
+                                <div class="mini-tax-bar" style="--bar-fill: 38%;"></div>
+                            </div>
+                            <div class="offer-footer"><a href="/HTML/ferramentas.html" class="text-link-v2">Ver calculadoras e comparadores <i class="fi fi-rr-arrow-right"></i></a></div>
+                        </article>
+
+                        <article class="offer-card-v2 offer-card-v2--spotlight offer-card-v2--featured">
+                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-chart-line-up"></i></span><span class="offer-badge">Leitura de performance</span></div>
+                            <h3>Consultoria Empresarial</h3>
+                            <p>Analise de margem, rotina operacional, gargalos e cenarios para transformar numeros em plano de acao com mais criterio.</p>
+                            <div class="mini-panel">
+                                <div class="mini-spark-line">
+                                    <span>Margem operacional</span>
+                                    <strong data-swap-values="34,8%|36,1%|35,6%">34,8%</strong>
+                                </div>
+                                <svg class="mini-spark-chart" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <defs>
+                                        <linearGradient id="consultingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#7da7ff"/>
+                                            <stop offset="100%" stop-color="#8ff2b6"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path fill="none" d="M8 38H212"/>
+                                    <polyline fill="none" points="8,42 48,30 88,34 128,18 168,24 212,10"/>
+                                </svg>
+                            </div>
+                            <div class="offer-footer"><a href="/HTML/servicos.html#rotina" class="text-link-v2">Entender a consultoria <i class="fi fi-rr-arrow-right"></i></a></div>
+                        </article>
+
+                        <article class="offer-card-v2 offer-card-v2--spotlight">
+                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-users"></i></span><span class="offer-badge">Rotina segura</span></div>
+                            <h3>Departamento Pessoal</h3>
+                            <p>Admissao, ferias, rescisao, folha e encargos com processo claro para a empresa nao perder controle quando o time cresce.</p>
+                            <div class="offer-footer"><a href="/HTML/servicos.html#rotina" class="text-link-v2">Ver rotina de folha <i class="fi fi-rr-arrow-right"></i></a></div>
+                        </article>
+
+                        <article class="offer-card-v2 offer-card-v2--spotlight">
                             <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-apps-add"></i></span><span class="offer-badge">Inicio estruturado</span></div>
-                            <h3>Abertura de empresa</h3>
-                            <p>Escolha de CNAE, natureza juridica e regime tributario para comecar certo e evitar retrabalho.</p>
-                            <div class="offer-footer"><a href="/HTML/abertura-de-empresa.html" class="text-link-v2">Ver detalhes <i class="fi fi-rr-arrow-right"></i></a></div>
-                        </article>
-                        <article class="offer-card-v2">
-                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-refresh"></i></span><span class="offer-badge">Recuperar controle</span></div>
-                            <h3>Troca de contador</h3>
-                            <p>Migracao orientada para organizar documentos, obrigacoes e comunicacao sem travar a operacao.</p>
-                            <div class="offer-footer"><a href="/HTML/troca-de-contador.html" class="text-link-v2">Ver detalhes <i class="fi fi-rr-arrow-right"></i></a></div>
-                        </article>
-                        <article class="offer-card-v2">
-                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-chart-histogram"></i></span><span class="offer-badge">Economia com seguranca</span></div>
-                            <h3>Diagnostico tributario</h3>
-                            <p>Leitura do regime atual, comparacao de cenarios e recomendacao consultiva para pagar menos imposto com base tecnica.</p>
-                            <div class="offer-footer"><a href="/HTML/diagnostico-tributario.html" class="text-link-v2">Ver detalhes <i class="fi fi-rr-arrow-right"></i></a></div>
-                        </article>
-                        <article class="offer-card-v2">
-                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-briefcase"></i></span><span class="offer-badge">Nicho prioritario</span></div>
-                            <h3>Contabilidade para prestadores de servico</h3>
-                            <p>Organizacao tributaria, pro-labore, distribuicao e leitura de margem para quem vive de servico.</p>
-                            <div class="offer-footer"><a href="/HTML/contabilidade-prestadores-servico.html" class="text-link-v2">Ver detalhes <i class="fi fi-rr-arrow-right"></i></a></div>
-                        </article>
-                        <article class="offer-card-v2">
-                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-stethoscope"></i></span><span class="offer-badge">Rotina profissional</span></div>
-                            <h3>Contabilidade para profissionais liberais</h3>
-                            <p>Estrutura tributaria e operacional para quem atende clientes, pacientes ou projetos com agenda variavel.</p>
-                            <div class="offer-footer"><a href="/HTML/contabilidade-profissionais-liberais.html" class="text-link-v2">Ver detalhes <i class="fi fi-rr-arrow-right"></i></a></div>
-                        </article>
-                        <article class="offer-card-v2">
-                            <div class="offer-top"><span class="card-icon"><i class="fi fi-rr-users"></i></span><span class="offer-badge">Rotina completa</span></div>
-                            <h3>Departamento pessoal e consultoria</h3>
-                            <p>Folha, admissao, ferias, rescisao e apoio a indicadores para manter a operacao funcionando sem surpresa.</p>
-                            <div class="offer-footer"><a href="/HTML/servicos.html" class="text-link-v2">Ver todos os servicos <i class="fi fi-rr-arrow-right"></i></a></div>
+                            <h3>Abertura de Empresas</h3>
+                            <p>CNAE, natureza juridica, regime e onboarding inicial para comecar sem improviso e sem carregar erro tributario logo na largada.</p>
+                            <div class="offer-footer"><a href="/HTML/abertura-de-empresa.html" class="text-link-v2">Abrir empresa com criterio <i class="fi fi-rr-arrow-right"></i></a></div>
                         </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-block">
+        <section class="section-block" id="home-dre">
             <div class="section-shell">
-                <div class="section-panel">
-                    <div class="intro-band">
-                        <div class="intro-copy-box">
-                            <span class="eyebrow-label"><i class="fi fi-rr-calculator"></i> Ferramentas integradas ao funil</span>
-                            <h2>Simule cenarios antes de decidir e fale com a VL para interpretar</h2>
-                            <p>O hub de ferramentas ajuda voce a comparar enquadramento, projetar custo, pro-labore e impacto tributario antes da decisao operacional.</p>
-                            <div class="inline-actions">
-                                <a href="/HTML/ferramentas.html" class="btn-v2 btn-v2-primary">Explorar ferramentas</a>
-                                <a href="https://wa.me/5511916539680?text=Ola%2C%20quero%20ajuda%20para%20interpretar%20um%20resultado%20das%20ferramentas%20da%20VL." class="btn-v2 btn-v2-secondary" target="_blank">Interpretar com a VL</a>
+                <div class="section-panel dre-section" data-dre-panel>
+                    <div class="section-heading">
+                        <span class="eyebrow-label"><i class="fi fi-rr-chart-pie"></i> Numeros que viram decisao</span>
+                        <h2>Uma DRE bem lida mostra onde a operacao ganha folego e onde o lucro escapa</h2>
+                        <p>A VL nao fica so na obrigacao fiscal. O objetivo e ler resultado, enxergar pressao de margem e apoiar decisoes com mais clareza estrategica.</p>
+                    </div>
+                    <div class="dre-layout">
+                        <div class="dre-table" aria-label="DRE resumida e animada">
+                            <div class="dre-row" data-dre-row style="--dre-bar: 100%;">
+                                <div class="dre-label"><span>Entrada total</span><strong>Receita Bruta</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="185000" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row is-negative" data-dre-row style="--dre-bar: 18%;">
+                                <div class="dre-label"><span>Impostos e ajustes</span><strong>Deducoes</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="-18500" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row" data-dre-row style="--dre-bar: 82%;">
+                                <div class="dre-label"><span>Base operacional</span><strong>Receita Liquida</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="166500" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row is-negative" data-dre-row style="--dre-bar: 39%;">
+                                <div class="dre-label"><span>Execucao do servico</span><strong>Custos</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="-71200" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row" data-dre-row style="--dre-bar: 51%;">
+                                <div class="dre-label"><span>Primeiro respiro</span><strong>Lucro Bruto</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="95300" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row is-negative" data-dre-row style="--dre-bar: 15%;">
+                                <div class="dre-label"><span>Estrutura e operacao</span><strong>Despesas Operacionais</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="-28400" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row" data-dre-row style="--dre-bar: 36%;">
+                                <div class="dre-label"><span>Resultado da gestao</span><strong>Resultado Operacional</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="66900" data-prefix="R$ ">R$ 0</strong>
+                            </div>
+                            <div class="dre-row" data-dre-row data-dre-emphasis="true" style="--dre-bar: 33%;">
+                                <div class="dre-label"><span>Fechamento da leitura</span><strong>Lucro Liquido</strong></div>
+                                <div class="dre-bar-track"><span class="dre-bar-fill"></span></div>
+                                <strong class="dre-value" data-count-mode="manual" data-count-to="61480" data-prefix="R$ ">R$ 0</strong>
                             </div>
                         </div>
-                        <div class="grid-2">
-                            <article class="insight-card"><h3>Compare Simples x Presumido</h3><p>Entenda se a empresa esta perto de um ponto em que mudar o regime faz sentido financeiro.</p><a href="/HTML/calculadora-suite.html?calc=simples-vs-lucro-presumido" class="text-link-v2">Abrir comparador</a></article>
-                            <article class="insight-card"><h3>Veja se esta pagando imposto a mais</h3><p>Use a simulacao para avaliar se vale uma revisao de enquadramento ou estrutura tributaria.</p><a href="/HTML/calculadora-suite.html?calc=imposto-a-mais" class="text-link-v2">Abrir simulacao</a></article>
-                            <article class="insight-card"><h3>Calcule pro-labore e custo de equipe</h3><p>Bom para decidir retirada, contratacao, folha e impacto real no caixa da empresa.</p><a href="/HTML/calculadora-suite.html?calc=pro-labore-liquido" class="text-link-v2">Abrir pro-labore</a></article>
-                            <article class="insight-card"><h3>Receba orientacao com base no resultado</h3><p>Depois da simulacao, voce pode falar com a VL e discutir o melhor caminho com contexto.</p><a href="/HTML/diagnostico-tributario.html" class="text-link-v2">Solicitar diagnostico</a></article>
-                        </div>
+
+                        <aside class="dre-insight-card">
+                            <span class="eyebrow-label"><i class="fi fi-rr-lightbulb-on"></i> Leitura estrategica</span>
+                            <h3>O lucro melhora quando cada linha recebe criterio.</h3>
+                            <p>Regime tributario, custo operacional e despesa administrativa precisam conversar. E isso so aparece quando a contabilidade deixa de ser apenas obrigacao.</p>
+                            <div class="dre-insight-list">
+                                <div class="dre-insight-item">
+                                    <span>Margem bruta</span>
+                                    <strong>51,5%</strong>
+                                    <div class="dre-insight-bar" style="--insight-fill: 52%;"></div>
+                                </div>
+                                <div class="dre-insight-item">
+                                    <span>Margem operacional</span>
+                                    <strong>36,1%</strong>
+                                    <div class="dre-insight-bar" style="--insight-fill: 36%;"></div>
+                                </div>
+                                <div class="dre-insight-item">
+                                    <span>Lucro liquido</span>
+                                    <strong>33,2%</strong>
+                                    <div class="dre-insight-bar" style="--insight-fill: 33%;"></div>
+                                </div>
+                            </div>
+                        </aside>
                     </div>
+                    <p class="dre-footnote">Quando a VL interpreta a DRE junto com voce, a contabilidade passa a orientar margem, caixa e proximo passo com muito mais seguranca.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section-block">
+        <section class="section-block" id="home-confianca">
             <div class="section-shell">
                 <div class="proof-strip">
-                    <div class="responsible-card">
-                        <span class="eyebrow-label"><i class="fi fi-rr-shield-check"></i> Prova de confianca</span>
-                        <div class="founder-profile">
-                            <img src="/assets/img/fotoprofissional.jpg" alt="Vitor Rodrigues de Lima">
-                            <div>
-                                <strong>Vitor Rodrigues de Lima</strong>
-                                <span>Contador responsavel | CRC SP353836</span>
-                                <p class="copy-muted">A VL foi desenhada para ser pratica, confiavel, humana e tecnica ao mesmo tempo, sem promessas irreais.</p>
+                    <div class="proof-trust-column">
+                        <div class="responsible-card">
+                            <span class="eyebrow-label"><i class="fi fi-rr-shield-check"></i> Por que confiar em nos?</span>
+                            <div class="founder-profile">
+                                <img src="/assets/img/fotoprofissional.jpg" alt="Vitor Rodrigues de Lima">
+                                <div>
+                                    <strong>Vitor Rodrigues de Lima</strong>
+                                    <span>Contador responsavel | CRC SP353836</span>
+                                    <p class="copy-muted">A VL foi desenhada para unir postura tecnica, atendimento humano e leitura pratica do negocio sem promessas vazias.</p>
+                                </div>
+                            </div>
+                            <div class="trust-metric-row">
+                                <div class="trust-metric">
+                                    <strong data-count-to="24" data-suffix="h">0h</strong>
+                                    <span>ritmo de resposta esperado para demandas importantes</span>
+                                </div>
+                                <div class="trust-metric">
+                                    <strong data-count-to="100" data-suffix="%">0%</strong>
+                                    <span>operacao digital para manter a rotina leve e organizada</span>
+                                </div>
+                                <div class="trust-metric">
+                                    <strong data-count-to="3">0</strong>
+                                    <span>camadas tratadas em conjunto: fiscal, financeiro e operacional</span>
+                                </div>
+                            </div>
+                            <ul class="check-list">
+                                <li><i class="fi fi-rr-check-circle"></i> Atendimento consultivo com linguagem clara</li>
+                                <li><i class="fi fi-rr-check-circle"></i> Processo digital com suporte humano</li>
+                                <li><i class="fi fi-rr-check-circle"></i> Base tecnica e legal na orientacao</li>
+                                <li><i class="fi fi-rr-check-circle"></i> Apoio para abertura, migracao, folha e diagnosticos</li>
+                            </ul>
+                        </div>
+                        <div class="proof-support-card">
+                            <div class="proof-support-header">
+                                <span class="eyebrow-label"><i class="fi fi-rr-route"></i> Operacao acompanhada</span>
+                                <h3>Fiscal, folha e rotina andando com checkpoints visiveis</h3>
+                                <p>O acompanhamento da VL nao fica solto. Cada frente importante recebe leitura, ajuste e confirmacao para a empresa operar com mais tranquilidade.</p>
+                            </div>
+                            <div class="proof-support-list">
+                                <div class="proof-support-item">
+                                    <div class="proof-support-meta">
+                                        <span>Fiscal</span>
+                                        <strong>Apuracao e regime em leitura</strong>
+                                    </div>
+                                    <div class="proof-support-bar" style="--support-fill: 82%;"></div>
+                                </div>
+                                <div class="proof-support-item">
+                                    <div class="proof-support-meta">
+                                        <span>Folha</span>
+                                        <strong>Prazos e eventos alinhados</strong>
+                                    </div>
+                                    <div class="proof-support-bar" style="--support-fill: 68%;"></div>
+                                </div>
+                                <div class="proof-support-item">
+                                    <div class="proof-support-meta">
+                                        <span>Rotina</span>
+                                        <strong>Documentos com trilha organizada</strong>
+                                    </div>
+                                    <div class="proof-support-bar" style="--support-fill: 76%;"></div>
+                                </div>
                             </div>
                         </div>
-                        <ul class="check-list">
-                            <li><i class="fi fi-rr-check-circle"></i> Atendimento consultivo com linguagem clara</li>
-                            <li><i class="fi fi-rr-check-circle"></i> Processo digital com suporte humano</li>
-                            <li><i class="fi fi-rr-check-circle"></i> Base tecnica e legal na orientacao</li>
-                            <li><i class="fi fi-rr-check-circle"></i> Apoio fiscal, financeiro e operacional no mesmo fluxo</li>
-                        </ul>
                     </div>
                     <div class="section-panel">
                         <div class="section-heading">
-                            <span class="eyebrow-label"><i class="fi fi-rr-route"></i> Como funciona</span>
-                            <h2>Uma jornada simples para destravar decisao e rotina</h2>
-                            <p>O objetivo e encurtar o caminho entre a duvida e a acao organizada, com clareza desde o primeiro contato.</p>
+                            <span class="eyebrow-label"><i class="fi fi-rr-route"></i> Como a VL conduz</span>
+                            <h2>Como a VL conduz abertura, migracao e rotina com menos ruido</h2>
+                            <p>O objetivo e encurtar o caminho entre a duvida e a acao com leitura tecnica, checkpoints claros e execucao previsivel desde o primeiro contato.</p>
                         </div>
                         <div class="process-grid">
-                            <article class="process-card"><strong>1</strong><h3>Voce entra em contato</h3><p>Pelo WhatsApp, formulario ou pagina do servico mais ligado a sua dor.</p></article>
-                            <article class="process-card"><strong>2</strong><h3>Entendemos o cenario</h3><p>A VL levanta objetivo, tipo de empresa, regime atual e gargalos da rotina.</p></article>
-                            <article class="process-card"><strong>3</strong><h3>Indicamos o melhor caminho</h3><p>Voce recebe orientacao pratica sobre abertura, migracao, diagnostico ou rotina mensal.</p></article>
-                            <article class="process-card"><strong>4</strong><h3>Organizamos a operacao</h3><p>Documentos, obrigacoes, folha e pontos de controle passam a ter fluxo mais claro.</p></article>
-                            <article class="process-card"><strong>5</strong><h3>Acompanhamos a rotina</h3><p>O atendimento segue com suporte rapido e leitura de impacto para o negocio.</p></article>
+                            <article class="process-card"><strong>1</strong><h3>Entendemos o cenario</h3><p>A VL levanta objetivo, regime atual, momento da empresa e urgencias da rotina antes de recomendar qualquer caminho.</p></article>
+                            <article class="process-card"><strong>2</strong><h3>Leitura com base tecnica</h3><p>Simuladores, comparativos e experiencia pratica entram para mostrar impacto real no imposto, no caixa e na operacao.</p></article>
+                            <article class="process-card"><strong>3</strong><h3>Indicamos o melhor proximo passo</h3><p>Voce recebe orientacao pratica sobre abertura, migracao, rotina mensal ou ajuste de enquadramento.</p></article>
+                            <article class="process-card"><strong>4</strong><h3>Organizamos a execucao</h3><p>Documentos, obrigacoes e pontos de controle passam a seguir um fluxo digital mais previsivel e limpo.</p></article>
+                            <article class="process-card"><strong>5</strong><h3>Acompanhamos com contexto</h3><p>O atendimento continua para manter a empresa operando com menos risco e mais clareza na tomada de decisao.</p></article>
                         </div>
                     </div>
                 </div>
@@ -320,14 +576,14 @@
         <section class="section-block">
             <div class="section-shell">
                 <div class="final-cta-panel">
-                    <span class="eyebrow-label"><i class="fi fi-rr-headset"></i> Proximo passo</span>
-                    <h2>Fale com um especialista da VL e entenda qual caminho faz mais sentido para a sua empresa</h2>
-                    <p>Se voce quer abrir empresa, trocar de contador, revisar enquadramento ou organizar fiscal e financeiro, a VL pode orientar o proximo passo com clareza e rapidez.</p>
+                    <span class="eyebrow-label"><i class="fi fi-rr-headset"></i> Vamos conversar?</span>
+                    <h2>Se a sua empresa precisa de mais clareza para decidir, a VL pode orientar o proximo passo com rapidez e criterio.</h2>
+                    <p>Abra empresa, troque de contador, revise enquadramento ou interprete seus numeros com uma contabilidade que parece mais moderna porque trabalha de forma mais inteligente.</p>
                     <div class="cta-actions-v2">
                         <a href="https://wa.me/5511916539680?text=Ola%2C%20quero%20falar%20com%20um%20especialista%20da%20VL%20sobre%20minha%20empresa." class="btn-v2 btn-v2-whatsapp" target="_blank">Falar com especialista</a>
                         <a href="/HTML/abertura-de-empresa.html" class="btn-v2 btn-v2-primary">Quero abrir empresa</a>
-                        <a href="/HTML/diagnostico-tributario.html" class="btn-v2 btn-v2-secondary">Solicitar diagnostico</a>
-                        <a href="/HTML/troca-de-contador.html" class="btn-v2 btn-v2-secondary">Trocar de contador</a>
+                        <a href="/HTML/ferramentas.html" class="btn-v2 btn-v2-secondary">Usar as ferramentas</a>
+                        <a href="/HTML/contatos.html" class="btn-v2 btn-v2-secondary">Ir para contato</a>
                     </div>
                 </div>
             </div>
@@ -375,7 +631,9 @@
     </a>
 
     <script src="/assets/js/footer.js?v=3.7" defer></script>
-    <script src="/assets/js/animations.js?v=3.7" defer></script>
+    <script src="/assets/js/motion.js?v=1.0" defer></script>
+    <script src="/assets/js/main.js?v=1.0" defer></script>
+    <script src="/assets/js/hero-background.js?v=1.0" defer></script>
 </body>
 
 </html>

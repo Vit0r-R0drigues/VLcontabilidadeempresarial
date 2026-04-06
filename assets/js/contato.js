@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('whatsappForm');
+    const submitButton = form ? form.querySelector('.whatsapp-submit') : null;
 
     if (!form) {
         return;
@@ -16,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const telefoneDestino = (form.dataset.whatsapp || '').replace(/\D/g, '');
         if (!telefoneDestino) {
             return;
+        }
+
+        if (submitButton) {
+            submitButton.classList.add('is-submitting');
+            submitButton.setAttribute('aria-busy', 'true');
         }
 
         const campos = {
@@ -42,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ].filter(Boolean);
 
         const url = `https://wa.me/${telefoneDestino}?text=${encodeURIComponent(linhas.join('\n'))}`;
-        window.location.href = url;
+        window.setTimeout(() => {
+            window.location.href = url;
+        }, 120);
     });
 });
